@@ -1,5 +1,5 @@
 {
-  "last_node_id": 56,
+  "last_node_id": 57,
   "last_link_id": 85,
   "nodes": [
     {
@@ -606,96 +606,6 @@
       }
     },
     {
-      "id": 10,
-      "type": "CLIPTextEncodeSDXLRefiner",
-      "pos": [
-        807,
-        1036
-      ],
-      "size": {
-        "0": 226.92648315429688,
-        "1": 118
-      },
-      "flags": {},
-      "order": 28,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 23
-        },
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 22,
-          "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
-          }
-        },
-        {
-          "name": "width",
-          "type": "INT",
-          "link": 62,
-          "widget": {
-            "name": "width",
-            "config": [
-              "INT",
-              {
-                "default": 1024,
-                "min": 0,
-                "max": 8192
-              }
-            ]
-          }
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "link": 63,
-          "widget": {
-            "name": "height",
-            "config": [
-              "INT",
-              {
-                "default": 1024,
-                "min": 0,
-                "max": 8192
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            44
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Searge SDXL Workflow"
-      },
-      "widgets_values": [
-        6,
-        2048,
-        2048,
-        ""
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
       "id": 30,
       "type": "Reroute",
       "pos": [
@@ -811,49 +721,6 @@
       "bgcolor": "#653"
     },
     {
-      "id": 36,
-      "type": "PrimitiveNode",
-      "pos": [
-        1250,
-        750
-      ],
-      "size": [
-        300,
-        100
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            48
-          ],
-          "widget": {
-            "name": "cfg",
-            "config": [
-              "FLOAT",
-              {
-                "default": 8,
-                "min": 0,
-                "max": 100
-              }
-            ]
-          }
-        }
-      ],
-      "title": "CFG Scale",
-      "properties": {},
-      "widgets_values": [
-        8,
-        "fixed"
-      ],
-      "color": "#332922",
-      "bgcolor": "#593930"
-    },
-    {
       "id": 37,
       "type": "PrimitiveNode",
       "pos": [
@@ -865,7 +732,7 @@
         100
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "outputs": [
         {
@@ -1054,7 +921,7 @@
         100
       ],
       "flags": {},
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "outputs": [
         {
@@ -1101,7 +968,7 @@
         100
       ],
       "flags": {},
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "outputs": [
         {
@@ -1372,7 +1239,7 @@
         4815162342,
         "fixed",
         30,
-        8,
+        8.5,
         "dpmpp_2m",
         "karras",
         0.8,
@@ -1467,7 +1334,7 @@
         "1": 106
       },
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "outputs": [
         {
@@ -1526,7 +1393,7 @@
         "1": 146
       },
       "flags": {},
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "outputs": [
         {
@@ -1636,7 +1503,7 @@
         "1": 146
       },
       "flags": {},
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "outputs": [
         {
@@ -1820,7 +1687,7 @@
         150
       ],
       "flags": {},
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "properties": {
         "text": ""
@@ -1843,7 +1710,7 @@
         100
       ],
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "properties": {
         "text": ""
@@ -1866,7 +1733,7 @@
         "1": 98
       },
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "outputs": [
         {
@@ -2091,7 +1958,7 @@
         500
       ],
       "flags": {},
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "outputs": [
         {
@@ -2130,7 +1997,7 @@
         100
       ],
       "flags": {},
-      "order": 14,
+      "order": 13,
       "mode": 0,
       "outputs": [
         {
@@ -2162,6 +2029,96 @@
       "bgcolor": "#353"
     },
     {
+      "id": 10,
+      "type": "CLIPTextEncodeSDXLRefiner",
+      "pos": [
+        807,
+        1036
+      ],
+      "size": {
+        "0": 226.92648315429688,
+        "1": 118
+      },
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 23
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 22,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 62,
+          "widget": {
+            "name": "width",
+            "config": [
+              "INT",
+              {
+                "default": 1024,
+                "min": 0,
+                "max": 8192
+              }
+            ]
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 63,
+          "widget": {
+            "name": "height",
+            "config": [
+              "INT",
+              {
+                "default": 1024,
+                "min": 0,
+                "max": 8192
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            44
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Searge SDXL Workflow"
+      },
+      "widgets_values": [
+        2.5,
+        2048,
+        2048,
+        ""
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
       "id": 38,
       "type": "PrimitiveNode",
       "pos": [
@@ -2173,7 +2130,7 @@
         100
       ],
       "flags": {},
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "outputs": [
         {
@@ -2204,6 +2161,49 @@
       ],
       "color": "#223",
       "bgcolor": "#335"
+    },
+    {
+      "id": 36,
+      "type": "PrimitiveNode",
+      "pos": [
+        1250,
+        750
+      ],
+      "size": [
+        300,
+        100
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            48
+          ],
+          "widget": {
+            "name": "cfg",
+            "config": [
+              "FLOAT",
+              {
+                "default": 8,
+                "min": 0,
+                "max": 100
+              }
+            ]
+          }
+        }
+      ],
+      "title": "CFG Scale",
+      "properties": {},
+      "widgets_values": [
+        8.5,
+        "fixed"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
     }
   ],
   "links": [
