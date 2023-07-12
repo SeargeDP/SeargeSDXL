@@ -58,6 +58,9 @@ class SeargeSDXLSampler:
     def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, latent_image, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise):
         base_steps = int(steps * base_ratio)
 
+        if denoise < 0.01:
+            return (latent_image, )
+
         if base_steps >= steps:
             return nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, latent_image, denoise=denoise, disable_noise=False, start_step=0, last_step=steps, force_full_denoise=True)
 
