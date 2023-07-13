@@ -55,8 +55,6 @@ Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymo
 - **neg_ascore** - the negative aesthetic score for the refiner conditioning
 - **refiner_width** - the width for the refiner conditioning
 - **refiner_height** - the height for the refiner conditioning
-- 
-- **INPUT** - description
 
 ### Outputs
 - **CONDITIONING** 1 - the positive base prompt conditioning
