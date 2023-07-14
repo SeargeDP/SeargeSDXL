@@ -33,6 +33,8 @@ import torch
 from nodes import MAX_RESOLUTION
 
 
+# SDXL Sampler with base and refiner support
+
 class SeargeSDXLSampler:
     @classmethod
     def INPUT_TYPES(s):
@@ -72,6 +74,8 @@ class SeargeSDXLSampler:
 
         return nodes.common_ksampler(refiner_model, noise_seed, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=1.0, disable_noise=True, start_step=base_steps, last_step=steps, force_full_denoise=True)
 
+
+# SDXL CLIP Text Encoder for prompts with base and refiner support
 
 class SeargeSDXLPromptEncoder:
     @classmethod
@@ -146,6 +150,8 @@ class SeargeSDXLPromptEncoder:
         return (res1, res2, res3, res4, )
 
 
+# Tool: text input node for prompt text
+
 class SeargePromptText:
     @classmethod
     def INPUT_TYPES(s):
@@ -162,14 +168,52 @@ class SeargePromptText:
     def get_value(self, prompt):
         return (prompt,)
 
+
+# Tool: text combiner node for prompt text
+
+class SeargePromptCombiner:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "prompt1": ("STRING", {"default": "", "multiline": True}),
+                    "separator": ("STRING", {"default": ", ", "multiline": False}),
+                    "prompt2": ("STRING", {"default": "", "multiline": True}),
+                    },
+                }
+
+    RETURN_TYPES = ("STRING",)
+    FUNCTION = "get_value"
+
+    CATEGORY = "SeargeSDXL"
+
+    def get_value(self, prompt1, separator, prompt2, ):
+        len1 = len(prompt1)
+        len2 = len(prompt2)
+        prompt = ""
+        if len1 > 0 and len2 > 0:
+            prompt = prompt1 + separator + prompt2
+        elif len1 > 0:
+            prompt = prompt1
+        elif len2 > 0:
+            prompt = prompt2
+        return (prompt,)
+
+
+# Register nodes in ComfyUI
+
 NODE_CLASS_MAPPINGS = {
     "SeargeSDXLSampler": SeargeSDXLSampler,
     "SeargeSDXLPromptEncoder": SeargeSDXLPromptEncoder,
     "SeargePromptText": SeargePromptText,
+    "SeargePromptCombiner": SeargePromptCombiner,
 }
+
+
+# Human readable names for the nodes
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeSDXLSampler": "Sampler for SDXL (by Searge)",
     "SeargeSDXLPromptEncoder": "SDXL Prompt Encoder (by Searge)",
     "SeargePromptText": "Prompt text input (by Searge)",
+    "SeargePromptCombiner": "Prompt combiner (by Searge)",
 }
