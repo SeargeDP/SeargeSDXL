@@ -59,7 +59,7 @@ class SeargeSDXLSampler:
     RETURN_TYPES = ("LATENT",)
     FUNCTION = "sample"
 
-    CATEGORY = "SeargeSDXL"
+    CATEGORY = "Searge/SDXL"
 
     def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, latent_image, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise):
         base_steps = int(steps * base_ratio)
@@ -105,7 +105,7 @@ class SeargeSDXLPromptEncoder:
     RETURN_TYPES = ("CONDITIONING", "CONDITIONING", "CONDITIONING", "CONDITIONING", )
     FUNCTION = "encode"
 
-    CATEGORY = "SeargeSDXL"
+    CATEGORY = "Searge/SDXL"
 
     def encode(self, base_clip, refiner_clip, pos_g, pos_l, pos_r, neg_g, neg_l, neg_r, base_width, base_height, crop_w, crop_h, target_width, target_height, pos_ascore, neg_ascore, refiner_width, refiner_height, ):
         empty = base_clip.tokenize("")
@@ -163,13 +163,13 @@ class SeargePromptText:
     RETURN_TYPES = ("STRING",)
     FUNCTION = "get_value"
 
-    CATEGORY = "SeargeSDXL"
+    CATEGORY = "Searge/Prompting"
 
     def get_value(self, prompt):
         return (prompt,)
 
 
-# Tool: text combiner node for prompt text
+# Tool: text input node for prompt text
 
 class SeargePromptCombiner:
     @classmethod
@@ -184,7 +184,7 @@ class SeargePromptCombiner:
     RETURN_TYPES = ("STRING",)
     FUNCTION = "get_value"
 
-    CATEGORY = "SeargeSDXL"
+    CATEGORY = "Searge/Prompting"
 
     def get_value(self, prompt1, separator, prompt2, ):
         len1 = len(prompt1)
@@ -199,13 +199,170 @@ class SeargePromptCombiner:
         return (prompt,)
 
 
+# Tool: integer constant
+
+class SeargeIntegerConstant:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "value": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                    },
+                }
+
+    RETURN_TYPES = ("INT",)
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Integers"
+
+    def get_value(self, value, ):
+        return (value,)
+
+
+# Tool: integer pair
+
+class SeargeIntegerPair:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "value1": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                    "value2": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                    },
+                }
+
+    RETURN_TYPES = ("INT","INT",)
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Integers"
+
+    def get_value(self, value1, value2, ):
+        return (value1,value2,)
+
+
+# Tool: integer math
+
+class SeargeIntegerMath:
+    OPERATIONS = ["a * b + c", "a + c", "a - c", "a * b", "a / b"]
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "op": (SeargeIntegerMath.OPERATIONS, {"default": "a * b + c"}),
+                    "a": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                    "b": ("INT", {"default": 1, "min": 0, "max": 0xffffffffffffffff}),
+                    "c": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                    },
+                }
+
+    RETURN_TYPES = ("INT",)
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Integers"
+
+    def get_value(self, op, a, b, c, ):
+        res = 0
+        if op == "a * b + c":
+            res = a * b + c
+        elif op == "a + c":
+            res = a + c
+        elif op == "a - c":
+            res = a - c
+        elif op == "a * b":
+            res = a * b
+        elif op == "a / b":
+            res = a // b
+        return (int(res),)
+
+
+# Tool: float constant
+
+class SeargeFloatConstant:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "value": ("FLOAT", {"default": 0.0, "step": 0.01}),
+                    },
+                }
+
+    RETURN_TYPES = ("FLOAT",)
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Floats"
+
+    def get_value(self, value, ):
+        return (value,)
+
+
+# Tool: float pair
+
+class SeargeFloatPair:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "value1": ("FLOAT", {"default": 0.0, "step": 0.01}),
+                    "value2": ("FLOAT", {"default": 0.0, "step": 0.01}),
+                    },
+                }
+
+    RETURN_TYPES = ("FLOAT","FLOAT",)
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Floats"
+
+    def get_value(self, value1, value2, ):
+        return (value1,value2,)
+
+
+# Tool: float math
+
+class SeargeFloatMath:
+    OPERATIONS = ["a * b + c", "a + c", "a - c", "a * b", "a / b"]
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "op": (SeargeFloatMath.OPERATIONS, {"default": "a * b + c"}),
+                    "a": ("FLOAT", {"default": 0.0, "step": 0.01}),
+                    "b": ("FLOAT", {"default": 1.0, "step": 0.01}),
+                    "c": ("FLOAT", {"default": 0.0, "step": 0.01}),
+                    },
+                }
+
+    RETURN_TYPES = ("FLOAT",)
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Floats"
+
+    def get_value(self, op, a, b, c, ):
+        res = 0.0
+        if op == "a * b + c":
+            res = a * b + c
+        elif op == "a + c":
+            res = a + c
+        elif op == "a - c":
+            res = a - c
+        elif op == "a * b":
+            res = a * b
+        elif op == "a / b":
+            res = a / b
+        return (res,)
+
+
 # Register nodes in ComfyUI
 
 NODE_CLASS_MAPPINGS = {
     "SeargeSDXLSampler": SeargeSDXLSampler,
     "SeargeSDXLPromptEncoder": SeargeSDXLPromptEncoder,
+
     "SeargePromptText": SeargePromptText,
     "SeargePromptCombiner": SeargePromptCombiner,
+
+    "SeargeIntegerConstant": SeargeIntegerConstant,
+    "SeargeIntegerPair": SeargeIntegerPair,
+    "SeargeIntegerMath": SeargeIntegerMath,
+
+    "SeargeFloatConstant": SeargeFloatConstant,
+    "SeargeFloatPair": SeargeFloatPair,
+    "SeargeFloatMath": SeargeFloatMath,
 }
 
 
@@ -214,6 +371,15 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeSDXLSampler": "Sampler for SDXL (by Searge)",
     "SeargeSDXLPromptEncoder": "SDXL Prompt Encoder (by Searge)",
+
     "SeargePromptText": "Prompt text input (by Searge)",
     "SeargePromptCombiner": "Prompt combiner (by Searge)",
+
+    "SeargeIntegerConstant": "Integer Constant (by Searge)",
+    "SeargeIntegerPair": "Integer Pair (by Searge)",
+    "SeargeIntegerMath": "Integer Math (by Searge)",
+
+    "SeargeFloatConstant": "Float Constant (by Searge)",
+    "SeargeFloatPair": "Float Pair (by Searge)",
+    "SeargeFloatMath": "Float Math (by Searge)",
 }
