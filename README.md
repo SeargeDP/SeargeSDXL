@@ -11,7 +11,11 @@ Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymo
 ### Alternative Installation:
 - Drop the `SeargeSDXL` folder into the `ComfyUI/custom_nodes` directory and restart ComfyUI.
 
-# SDXL Sampler Node
+# Custom Nodes
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Nodetypes.png" width="768">
+
+## SDXL Sampler Node
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Node.png" width="407">
 
 ### Inputs
@@ -33,7 +37,7 @@ Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymo
 ### Outputs
 - **LATENT** - the generated latent image
 
-# SDXL Prompt Node
+## SDXL Prompt Node
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Node2.png" width="434">
 
 ### Inputs
