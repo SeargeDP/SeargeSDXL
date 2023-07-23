@@ -1106,7 +1106,7 @@
         ],
         "title": "Operation",
         "properties": {
-          "A": 25,
+          "A": 30,
           "B": 0.8,
           "OP": "*",
           "tags": []
@@ -1256,7 +1256,7 @@
                 {
                   "name": "",
                   "type": "number",
-                  "link": "e087cbca-8178-49bd-8d06-87c794cfd0e7",
+                  "link": "7780eecf-fa70-48ef-9086-077075c2c814",
                   "properties": {},
                   "shape": 0
                 }
@@ -1317,101 +1317,6 @@
               "title": "Comfy.QueueEvents",
               "properties": {
                 "tags": []
-              },
-              "saveUserState": true
-            },
-            {
-              "id": "115dfa4d-7a68-4835-9215-987b6e0e0fca",
-              "type": "utils/value_control",
-              "pos": [
-                135,
-                -200
-              ],
-              "size": [
-                151.2,
-                126
-              ],
-              "flags": {},
-              "order": 3,
-              "mode": 0,
-              "inputs": [
-                {
-                  "name": "value",
-                  "type": "number",
-                  "link": "6cc9d41c-364a-4a00-b694-d822d54977df",
-                  "properties": {}
-                },
-                {
-                  "name": "trigger",
-                  "type": -1,
-                  "link": "8762af7b-d6ad-45b0-8212-45e9a1bc9a23",
-                  "properties": {},
-                  "shape": 1
-                },
-                {
-                  "name": "action",
-                  "type": "string",
-                  "link": "9c1b089b-0293-45f7-87b7-7f27e28dd615",
-                  "properties": {},
-                  "defaultWidgetNode": null,
-                  "config": {
-                    "defaultValue": "randomize",
-                    "values": [
-                      "fixed",
-                      "increment",
-                      "decrement",
-                      "randomize"
-                    ]
-                  },
-                  "slot_index": 2,
-                  "widgetNodeType": "ui/combo"
-                },
-                {
-                  "name": "min",
-                  "type": "number",
-                  "link": "a5688e53-1734-4a3d-a65d-8eeb919b9df8",
-                  "properties": {}
-                },
-                {
-                  "name": "max",
-                  "type": "number",
-                  "link": "63eae412-2595-480a-b7cb-2bb1f524cb56",
-                  "properties": {}
-                },
-                {
-                  "name": "step",
-                  "type": "number",
-                  "link": "285cfecf-5bbc-494b-84db-e75480acda36",
-                  "properties": {}
-                }
-              ],
-              "outputs": [
-                {
-                  "name": "value",
-                  "type": "*",
-                  "links": [],
-                  "properties": {}
-                },
-                {
-                  "name": "changed",
-                  "type": -2,
-                  "links": [
-                    "89e137e5-6642-4468-81ee-d3b8a88fb26c"
-                  ],
-                  "properties": {},
-                  "shape": 1,
-                  "slot_index": 1
-                }
-              ],
-              "title": "Comfy.ValueControl",
-              "properties": {
-                "tags": [],
-                "value": 4815162342,
-                "action": "fixed",
-                "min": 0,
-                "max": 18446744073709552000,
-                "step": 1,
-                "ignoreStepWhenRandom": false
               },
               "saveUserState": true
             },
@@ -1502,7 +1407,6 @@
                   "name": "value",
                   "type": "number",
                   "links": [
-                    "e087cbca-8178-49bd-8d06-87c794cfd0e7",
                     "6cc9d41c-364a-4a00-b694-d822d54977df"
                   ],
                   "properties": {},
@@ -1580,17 +1484,107 @@
                 }
               },
               "saveUserState": true
+            },
+            {
+              "id": "115dfa4d-7a68-4835-9215-987b6e0e0fca",
+              "type": "utils/value_control",
+              "pos": [
+                135,
+                -200
+              ],
+              "size": [
+                151.2,
+                126
+              ],
+              "flags": {},
+              "order": 3,
+              "mode": 0,
+              "inputs": [
+                {
+                  "name": "value",
+                  "type": "number",
+                  "link": "6cc9d41c-364a-4a00-b694-d822d54977df",
+                  "properties": {}
+                },
+                {
+                  "name": "trigger",
+                  "type": -1,
+                  "link": "8762af7b-d6ad-45b0-8212-45e9a1bc9a23",
+                  "properties": {},
+                  "shape": 1
+                },
+                {
+                  "name": "action",
+                  "type": "string",
+                  "link": "9c1b089b-0293-45f7-87b7-7f27e28dd615",
+                  "properties": {},
+                  "defaultWidgetNode": null,
+                  "config": {
+                    "defaultValue": "randomize",
+                    "values": [
+                      "fixed",
+                      "increment",
+                      "decrement",
+                      "randomize"
+                    ]
+                  },
+                  "slot_index": 2,
+                  "widgetNodeType": "ui/combo"
+                },
+                {
+                  "name": "min",
+                  "type": "number",
+                  "link": "a5688e53-1734-4a3d-a65d-8eeb919b9df8",
+                  "properties": {}
+                },
+                {
+                  "name": "max",
+                  "type": "number",
+                  "link": "63eae412-2595-480a-b7cb-2bb1f524cb56",
+                  "properties": {}
+                },
+                {
+                  "name": "step",
+                  "type": "number",
+                  "link": "285cfecf-5bbc-494b-84db-e75480acda36",
+                  "properties": {}
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "value",
+                  "type": "*",
+                  "links": [
+                    "7780eecf-fa70-48ef-9086-077075c2c814"
+                  ],
+                  "properties": {},
+                  "slot_index": 0
+                },
+                {
+                  "name": "changed",
+                  "type": -2,
+                  "links": [
+                    "89e137e5-6642-4468-81ee-d3b8a88fb26c"
+                  ],
+                  "properties": {},
+                  "shape": 1,
+                  "slot_index": 1
+                }
+              ],
+              "title": "Comfy.ValueControl",
+              "properties": {
+                "tags": [],
+                "value": 4815162342,
+                "action": "fixed",
+                "min": 0,
+                "max": 18446744073709552000,
+                "step": 1,
+                "ignoreStepWhenRandom": false
+              },
+              "saveUserState": true
             }
           ],
           "links": [
-            [
-              "e087cbca-8178-49bd-8d06-87c794cfd0e7",
-              "ad05d3bd-e3bb-4e15-9ec2-c0efd0db519b",
-              0,
-              "90e57c36-28c2-4a2d-92a3-7db749ddfed1",
-              0,
-              "number"
-            ],
             [
               "9c1b089b-0293-45f7-87b7-7f27e28dd615",
               "f10f8031-fcc9-43f3-91d5-ac14b34b4287",
@@ -1646,6 +1640,14 @@
               "115dfa4d-7a68-4835-9215-987b6e0e0fca",
               1,
               -1
+            ],
+            [
+              "7780eecf-fa70-48ef-9086-077075c2c814",
+              "115dfa4d-7a68-4835-9215-987b6e0e0fca",
+              0,
+              "90e57c36-28c2-4a2d-92a3-7db749ddfed1",
+              0,
+              "number"
             ]
           ],
           "groups": [],
@@ -1725,17 +1727,17 @@
         "title": "Total Steps",
         "properties": {
           "tags": [],
-          "defaultValue": 25,
+          "defaultValue": 30,
           "min": 0,
           "max": 200,
           "step": 1,
           "precision": 1
         },
         "widgets_values": [
-          "25.000"
+          "30.000"
         ],
         "color": "#223",
-        "comfyValue": 25,
+        "comfyValue": 30,
         "shownOutputProperties": {
           "min": {
             "type": "number",
@@ -5042,9 +5044,9 @@
   },
   "canvas": {
     "offset": [
-      682.4408649999997,
-      109.38764600000042
+      504.64099999999996,
+      -123.0129999999999
     ],
-    "scale": 0.6830134553650711
+    "scale": 0.9090909090909091
   }
 }
