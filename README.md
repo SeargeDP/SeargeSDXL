@@ -1,5 +1,5 @@
 # SeargeSDXL
-Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymous/ComfyUI) including an img2img workflow that utilizes both the base and refiner checkpoints.
+Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymous/ComfyUI) including workflows for SDXL 1.0 txt2img that utilize both the base and refiner checkpoints.
 
 # Install:
 
@@ -68,9 +68,26 @@ Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymo
 
 # Examples
 
-### Workflow
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-img2img.png" width="768">
+### Workflows
+Now 2 workflows are included in the examples directory. One is called simple, the other is called advanced.
+The only difference is how the prompts are used through the CLIP models. The advanced workflow also processes
+the base sampler at half the speed compared to the simple workflow, due to the way the conditioning is combined.
 
-### Result
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL_00001.png" width="768">
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL_00002.png" width="768">
+- simple prompt processing
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-1.png" width="768">
+
+- advanced prompt processing
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-2.png" width="768">
+
+
+### Results
+
+- simple prompt processing
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-simple.png" width="768">
+
+- advanced prompt processing
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-advanced.png" width="768">
