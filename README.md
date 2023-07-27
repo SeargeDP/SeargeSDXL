@@ -11,6 +11,29 @@ Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymo
 ### Alternative Installation:
 - Drop the `SeargeSDXL` folder into the `ComfyUI/custom_nodes` directory and restart ComfyUI.
 
+# Information for Example Workflows
+Now 3 workflows are included in the examples directory. They are called *simple*, *advanced*, and *reborn*.
+
+### Simple and Advanced
+The only difference between *simple* and *advanced* is how the prompts are used through the CLIP models.
+The *advanced* workflow also processes the base sampler at half the speed compared to the *simple* workflow,
+due to the way the conditioning is combined.
+
+### Reborn
+The *reborn* workflow is a new workflow, created from scratch. It requires the latest additions to the
+SeargeSDXL custom node extension, because it makes use of some new node types.
+
+The interface for using this new workflow is also designed in a different way, with all parameters that
+are usually tweaked to generate images tighly packed together. This should make it easier to have every
+important element on the screen at the same time without scrolling.
+
+Prompting has also been revised, once more. The main prompt and secondary prompt influence the two CLIP models
+similar to the way my original workflow worked. A third positive prompt was added for style description and
+artist references. This one influences both CLIP models.
+
+For the negative prompt the way it is now designed expects objects and subjects you don't want in the negative
+prompt and styles that you don't want in the negative style.
+
 # Custom Nodes
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Nodetypes.png" width="768">
@@ -68,11 +91,6 @@ Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymo
 
 # Examples
 
-### Workflows
-Now 2 workflows are included in the examples directory. One is called simple, the other is called advanced.
-The only difference is how the prompts are used through the CLIP models. The advanced workflow also processes
-the base sampler at half the speed compared to the simple workflow, due to the way the conditioning is combined.
-
 - simple prompt processing
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-1.png" width="768">
@@ -81,6 +99,9 @@ the base sampler at half the speed compared to the simple workflow, due to the w
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-2.png" width="768">
 
+- reborn workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-3.png" width="768">
 
 ### Results
 
@@ -91,3 +112,7 @@ the base sampler at half the speed compared to the simple workflow, due to the w
 - advanced prompt processing
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-advanced.png" width="768">
+
+- reborn workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-reborn.png" width="768">
