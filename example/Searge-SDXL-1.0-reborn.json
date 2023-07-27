@@ -1,6 +1,6 @@
 {
-  "last_node_id": 69,
-  "last_link_id": 92,
+  "last_node_id": 73,
+  "last_link_id": 118,
   "nodes": [
     {
       "id": 3,
@@ -35,7 +35,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "A highly detailed face of a fantastical red dragon with yellow glowing eyes"
+        "photo of a charming image of a miniature workshop, where tiny creatures perform tasks with precision and skill, the warm glow from its glowing orbs adds depth to the scene"
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -72,7 +72,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "dragon face, fantasy, glowing eyes"
+        "photo, tiny creatures in miniature workshop, working, glowing orbs, light and shadows"
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
@@ -110,7 +110,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "concept art, digital artwork, illustrative, painterly, matte painting, highly detailed. style of Alan Lee and Frank Hong"
+        "~*~analog film~*~, vibrant, photo, grainy, vintage, Kodachrome, Lomography, stained, highly detailed, found footage, style of Cathleen McAllister and Brooke Shaden"
       ],
       "color": "#223",
       "bgcolor": "#335"
@@ -149,7 +149,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "people"
+        "glitch, deformed"
       ],
       "color": "#322",
       "bgcolor": "#533"
@@ -187,7 +187,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "photo, photorealistic, realism"
+        "painting, drawing, illustration"
       ],
       "color": "#332922",
       "bgcolor": "#593930"
@@ -232,7 +232,7 @@
       "title": "Seed",
       "properties": {},
       "widgets_values": [
-        4815162342,
+        1468615445629,
         "fixed"
       ],
       "color": "#432",
@@ -290,7 +290,7 @@
         "Node name for S&R": "SeargeIntegerConstant"
       },
       "widgets_values": [
-        4815162342
+        1468615445629
       ],
       "color": "#222",
       "bgcolor": "#000"
@@ -342,8 +342,8 @@
         "Node name for S&R": "SeargeIntegerPair"
       },
       "widgets_values": [
-        1024,
-        1024
+        1280,
+        768
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -502,8 +502,8 @@
         "Node name for S&R": "SeargeFloatPair"
       },
       "widgets_values": [
-        2,
-        1
+        4,
+        2
       ],
       "color": "#233",
       "bgcolor": "#355"
@@ -597,7 +597,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 43,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -782,7 +782,7 @@
         "Node name for S&R": "SeargeFloatConstant"
       },
       "widgets_values": [
-        7
+        7.5
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -906,10 +906,10 @@
         480,
         560
       ],
-      "size": [
-        630,
-        380
-      ],
+      "size": {
+        "0": 630,
+        "1": 380
+      },
       "flags": {
         "pinned": true
       },
@@ -1557,7 +1557,8 @@
           "name": "base_positive",
           "type": "CONDITIONING",
           "links": [
-            64
+            64,
+            94
           ],
           "shape": 3,
           "slot_index": 0
@@ -1566,7 +1567,8 @@
           "name": "base_negative",
           "type": "CONDITIONING",
           "links": [
-            65
+            65,
+            96
           ],
           "shape": 3,
           "slot_index": 1
@@ -1687,7 +1689,8 @@
           "name": "refiner_positive",
           "type": "CONDITIONING",
           "links": [
-            66
+            66,
+            98
           ],
           "shape": 3,
           "slot_index": 0
@@ -1696,7 +1699,8 @@
           "name": "refiner_negative",
           "type": "CONDITIONING",
           "links": [
-            67
+            67,
+            100
           ],
           "shape": 3,
           "slot_index": 1
@@ -1948,7 +1952,8 @@
           "name": "base_positive",
           "type": "CONDITIONING",
           "links": [
-            60
+            60,
+            93
           ],
           "shape": 3,
           "slot_index": 0
@@ -1957,7 +1962,8 @@
           "name": "base_negative",
           "type": "CONDITIONING",
           "links": [
-            61
+            61,
+            95
           ],
           "shape": 3,
           "slot_index": 1
@@ -1966,7 +1972,8 @@
           "name": "refiner_positive",
           "type": "CONDITIONING",
           "links": [
-            62
+            62,
+            97
           ],
           "shape": 3,
           "slot_index": 2
@@ -1975,7 +1982,8 @@
           "name": "refiner_negative",
           "type": "CONDITIONING",
           "links": [
-            63
+            63,
+            99
           ],
           "shape": 3,
           "slot_index": 3
@@ -2130,10 +2138,10 @@
         {
           "name": "CONDITIONING",
           "type": "CONDITIONING",
-          "links": [
-            71
-          ],
-          "shape": 3
+          "links": [],
+          "shape": 3,
+          "label": "base +",
+          "slot_index": 0
         }
       ],
       "properties": {
@@ -2156,7 +2164,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 38,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -2175,16 +2183,18 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            72
+            114
           ],
-          "shape": 3
+          "shape": 3,
+          "label": "base -",
+          "slot_index": 0
         }
       ],
       "properties": {
         "Node name for S&R": "ConditioningCombine"
       },
-      "color": "#233",
-      "bgcolor": "#355"
+      "color": "#322",
+      "bgcolor": "#533"
     },
     {
       "id": 57,
@@ -2200,7 +2210,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 39,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -2218,17 +2228,17 @@
         {
           "name": "CONDITIONING",
           "type": "CONDITIONING",
-          "links": [
-            73
-          ],
-          "shape": 3
+          "links": [],
+          "shape": 3,
+          "label": "refiner +",
+          "slot_index": 0
         }
       ],
       "properties": {
         "Node name for S&R": "ConditioningCombine"
       },
-      "color": "#322",
-      "bgcolor": "#533"
+      "color": "#233",
+      "bgcolor": "#355"
     },
     {
       "id": 58,
@@ -2244,7 +2254,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 40,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
@@ -2263,9 +2273,11 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            74
+            116
           ],
-          "shape": 3
+          "shape": 3,
+          "label": "refiner -",
+          "slot_index": 0
         }
       ],
       "properties": {
@@ -2288,7 +2300,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 41,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
@@ -2300,13 +2312,13 @@
         {
           "name": "base_positive",
           "type": "CONDITIONING",
-          "link": 71,
+          "link": 117,
           "slot_index": 1
         },
         {
           "name": "base_negative",
           "type": "CONDITIONING",
-          "link": 72,
+          "link": 114,
           "slot_index": 2
         },
         {
@@ -2318,13 +2330,13 @@
         {
           "name": "refiner_positive",
           "type": "CONDITIONING",
-          "link": 73,
+          "link": 118,
           "slot_index": 4
         },
         {
           "name": "refiner_negative",
           "type": "CONDITIONING",
-          "link": 74,
+          "link": 116,
           "slot_index": 5
         },
         {
@@ -2491,7 +2503,7 @@
         "Node name for S&R": "SeargeSDXLSampler"
       },
       "widgets_values": [
-        769826802738147,
+        913252841845144,
         "randomize",
         30,
         7,
@@ -2517,7 +2529,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 42,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -2713,7 +2725,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 44,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -2760,7 +2772,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 45,
+      "order": 49,
       "mode": 0,
       "inputs": [
         {
@@ -2807,7 +2819,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 48,
+      "order": 52,
       "mode": 0,
       "inputs": [
         {
@@ -2889,7 +2901,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 47,
+      "order": 51,
       "mode": 0,
       "inputs": [
         {
@@ -2941,7 +2953,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 49,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -2969,7 +2981,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 46,
+      "order": 50,
       "mode": 0,
       "inputs": [
         {
@@ -3053,6 +3065,186 @@
       ],
       "color": "#222",
       "bgcolor": "#000"
+    },
+    {
+      "id": 70,
+      "type": "ConditioningConcat",
+      "pos": [
+        1400,
+        2000
+      ],
+      "size": [
+        300,
+        50
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning_to",
+          "type": "CONDITIONING",
+          "link": 93
+        },
+        {
+          "name": "conditioning_from",
+          "type": "CONDITIONING",
+          "link": 94
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            117
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "base +"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningConcat"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 71,
+      "type": "ConditioningConcat",
+      "pos": [
+        1400,
+        2100
+      ],
+      "size": [
+        300,
+        50
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning_to",
+          "type": "CONDITIONING",
+          "link": 95
+        },
+        {
+          "name": "conditioning_from",
+          "type": "CONDITIONING",
+          "link": 96
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "base -"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningConcat"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 73,
+      "type": "ConditioningConcat",
+      "pos": [
+        1400,
+        2300
+      ],
+      "size": [
+        300,
+        50
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning_to",
+          "type": "CONDITIONING",
+          "link": 99
+        },
+        {
+          "name": "conditioning_from",
+          "type": "CONDITIONING",
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "refiner -"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningConcat"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 72,
+      "type": "ConditioningConcat",
+      "pos": [
+        1400,
+        2200
+      ],
+      "size": [
+        300,
+        50
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning_to",
+          "type": "CONDITIONING",
+          "link": 97
+        },
+        {
+          "name": "conditioning_from",
+          "type": "CONDITIONING",
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            118
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "refiner +"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningConcat"
+      },
+      "color": "#233",
+      "bgcolor": "#355"
     }
   ],
   "links": [
@@ -3569,38 +3761,6 @@
       "LATENT"
     ],
     [
-      71,
-      55,
-      0,
-      28,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      72,
-      56,
-      0,
-      28,
-      2,
-      "CONDITIONING"
-    ],
-    [
-      73,
-      57,
-      0,
-      28,
-      4,
-      "CONDITIONING"
-    ],
-    [
-      74,
-      58,
-      0,
-      28,
-      5,
-      "CONDITIONING"
-    ],
-    [
       75,
       28,
       0,
@@ -3727,6 +3887,102 @@
       69,
       2,
       "INT"
+    ],
+    [
+      93,
+      40,
+      0,
+      70,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      94,
+      41,
+      0,
+      70,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      95,
+      40,
+      1,
+      71,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      96,
+      41,
+      1,
+      71,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      97,
+      40,
+      2,
+      72,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      98,
+      42,
+      0,
+      72,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      99,
+      40,
+      3,
+      73,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      100,
+      42,
+      1,
+      73,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      114,
+      56,
+      0,
+      28,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      116,
+      58,
+      0,
+      28,
+      5,
+      "CONDITIONING"
+    ],
+    [
+      117,
+      70,
+      0,
+      28,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      118,
+      72,
+      0,
+      28,
+      4,
+      "CONDITIONING"
     ]
   ],
   "groups": [],
