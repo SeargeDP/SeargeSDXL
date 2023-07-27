@@ -7457,7 +7457,7 @@
         },
         "widgets_values": [],
         "color": "#223",
-        "comfyValue": "sd_xl_base_0.9.safetensors",
+        "comfyValue": "sd_xl_base_1.0.safetensors",
         "shownOutputProperties": {},
         "saveUserState": false
       },
@@ -7512,7 +7512,7 @@
         },
         "widgets_values": [],
         "color": "#223",
-        "comfyValue": "sd_xl_refiner_0.9.safetensors",
+        "comfyValue": "sd_xl_refiner_1.0.safetensors",
         "shownOutputProperties": {},
         "saveUserState": false
       },

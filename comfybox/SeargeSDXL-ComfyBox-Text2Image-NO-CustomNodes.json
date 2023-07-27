@@ -953,16 +953,16 @@
         "title": "Base Model Name",
         "properties": {
           "tags": [],
-          "defaultValue": "sd_xl_base_0.9.safetensors",
+          "defaultValue": "sd_xl_base_1.0.safetensors",
           "multiline": false,
           "lines": 5,
           "maxLines": 5
         },
         "widgets_values": [
-          "sd_xl_base_0.9.safetensors"
+          "sd_xl_base_1.0.safetensors"
         ],
         "color": "#223",
-        "comfyValue": "sd_xl_base_0.9.safetensors",
+        "comfyValue": "sd_xl_base_1.0.safetensors",
         "shownOutputProperties": {},
         "saveUserState": true
       },
@@ -1962,16 +1962,16 @@
         "title": "Refiner Model Name",
         "properties": {
           "tags": [],
-          "defaultValue": "sd_xl_refiner_0.9.safetensors",
+          "defaultValue": "sd_xl_refiner_1.0.safetensors",
           "multiline": false,
           "lines": 5,
           "maxLines": 5
         },
         "widgets_values": [
-          "sd_xl_refiner_0.9.safetensors"
+          "sd_xl_refiner_1.0.safetensors"
         ],
         "color": "#223",
-        "comfyValue": "sd_xl_refiner_0.9.safetensors",
+        "comfyValue": "sd_xl_refiner_1.0.safetensors",
         "shownOutputProperties": {},
         "saveUserState": true
       },
