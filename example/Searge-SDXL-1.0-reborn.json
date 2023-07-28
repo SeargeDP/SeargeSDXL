@@ -1,6 +1,6 @@
 {
-  "last_node_id": 73,
-  "last_link_id": 118,
+  "last_node_id": 74,
+  "last_link_id": 128,
   "nodes": [
     {
       "id": 3,
@@ -35,7 +35,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "photo of a charming image of a miniature workshop, where tiny creatures perform tasks with precision and skill, the warm glow from its glowing orbs adds depth to the scene"
+        "a close up of a person wearing a suit and tie, peaky blinders (2018), attractive androgynous humanoid, wearing teal beanie, william dafoe, beige fedora, in roger deakins style, fire behind him, jaguar, red ascot and a field cap, robe, perfect face, ripley scott, mummy"
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -72,7 +72,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "photo, tiny creatures in miniature workshop, working, glowing orbs, light and shadows"
+        "a close up of a person wearing a suit and tie, peaky blinders, teal color graded, focus on two androids, interstellar movie, wears a destroyed hat, emaciated, england, absolute chad, very very very beautifull face, long dark shadows, late 40s aged, incredible wide screenshot, diamond, sad men"
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
@@ -110,7 +110,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "~*~analog film~*~, vibrant, photo, grainy, vintage, Kodachrome, Lomography, stained, highly detailed, found footage, style of Cathleen McAllister and Brooke Shaden"
+        "portrait photograph, fujifilm, highly detailed, vintage photography, inspired by William Brodie"
       ],
       "color": "#223",
       "bgcolor": "#335"
@@ -149,7 +149,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "glitch, deformed"
+        "text, watermark, signature"
       ],
       "color": "#322",
       "bgcolor": "#533"
@@ -187,7 +187,7 @@
         "Node name for S&R": "SeargePromptText"
       },
       "widgets_values": [
-        "painting, drawing, illustration"
+        "drawing, painting, impressionist"
       ],
       "color": "#332922",
       "bgcolor": "#593930"
@@ -232,7 +232,7 @@
       "title": "Seed",
       "properties": {},
       "widgets_values": [
-        1468615445629,
+        1468615445732,
         "fixed"
       ],
       "color": "#432",
@@ -252,7 +252,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 22,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -290,7 +290,7 @@
         "Node name for S&R": "SeargeIntegerConstant"
       },
       "widgets_values": [
-        1468615445629
+        1468615445732
       ],
       "color": "#222",
       "bgcolor": "#000"
@@ -317,8 +317,6 @@
           "type": "INT",
           "links": [
             27,
-            48,
-            52,
             79
           ],
           "shape": 3,
@@ -329,8 +327,6 @@
           "type": "INT",
           "links": [
             28,
-            50,
-            54,
             80
           ],
           "shape": 3,
@@ -342,8 +338,8 @@
         "Node name for S&R": "SeargeIntegerPair"
       },
       "widgets_values": [
-        1280,
-        768
+        1024,
+        1024
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -502,7 +498,7 @@
         "Node name for S&R": "SeargeFloatPair"
       },
       "widgets_values": [
-        4,
+        2,
         2
       ],
       "color": "#233",
@@ -540,7 +536,7 @@
         "Node name for S&R": "SeargeIntegerConstant"
       },
       "widgets_values": [
-        25
+        30
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -597,7 +593,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 47,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -782,7 +778,7 @@
         "Node name for S&R": "SeargeFloatConstant"
       },
       "widgets_values": [
-        7.5
+        7
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -820,7 +816,7 @@
         "Node name for S&R": "SeargeFloatConstant"
       },
       "widgets_values": [
-        0.8
+        0.75
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -920,7 +916,7 @@
         "text": ""
       },
       "widgets_values": [
-        "\nImproved Searge SDXL workflow for SDXL 1.0 - TEXT to IMAGE - created on Jul 27, 2023\n\nTo use this workflow, set up ComfyUI like this:\n\n- Install the Searge SDXL custom node extension from https://github.com/SeargeDP/SeargeSDXL\n  - open the command line in directory: ComfyUI/custom_nodes\n  - run the command: git clone https://github.com/SeargeDP/SeargeSDXL.git\n- Copy the SDXL 1.0 base model into ComfyUI/models/checkpoints\n- Copy the SDXL 1.0 refiner model into ComfyUI/models/checkpoints\n- Copy the SDXL 0.9 vae into ComfyUI/models/vae\n- Copy the upscalers 4x-Ultrasharp.pth and 4x_NMKD-Siax_200k.pth into ComfyUI/models/upscale_models\n- restart ComfyUI\n\nLinks:\nSDXL 1.0 base:\n https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors\nSDXL 1.0 refiner:\n https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors\nSDXL 0.9 vae:\n https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors\nDownload links for the upscalers are on:\n https://upscale.wiki/wiki/Model_Database\n"
+        "\nImproved Searge SDXL workflow for SDXL 1.0 - TEXT to IMAGE - created on Jul 27, 2023\n\nTo use this workflow, set up ComfyUI like this:\n\n- Install the Searge SDXL custom node extension from https://github.com/SeargeDP/SeargeSDXL\n  - open the command line in directory: ComfyUI/custom_nodes\n  - run the command: git clone https://github.com/SeargeDP/SeargeSDXL.git\n- Copy the SDXL 1.0 base model into ComfyUI/models/checkpoints\n- Copy the SDXL 1.0 refiner model into ComfyUI/models/checkpoints\n- Copy the SDXL 0.9 vae into ComfyUI/models/vae\n- Copy the upscalers 4x-Ultrasharp.pth and 4x_NMKD-Siax_200k.pth into ComfyUI/models/upscale_models\n- restart ComfyUI\n\nLinks:\nSDXL 1.0 base:\n https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors\nSDXL 1.0 refiner:\n https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors\nSDXL 0.9 vae:\n https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors\n4x-UltraSharp upscaler:\n https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth\n4x_NMKD-Siax_200k upscaler:\n https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Siax_200k.pth"
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -939,13 +935,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 23,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
           "name": "value",
           "type": "INT",
-          "link": 48,
+          "link": 125,
           "widget": {
             "name": "value",
             "config": [
@@ -1012,13 +1008,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 24,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
           "name": "value",
           "type": "INT",
-          "link": 50,
+          "link": 126,
           "widget": {
             "name": "value",
             "config": [
@@ -1085,13 +1081,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 25,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
           "name": "value",
           "type": "INT",
-          "link": 52,
+          "link": 127,
           "widget": {
             "name": "value",
             "config": [
@@ -1158,13 +1154,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 26,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
           "name": "value",
           "type": "INT",
-          "link": 54,
+          "link": 128,
           "widget": {
             "name": "value",
             "config": [
@@ -1231,7 +1227,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 30,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -1275,7 +1271,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 32,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
@@ -1318,7 +1314,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 31,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -1363,7 +1359,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 33,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
@@ -1406,7 +1402,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 34,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -1558,7 +1554,7 @@
           "type": "CONDITIONING",
           "links": [
             64,
-            94
+            122
           ],
           "shape": 3,
           "slot_index": 0
@@ -1607,7 +1603,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 35,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -1690,7 +1686,7 @@
           "type": "CONDITIONING",
           "links": [
             66,
-            98
+            124
           ],
           "shape": 3,
           "slot_index": 0
@@ -1735,7 +1731,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 36,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -1953,7 +1949,7 @@
           "type": "CONDITIONING",
           "links": [
             60,
-            93
+            121
           ],
           "shape": 3,
           "slot_index": 0
@@ -1973,7 +1969,7 @@
           "type": "CONDITIONING",
           "links": [
             62,
-            97
+            123
           ],
           "shape": 3,
           "slot_index": 2
@@ -2028,7 +2024,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 29,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -2120,7 +2116,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 37,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -2164,7 +2160,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 39,
+      "order": 40,
       "mode": 0,
       "inputs": [
         {
@@ -2210,7 +2206,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 41,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
@@ -2254,7 +2250,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 43,
+      "order": 44,
       "mode": 0,
       "inputs": [
         {
@@ -2300,7 +2296,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 45,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -2503,7 +2499,7 @@
         "Node name for S&R": "SeargeSDXLSampler"
       },
       "widgets_values": [
-        913252841845144,
+        710735429378609,
         "randomize",
         30,
         7,
@@ -2529,7 +2525,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 46,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -2578,7 +2574,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 28,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -2652,7 +2648,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 27,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -2725,7 +2721,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 48,
+      "order": 49,
       "mode": 0,
       "inputs": [
         {
@@ -2772,7 +2768,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 49,
+      "order": 50,
       "mode": 0,
       "inputs": [
         {
@@ -2819,7 +2815,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 52,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -2901,7 +2897,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 51,
+      "order": 52,
       "mode": 0,
       "inputs": [
         {
@@ -2953,7 +2949,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 53,
+      "order": 54,
       "mode": 0,
       "inputs": [
         {
@@ -2981,7 +2977,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 50,
+      "order": 51,
       "mode": 0,
       "inputs": [
         {
@@ -3073,25 +3069,25 @@
         1400,
         2000
       ],
-      "size": [
-        300,
-        50
-      ],
+      "size": {
+        "0": 300,
+        "1": 50
+      },
       "flags": {
         "pinned": true
       },
-      "order": 38,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
           "name": "conditioning_to",
           "type": "CONDITIONING",
-          "link": 93
+          "link": 122
         },
         {
           "name": "conditioning_from",
           "type": "CONDITIONING",
-          "link": 94
+          "link": 121
         }
       ],
       "outputs": [
@@ -3119,14 +3115,14 @@
         1400,
         2100
       ],
-      "size": [
-        300,
-        50
-      ],
+      "size": {
+        "0": 300,
+        "1": 50
+      },
       "flags": {
         "pinned": true
       },
-      "order": 40,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -3163,14 +3159,14 @@
         1400,
         2300
       ],
-      "size": [
-        300,
-        50
-      ],
+      "size": {
+        "0": 300,
+        "1": 50
+      },
       "flags": {
         "pinned": true
       },
-      "order": 44,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
@@ -3207,25 +3203,25 @@
         1400,
         2200
       ],
-      "size": [
-        300,
-        50
-      ],
+      "size": {
+        "0": 300,
+        "1": 50
+      },
       "flags": {
         "pinned": true
       },
-      "order": 42,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
           "name": "conditioning_to",
           "type": "CONDITIONING",
-          "link": 97
+          "link": 124
         },
         {
           "name": "conditioning_from",
           "type": "CONDITIONING",
-          "link": 98
+          "link": 123
         }
       ],
       "outputs": [
@@ -3245,6 +3241,43 @@
       },
       "color": "#233",
       "bgcolor": "#355"
+    },
+    {
+      "id": 74,
+      "type": "SeargeIntegerConstant",
+      "pos": [
+        -500,
+        1750
+      ],
+      "size": [
+        250,
+        50
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 22,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "links": [
+            125,
+            126,
+            127,
+            128
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeIntegerConstant"
+      },
+      "widgets_values": [
+        1024
+      ]
     }
   ],
   "links": [
@@ -3577,14 +3610,6 @@
       "INT"
     ],
     [
-      48,
-      20,
-      0,
-      51,
-      0,
-      "INT"
-    ],
-    [
       49,
       26,
       0,
@@ -3593,14 +3618,6 @@
       "FLOAT"
     ],
     [
-      50,
-      20,
-      1,
-      52,
-      0,
-      "INT"
-    ],
-    [
       51,
       26,
       1,
@@ -3609,28 +3626,12 @@
       "FLOAT"
     ],
     [
-      52,
-      20,
-      0,
-      54,
-      0,
-      "INT"
-    ],
-    [
       53,
       26,
       1,
       54,
       1,
       "FLOAT"
-    ],
-    [
-      54,
-      20,
-      1,
-      53,
-      0,
-      "INT"
     ],
     [
       55,
@@ -3889,22 +3890,6 @@
       "INT"
     ],
     [
-      93,
-      40,
-      0,
-      70,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      94,
-      41,
-      0,
-      70,
-      1,
-      "CONDITIONING"
-    ],
-    [
       95,
       40,
       1,
@@ -3917,22 +3902,6 @@
       41,
       1,
       71,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      97,
-      40,
-      2,
-      72,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      98,
-      42,
-      0,
-      72,
       1,
       "CONDITIONING"
     ],
@@ -3983,6 +3952,70 @@
       28,
       4,
       "CONDITIONING"
+    ],
+    [
+      121,
+      40,
+      0,
+      70,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      122,
+      41,
+      0,
+      70,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      123,
+      40,
+      2,
+      72,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      124,
+      42,
+      0,
+      72,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      125,
+      74,
+      0,
+      51,
+      0,
+      "INT"
+    ],
+    [
+      126,
+      74,
+      0,
+      52,
+      0,
+      "INT"
+    ],
+    [
+      127,
+      74,
+      0,
+      54,
+      0,
+      "INT"
+    ],
+    [
+      128,
+      74,
+      0,
+      53,
+      0,
+      "INT"
     ]
   ],
   "groups": [],
