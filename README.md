@@ -2,8 +2,6 @@
 Custom nodes extension and workflows for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 
-
-
 # Installing:
 
 ### Recommended Installation:
@@ -11,8 +9,22 @@ including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 - Run `git clone https://github.com/SeargeDP/SeargeSDXL.git`
 - Restart ComfyUI
 
-### Alternative Installation:
+### Alternative Installation (not recommended):
+- Download and unpack the latest release from the [Searge SDXL CivitAI page](https://civitai.com/models/111463)
 - Drop the `SeargeSDXL` folder into the `ComfyUI/custom_nodes` directory and restart ComfyUI.
+
+
+
+## Checkpoints and models for these workflows
+
+### Direct Downloads
+(from Huggingface)
+
+- [SDXL 1.0 base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors)
+- [SDXL 1.0 refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors)
+- [Fixed SDXL 0.9 vae](https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors)
+- [4x_NMKD-Siax_200k upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Siax_200k.pth)
+- [4x-UltraSharp upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth)
 
 
 
