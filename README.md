@@ -1,23 +1,49 @@
 # SeargeSDXL
-Custom nodes for easier use of SDXL in [ComfyUI](https://github.com/comfyanonymous/ComfyUI) including workflows for SDXL 1.0 txt2img that utilize both the base and refiner checkpoints.
+Custom nodes extension and workflows for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 
-# Install:
+
+
+# Installing:
 
 ### Recommended Installation:
-- Navigate to your `ComfyUI/custom_nodes/` folder
+- Navigate to your `ComfyUI/custom_nodes/` directory
 - Run `git clone https://github.com/SeargeDP/SeargeSDXL.git`
 - Restart ComfyUI
 
 ### Alternative Installation:
 - Drop the `SeargeSDXL` folder into the `ComfyUI/custom_nodes` directory and restart ComfyUI.
 
-# Information for Example Workflows
-Now 3 workflows are included in the examples directory. They are called *simple*, *advanced*, and *reborn*.
 
-### Simple and Advanced
-The only difference between *simple* and *advanced* is how the prompts are used through the CLIP models.
-The *advanced* workflow also processes the base sampler at half the speed compared to the *simple* workflow,
-due to the way the conditioning is combined.
+
+# Information
+Now 4 workflows are included in the examples folder.
+They are called *reborn*, *image2image*, *inpainting*, and *simple*.
+
+The simple workflow is included as a bonus, it is great if you are just starting with SDXL and don't need
+an advanced workflow.
+
+### Positive Prompts
+Prompting has been improved. The main prompt and secondary prompt influence the two CLIP models
+similar to the way my original workflow worked.
+
+A third positive prompt was added for style description and artist references.
+This one influences both CLIP models.
+
+### Negative Prompts
+For the negative prompt the way it is now designed expects objects and subjects you don't want in the negative
+prompt and styles that you don't want in the negative style.
+
+### Prompt Power
+For both, the positive style & reference prompt and the negative style prompt, you can now change their
+*power*, a weight of how much they should be applied.
+
+The defaults are *0.333* for positive style power and *0.667* for negative style power.
+
+The positive style power should be in the range *0.1* to *0.5*, at higher values the style is applied rather strong
+and can "take over the image". You should try it to understand better what too large values will do.
+
+## Workflow Descriptions
 
 ### Reborn
 The *reborn* workflow is a new workflow, created from scratch. It requires the latest additions to the
@@ -27,19 +53,92 @@ The interface for using this new workflow is also designed in a different way, w
 are usually tweaked to generate images tighly packed together. This should make it easier to have every
 important element on the screen at the same time without scrolling.
 
-Prompting has also been revised, once more. The main prompt and secondary prompt influence the two CLIP models
-similar to the way my original workflow worked. A third positive prompt was added for style description and
-artist references. This one influences both CLIP models.
+### Image to Image
+In this workflow you should first copy an image into the `ConfyUI/input` directory.
 
-For the negative prompt the way it is now designed expects objects and subjects you don't want in the negative
-prompt and styles that you don't want in the negative style.
+Then select that image as the *Source Image* (next to the prompt inputs).
+If it does not show up, press the *Refresh* button on the Comfy UI control box.
+
+For image to image the parameter *Denoise* will determine how much the source image should be changed
+according to the prompt.
+Ranges are from *0.0* for "no change" to *1.0* for "completely change".
+
+Good values to try are probably in the *0.2* to *0.8* range.
+With examples of *0.25* for "very little change", *0.5* for "some changes", or *0.75* for "a lot of changes"
+
+### Inpainting
+This is similar to the image to image workflow.
+But it also lets you define a mask for selective changes of only parts of the image.
+
+To use this workflow, prepare a source image the same way as described in the image to image workflow.
+Then **right click** on the *Inpainting Mask* image (the bottom one next to the input prompts) and select
+**Open in Mask Editor**.
+
+Paint your mask and then press the *Save to node* button when you are done.
+The *Denoise* parameter works the same way as in image to image, but only masked areas will be changed.
+
+### Simple
+The main difference between *simple* and *reborn* is how the prompts are used through the CLIP models.
+The *reborn* workflow has advanced options to prompt styles independently of subjects.
+In the simple workflow you only have to worry about positive and negative prompts.
+
+For the easiest way to get started I recommend to just use the same prompt as main and secondary,
+and leave the negative prompt empty.
+
+
+
+# Available Example Workflows
+These the workflows included in the examples folder.
+
+### Reborn Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-1.png" width="768">
+
+### Image to Image Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-2.png" width="768">
+
+### Inpainting Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-3.png" width="768">
+
+### Simple Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-4.png" width="768">
+
+
+
+## Example images generated with these workflows
+
+### Reborn Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-reborn.png" width="768">
+
+### Image to Image Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-img2img.png" width="768">
+
+### Inpainting Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-inpaint.png" width="768">
+
+### Simple Workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-simple.png" width="768">
+
+
 
 # Custom Nodes
+These custom node types are available in the extension.
+
+The details about them are only important if you want to use them in your own workflow or if you want to
+understand better how the included workflows work.
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Nodetypes.png" width="768">
 
+
 ## SDXL Sampler Node
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Node.png" width="407">
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Node-1.png" width="407">
 
 ### Inputs
 - **base_model** - connect the SDXL base model here, provided via a `Load Checkpoint` node 
@@ -60,8 +159,9 @@ prompt and styles that you don't want in the negative style.
 ### Outputs
 - **LATENT** - the generated latent image
 
+
 ## SDXL Prompt Node
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Node2.png" width="434">
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Node-2.png" width="434">
 
 ### Inputs
 - **base_clip** - connect the SDXL base CLIP here, provided via a `Load Checkpoint` node 
@@ -88,31 +188,3 @@ prompt and styles that you don't want in the negative style.
 - **CONDITIONING** 2 - the negative base prompt conditioning
 - **CONDITIONING** 3 - the positive refiner prompt conditioning
 - **CONDITIONING** 4 - the negative refiner prompt conditioning
-
-# Examples
-
-- simple prompt processing
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-1.png" width="768">
-
-- advanced prompt processing
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-2.png" width="768">
-
-- reborn workflow
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-workflow-3.png" width="768">
-
-### Results
-
-- simple prompt processing
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-simple.png" width="768">
-
-- advanced prompt processing
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-advanced.png" width="768">
-
-- reborn workflow
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-1.0-reborn.png" width="768">
