@@ -2,10 +2,13 @@
 Custom nodes extension and workflows for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 
-# Installing:
+
+
+# Installing and Updating:
 
 ### Recommended Installation:
 - Navigate to your `ComfyUI/custom_nodes/` directory
+- Open a command line window in the *custom_nodes* directory
 - Run `git clone https://github.com/SeargeDP/SeargeSDXL.git`
 - Restart ComfyUI
 
@@ -13,9 +16,18 @@ including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 - Download and unpack the latest release from the [Searge SDXL CivitAI page](https://civitai.com/models/111463)
 - Drop the `SeargeSDXL` folder into the `ComfyUI/custom_nodes` directory and restart ComfyUI.
 
+### Updating an Existing Installation
+- Navigate to your `ComfyUI/custom_nodes/` directory
+- If you installed via `git clone` before
+  - Open a command line window in the *custom_nodes* directory
+  - Run `git pull`
+- If you installed from a zip file
+  - Unpack the `SeargeSDXL` folder from the latest release into `ComfyUI/custom_nodes`, overwrite existing files
+- Restart ComfyUI
 
 
-## Checkpoints and models for these workflows
+
+## Checkpoints and Models for these Workflows
 
 ### Direct Downloads
 (from Huggingface)
@@ -28,7 +40,7 @@ including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 
 
 
-# Information
+# More Information
 Now 4 workflows are included in the examples folder.
 They are called *reborn*, *image2image*, *inpainting*, and *simple*.
 
@@ -54,6 +66,8 @@ The defaults are *0.333* for positive style power and *0.667* for negative style
 
 The positive style power should be in the range *0.1* to *0.5*, at higher values the style is applied rather strong
 and can "take over the image". You should try it to understand better what too large values will do.
+
+
 
 ## Workflow Descriptions
 
