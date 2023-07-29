@@ -2880,7 +2880,7 @@
       ],
       "properties": {},
       "widgets_values": [
-        "SeargeSDXL-%date:yyyy-MM-dd%/high_res"
+        "SeargeSDXL-t2i-%date:yyyy-MM-dd%/high_res"
       ]
     },
     {
@@ -2909,7 +2909,7 @@
       ],
       "properties": {},
       "widgets_values": [
-        "SeargeSDXL-%date:yyyy-MM-dd%/low_res"
+        "SeargeSDXL-t2i-%date:yyyy-MM-dd%/low_res"
       ]
     },
     {
