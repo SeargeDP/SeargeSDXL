@@ -32,20 +32,20 @@ including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 ### Direct Downloads
 (from Huggingface)
 
-- [SDXL 1.0 base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors)
-- [SDXL 1.0 refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors)
-- [Fixed SDXL 0.9 vae](https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors)
-- [4x_NMKD-Siax_200k upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Siax_200k.pth)
-- [4x-UltraSharp upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth)
+- download [SDXL 1.0 base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors) and copy it into `ComfyUI/models/checkpoints`
+- download [SDXL 1.0 refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors) and copy it into `ComfyUI/models/checkpoints`
+- download [Fixed SDXL 0.9 vae](https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors) and copy it into `ComfyUI/models/vae`
+- download [SDXL Offset Noise LoRA](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors) and copy it into `ComfyUI/models/loras`
+- download [4x_NMKD-Siax_200k upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Siax_200k.pth) and copy it into `ComfyUI/models/upscale_models`
+- download [4x-UltraSharp upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth) and copy it into `ComfyUI/models/upscale_models`
 
 
 
 # More Information
-Now 4 workflows are included in the examples folder.
-They are called *reborn*, *image2image*, *inpainting*, and *simple*.
+Now 3 workflows are included in the examples folder.
+They are called *reborn*, *image2image*, and *inpainting*.
 
-The simple workflow is included as a bonus, it is great if you are just starting with SDXL and don't need
-an advanced workflow.
+The simple workflow has been removed.
 
 ### Positive Prompts
 Prompting has been improved. The main prompt and secondary prompt influence the two CLIP models
@@ -103,14 +103,6 @@ Then **right click** on the *Inpainting Mask* image (the bottom one next to the 
 Paint your mask and then press the *Save to node* button when you are done.
 The *Denoise* parameter works the same way as in image to image, but only masked areas will be changed.
 
-### Simple
-The main difference between *simple* and *reborn* is how the prompts are used through the CLIP models.
-The *reborn* workflow has advanced options to prompt styles independently of subjects.
-In the simple workflow you only have to worry about positive and negative prompts.
-
-For the easiest way to get started I recommend to just use the same prompt as main and secondary,
-and leave the negative prompt empty.
-
 
 
 # Available Example Workflows
@@ -128,10 +120,6 @@ These the workflows included in the examples folder.
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-3.png" width="768">
 
-### Simple Workflow
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-4.png" width="768">
-
 
 
 ## Example images generated with these workflows
@@ -147,10 +135,6 @@ These the workflows included in the examples folder.
 ### Inpainting Workflow
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-inpaint.png" width="768">
-
-### Simple Workflow
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-simple.png" width="768">
 
 
 
