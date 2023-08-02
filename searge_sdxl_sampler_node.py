@@ -588,14 +588,12 @@ class SeargeFloatMath:
 # Util: conditional pass-through for images
 
 class SeargeImageSave:
-    STATES = ["disabled", "enabled"]
-
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
                     "images": ("IMAGE", ),
                     "filename_prefix": ("STRING", {"default": "SeargeSDXL-%date%/Image"}),
-                    "state": (SeargeImageSave.STATES, {"default": "enabled"}),
+                    "state": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
                     },
                 "hidden": {
                     "prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO"
@@ -610,7 +608,7 @@ class SeargeImageSave:
     CATEGORY = "Searge/Files"
 
     def save_images(self, images, filename_prefix, state, prompt=None, extra_pnginfo=None):
-        if state == SeargeImageSave.STATES[0]:
+        if state == SeargeParameterProcessor.STATES[0]:
             return {}
 
         filename_prefix = filename_prefix.replace("%date%", datetime.now().strftime("%Y-%m-%d"))
@@ -643,6 +641,7 @@ class SeargeImageSave:
 class SeargeParameterProcessor:
     REFINER_INTENSITY = ["hard", "soft"]
     HRF_SEED_OFFSET = ["same", "distinct"]
+    STATES = ["disabled", "enabled"]
 
     @classmethod
     def INPUT_TYPES(s):
@@ -677,11 +676,15 @@ class SeargeParameterProcessor:
             else:
                 parameters["noise_offset"] = 1
 
-        saturation = parameters["hrf_intensity"]
-        if saturation is not None:
-            if saturation == SeargeParameterProcessor.REFINER_INTENSITY[0]:
+        hires_fix = parameters["hires_fix"]
+        if hires_fix is not None and hires_fix == SeargeParameterProcessor.STATES[0]:
+            parameters["hrf_steps"] = 0
+
+        hrf_saturation = parameters["hrf_intensity"]
+        if hrf_saturation is not None:
+            if hrf_saturation == SeargeParameterProcessor.REFINER_INTENSITY[0]:
                 parameters["hrf_noise_offset"] = 0
-            elif saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
+            elif hrf_saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
                 parameters["hrf_noise_offset"] = 1
             else:
                 parameters["hrf_noise_offset"] = 1
@@ -713,6 +716,8 @@ class SeargeInput1:
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
+                    "image": ("IMAGE",),
+                    "mask": ("MASK",),
                     },
                 }
 
@@ -722,7 +727,7 @@ class SeargeInput1:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, inputs=None):
+    def mux(self, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, inputs=None, image=None, mask=None):
         if inputs is None:
             parameters = {}
         else:
@@ -733,6 +738,8 @@ class SeargeInput1:
         parameters["style_prompt"] = style_prompt
         parameters["negative_prompt"] = negative_prompt
         parameters["negative_style"] = negative_style
+        parameters["image"] = image
+        parameters["mask"] = mask
 
         return (parameters, )
 
@@ -747,8 +754,8 @@ class SeargeOutput1:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "STRING", "STRING", "STRING", "STRING", "STRING", )
-    RETURN_NAMES = ("parameters", "main_prompt", "secondary_prompt", "style_prompt", "negative_prompt", "negative_style", )
+    RETURN_TYPES = ("PARAMETERS", "STRING", "STRING", "STRING", "STRING", "STRING", "IMAGE", "MASK", )
+    RETURN_NAMES = ("parameters", "main_prompt", "secondary_prompt", "style_prompt", "negative_prompt", "negative_style", "image", "mask", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
@@ -759,8 +766,10 @@ class SeargeOutput1:
         style_prompt = parameters["style_prompt"]
         negative_prompt = parameters["negative_prompt"]
         negative_style = parameters["negative_style"]
+        image = parameters["image"]
+        mask = parameters["mask"]
 
-        return (parameters, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, )
+        return (parameters, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, image, mask, )
 
 
 # UI: Generation Parameters Input
@@ -776,6 +785,7 @@ class SeargeInput2:
                     "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
                     "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
                     "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
+                    "save_image": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -788,7 +798,7 @@ class SeargeInput2:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, inputs=None):
+    def mux(self, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, inputs=None):
         if inputs is None:
             parameters = {}
         else:
@@ -801,6 +811,7 @@ class SeargeInput2:
         parameters["cfg"] = cfg
         parameters["sampler_name"] = sampler_name
         parameters["scheduler"] = scheduler
+        parameters["save_image"] = save_image
 
         return (parameters, )
 
@@ -815,8 +826,8 @@ class SeargeOutput2:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", comfy.samplers.KSampler.SAMPLERS, comfy.samplers.KSampler.SCHEDULERS, )
-    RETURN_NAMES = ("parameters", "seed", "image_width", "image_height", "steps", "cfg", "sampler_name", "scheduler", )
+    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", comfy.samplers.KSampler.SAMPLERS, comfy.samplers.KSampler.SCHEDULERS, SeargeParameterProcessor.STATES, )
+    RETURN_NAMES = ("parameters", "seed", "image_width", "image_height", "steps", "cfg", "sampler_name", "scheduler", "save_image", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
@@ -829,8 +840,9 @@ class SeargeOutput2:
         cfg = parameters["cfg"]
         sampler_name = parameters["sampler_name"]
         scheduler = parameters["scheduler"]
+        save_image = parameters["save_image"]
 
-        return (parameters, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, )
+        return (parameters, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, )
 
 
 # UI: Advanced Parameters Input
@@ -845,6 +857,7 @@ class SeargeInput3:
                     "precondition_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
                     "batch_size": ("INT", {"default": 1, "min": 1, "max": 4}),
                     "upscale_resolution_factor": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
+                    "save_upscaled_image": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -858,7 +871,7 @@ class SeargeInput3:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, base_ratio, refiner_strength, refiner_intensity, precondition_steps, batch_size, upscale_resolution_factor, inputs=None, denoise=None):
+    def mux(self, base_ratio, refiner_strength, refiner_intensity, precondition_steps, batch_size, upscale_resolution_factor, save_upscaled_image, inputs=None, denoise=None):
         if inputs is None:
             parameters = {}
         else:
@@ -871,6 +884,7 @@ class SeargeInput3:
         parameters["precondition_steps"] = precondition_steps
         parameters["batch_size"] = batch_size
         parameters["upscale_resolution_factor"] = upscale_resolution_factor
+        parameters["save_upscaled_image"] = save_upscaled_image
 
         return (parameters, )
 
@@ -885,8 +899,8 @@ class SeargeOutput3:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "INT", "INT", "INT", "FLOAT", )
-    RETURN_NAMES = ("parameters", "denoise", "base_ratio", "refiner_strength", "noise_offset", "precondition_steps", "batch_size", "upscale_resolution_factor", )
+    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "INT", "INT", "INT", "FLOAT", SeargeParameterProcessor.STATES, )
+    RETURN_NAMES = ("parameters", "denoise", "base_ratio", "refiner_strength", "noise_offset", "precondition_steps", "batch_size", "upscale_resolution_factor", "save_upscaled_image", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
@@ -899,14 +913,14 @@ class SeargeOutput3:
         precondition_steps = parameters["precondition_steps"]
         batch_size = parameters["batch_size"]
         upscale_resolution_factor = parameters["upscale_resolution_factor"]
+        save_upscaled_image = parameters["save_upscaled_image"]
 
-        return (parameters, denoise, base_ratio, refiner_strength, noise_offset, precondition_steps, batch_size, upscale_resolution_factor, )
+        return (parameters, denoise, base_ratio, refiner_strength, noise_offset, precondition_steps, batch_size, upscale_resolution_factor, save_upscaled_image, )
 
 
 # UI: Model Selector Input
 
 class SeargeInput4:
-
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -1035,12 +1049,11 @@ class SeargeOutput5:
 # UI: HiResFix Parameters Input
 
 class SeargeInput6:
-    STATES = ["disabled", "enabled"] # TODO
-
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-                    "hrf_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
+                    "hires_fix": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
+                    "hrf_steps": ("INT", {"default": 0, "min": 0, "max": 100}),
                     "hrf_denoise": ("FLOAT", {"default": 0.1, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "hrf_upscale_factor": ("FLOAT", {"default": 1.5, "min": 0.25, "max": 4.0, "step": 0.25}),
                     "hrf_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": "soft"}),
@@ -1057,12 +1070,13 @@ class SeargeInput6:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_intensity, hrf_seed_offset, inputs=None):
+    def mux(self, hires_fix, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_intensity, hrf_seed_offset, inputs=None):
         if inputs is None:
             parameters = {}
         else:
             parameters = inputs
 
+        parameters["hires_fix"] = hires_fix
         parameters["hrf_steps"] = hrf_steps
         parameters["hrf_denoise"] = hrf_denoise
         parameters["hrf_upscale_factor"] = hrf_upscale_factor
@@ -1082,8 +1096,8 @@ class SeargeOutput6:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", )
-    RETURN_NAMES = ("parameters", "hrf_steps", "hrf_denoise", "hrf_upscale_factor", "hrf_noise_offset", "hrf_seed", )
+    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", SeargeParameterProcessor.STATES)
+    RETURN_NAMES = ("parameters", "hrf_steps", "hrf_denoise", "hrf_upscale_factor", "hrf_noise_offset", "hrf_seed", "hires_fix", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
@@ -1094,8 +1108,9 @@ class SeargeOutput6:
         hrf_upscale_factor = parameters["hrf_upscale_factor"]
         hrf_noise_offset = parameters["hrf_noise_offset"]
         hrf_seed = parameters["hrf_seed"]
+        hires_fix = parameters["hires_fix"]
 
-        return (parameters, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_noise_offset, hrf_seed, )
+        return (parameters, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_noise_offset, hrf_seed, hires_fix, )
 
 
 # UI: Misc Inputs
