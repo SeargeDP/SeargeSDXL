@@ -46,7 +46,7 @@
         1024,
         1024,
         25,
-        8,
+        7,
         "ddim",
         "ddim_uniform",
         "enabled",
@@ -142,14 +142,14 @@
         "Node name for S&R": "SeargeInput3"
       },
       "widgets_values": [
-        1,
+        0.7999999999999998,
         1,
         "hard",
         0,
         1,
         2,
         "enabled",
-        1
+        0.5
       ],
       "color": "#332922",
       "bgcolor": "#593930"
@@ -5021,7 +5021,7 @@
         "Node name for S&R": "SeargeSDXLImage2ImageSampler"
       },
       "widgets_values": [
-        227548271498811,
+        1084257107380129,
         "randomize",
         20,
         7,
@@ -6791,7 +6791,7 @@
       "widgets_values": [
         "disabled",
         15,
-        0.2,
+        0.25,
         1.5,
         "hard",
         "distinct"
@@ -7563,7 +7563,7 @@
         "Node name for S&R": "SeargeSDXLSampler"
       },
       "widgets_values": [
-        653065506244971,
+        261771549606400,
         "randomize",
         30,
         7,
