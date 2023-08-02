@@ -27,8 +27,9 @@ SOFTWARE.
 """
 
 import comfy.samplers
-import nodes
 import comfy_extras.nodes_upscale_model
+import folder_paths
+import nodes
 
 
 # SDXL Sampler with base and refiner support
@@ -45,15 +46,17 @@ class SeargeSDXLSampler:
                     "refiner_negative": ("CONDITIONING", ),
                     "latent_image": ("LATENT", ),
                     "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xfffffffffffffff0}),
-                    "steps": ("INT", {"default": 30, "min": 1, "max": 1000}),
-                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 100.0, "step": 0.5}),
-                    "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "dpmpp_2m"}),
-                    "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "karras"}),
+                    "steps": ("INT", {"default": 20, "min": 1, "max": 200}),
+                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
+                    "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
+                    "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
                     "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "denoise": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01}),
                     },
                 "optional": {
-                    "refiner_prep_steps": ("INT", {"default": 0, "min": 0, "max": 1000}),
+                    "refiner_prep_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
+                    "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
+                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
                     },
                 }
 
@@ -62,8 +65,17 @@ class SeargeSDXLSampler:
 
     CATEGORY = "Searge/Sampling"
 
-    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, latent_image, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, refiner_prep_steps=None):
+    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, latent_image, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, refiner_prep_steps=None, noise_offset=None, refiner_strength=None):
         base_steps = int(steps * base_ratio)
+
+        if noise_offset is None:
+            noise_offset = 1
+
+        if refiner_strength is None:
+            refiner_strength = 1.0
+
+        if refiner_strength < 0.01:
+            refiner_strength = 0.01
 
         if denoise < 0.01:
             return (latent_image, )
@@ -77,15 +89,15 @@ class SeargeSDXLSampler:
 
             if refiner_prep_steps > 0:
                 start_at_step = refiner_prep_steps
-                preinject_result = nodes.common_ksampler(refiner_model, noise_seed + 2, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, latent_image, denoise=denoise, disable_noise=False, start_step=steps - refiner_prep_steps, last_step=steps, force_full_denoise=False)
-                input_latent = preinject_result[0]
+                precondition_result = nodes.common_ksampler(refiner_model, noise_seed + 2, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, latent_image, denoise=denoise, disable_noise=False, start_step=steps - refiner_prep_steps, last_step=steps, force_full_denoise=False)
+                input_latent = precondition_result[0]
 
         if base_steps >= steps:
             return nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=start_at_step, last_step=steps, force_full_denoise=True)
 
         base_result = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=start_at_step, last_step=base_steps, force_full_denoise=True)
 
-        return nodes.common_ksampler(refiner_model, noise_seed + 1, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
+        return nodes.common_ksampler(refiner_model, noise_seed + noise_offset, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise * refiner_strength, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
 
 
 # SDXL Image2Image Sampler (incl. HiRes Fix)
@@ -103,8 +115,8 @@ class SeargeSDXLImage2ImageSampler:
                     "image": ("IMAGE", ),
                     "vae": ("VAE",),
                     "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xfffffffffffffff0}),
-                    "steps": ("INT", {"default": 20, "min": 0, "max": 1000}),
-                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 100.0, "step": 0.5}),
+                    "steps": ("INT", {"default": 20, "min": 0, "max": 200}),
+                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
                     "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
                     "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
                     "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
@@ -112,8 +124,10 @@ class SeargeSDXLImage2ImageSampler:
                     },
                 "optional": {
                     "upscale_model": ("UPSCALE_MODEL",),
-                    "scaled_width": ("INT", {"default": 1536.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "scaled_height": ("INT", {"default": 1536.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
+                    "scaled_width": ("INT", {"default": 1536, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "scaled_height": ("INT", {"default": 1536, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
+                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
                     },
                 }
 
@@ -122,8 +136,17 @@ class SeargeSDXLImage2ImageSampler:
 
     CATEGORY = "Searge/Sampling"
 
-    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, image, vae, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, upscale_model=None, scaled_width=None, scaled_height=None):
+    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, image, vae, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, upscale_model=None, scaled_width=None, scaled_height=None, noise_offset=None, refiner_strength=None):
         base_steps = int(steps * base_ratio)
+
+        if noise_offset is None:
+            noise_offset = 1
+
+        if refiner_strength is None:
+            refiner_strength = 1.0
+
+        if refiner_strength < 0.01:
+            refiner_strength = 0.01
 
         if steps < 1:
             return (image, )
@@ -148,7 +171,7 @@ class SeargeSDXLImage2ImageSampler:
             result_latent = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=0, last_step=steps, force_full_denoise=True)
         else:
             base_result = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=0, last_step=base_steps, force_full_denoise=True)
-            result_latent = nodes.common_ksampler(refiner_model, noise_seed + 1, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
+            result_latent = nodes.common_ksampler(refiner_model, noise_seed + noise_offset, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise * refiner_strength, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
 
         vae_decode_result = nodes.VAEDecode().decode(vae, result_latent[0])
         output_image = vae_decode_result[0]
@@ -170,16 +193,16 @@ class SeargeSDXLPromptEncoder:
                     "neg_g": ("STRING", {"multiline": True, "default": "NEG_G"}),
                     "neg_l": ("STRING", {"multiline": True, "default": "NEG_L"}),
                     "neg_r": ("STRING", {"multiline": True, "default": "NEG_R"}),
-                    "base_width": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "base_height": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "crop_w": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "crop_h": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "target_width": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "target_height": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
+                    "base_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "base_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "crop_w": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "crop_h": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "target_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "target_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
                     "pos_ascore": ("FLOAT", {"default": 6.0, "min": 0.0, "max": 1000.0, "step": 0.01}),
                     "neg_ascore": ("FLOAT", {"default": 2.5, "min": 0.0, "max": 1000.0, "step": 0.01}),
-                    "refiner_width": ("INT", {"default": 2048.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "refiner_height": ("INT", {"default": 2048.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
+                    "refiner_width": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "refiner_height": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
                     },
                 }
 
@@ -243,12 +266,12 @@ class SeargeSDXLBasePromptEncoder:
                     "pos_l": ("STRING", {"multiline": True, "default": "POS_L"}),
                     "neg_g": ("STRING", {"multiline": True, "default": "NEG_G"}),
                     "neg_l": ("STRING", {"multiline": True, "default": "NEG_L"}),
-                    "base_width": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "base_height": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "crop_w": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "crop_h": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "target_width": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "target_height": ("INT", {"default": 4096.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
+                    "base_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "base_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "crop_w": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "crop_h": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "target_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "target_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
                     },
                 }
 
@@ -301,8 +324,8 @@ class SeargeSDXLRefinerPromptEncoder:
                     "neg_r": ("STRING", {"multiline": True, "default": "NEG_R"}),
                     "pos_ascore": ("FLOAT", {"default": 6.0, "min": 0.0, "max": 1000.0, "step": 0.01}),
                     "neg_ascore": ("FLOAT", {"default": 2.5, "min": 0.0, "max": 1000.0, "step": 0.01}),
-                    "refiner_width": ("INT", {"default": 2048.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
-                    "refiner_height": ("INT", {"default": 2048.0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 64}),
+                    "refiner_width": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "refiner_height": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
                     },
                 }
 
@@ -554,6 +577,316 @@ class SeargeFloatMath:
         return (res,)
 
 
+# UI: Parameter Processor
+
+class SeargeParameterProcessor:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    },
+                "optional": {
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", )
+    RETURN_NAMES = ("parameters", )
+    FUNCTION = "process"
+
+    CATEGORY = "Searge/UI"
+
+    def process(self, inputs):
+        if inputs is None:
+            parameters = {}
+        else:
+            parameters = inputs
+
+        if parameters["denoise"] is None:
+            parameters["denoise"] = 1.0
+
+        saturation = parameters["refiner_saturation"]
+        if saturation is not None:
+            if saturation == SeargeInput3.REFINER_SATURATION[0]:
+                parameters["noise_offset"] = 0
+            elif saturation == SeargeInput3.REFINER_SATURATION[1]:
+                parameters["noise_offset"] = 1
+            else:
+                parameters["noise_offset"] = 1
+
+        return (parameters, )
+
+
+# UI: Prompt Inputs
+
+class SeargeInput1:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "main_prompt": ("STRING", {"multiline": True, "default": ""}),
+                    "secondary_prompt": ("STRING", {"multiline": True, "default": ""}),
+                    "style_prompt": ("STRING", {"multiline": True, "default": ""}),
+                    "negative_prompt": ("STRING", {"multiline": True, "default": ""}),
+                    "negative_style": ("STRING", {"multiline": True, "default": ""}),
+                    },
+                "optional": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETER_INPUTS", )
+    RETURN_NAMES = ("inputs", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/UI/Inputs"
+
+    def mux(self, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, inputs=None):
+        if inputs is None:
+            parameters = {}
+        else:
+            parameters = inputs
+
+        parameters["main_prompt"] = main_prompt
+        parameters["secondary_prompt"] = secondary_prompt
+        parameters["style_prompt"] = style_prompt
+        parameters["negative_prompt"] = negative_prompt
+        parameters["negative_style"] = negative_style
+
+        return (parameters, )
+
+
+# UI: Prompt Outputs
+
+class SeargeOutput1:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "parameters": ("PARAMETERS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", "STRING", "STRING", "STRING", "STRING", "STRING", )
+    RETURN_NAMES = ("parameters", "main_prompt", "secondary_prompt", "style_prompt", "negative_prompt", "negative_style", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Outputs"
+
+    def demux(self, parameters):
+        main_prompt = parameters["main_prompt"]
+        secondary_prompt = parameters["secondary_prompt"]
+        style_prompt = parameters["style_prompt"]
+        negative_prompt = parameters["negative_prompt"]
+        negative_style = parameters["negative_style"]
+
+        return (parameters, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, )
+
+
+# UI: Generation Parameters Input
+
+class SeargeInput2:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                    "image_width": ("INT", {"default": 1024, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "image_height": ("INT", {"default": 1024, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
+                    "steps": ("INT", {"default": 20, "min": 0, "max": 200}),
+                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
+                    "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
+                    "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
+                    },
+                "optional": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETER_INPUTS", )
+    RETURN_NAMES = ("inputs", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/UI/Inputs"
+
+    def mux(self, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, inputs=None):
+        if inputs is None:
+            parameters = {}
+        else:
+            parameters = inputs
+
+        parameters["seed"] = seed
+        parameters["image_width"] = image_width
+        parameters["image_height"] = image_height
+        parameters["steps"] = steps
+        parameters["cfg"] = cfg
+        parameters["sampler_name"] = sampler_name
+        parameters["scheduler"] = scheduler
+
+        return (parameters, )
+
+
+# UI: Generation Parameters Output
+
+class SeargeOutput2:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "parameters": ("PARAMETERS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", comfy.samplers.KSampler.SAMPLERS, comfy.samplers.KSampler.SCHEDULERS, )
+    RETURN_NAMES = ("parameters", "seed", "image_width", "image_height", "steps", "cfg", "sampler_name", "scheduler", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Outputs"
+
+    def demux(self, parameters):
+        seed = parameters["seed"]
+        image_width = parameters["image_width"]
+        image_height = parameters["image_height"]
+        steps = parameters["steps"]
+        cfg = parameters["cfg"]
+        sampler_name = parameters["sampler_name"]
+        scheduler = parameters["scheduler"]
+
+        return (parameters, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, )
+
+
+# UI: Advanced Parameters Input
+
+class SeargeInput3:
+    REFINER_SATURATION = ["hard", "soft"]
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
+                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
+                    "refiner_saturation": (SeargeInput3.REFINER_SATURATION, {"default": "soft"}),
+                    "precondition_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
+                    "batch_size": ("INT", {"default": 1, "min": 1, "max": 4}),
+                    },
+                "optional": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    "denoise": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01}),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETER_INPUTS", )
+    RETURN_NAMES = ("inputs", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/UI/Inputs"
+
+    def mux(self, base_ratio, refiner_strength, refiner_saturation, precondition_steps, batch_size, inputs=None, denoise=None):
+        if inputs is None:
+            parameters = {}
+        else:
+            parameters = inputs
+
+        parameters["denoise"] = denoise
+        parameters["base_ratio"] = base_ratio
+        parameters["refiner_strength"] = refiner_strength
+        parameters["refiner_saturation"] = refiner_saturation
+        parameters["precondition_steps"] = precondition_steps
+        parameters["batch_size"] = batch_size
+
+        return (parameters, )
+
+
+# UI: Advanced Parameters Output
+
+class SeargeOutput3:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "parameters": ("PARAMETERS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "INT", "INT", "INT", )
+    RETURN_NAMES = ("parameters", "denoise", "base_ratio", "noise_offset", "precondition_steps", "batch_size", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Outputs"
+
+    def demux(self, parameters):
+        denoise = parameters["denoise"]
+        base_ratio = parameters["base_ratio"]
+        refiner_strength = parameters["refiner_strength"]
+        noise_offset = parameters["noise_offset"]
+        precondition_steps = parameters["precondition_steps"]
+        batch_size = parameters["batch_size"]
+
+        return (parameters, denoise, base_ratio, refiner_strength, noise_offset, precondition_steps, batch_size, )
+
+
+# UI: Model Selector Input
+
+class SeargeInput4:
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "base_model": (folder_paths.get_filename_list("checkpoints"), ),
+                    "refiner_model": (folder_paths.get_filename_list("checkpoints"), ),
+                    "vae_model": (folder_paths.get_filename_list("vae"), ),
+                    "main_upscale_model": (folder_paths.get_filename_list("upscale_models"),),
+                    "support_upscale_model": (folder_paths.get_filename_list("upscale_models"),),
+                    "lora_model": (folder_paths.get_filename_list("loras"),),
+                    },
+                "optional": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETER_INPUTS", )
+    RETURN_NAMES = ("inputs", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/UI/Inputs"
+
+    def mux(self, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model, inputs=None):
+        if inputs is None:
+            parameters = {}
+        else:
+            parameters = inputs
+
+        parameters["base_model"] = base_model
+        parameters["refiner_model"] = refiner_model
+        parameters["vae_model"] = vae_model
+        parameters["main_upscale_model"] = main_upscale_model
+        parameters["support_upscale_model"] = support_upscale_model
+        parameters["lora_model"] = lora_model
+
+        return (parameters, )
+
+
+# UI: Model Selector
+
+class SeargeOutput4:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "parameters": ("PARAMETERS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", (folder_paths.get_filename_list("checkpoints"),), (folder_paths.get_filename_list("checkpoints"),), (folder_paths.get_filename_list("vae"),), (folder_paths.get_filename_list("upscale_models"),), (folder_paths.get_filename_list("upscale_models"),), (folder_paths.get_filename_list("loras"),), )
+    RETURN_NAMES = ("parameters", "base_model", "refiner_model", "vae_model", "main_upscale_model", "support_upscale_model", "lora_model", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Outputs"
+
+    def demux(self, parameters):
+        base_model = parameters["base_model"]
+        refiner_model = parameters["refiner_model"]
+        vae_model = parameters["vae_model"]
+        main_upscale_model = parameters["main_upscale_model"]
+        support_upscale_model = parameters["support_upscale_model"]
+        lora_model = parameters["lora_model"]
+
+        return (parameters, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model, )
+
+
 # Register nodes in ComfyUI
 
 NODE_CLASS_MAPPINGS = {
@@ -575,6 +908,16 @@ NODE_CLASS_MAPPINGS = {
     "SeargeFloatConstant": SeargeFloatConstant,
     "SeargeFloatPair": SeargeFloatPair,
     "SeargeFloatMath": SeargeFloatMath,
+
+    "SeargeParameterProcessor": SeargeParameterProcessor,
+    "SeargeInput1": SeargeInput1,
+    "SeargeOutput1": SeargeOutput1,
+    "SeargeInput2": SeargeInput2,
+    "SeargeOutput2": SeargeOutput2,
+    "SeargeInput3": SeargeInput3,
+    "SeargeOutput3": SeargeOutput3,
+    "SeargeInput4": SeargeInput4,
+    "SeargeOutput4": SeargeOutput4,
 }
 
 
@@ -599,4 +942,14 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeFloatConstant": "Float Constant (SeargeSDXL)",
     "SeargeFloatPair": "Float Pair (SeargeSDXL)",
     "SeargeFloatMath": "Float Math (SeargeSDXL)",
+
+    "SeargeParameterProcessor": "Parameter Processor",
+    "SeargeInput1": "Prompts",
+    "SeargeOutput1": "Prompts",
+    "SeargeInput2": "Generation Parameters",
+    "SeargeOutput2": "Generation Parameters",
+    "SeargeInput3": "Advanced Parameters",
+    "SeargeOutput3": "Advanced Parameters",
+    "SeargeInput4": "Model Names",
+    "SeargeOutput4": "Model Names",
 }
