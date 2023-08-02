@@ -917,6 +917,7 @@ class SeargeInput2:
                     "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
                     "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
                     "save_image": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
+                    "save_directory": (SeargeParameterProcessor.SAVE_TO, {"default": "output folder"}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -929,7 +930,7 @@ class SeargeInput2:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, inputs=None):
+    def mux(self, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, save_directory, inputs=None):
         if inputs is None:
             parameters = {}
         else:
@@ -943,6 +944,7 @@ class SeargeInput2:
         parameters["sampler_name"] = sampler_name
         parameters["scheduler"] = scheduler
         parameters["save_image"] = save_image
+        parameters["save_directory"] = save_directory
 
         return (parameters, )
 
@@ -957,8 +959,8 @@ class SeargeOutput2:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", comfy.samplers.KSampler.SAMPLERS, comfy.samplers.KSampler.SCHEDULERS, SeargeParameterProcessor.STATES, )
-    RETURN_NAMES = ("parameters", "seed", "image_width", "image_height", "steps", "cfg", "sampler_name", "scheduler", "save_image", )
+    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", comfy.samplers.KSampler.SAMPLERS, comfy.samplers.KSampler.SCHEDULERS, SeargeParameterProcessor.STATES, SeargeParameterProcessor.SAVE_TO, )
+    RETURN_NAMES = ("parameters", "seed", "image_width", "image_height", "steps", "cfg", "sampler_name", "scheduler", "save_image", "save_directory", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
@@ -972,8 +974,9 @@ class SeargeOutput2:
         sampler_name = parameters["sampler_name"]
         scheduler = parameters["scheduler"]
         save_image = parameters["save_image"]
+        save_directory = parameters["save_directory"]
 
-        return (parameters, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, )
+        return (parameters, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, save_directory, )
 
 
 # UI: Advanced Parameters Input
