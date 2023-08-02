@@ -585,7 +585,7 @@ class SeargeFloatMath:
         return (res,)
 
 
-# Util: conditional pass-through for images
+# Util: custom save node (without preview)
 
 class SeargeImageSave:
     @classmethod
@@ -594,6 +594,7 @@ class SeargeImageSave:
                     "images": ("IMAGE", ),
                     "filename_prefix": ("STRING", {"default": "SeargeSDXL-%date%/Image"}),
                     "state": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
+                    "save_to": (SeargeParameterProcessor.SAVE_TO, {"default": "output folder"}),
                     },
                 "hidden": {
                     "prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO"
@@ -607,13 +608,19 @@ class SeargeImageSave:
 
     CATEGORY = "Searge/Files"
 
-    def save_images(self, images, filename_prefix, state, prompt=None, extra_pnginfo=None):
+    def save_images(self, images, filename_prefix, state, save_to, prompt=None, extra_pnginfo=None):
         if state == SeargeParameterProcessor.STATES[0]:
             return {}
 
+        match save_to:
+            case "input folder":
+                output_dir = folder_paths.get_input_directory()
+                filename_prefix = "output-%date%"
+            case _:
+                output_dir = folder_paths.get_output_directory()
+
         filename_prefix = filename_prefix.replace("%date%", datetime.now().strftime("%Y-%m-%d"))
 
-        output_dir = folder_paths.get_output_directory()
         full_output_folder, filename, counter, subfolder, filename_prefix = folder_paths.get_save_image_path(filename_prefix, output_dir, images[0].shape[1], images[0].shape[0])
 
         for image in images:
@@ -636,12 +643,80 @@ class SeargeImageSave:
         return {}
 
 
+# Tool: Muxer for selecting between 3 latent inputs
+
+class SeargeLatentMuxer3:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "input0": ("LATENT", ),
+                    "input1": ("LATENT", ),
+                    "input2": ("LATENT", ),
+                    "input_selector": ("INT", {"default": 0, "min": 0, "max": 2}),
+                    },
+                }
+
+    RETURN_TYPES = ("LATENT", )
+    RETURN_NAMES = ("output", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/FlowControl"
+
+    def mux(self, input0, input1, input2, input_selector, ):
+        match input_selector:
+            case 1:
+                return (input1,)
+            case 2:
+                return (input2,)
+            case _:
+                return (input0, )
+
+
+# Tool: Muxer for selecting between 5 conditioning inputs
+
+class SeargeConditioningMuxer5:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "input0": ("CONDITIONING", ),
+                    "input1": ("CONDITIONING", ),
+                    "input2": ("CONDITIONING", ),
+                    "input3": ("CONDITIONING", ),
+                    "input4": ("CONDITIONING", ),
+                    "input_selector": ("INT", {"default": 0, "min": 0, "max": 4}),
+                    },
+                }
+
+    RETURN_TYPES = ("CONDITIONING", )
+    RETURN_NAMES = ("output", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/FlowControl"
+
+    def mux(self, input0, input1, input2, input3, input4, input_selector, ):
+        match input_selector:
+            case 1:
+                return (input1,)
+            case 2:
+                return (input2,)
+            case 3:
+                return (input3,)
+            case 4:
+                return (input4,)
+            case _:
+                return (input0, )
+
+
 # UI: Parameter Processor
 
 class SeargeParameterProcessor:
     REFINER_INTENSITY = ["hard", "soft"]
     HRF_SEED_OFFSET = ["same", "distinct"]
     STATES = ["disabled", "enabled"]
+    OPERATION_MODE = ["text to image", "image to image", "inpainting"]
+    PROMPT_STYLE = ["simple", "subject focus", "style focus", "weighted", "overlay"]
+    STYLE_TEMPLATE = ["none", "test"]
+    SAVE_TO = ["output folder", "input folder"]
 
     @classmethod
     def INPUT_TYPES(s):
@@ -698,6 +773,58 @@ class SeargeParameterProcessor:
                 parameters["hrf_seed"] = seed + 3
             else:
                 parameters["hrf_seed"] = seed + 3
+
+        style_template = parameters["style_template"]
+        match style_template:
+            case "none":
+                pass
+            case "test":
+                if parameters["noise_offset"] is not None:
+                    parameters["noise_offset"] = 1 - parameters["hrf_noise_offset"]
+                if parameters["hrf_noise_offset"] is not None:
+                    parameters["hrf_noise_offset"] = 1 - parameters["hrf_noise_offset"]
+            case _:
+                # TODO: apply style based on its name here...
+                pass
+
+        operation_mode = parameters["operation_mode"]
+        match operation_mode:
+            case "text to image":
+                parameters["operation_selector"] = 0
+            case "image to image":
+                parameters["operation_selector"] = 1
+            case "inpainting":
+                parameters["operation_selector"] = 2
+            case _:
+                pass
+
+        prompt_style = parameters["prompt_style"]
+        match prompt_style:
+            case "simple":
+                parameters["prompt_style_selector"] = 0
+                main_prompt = parameters["main_prompt"]
+                parameters["secondary_prompt"] = main_prompt
+                parameters["style_prompt"] = ""
+                parameters["negative_style"] = ""
+            case "subject focus":
+                parameters["prompt_style_selector"] = 1
+            case "style focus":
+                parameters["prompt_style_selector"] = 2
+            case "weighted":
+                parameters["prompt_style_selector"] = 3
+            case "overlay":
+                parameters["prompt_style_selector"] = 4
+            case _:
+                pass
+
+        save_image = parameters["save_image"]
+        if save_image is not None:
+            if save_image == SeargeParameterProcessor.STATES[0]:
+                # when image saving is disabled, we also don't want to save the upscaled image, even if that's enabled
+                parameters["save_upscaled_image"] = SeargeParameterProcessor.STATES[0]
+                # HACK: this is a bit dirty, but the variable hires_fix determines if the image should be saved
+                #       but when image saving is disabled, we don't want that to happen
+                parameters["hires_fix"] = SeargeParameterProcessor.STATES[0]
 
         return (parameters, )
 
@@ -995,6 +1122,7 @@ class SeargeInput5:
                     "refiner_conditioning_scale": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
                     "style_prompt_power": ("FLOAT", {"default": 0.33, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "negative_style_power": ("FLOAT", {"default": 0.67, "min": 0.0, "max": 1.0, "step": 0.01}),
+                    "style_template": (SeargeParameterProcessor.STYLE_TEMPLATE, {"default": "none"}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -1007,7 +1135,7 @@ class SeargeInput5:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power, inputs=None):
+    def mux(self, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power, style_template, inputs=None):
         if inputs is None:
             parameters = {}
         else:
@@ -1017,6 +1145,7 @@ class SeargeInput5:
         parameters["refiner_conditioning_scale"] = refiner_conditioning_scale
         parameters["style_prompt_power"] = style_prompt_power
         parameters["negative_style_power"] = negative_style_power
+        parameters["style_template"] = style_template
 
         return (parameters, )
 
@@ -1120,6 +1249,8 @@ class SeargeInput7:
     def INPUT_TYPES(s):
         return {"required": {
                     "lora_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
+                    "operation_mode": (SeargeParameterProcessor.OPERATION_MODE, {"default": "text to image"}),
+                    "prompt_style": (SeargeParameterProcessor.PROMPT_STYLE, {"default": "simple"}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -1132,13 +1263,15 @@ class SeargeInput7:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, lora_strength, inputs=None):
+    def mux(self, lora_strength, operation_mode, prompt_style, inputs=None):
         if inputs is None:
             parameters = {}
         else:
             parameters = inputs
 
         parameters["lora_strength"] = lora_strength
+        parameters["operation_mode"] = operation_mode
+        parameters["prompt_style"] = prompt_style
 
         return (parameters, )
 
@@ -1189,6 +1322,9 @@ NODE_CLASS_MAPPINGS = {
 
     "SeargeImageSave": SeargeImageSave,
 
+    "SeargeLatentMuxer3": SeargeLatentMuxer3,
+    "SeargeConditioningMuxer5": SeargeConditioningMuxer5,
+
     "SeargeParameterProcessor": SeargeParameterProcessor,
     "SeargeInput1": SeargeInput1,
     "SeargeOutput1": SeargeOutput1,
@@ -1230,6 +1366,9 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeFloatMath": "Float Math (SeargeSDXL)",
 
     "SeargeImageSave": "Save Image (SeargeSDXL)",
+
+    "SeargeLatentMuxer3": "3-Way Muxer for Latents (SeargeSDXL)",
+    "SeargeConditioningMuxer5": "5-Way Muxer for Conditioning (SeargeSDXL)",
 
     "SeargeParameterProcessor": "Parameter Processor",
     "SeargeInput1": "Prompts",
