@@ -5,8 +5,12 @@ including *a workflow* to use *SDXL 1.0* with both the *base and refiner* checkp
 # Version 3.0
 Instead of having separate workflows for different tasks, everything is now integrated in **one workflow file**.
 
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Overview.png" width="768">
+
 ## What's new in v3.0?
 - Completely overhauled **user interface**, now even easier to use than before
+- More organized workflow graph - if you want to understand how it is designed "under the hood", it should now be
+easier to figure out what is where and how things are connected
 - New settings that help to tweak the generated images *without changing the composition*
   - Quickly iterate between *sharper* results and *softer* results of the same image without changing the composition
 or subject
