@@ -791,10 +791,14 @@ class SeargeParameterProcessor:
         match operation_mode:
             case "text to image":
                 parameters["operation_selector"] = 0
+                # always fully denoise in img2img mode
+                parameters["denoise"] = 1.0
             case "image to image":
                 parameters["operation_selector"] = 1
             case "inpainting":
                 parameters["operation_selector"] = 2
+                # inpainting doesn't support hires fix
+                parameters["hrf_steps"] = 0
             case _:
                 pass
 
@@ -1298,6 +1302,28 @@ class SeargeOutput7:
         return (parameters, lora_strength, )
 
 
+# UI: Generated outputs for flow control
+
+class SeargeGenerated1:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "parameters": ("PARAMETERS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", "INT", "INT", )
+    RETURN_NAMES = ("parameters", "operation_selector", "prompt_style_selector", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Generated"
+
+    def demux(self, parameters):
+        operation_selector = parameters["operation_selector"]
+        prompt_style_selector = parameters["prompt_style_selector"]
+        return (parameters, operation_selector, prompt_style_selector, )
+
+
 # Register nodes in ComfyUI
 
 NODE_CLASS_MAPPINGS = {
@@ -1340,6 +1366,7 @@ NODE_CLASS_MAPPINGS = {
     "SeargeOutput6": SeargeOutput6,
     "SeargeInput7": SeargeInput7,
     "SeargeOutput7": SeargeOutput7,
+    "SeargeGenerated1": SeargeGenerated1,
 }
 
 
@@ -1385,4 +1412,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeOutput6": "HiResFix Parameters",
     "SeargeInput7": "Misc Parameters",
     "SeargeOutput7": "Misc Parameters",
+    "SeargeGenerated1": "Flow Control Parameters",
 }
