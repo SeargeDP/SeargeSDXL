@@ -25,12 +25,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
+import datetime
 
 import comfy.samplers
 import comfy_extras.nodes_upscale_model
 import folder_paths
+import json
 import nodes
+import numpy as np
+import os
 
+from comfy.cli_args import args
+from datetime import datetime
+from PIL import Image, ImageOps
+from PIL.PngImagePlugin import PngInfo
 
 # SDXL Sampler with base and refiner support
 
@@ -577,6 +585,59 @@ class SeargeFloatMath:
         return (res,)
 
 
+# Util: conditional pass-through for images
+
+class SeargeImageSave:
+    STATES = ["disabled", "enabled"]
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "images": ("IMAGE", ),
+                    "filename_prefix": ("STRING", {"default": "SeargeSDXL-%date%/Image"}),
+                    "state": (SeargeImageSave.STATES, {"default": "enabled"}),
+                    },
+                "hidden": {
+                    "prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO"
+                    },
+                }
+
+    RETURN_TYPES = ()
+    FUNCTION = "save_images"
+
+    OUTPUT_NODE = True
+
+    CATEGORY = "Searge/Files"
+
+    def save_images(self, images, filename_prefix, state, prompt=None, extra_pnginfo=None):
+        if state == SeargeImageSave.STATES[0]:
+            return {}
+
+        filename_prefix = filename_prefix.replace("%date%", datetime.now().strftime("%Y-%m-%d"))
+
+        output_dir = folder_paths.get_output_directory()
+        full_output_folder, filename, counter, subfolder, filename_prefix = folder_paths.get_save_image_path(filename_prefix, output_dir, images[0].shape[1], images[0].shape[0])
+
+        for image in images:
+            i = 255. * image.cpu().numpy()
+            img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
+            metadata = None
+            if not args.disable_metadata:
+                metadata = PngInfo()
+                if prompt is not None:
+                    metadata.add_text("prompt", json.dumps(prompt))
+                if extra_pnginfo is not None:
+                    for x in extra_pnginfo:
+                        metadata.add_text(x, json.dumps(extra_pnginfo[x]))
+
+            file = f"{filename}_{counter:05}_.png"
+            img.save(os.path.join(full_output_folder, file), pnginfo=metadata, compress_level=4)
+
+            counter += 1
+
+        return {}
+
+
 # UI: Parameter Processor
 
 class SeargeParameterProcessor:
@@ -974,6 +1035,8 @@ class SeargeOutput5:
 # UI: HiResFix Parameters Input
 
 class SeargeInput6:
+    STATES = ["disabled", "enabled"] # TODO
+
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -1109,6 +1172,8 @@ NODE_CLASS_MAPPINGS = {
     "SeargeFloatPair": SeargeFloatPair,
     "SeargeFloatMath": SeargeFloatMath,
 
+    "SeargeImageSave": SeargeImageSave,
+
     "SeargeParameterProcessor": SeargeParameterProcessor,
     "SeargeInput1": SeargeInput1,
     "SeargeOutput1": SeargeOutput1,
@@ -1148,6 +1213,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeFloatConstant": "Float Constant (SeargeSDXL)",
     "SeargeFloatPair": "Float Pair (SeargeSDXL)",
     "SeargeFloatMath": "Float Math (SeargeSDXL)",
+
+    "SeargeImageSave": "Save Image (SeargeSDXL)",
 
     "SeargeParameterProcessor": "Parameter Processor",
     "SeargeInput1": "Prompts",
