@@ -821,6 +821,7 @@ class SeargeParameterProcessor:
             case _:
                 pass
 
+        # TODO: replace this special logic and the dirty hacks by creating new generated parameters for saving
         save_image = parameters["save_image"]
         if save_image is not None:
             if save_image == SeargeParameterProcessor.STATES[0]:
@@ -829,6 +830,11 @@ class SeargeParameterProcessor:
                 # HACK: this is a bit dirty, but the variable hires_fix determines if the image should be saved
                 #       but when image saving is disabled, we don't want that to happen
                 parameters["hires_fix"] = SeargeParameterProcessor.STATES[0]
+            else:
+                # in case we are saving to the input folder, we need to enable saving after the hires fix, even
+                # if that's disabled in the settings
+                if parameters["save_directory"] == SeargeParameterProcessor.SAVE_TO[1]:
+                    parameters["hires_fix"] = SeargeParameterProcessor.STATES[1]
 
         return (parameters, )
 
