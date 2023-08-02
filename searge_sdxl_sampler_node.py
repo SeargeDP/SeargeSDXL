@@ -56,7 +56,7 @@ class SeargeSDXLSampler:
                 "optional": {
                     "refiner_prep_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
                     "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
-                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
+                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 1.0, "step": 0.1}),
                     },
                 }
 
@@ -580,6 +580,9 @@ class SeargeFloatMath:
 # UI: Parameter Processor
 
 class SeargeParameterProcessor:
+    REFINER_INTENSITY = ["hard", "soft"]
+    HRF_SEED_OFFSET = ["same", "distinct"]
+
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -604,14 +607,33 @@ class SeargeParameterProcessor:
         if parameters["denoise"] is None:
             parameters["denoise"] = 1.0
 
-        saturation = parameters["refiner_saturation"]
+        saturation = parameters["refiner_intensity"]
         if saturation is not None:
-            if saturation == SeargeInput3.REFINER_SATURATION[0]:
+            if saturation == SeargeParameterProcessor.REFINER_INTENSITY[0]:
                 parameters["noise_offset"] = 0
-            elif saturation == SeargeInput3.REFINER_SATURATION[1]:
+            elif saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
                 parameters["noise_offset"] = 1
             else:
                 parameters["noise_offset"] = 1
+
+        saturation = parameters["hrf_intensity"]
+        if saturation is not None:
+            if saturation == SeargeParameterProcessor.REFINER_INTENSITY[0]:
+                parameters["hrf_noise_offset"] = 0
+            elif saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
+                parameters["hrf_noise_offset"] = 1
+            else:
+                parameters["hrf_noise_offset"] = 1
+
+        seed_offset = parameters["hrf_seed_offset"]
+        if seed_offset is not None:
+            seed = parameters["seed"] if parameters["seed"] is not None else 0
+            if seed_offset == SeargeParameterProcessor.HRF_SEED_OFFSET[0]:
+                parameters["hrf_seed"] = seed
+            elif seed_offset == SeargeParameterProcessor.HRF_SEED_OFFSET[1]:
+                parameters["hrf_seed"] = seed + 3
+            else:
+                parameters["hrf_seed"] = seed + 3
 
         return (parameters, )
 
@@ -753,16 +775,15 @@ class SeargeOutput2:
 # UI: Advanced Parameters Input
 
 class SeargeInput3:
-    REFINER_SATURATION = ["hard", "soft"]
-
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
                     "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
-                    "refiner_saturation": (SeargeInput3.REFINER_SATURATION, {"default": "soft"}),
+                    "refiner_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": "soft"}),
                     "precondition_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
                     "batch_size": ("INT", {"default": 1, "min": 1, "max": 4}),
+                    "upscale_resolution_factor": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -776,7 +797,7 @@ class SeargeInput3:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, base_ratio, refiner_strength, refiner_saturation, precondition_steps, batch_size, inputs=None, denoise=None):
+    def mux(self, base_ratio, refiner_strength, refiner_intensity, precondition_steps, batch_size, upscale_resolution_factor, inputs=None, denoise=None):
         if inputs is None:
             parameters = {}
         else:
@@ -785,9 +806,10 @@ class SeargeInput3:
         parameters["denoise"] = denoise
         parameters["base_ratio"] = base_ratio
         parameters["refiner_strength"] = refiner_strength
-        parameters["refiner_saturation"] = refiner_saturation
+        parameters["refiner_intensity"] = refiner_intensity
         parameters["precondition_steps"] = precondition_steps
         parameters["batch_size"] = batch_size
+        parameters["upscale_resolution_factor"] = upscale_resolution_factor
 
         return (parameters, )
 
@@ -802,8 +824,8 @@ class SeargeOutput3:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "INT", "INT", "INT", )
-    RETURN_NAMES = ("parameters", "denoise", "base_ratio", "noise_offset", "precondition_steps", "batch_size", )
+    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "INT", "INT", "INT", "FLOAT", )
+    RETURN_NAMES = ("parameters", "denoise", "base_ratio", "refiner_strength", "noise_offset", "precondition_steps", "batch_size", "upscale_resolution_factor", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
@@ -815,8 +837,9 @@ class SeargeOutput3:
         noise_offset = parameters["noise_offset"]
         precondition_steps = parameters["precondition_steps"]
         batch_size = parameters["batch_size"]
+        upscale_resolution_factor = parameters["upscale_resolution_factor"]
 
-        return (parameters, denoise, base_ratio, refiner_strength, noise_offset, precondition_steps, batch_size, )
+        return (parameters, denoise, base_ratio, refiner_strength, noise_offset, precondition_steps, batch_size, upscale_resolution_factor, )
 
 
 # UI: Model Selector Input
@@ -834,6 +857,71 @@ class SeargeInput4:
                     "lora_model": (folder_paths.get_filename_list("loras"),),
                     },
                 "optional": {
+                    "model_settings": ("MODEL_SETTINGS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("MODEL_NAMES", )
+    RETURN_NAMES = ("model_names", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/UI/Inputs"
+
+    def mux(self, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model, model_settings=None):
+        if model_settings is None:
+            model_names = {}
+        else:
+            model_names = model_settings
+
+        model_names["base_model"] = base_model
+        model_names["refiner_model"] = refiner_model
+        model_names["vae_model"] = vae_model
+        model_names["main_upscale_model"] = main_upscale_model
+        model_names["support_upscale_model"] = support_upscale_model
+        model_names["lora_model"] = lora_model
+
+        return (model_names, )
+
+
+# UI: Model Selector
+
+class SeargeOutput4:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "model_names": ("MODEL_NAMES", ),
+                    },
+                }
+
+    RETURN_TYPES = ("MODEL_NAMES", folder_paths.get_filename_list("checkpoints"), folder_paths.get_filename_list("checkpoints"), folder_paths.get_filename_list("vae"), folder_paths.get_filename_list("upscale_models"), folder_paths.get_filename_list("upscale_models"), folder_paths.get_filename_list("loras"), )
+    RETURN_NAMES = ("model_names", "base_model", "refiner_model", "vae_model", "main_upscale_model", "support_upscale_model", "lora_model", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Outputs"
+
+    def demux(self, model_names):
+        base_model = model_names["base_model"]
+        refiner_model = model_names["refiner_model"]
+        vae_model = model_names["vae_model"]
+        main_upscale_model = model_names["main_upscale_model"]
+        support_upscale_model = model_names["support_upscale_model"]
+        lora_model = model_names["lora_model"]
+
+        return (model_names, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model,)
+
+
+# UI: Prompt Processing Input
+
+class SeargeInput5:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "base_conditioning_scale": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
+                    "refiner_conditioning_scale": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
+                    "style_prompt_power": ("FLOAT", {"default": 0.33, "min": 0.0, "max": 1.0, "step": 0.01}),
+                    "negative_style_power": ("FLOAT", {"default": 0.67, "min": 0.0, "max": 1.0, "step": 0.01}),
+                    },
+                "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
                     },
                 }
@@ -844,25 +932,23 @@ class SeargeInput4:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model, inputs=None):
+    def mux(self, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power, inputs=None):
         if inputs is None:
             parameters = {}
         else:
             parameters = inputs
 
-        parameters["base_model"] = base_model
-        parameters["refiner_model"] = refiner_model
-        parameters["vae_model"] = vae_model
-        parameters["main_upscale_model"] = main_upscale_model
-        parameters["support_upscale_model"] = support_upscale_model
-        parameters["lora_model"] = lora_model
+        parameters["base_conditioning_scale"] = base_conditioning_scale
+        parameters["refiner_conditioning_scale"] = refiner_conditioning_scale
+        parameters["style_prompt_power"] = style_prompt_power
+        parameters["negative_style_power"] = negative_style_power
 
         return (parameters, )
 
 
-# UI: Model Selector
+# UI: Prompt Processing Output
 
-class SeargeOutput4:
+class SeargeOutput5:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -870,21 +956,135 @@ class SeargeOutput4:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", (folder_paths.get_filename_list("checkpoints"),), (folder_paths.get_filename_list("checkpoints"),), (folder_paths.get_filename_list("vae"),), (folder_paths.get_filename_list("upscale_models"),), (folder_paths.get_filename_list("upscale_models"),), (folder_paths.get_filename_list("loras"),), )
-    RETURN_NAMES = ("parameters", "base_model", "refiner_model", "vae_model", "main_upscale_model", "support_upscale_model", "lora_model", )
+    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "FLOAT", )
+    RETURN_NAMES = ("parameters", "base_conditioning_scale", "refiner_conditioning_scale", "style_prompt_power", "negative_style_power", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
 
     def demux(self, parameters):
-        base_model = parameters["base_model"]
-        refiner_model = parameters["refiner_model"]
-        vae_model = parameters["vae_model"]
-        main_upscale_model = parameters["main_upscale_model"]
-        support_upscale_model = parameters["support_upscale_model"]
-        lora_model = parameters["lora_model"]
+        base_conditioning_scale = parameters["base_conditioning_scale"]
+        refiner_conditioning_scale = parameters["refiner_conditioning_scale"]
+        style_prompt_power = parameters["style_prompt_power"]
+        negative_style_power = parameters["negative_style_power"]
 
-        return (parameters, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model, )
+        return (parameters, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power, )
+
+
+# UI: HiResFix Parameters Input
+
+class SeargeInput6:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "hrf_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
+                    "hrf_denoise": ("FLOAT", {"default": 0.1, "min": 0.0, "max": 1.0, "step": 0.01}),
+                    "hrf_upscale_factor": ("FLOAT", {"default": 1.5, "min": 0.25, "max": 4.0, "step": 0.25}),
+                    "hrf_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": "soft"}),
+                    "hrf_seed_offset": (SeargeParameterProcessor.HRF_SEED_OFFSET, {"default": "distinct"}),
+                    },
+                "optional": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETER_INPUTS", )
+    RETURN_NAMES = ("inputs", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/UI/Inputs"
+
+    def mux(self, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_intensity, hrf_seed_offset, inputs=None):
+        if inputs is None:
+            parameters = {}
+        else:
+            parameters = inputs
+
+        parameters["hrf_steps"] = hrf_steps
+        parameters["hrf_denoise"] = hrf_denoise
+        parameters["hrf_upscale_factor"] = hrf_upscale_factor
+        parameters["hrf_intensity"] = hrf_intensity
+        parameters["hrf_seed_offset"] = hrf_seed_offset
+
+        return (parameters, )
+
+
+# UI: HiResFix Parameters Output
+
+class SeargeOutput6:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "parameters": ("PARAMETERS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", )
+    RETURN_NAMES = ("parameters", "hrf_steps", "hrf_denoise", "hrf_upscale_factor", "hrf_noise_offset", "hrf_seed", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Outputs"
+
+    def demux(self, parameters):
+        hrf_steps = parameters["hrf_steps"]
+        hrf_denoise = parameters["hrf_denoise"]
+        hrf_upscale_factor = parameters["hrf_upscale_factor"]
+        hrf_noise_offset = parameters["hrf_noise_offset"]
+        hrf_seed = parameters["hrf_seed"]
+
+        return (parameters, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_noise_offset, hrf_seed, )
+
+
+# UI: Misc Inputs
+
+class SeargeInput7:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "lora_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
+                    },
+                "optional": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETER_INPUTS", )
+    RETURN_NAMES = ("inputs", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/UI/Inputs"
+
+    def mux(self, lora_strength, inputs=None):
+        if inputs is None:
+            parameters = {}
+        else:
+            parameters = inputs
+
+        parameters["lora_strength"] = lora_strength
+
+        return (parameters, )
+
+
+# UI: Misc Outputs
+
+class SeargeOutput7:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "parameters": ("PARAMETERS", ),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETERS", "FLOAT", )
+    RETURN_NAMES = ("parameters", "lora_strength", )
+    FUNCTION = "demux"
+
+    CATEGORY = "Searge/UI/Outputs"
+
+    def demux(self, parameters):
+        lora_strength = parameters["lora_strength"]
+
+        return (parameters, lora_strength, )
 
 
 # Register nodes in ComfyUI
@@ -918,6 +1118,12 @@ NODE_CLASS_MAPPINGS = {
     "SeargeOutput3": SeargeOutput3,
     "SeargeInput4": SeargeInput4,
     "SeargeOutput4": SeargeOutput4,
+    "SeargeInput5": SeargeInput5,
+    "SeargeOutput5": SeargeOutput5,
+    "SeargeInput6": SeargeInput6,
+    "SeargeOutput6": SeargeOutput6,
+    "SeargeInput7": SeargeInput7,
+    "SeargeOutput7": SeargeOutput7,
 }
 
 
@@ -952,4 +1158,10 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeOutput3": "Advanced Parameters",
     "SeargeInput4": "Model Names",
     "SeargeOutput4": "Model Names",
+    "SeargeInput5": "Prompt Processing",
+    "SeargeOutput5": "Prompt Processing",
+    "SeargeInput6": "HiResFix Parameters",
+    "SeargeOutput6": "HiResFix Parameters",
+    "SeargeInput7": "Misc Parameters",
+    "SeargeOutput7": "Misc Parameters",
 }
