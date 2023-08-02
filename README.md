@@ -1,6 +1,36 @@
-# SeargeSDXL
-Custom nodes extension and workflows for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
-including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
+# Searge-SDXL v3.0 - "Truly Reborn"
+*Custom nodes extension* for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+including *a workflow* to use *SDXL 1.0* with both the *base and refiner* checkpoints.
+
+# Version 3.0
+Instead of having separate workflows for different tasks, everything is now integrated in **one workflow file**.
+
+## What's new in v3.0?
+- Completely overhauled **user interface**, now even easier to use than before
+- New settings that help to tweak the generated images *without changing the composition*
+  - Quickly iterate between *sharper* results and *softer* results of the same image without changing the composition
+or subject
+  - Easily make colors pop where needed, or render a softer image where it fits the mood better
+- Three operating modes in **ONE** workflow
+  - **text-to-image**
+  - **image-to-image**
+  - **inpainting**
+- Different prompting modes (**5 modes** available)
+  - **Simple** - Just cares about **a positive and a negative prompt** and *ignores the additional prompting fields*, this
+is great to get started with SDXL, ComfyUI, and this workflow
+  - **Subject Focus** - In this mode the *main/secondary prompts* are more important than the *style prompts*
+  - **Style Focus** - In this mode the *style prompts* are more important than the *main/secondary prompts*
+  - **Weighted** - In this mode the balance between *main/secondary prompts* and *style prompts* can be influenced with
+the *style prompt power* and *negative prompt power* option
+  - **Overlay** - In this mode the main*/secondary prompts* and the *style prompts* are competing with each other
+- Greatly *improved Hires-Fix* - now with more options to influence the results
+- A (rather limited for now) alpha test for *style templates*, this is work in progress and only includes one
+style for now (called *test*)
+- Options to change the **intensity of the refiner** when used together with the base model,
+separate for *main pass* and *hires-fix pass*
+- *(... many more things probably, since the workflow was almost completely re-made)*
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Example.png" width="768">
 
 
 
@@ -42,45 +72,32 @@ including workflows to use SDXL 1.0 with both the base and refiner checkpoints.
 
 
 # More Information
-Now 3 workflows are included in the examples folder.
-They are called *reborn*, *image2image*, and *inpainting*.
+Now 3 operating modes are included in in the workflow, the *.json-file* for it is in the `workflow` folder.
+They are called *text2image*, *image2image*, and *inpainting*.
 
-The simple workflow has been removed.
-
-### Positive Prompts
-Prompting has been improved. The main prompt and secondary prompt influence the two CLIP models
-similar to the way my original workflow worked.
-
-A third positive prompt was added for style description and artist references.
-This one influences both CLIP models.
-
-### Negative Prompts
-For the negative prompt the way it is now designed expects objects and subjects you don't want in the negative
-prompt and styles that you don't want in the negative style.
-
-### Prompt Power
-For both, the positive style & reference prompt and the negative style prompt, you can now change their
-*power*, a weight of how much they should be applied.
-
-The defaults are *0.333* for positive style power and *0.667* for negative style power.
-
-The positive style power should be in the range *0.1* to *0.5*, at higher values the style is applied rather strong
-and can "take over the image". You should try it to understand better what too large values will do.
+The simple workflow has not returned as a separate workflow, but is now also fully integrated.
+To enable it, switch the **prompt mode** option to simple and it will only pay attention to the main prompt
+and the negative prompt.
 
 
 
-## Workflow Descriptions
+## Workflow Description
 
 ### Reborn
-The *reborn* workflow is a new workflow, created from scratch. It requires the latest additions to the
+The **Reborn v3.0** workflow is a new workflow, created from scratch. It requires the latest additions to the
 SeargeSDXL custom node extension, because it makes use of some new node types.
 
 The interface for using this new workflow is also designed in a different way, with all parameters that
-are usually tweaked to generate images tighly packed together. This should make it easier to have every
+are usually tweaked to generate images tightly packed together. This should make it easier to have every
 important element on the screen at the same time without scrolling.
+
+Starting from version 3.0 all 3 operating modes (text-to-image, image-to-image, and inpainting) are available
+from the same workflow and can be switched with an option.
 
 ### Image to Image
 In this workflow you should first copy an image into the `ConfyUI/input` directory.
+Alternatively you can change the option for the **save directory** to **input folder** when generating images, in that
+case you have to press the ComfyUI *Refresh* button and it should show up in the image loader node.
 
 Then select that image as the *Source Image* (next to the prompt inputs).
 If it does not show up, press the *Refresh* button on the Comfy UI control box.
@@ -105,24 +122,26 @@ The *Denoise* parameter works the same way as in image to image, but only masked
 
 
 
-# Available Example Workflows
-These the workflows included in the examples folder.
+# The Workflow
+The workflow is included in the `workflow` folder.
 
-### Reborn Workflow
+## Reborn Workflow v3.0 Operating Modes
+
+### Text to Image Mode
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-1.png" width="768">
 
-### Image to Image Workflow
+### Image to Image Mode
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-2.png" width="768">
 
-### Inpainting Workflow
+### Inpainting Mode
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-3.png" width="768">
 
 
 
-## Example images generated with these workflows
+## Example images generated with these operating modes
 
 ### Reborn Workflow
 
