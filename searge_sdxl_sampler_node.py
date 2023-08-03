@@ -136,6 +136,7 @@ class SeargeSDXLImage2ImageSampler:
                     "scaled_height": ("INT", {"default": 1536, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
                     "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
                     "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
+                    "softness": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}),
                     },
                 }
 
