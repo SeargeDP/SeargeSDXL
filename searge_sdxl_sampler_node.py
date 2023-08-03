@@ -29,6 +29,7 @@ import datetime
 
 import comfy.samplers
 import comfy_extras.nodes_upscale_model
+import comfy_extras.nodes_post_processing
 import folder_paths
 import json
 import nodes
@@ -64,7 +65,7 @@ class SeargeSDXLSampler:
                 "optional": {
                     "refiner_prep_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
                     "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
-                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 1.0, "step": 0.1}),
+                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 1.0, "step": 0.05}),
                     },
                 }
 
@@ -74,7 +75,7 @@ class SeargeSDXLSampler:
     CATEGORY = "Searge/Sampling"
 
     def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, latent_image, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, refiner_prep_steps=None, noise_offset=None, refiner_strength=None):
-        base_steps = int(steps * base_ratio)
+        base_steps = int(steps * (base_ratio + 0.0001))
 
         if noise_offset is None:
             noise_offset = 1
@@ -135,7 +136,7 @@ class SeargeSDXLImage2ImageSampler:
                     "scaled_width": ("INT", {"default": 1536, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
                     "scaled_height": ("INT", {"default": 1536, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
                     "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
-                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
+                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.05}),
                     "softness": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}),
                     },
                 }
@@ -146,7 +147,7 @@ class SeargeSDXLImage2ImageSampler:
     CATEGORY = "Searge/Sampling"
 
     def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, image, vae, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, softness, upscale_model=None, scaled_width=None, scaled_height=None, noise_offset=None, refiner_strength=None):
-        base_steps = int(steps * base_ratio)
+        base_steps = int(steps * (base_ratio + 0.0001))
 
         if noise_offset is None:
             noise_offset = 1
@@ -162,13 +163,21 @@ class SeargeSDXLImage2ImageSampler:
 
         scaled_image = image
 
-        if upscale_model is not None:
+        use_upscale_model = upscale_model is not None and softness < 0.9999
+        if use_upscale_model:
             upscale_result = comfy_extras.nodes_upscale_model.ImageUpscaleWithModel().upscale(upscale_model, image)
             scaled_image = upscale_result[0]
 
         if scaled_width is not None and scaled_height is not None:
             upscale_result = nodes.ImageScale().upscale(scaled_image, "bicubic", scaled_width, scaled_height, "center")
             scaled_image = upscale_result[0]
+
+        if use_upscale_model:
+            upscale_result = nodes.ImageScale().upscale(image, "bicubic", scaled_width, scaled_height, "center")
+            scaled_original = upscale_result[0]
+
+            blend_result = comfy_extras.nodes_post_processing.Blend().blend_images(scaled_image, scaled_original, softness, "normal")
+            scaled_image = blend_result[0]
 
         if denoise < 0.01:
             return (scaled_image, )
@@ -993,7 +1002,7 @@ class SeargeInput3:
     def INPUT_TYPES(s):
         return {"required": {
                     "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.1}),
+                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.05}),
                     "refiner_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": "soft"}),
                     "precondition_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
                     "batch_size": ("INT", {"default": 1, "min": 1, "max": 4}),
@@ -1265,7 +1274,7 @@ class SeargeInput7:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-                    "lora_strength": ("FLOAT", {"default": 0.2, "min": 0.0, "max": 1.0, "step": 0.1}),
+                    "lora_strength": ("FLOAT", {"default": 0.2, "min": 0.0, "max": 1.0, "step": 0.05}),
                     "operation_mode": (SeargeParameterProcessor.OPERATION_MODE, {"default": "text to image"}),
                     "prompt_style": (SeargeParameterProcessor.PROMPT_STYLE, {"default": "simple"}),
                     },
