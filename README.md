@@ -2,6 +2,8 @@
 *Custom nodes extension* for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 including *a workflow* to use *SDXL 1.0* with both the *base and refiner* checkpoints.
 
+### Note: if you downloaded v3.0 before, please get the updated download for v3.0a, if you used git to install the extension, please do a `git pull` to update. And going forward, make sure to use the updated workflow.json file from v3.0a
+
 # Version 3.0
 Instead of having separate workflows for different tasks, everything is now integrated in **one workflow file**.
 
