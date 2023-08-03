@@ -172,7 +172,7 @@ class SeargeSDXLImage2ImageSampler:
             upscale_result = nodes.ImageScale().upscale(scaled_image, "bicubic", scaled_width, scaled_height, "center")
             scaled_image = upscale_result[0]
 
-        if use_upscale_model:
+        if use_upscale_model and softness > 0.0001:
             upscale_result = nodes.ImageScale().upscale(image, "bicubic", scaled_width, scaled_height, "center")
             scaled_original = upscale_result[0]
 
