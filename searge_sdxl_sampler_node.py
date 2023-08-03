@@ -1201,6 +1201,7 @@ class SeargeInput6:
                     "hrf_upscale_factor": ("FLOAT", {"default": 1.5, "min": 0.25, "max": 4.0, "step": 0.25}),
                     "hrf_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": "soft"}),
                     "hrf_seed_offset": (SeargeParameterProcessor.HRF_SEED_OFFSET, {"default": "distinct"}),
+                    "hrf_smoothness": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -1213,7 +1214,7 @@ class SeargeInput6:
 
     CATEGORY = "Searge/UI/Inputs"
 
-    def mux(self, hires_fix, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_intensity, hrf_seed_offset, inputs=None):
+    def mux(self, hires_fix, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_intensity, hrf_seed_offset, hrf_smoothness, inputs=None):
         if inputs is None:
             parameters = {}
         else:
@@ -1225,6 +1226,7 @@ class SeargeInput6:
         parameters["hrf_upscale_factor"] = hrf_upscale_factor
         parameters["hrf_intensity"] = hrf_intensity
         parameters["hrf_seed_offset"] = hrf_seed_offset
+        parameters["hrf_smoothness"] = hrf_smoothness
 
         return (parameters, )
 
@@ -1239,8 +1241,8 @@ class SeargeOutput6:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", SeargeParameterProcessor.STATES)
-    RETURN_NAMES = ("parameters", "hrf_steps", "hrf_denoise", "hrf_upscale_factor", "hrf_noise_offset", "hrf_seed", "hires_fix", )
+    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", SeargeParameterProcessor.STATES, "FLOAT", )
+    RETURN_NAMES = ("parameters", "hrf_steps", "hrf_denoise", "hrf_upscale_factor", "hrf_noise_offset", "hrf_seed", "hires_fix", "hrf_smoothness", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Outputs"
@@ -1252,8 +1254,9 @@ class SeargeOutput6:
         hrf_noise_offset = parameters["hrf_noise_offset"]
         hrf_seed = parameters["hrf_seed"]
         hires_fix = parameters["hires_fix"]
+        hrf_smoothness = parameters["hrf_smoothness"]
 
-        return (parameters, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_noise_offset, hrf_seed, hires_fix, )
+        return (parameters, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_noise_offset, hrf_seed, hires_fix, hrf_smoothness, )
 
 
 # UI: Misc Inputs

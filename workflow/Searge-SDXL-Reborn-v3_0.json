@@ -1,6 +1,6 @@
 {
   "last_node_id": 344,
-  "last_link_id": 920,
+  "last_link_id": 921,
   "nodes": [
     {
       "id": 133,
@@ -16,7 +16,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 23,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
@@ -69,7 +69,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 16,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -117,7 +117,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 30,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -155,50 +155,6 @@
       "bgcolor": "#593930"
     },
     {
-      "id": 150,
-      "type": "SeargeInput7",
-      "pos": [
-        860,
-        480
-      ],
-      "size": {
-        "0": 320,
-        "1": 130
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 0,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "inputs",
-          "type": "PARAMETER_INPUTS",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "inputs",
-          "type": "PARAMETER_INPUTS",
-          "links": [
-            735
-          ],
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SeargeInput7"
-      },
-      "widgets_values": [
-        0,
-        "text to image",
-        "subject focus"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
       "id": 154,
       "type": "SeargeInput4",
       "pos": [
@@ -212,7 +168,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [
         {
@@ -290,7 +246,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "title": "Workflow Information",
       "properties": {
@@ -316,7 +272,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 14,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -433,7 +389,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 17,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -504,7 +460,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 19,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -560,7 +516,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 21,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -613,7 +569,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 55,
+      "order": 56,
       "mode": 0,
       "inputs": [
         {
@@ -741,7 +697,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 24,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -782,7 +738,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 25,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -823,7 +779,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 26,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -864,7 +820,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 28,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
@@ -1011,7 +967,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 18,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -2054,7 +2010,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 27,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -2095,7 +2051,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 20,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -2352,6 +2308,15 @@
           ],
           "shape": 3,
           "slot_index": 6
+        },
+        {
+          "name": "hrf_smoothness",
+          "type": "FLOAT",
+          "links": [
+            921
+          ],
+          "shape": 3,
+          "slot_index": 7
         }
       ],
       "properties": {
@@ -2769,7 +2734,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 53,
+      "order": 52,
       "mode": 0,
       "inputs": [
         {
@@ -2815,7 +2780,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 44,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
@@ -4419,7 +4384,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 37,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -4509,7 +4474,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 47,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -4734,10 +4699,10 @@
         8200,
         4730
       ],
-      "size": {
-        "0": 300,
-        "1": 470
-      },
+      "size": [
+        300,
+        470
+      ],
       "flags": {
         "pinned": true
       },
@@ -5001,6 +4966,23 @@
             ]
           },
           "slot_index": 19
+        },
+        {
+          "name": "softness",
+          "type": "FLOAT",
+          "link": 921,
+          "widget": {
+            "name": "softness",
+            "config": [
+              "FLOAT",
+              {
+                "default": 0.5,
+                "min": 0,
+                "max": 1,
+                "step": 0.05
+              }
+            ]
+          }
         }
       ],
       "outputs": [
@@ -5218,7 +5200,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 29,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
@@ -5261,7 +5243,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 50,
+      "order": 49,
       "mode": 0,
       "inputs": [
         {
@@ -5381,7 +5363,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 56,
+      "order": 55,
       "mode": 0,
       "inputs": [
         {
@@ -5555,7 +5537,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 43,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
@@ -5597,7 +5579,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 34,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
@@ -5639,7 +5621,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 51,
+      "order": 50,
       "mode": 0,
       "inputs": [
         {
@@ -5685,7 +5667,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 42,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -5774,7 +5756,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 35,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
@@ -5817,7 +5799,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 48,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -5859,7 +5841,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 31,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
@@ -5902,7 +5884,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 38,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -6070,7 +6052,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 39,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -6162,7 +6144,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 32,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -6287,7 +6269,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "title": "Workflow Information",
       "properties": {
@@ -6344,7 +6326,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "outputs": [
         {
@@ -6388,7 +6370,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "outputs": [
         {
@@ -6462,7 +6444,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 52,
+      "order": 54,
       "mode": 0,
       "inputs": [
         {
@@ -6551,7 +6533,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 36,
+      "order": 44,
       "mode": 0,
       "inputs": [
         {
@@ -6684,7 +6666,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 45,
+      "order": 51,
       "mode": 0,
       "inputs": [
         {
@@ -6724,7 +6706,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 40,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -6762,12 +6744,12 @@
       ],
       "size": {
         "0": 320,
-        "1": 190
+        "1": 202
       },
       "flags": {
         "pinned": true
       },
-      "order": 13,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -6795,7 +6777,8 @@
         0.25,
         1.5,
         "hard",
-        "distinct"
+        "distinct",
+        0
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -7209,7 +7192,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 54,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -7593,7 +7576,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 33,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -8516,7 +8499,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 49,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -8905,7 +8888,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 46,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
@@ -9406,7 +9389,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "outputs": [
         {
@@ -9443,7 +9426,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "outputs": [
         {
@@ -9480,7 +9463,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "outputs": [
         {
@@ -9516,7 +9499,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "outputs": [
         {
@@ -9553,7 +9536,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 22,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -9594,7 +9577,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "outputs": [
         {
@@ -9873,7 +9856,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 41,
+      "order": 40,
       "mode": 0,
       "inputs": [
         {
@@ -11706,7 +11689,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "title": "Off by default for performance reasons",
       "properties": {
@@ -11770,7 +11753,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -11811,7 +11794,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -11905,6 +11888,50 @@
       ],
       "color": "#223",
       "bgcolor": "#335"
+    },
+    {
+      "id": 150,
+      "type": "SeargeInput7",
+      "pos": [
+        860,
+        490
+      ],
+      "size": {
+        "0": 320,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs",
+          "type": "PARAMETER_INPUTS",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "inputs",
+          "type": "PARAMETER_INPUTS",
+          "links": [
+            735
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeInput7"
+      },
+      "widgets_values": [
+        0,
+        "text to image",
+        "subject focus"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
     }
   ],
   "links": [
@@ -14619,6 +14646,14 @@
       158,
       2,
       "output folder,input folder"
+    ],
+    [
+      921,
+      146,
+      7,
+      117,
+      20,
+      "FLOAT"
     ]
   ],
   "groups": [
