@@ -145,7 +145,7 @@ class SeargeSDXLImage2ImageSampler:
 
     CATEGORY = "Searge/Sampling"
 
-    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, image, vae, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, upscale_model=None, scaled_width=None, scaled_height=None, noise_offset=None, refiner_strength=None):
+    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, image, vae, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, softness, upscale_model=None, scaled_width=None, scaled_height=None, noise_offset=None, refiner_strength=None):
         base_steps = int(steps * base_ratio)
 
         if noise_offset is None:
