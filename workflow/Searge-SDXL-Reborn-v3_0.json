@@ -193,8 +193,8 @@
       },
       "widgets_values": [
         "sd_xl_base_1.0.safetensors",
-        "sd_xl_refiner_0.9.safetensors",
-        "sdxl_vae-0.9.safetensors",
+        "sd_xl_refiner_1.0.safetensors",
+        "sdxl-vae.safetensors",
         "4x_NMKD-Siax_200k.pth",
         "4x-UltraSharp.pth",
         "sd_xl_offset_example-lora_1.0.safetensors"
@@ -4699,10 +4699,10 @@
         8200,
         4730
       ],
-      "size": [
-        300,
-        470
-      ],
+      "size": {
+        "0": 300,
+        "1": 470
+      },
       "flags": {
         "pinned": true
       },
