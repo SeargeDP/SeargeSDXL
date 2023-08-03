@@ -1,13 +1,18 @@
-# Searge-SDXL v3.0 - "Truly Reborn"
+# Searge-SDXL v3.x - "Truly Reborn"
 *Custom nodes extension* for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 including *a workflow* to use *SDXL 1.0* with both the *base and refiner* checkpoints.
 
-### Note: if you downloaded v3.0 before, please get the updated download for v3.0a, if you used git to install the extension, please do a `git pull` to update. And going forward, make sure to use the updated workflow.json file from v3.0a
-
-# Version 3.0
+# Version 3.1
 Instead of having separate workflows for different tasks, everything is now integrated in **one workflow file**.
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Overview.png" width="768">
+
+## What's new in v3.1?
+- Fixed the issue with "exploding" the search box when this extension is installed
+- Loading of Checkpoints, VAE, Upscalers, and Loras through custom nodes
+- Updated workflow to make use of the added node types
+- Adjusted the default settings for some parameters in the workflow
+- Fixed some reported issues with the workflow and custom nodes
 
 ## What's new in v3.0?
 - Completely overhauled **user interface**, now even easier to use than before
@@ -78,7 +83,7 @@ separate for *main pass* and *hires-fix pass*
 
 
 # More Information
-Now 3 operating modes are included in in the workflow, the *.json-file* for it is in the `workflow` folder.
+Now **3** operating modes are included in in the workflow, the *.json-file* for it is in the `workflow` folder.
 They are called *text2image*, *image2image*, and *inpainting*.
 
 The simple workflow has not returned as a separate workflow, but is now also fully integrated.

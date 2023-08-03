@@ -1,6 +1,6 @@
 {
-  "last_node_id": 344,
-  "last_link_id": 921,
+  "last_node_id": 356,
+  "last_link_id": 943,
   "nodes": [
     {
       "id": 133,
@@ -45,10 +45,10 @@
         "randomize",
         1024,
         1024,
-        25,
+        30,
         7,
-        "ddim",
-        "ddim_uniform",
+        "dpmpp_2m",
+        "karras",
         "enabled",
         "output folder"
       ],
@@ -143,7 +143,7 @@
       },
       "widgets_values": [
         0.7999999999999998,
-        1,
+        0.7499999999999998,
         "hard",
         0,
         1,
@@ -182,7 +182,7 @@
           "name": "model_names",
           "type": "MODEL_NAMES",
           "links": [
-            483
+            931
           ],
           "shape": 3,
           "slot_index": 0
@@ -259,303 +259,6 @@
       "bgcolor": "#000"
     },
     {
-      "id": 155,
-      "type": "SeargeOutput4",
-      "pos": [
-        -4400,
-        2130
-      ],
-      "size": {
-        "0": 300,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model_names",
-          "type": "MODEL_NAMES",
-          "link": 483
-        }
-      ],
-      "outputs": [
-        {
-          "name": "model_names",
-          "type": "MODEL_NAMES",
-          "links": null,
-          "shape": 3
-        },
-        {
-          "name": "base_model",
-          "type": [
-            "sd_xl_base_0.9.safetensors",
-            "sd_xl_base_1.0.safetensors",
-            "sd_xl_refiner_0.9.safetensors",
-            "sd_xl_refiner_1.0.safetensors",
-            "xl3ExperimentalSD10XL_v10.safetensors"
-          ],
-          "links": [
-            477
-          ],
-          "shape": 3,
-          "slot_index": 1
-        },
-        {
-          "name": "refiner_model",
-          "type": [
-            "sd_xl_base_0.9.safetensors",
-            "sd_xl_base_1.0.safetensors",
-            "sd_xl_refiner_0.9.safetensors",
-            "sd_xl_refiner_1.0.safetensors",
-            "xl3ExperimentalSD10XL_v10.safetensors"
-          ],
-          "links": [
-            478
-          ],
-          "shape": 3,
-          "slot_index": 2
-        },
-        {
-          "name": "vae_model",
-          "type": [
-            "sdxl-vae-0.9.fp16.safetensors",
-            "sdxl-vae.safetensors",
-            "sdxl_vae-0.9.safetensors",
-            "sdxl_vae-1.0.safetensors",
-            "sdxl_vae-fp16fix2-0.9.safetensors"
-          ],
-          "links": [
-            479
-          ],
-          "shape": 3,
-          "slot_index": 3
-        },
-        {
-          "name": "main_upscale_model",
-          "type": [
-            "4x-UltraSharp.pth",
-            "4x_NMKD-Siax_200k.pth"
-          ],
-          "links": [
-            480
-          ],
-          "shape": 3,
-          "slot_index": 4
-        },
-        {
-          "name": "support_upscale_model",
-          "type": [
-            "4x-UltraSharp.pth",
-            "4x_NMKD-Siax_200k.pth"
-          ],
-          "links": [
-            481
-          ],
-          "shape": 3,
-          "slot_index": 5
-        },
-        {
-          "name": "lora_model",
-          "type": [
-            "sd_xl_offset_example-lora_1.0.safetensors"
-          ],
-          "links": [
-            482
-          ],
-          "shape": 3,
-          "slot_index": 6
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SeargeOutput4"
-      },
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 10,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -3700,
-        2130
-      ],
-      "size": {
-        "0": 300,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 16,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "ckpt_name",
-          "type": "sd_xl_base_0.9.safetensors,sd_xl_base_1.0.safetensors,sd_xl_refiner_0.9.safetensors,sd_xl_refiner_1.0.safetensors,xl3ExperimentalSD10XL_v10.safetensors",
-          "link": 477,
-          "widget": {
-            "name": "ckpt_name",
-            "config": [
-              [
-                "sd_xl_base_0.9.safetensors",
-                "sd_xl_base_1.0.safetensors",
-                "sd_xl_refiner_0.9.safetensors",
-                "sd_xl_refiner_1.0.safetensors",
-                "xl3ExperimentalSD10XL_v10.safetensors"
-              ]
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            452
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            451
-          ],
-          "shape": 3,
-          "slot_index": 1
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "title": "BASE Model",
-      "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "sd_xl_base_1.0.safetensors"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 12,
-      "type": "VAELoader",
-      "pos": [
-        -3700,
-        2930
-      ],
-      "size": {
-        "0": 300,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 18,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "vae_name",
-          "type": "sdxl-vae-0.9.fp16.safetensors,sdxl-vae.safetensors,sdxl_vae-0.9.safetensors,sdxl_vae-1.0.safetensors,sdxl_vae-fp16fix2-0.9.safetensors",
-          "link": 479,
-          "widget": {
-            "name": "vae_name",
-            "config": [
-              [
-                "sdxl-vae-0.9.fp16.safetensors",
-                "sdxl-vae.safetensors",
-                "sdxl_vae-0.9.safetensors",
-                "sdxl_vae-1.0.safetensors",
-                "sdxl_vae-fp16fix2-0.9.safetensors"
-              ]
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            558
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "VAE Model",
-      "properties": {
-        "Node name for S&R": "VAELoader"
-      },
-      "widgets_values": [
-        "sdxl-vae.safetensors"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 37,
-      "type": "UpscaleModelLoader",
-      "pos": [
-        -3700,
-        3430
-      ],
-      "size": {
-        "0": 300,
-        "1": 70
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 20,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model_name",
-          "type": "4x-UltraSharp.pth,4x_NMKD-Siax_200k.pth",
-          "link": 481,
-          "widget": {
-            "name": "model_name",
-            "config": [
-              [
-                "4x-UltraSharp.pth",
-                "4x_NMKD-Siax_200k.pth"
-              ]
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "links": [
-            560
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "Supporting Upscale Model",
-      "properties": {
-        "Node name for S&R": "UpscaleModelLoader"
-      },
-      "widgets_values": [
-        "4x-UltraSharp.pth"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
       "id": 172,
       "type": "Reroute",
       "pos": [
@@ -621,7 +324,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 554,
+          "link": 929,
           "slot_index": 0
         }
       ],
@@ -662,7 +365,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 555,
+          "link": 930,
           "slot_index": 0
         }
       ],
@@ -703,7 +406,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 556,
+          "link": 936,
           "slot_index": 0
         }
       ],
@@ -744,7 +447,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 557,
+          "link": 937,
           "slot_index": 0
         }
       ],
@@ -785,7 +488,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 558,
+          "link": 939,
           "slot_index": 0
         }
       ],
@@ -826,7 +529,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 560,
+          "link": 943,
           "slot_index": 0
         }
       ],
@@ -846,182 +549,6 @@
       },
       "color": "#232",
       "bgcolor": "#353"
-    },
-    {
-      "id": 151,
-      "type": "LoraLoader",
-      "pos": [
-        -3000,
-        2330
-      ],
-      "size": {
-        "0": 300,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 59,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 452
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 451
-        },
-        {
-          "name": "strength_model",
-          "type": "FLOAT",
-          "link": 459,
-          "widget": {
-            "name": "strength_model",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
-          }
-        },
-        {
-          "name": "strength_clip",
-          "type": "FLOAT",
-          "link": 460,
-          "widget": {
-            "name": "strength_clip",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
-          }
-        },
-        {
-          "name": "lora_name",
-          "type": "sd_xl_offset_example-lora_1.0.safetensors",
-          "link": 482,
-          "widget": {
-            "name": "lora_name",
-            "config": [
-              [
-                "sd_xl_offset_example-lora_1.0.safetensors"
-              ]
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            554
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            555
-          ],
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoraLoader"
-      },
-      "widgets_values": [
-        "sd_xl_offset_example-lora_1.0.safetensors",
-        1,
-        1
-      ],
-      "color": "#332922",
-      "bgcolor": "#593930"
-    },
-    {
-      "id": 27,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -3700,
-        2630
-      ],
-      "size": {
-        "0": 300,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 17,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "ckpt_name",
-          "type": "sd_xl_base_0.9.safetensors,sd_xl_base_1.0.safetensors,sd_xl_refiner_0.9.safetensors,sd_xl_refiner_1.0.safetensors,xl3ExperimentalSD10XL_v10.safetensors",
-          "link": 478,
-          "widget": {
-            "name": "ckpt_name",
-            "config": [
-              [
-                "sd_xl_base_0.9.safetensors",
-                "sd_xl_base_1.0.safetensors",
-                "sd_xl_refiner_0.9.safetensors",
-                "sd_xl_refiner_1.0.safetensors",
-                "xl3ExperimentalSD10XL_v10.safetensors"
-              ]
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            556
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            557
-          ],
-          "shape": 3
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "title": "REFINER Model",
-      "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "sd_xl_refiner_1.0.safetensors"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
     },
     {
       "id": 51,
@@ -1942,8 +1469,8 @@
           "name": "lora_strength",
           "type": "FLOAT",
           "links": [
-            459,
-            460
+            925,
+            926
           ],
           "shape": 3,
           "slot_index": 1
@@ -2016,7 +1543,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 559,
+          "link": 942,
           "slot_index": 0
         }
       ],
@@ -2034,58 +1561,6 @@
         "showOutputText": false,
         "horizontal": false
       },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 36,
-      "type": "UpscaleModelLoader",
-      "pos": [
-        -3700,
-        3230
-      ],
-      "size": {
-        "0": 300,
-        "1": 70
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 19,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model_name",
-          "type": "4x-UltraSharp.pth,4x_NMKD-Siax_200k.pth",
-          "link": 480,
-          "widget": {
-            "name": "model_name",
-            "config": [
-              [
-                "4x-UltraSharp.pth",
-                "4x_NMKD-Siax_200k.pth"
-              ]
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "links": [
-            559
-          ],
-          "shape": 3
-        }
-      ],
-      "title": "Main Upscale Model",
-      "properties": {
-        "Node name for S&R": "UpscaleModelLoader"
-      },
-      "widgets_values": [
-        "4x_NMKD-Siax_200k.pth"
-      ],
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -6276,7 +5751,7 @@
         "text": ""
       },
       "widgets_values": [
-        "     Improved Searge SDXL \"Reborn\" workflows for SDXL 1.0   |   Version 3.0 updated on Aug 02, 2023\n\n             !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n 1024 x 1024, 1152 x 896, 896 x 1152, 1216 x 832, 832 x 1216, 1344 x 768, 768 x 1344, 1536 x 640, 640 x 1536\n\nNOTE: All upscale factors are applied to the image size from generation parameters, not the actual image size"
+        "     Improved Searge SDXL \"Reborn\" workflows for SDXL 1.0   |   Version 3.1 updated on Aug 02, 2023\n\n             !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n 1024 x 1024, 1152 x 896, 896 x 1152, 1216 x 832, 832 x 1216, 1344 x 768, 768 x 1344, 1536 x 640, 640 x 1536\n\nNOTE: All upscale factors are applied to the image size from generation parameters, not the actual image size"
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -6773,12 +6248,12 @@
       },
       "widgets_values": [
         "disabled",
-        15,
+        25,
         0.25,
         1.5,
         "hard",
         "distinct",
-        0
+        0.49999999999999994
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -11932,6 +11407,428 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
+    },
+    {
+      "id": 353,
+      "type": "SeargeLoraLoader",
+      "pos": [
+        -3000,
+        2330
+      ],
+      "size": {
+        "0": 300,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 933
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 934
+        },
+        {
+          "name": "lora_name",
+          "type": "LORA_NAME",
+          "link": 924
+        },
+        {
+          "name": "strength_model",
+          "type": "FLOAT",
+          "link": 925,
+          "widget": {
+            "name": "strength_model",
+            "config": [
+              "FLOAT",
+              {
+                "default": 1,
+                "min": -10,
+                "max": 10,
+                "step": 0.01
+              }
+            ]
+          }
+        },
+        {
+          "name": "strength_clip",
+          "type": "FLOAT",
+          "link": 926,
+          "widget": {
+            "name": "strength_clip",
+            "config": [
+              "FLOAT",
+              {
+                "default": 1,
+                "min": -10,
+                "max": 10,
+                "step": 0.01
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            929
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            930
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeLoraLoader"
+      },
+      "widgets_values": [
+        1,
+        1
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 349,
+      "type": "SeargeOutput4",
+      "pos": [
+        -4400,
+        2130
+      ],
+      "size": {
+        "0": 300,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model_names",
+          "type": "MODEL_NAMES",
+          "link": 931
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model_names",
+          "type": "MODEL_NAMES",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "base_model",
+          "type": "CHECKPOINT_NAME",
+          "links": [
+            932
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "refiner_model",
+          "type": "CHECKPOINT_NAME",
+          "links": [
+            935
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "vae_model",
+          "type": "VAE_NAME",
+          "links": [
+            938
+          ],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "main_upscale_model",
+          "type": "UPSCALER_NAME",
+          "links": [
+            940
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "support_upscale_model",
+          "type": "UPSCALER_NAME",
+          "links": [
+            941
+          ],
+          "shape": 3,
+          "slot_index": 5
+        },
+        {
+          "name": "lora_model",
+          "type": "LORA_NAME",
+          "links": [
+            924
+          ],
+          "shape": 3,
+          "slot_index": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeOutput4"
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 350,
+      "type": "SeargeCheckpointLoader",
+      "pos": [
+        -3700,
+        2130
+      ],
+      "size": {
+        "0": 300,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ckpt_name",
+          "type": "CHECKPOINT_NAME",
+          "link": 932
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            933
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            934
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "title": "BASE Model",
+      "properties": {
+        "Node name for S&R": "SeargeCheckpointLoader"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 355,
+      "type": "SeargeCheckpointLoader",
+      "pos": [
+        -3700,
+        2630
+      ],
+      "size": {
+        "0": 300,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ckpt_name",
+          "type": "CHECKPOINT_NAME",
+          "link": 935
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            936
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            937
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "title": "REFINER Model",
+      "properties": {
+        "Node name for S&R": "SeargeCheckpointLoader"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 351,
+      "type": "SeargeVAELoader",
+      "pos": [
+        -3700,
+        2930
+      ],
+      "size": {
+        "0": 300,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae_name",
+          "type": "VAE_NAME",
+          "link": 938
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            939
+          ],
+          "shape": 3
+        }
+      ],
+      "title": "VAE Model",
+      "properties": {
+        "Node name for S&R": "SeargeVAELoader"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 352,
+      "type": "SeargeUpscaleModelLoader",
+      "pos": [
+        -3700,
+        3230
+      ],
+      "size": {
+        "0": 300,
+        "1": 70
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscaler_name",
+          "type": "UPSCALER_NAME",
+          "link": 940
+        }
+      ],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            942
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Main Upscale Model",
+      "properties": {
+        "Node name for S&R": "SeargeUpscaleModelLoader"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 356,
+      "type": "SeargeUpscaleModelLoader",
+      "pos": [
+        -3700,
+        3430
+      ],
+      "size": {
+        "0": 300,
+        "1": 70
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscaler_name",
+          "type": "UPSCALER_NAME",
+          "link": 941
+        }
+      ],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            943
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Supporting Upscale Model",
+      "properties": {
+        "Node name for S&R": "SeargeUpscaleModelLoader"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -12248,38 +12145,6 @@
       "INT"
     ],
     [
-      451,
-      10,
-      1,
-      151,
-      1,
-      "CLIP"
-    ],
-    [
-      452,
-      10,
-      0,
-      151,
-      0,
-      "MODEL"
-    ],
-    [
-      459,
-      152,
-      1,
-      151,
-      2,
-      "FLOAT"
-    ],
-    [
-      460,
-      152,
-      1,
-      151,
-      3,
-      "FLOAT"
-    ],
-    [
       463,
       153,
       1,
@@ -12374,62 +12239,6 @@
       42,
       1,
       "STRING"
-    ],
-    [
-      477,
-      155,
-      1,
-      10,
-      0,
-      "sd_xl_base_0.9.safetensors,sd_xl_base_1.0.safetensors,sd_xl_refiner_0.9.safetensors,sd_xl_refiner_1.0.safetensors,xl3ExperimentalSD10XL_v10.safetensors"
-    ],
-    [
-      478,
-      155,
-      2,
-      27,
-      0,
-      "sd_xl_base_0.9.safetensors,sd_xl_base_1.0.safetensors,sd_xl_refiner_0.9.safetensors,sd_xl_refiner_1.0.safetensors,xl3ExperimentalSD10XL_v10.safetensors"
-    ],
-    [
-      479,
-      155,
-      3,
-      12,
-      0,
-      "sdxl-vae-0.9.fp16.safetensors,sdxl-vae.safetensors,sdxl_vae-0.9.safetensors,sdxl_vae-1.0.safetensors,sdxl_vae-fp16fix2-0.9.safetensors"
-    ],
-    [
-      480,
-      155,
-      4,
-      36,
-      0,
-      "4x-UltraSharp.pth,4x_NMKD-Siax_200k.pth"
-    ],
-    [
-      481,
-      155,
-      5,
-      37,
-      0,
-      "4x-UltraSharp.pth,4x_NMKD-Siax_200k.pth"
-    ],
-    [
-      482,
-      155,
-      6,
-      151,
-      4,
-      "sd_xl_offset_example-lora_1.0.safetensors"
-    ],
-    [
-      483,
-      154,
-      0,
-      155,
-      0,
-      "MODEL_NAMES"
     ],
     [
       497,
@@ -12670,62 +12479,6 @@
       152,
       0,
       "PARAMETERS"
-    ],
-    [
-      554,
-      151,
-      0,
-      174,
-      0,
-      "*"
-    ],
-    [
-      555,
-      151,
-      1,
-      176,
-      0,
-      "*"
-    ],
-    [
-      556,
-      27,
-      0,
-      175,
-      0,
-      "*"
-    ],
-    [
-      557,
-      27,
-      1,
-      177,
-      0,
-      "*"
-    ],
-    [
-      558,
-      12,
-      0,
-      178,
-      0,
-      "*"
-    ],
-    [
-      559,
-      36,
-      0,
-      179,
-      0,
-      "*"
-    ],
-    [
-      560,
-      37,
-      0,
-      180,
-      0,
-      "*"
     ],
     [
       561,
@@ -14654,6 +14407,150 @@
       117,
       20,
       "FLOAT"
+    ],
+    [
+      924,
+      349,
+      6,
+      353,
+      2,
+      "LORA_NAME"
+    ],
+    [
+      925,
+      152,
+      1,
+      353,
+      3,
+      "FLOAT"
+    ],
+    [
+      926,
+      152,
+      1,
+      353,
+      4,
+      "FLOAT"
+    ],
+    [
+      929,
+      353,
+      0,
+      174,
+      0,
+      "*"
+    ],
+    [
+      930,
+      353,
+      1,
+      176,
+      0,
+      "*"
+    ],
+    [
+      931,
+      154,
+      0,
+      349,
+      0,
+      "MODEL_NAMES"
+    ],
+    [
+      932,
+      349,
+      1,
+      350,
+      0,
+      "CHECKPOINT_NAME"
+    ],
+    [
+      933,
+      350,
+      0,
+      353,
+      0,
+      "MODEL"
+    ],
+    [
+      934,
+      350,
+      1,
+      353,
+      1,
+      "CLIP"
+    ],
+    [
+      935,
+      349,
+      2,
+      355,
+      0,
+      "CHECKPOINT_NAME"
+    ],
+    [
+      936,
+      355,
+      0,
+      175,
+      0,
+      "*"
+    ],
+    [
+      937,
+      355,
+      1,
+      177,
+      0,
+      "*"
+    ],
+    [
+      938,
+      349,
+      3,
+      351,
+      0,
+      "VAE_NAME"
+    ],
+    [
+      939,
+      351,
+      0,
+      178,
+      0,
+      "*"
+    ],
+    [
+      940,
+      349,
+      4,
+      352,
+      0,
+      "UPSCALER_NAME"
+    ],
+    [
+      941,
+      349,
+      5,
+      356,
+      0,
+      "UPSCALER_NAME"
+    ],
+    [
+      942,
+      352,
+      0,
+      179,
+      0,
+      "*"
+    ],
+    [
+      943,
+      356,
+      0,
+      180,
+      0,
+      "*"
     ]
   ],
   "groups": [

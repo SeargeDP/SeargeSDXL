@@ -38,8 +38,9 @@ import os
 
 from comfy.cli_args import args
 from datetime import datetime
-from PIL import Image, ImageOps
+from PIL import Image
 from PIL.PngImagePlugin import PngInfo
+
 
 # SDXL Sampler with base and refiner support
 
@@ -637,7 +638,7 @@ class SeargeImageSave:
             i = 255. * image.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
             metadata = None
-            if not args.disable_metadata:
+            if args.disable_metadata is None or not args.disable_metadata:
                 metadata = PngInfo()
                 if prompt is not None:
                     metadata.add_text("prompt", json.dumps(prompt))
@@ -651,6 +652,94 @@ class SeargeImageSave:
             counter += 1
 
         return {}
+
+
+# Util: custom checkpoint loader
+
+class SeargeCheckpointLoader:
+    def __init__(self):
+        self.chkp_loader = nodes.CheckpointLoaderSimple()
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "ckpt_name": ("CHECKPOINT_NAME", ),
+                    },
+                }
+    RETURN_TYPES = ("MODEL", "CLIP", "VAE", )
+    FUNCTION = "load_checkpoint"
+
+    CATEGORY = "Searge/Files"
+
+    def load_checkpoint(self, ckpt_name, ):
+        return self.chkp_loader.load_checkpoint(ckpt_name)
+
+
+# Util: custom vae loader
+
+class SeargeVAELoader:
+    def __init__(self):
+        self.vae_loader = nodes.VAELoader()
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "vae_name": ("VAE_NAME", ),
+                    },
+                }
+    RETURN_TYPES = ("VAE", )
+    FUNCTION = "load_vae"
+
+    CATEGORY = "Searge/Files"
+
+    def load_vae(self, vae_name, ):
+        return self.vae_loader.load_vae(vae_name)
+
+
+# Util: custom upscale model loader
+
+class SeargeUpscaleModelLoader:
+    def __init__(self):
+        self.upscale_model_loader = comfy_extras.nodes_upscale_model.UpscaleModelLoader()
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "upscaler_name": ("UPSCALER_NAME", ),
+                    },
+                }
+    RETURN_TYPES = ("UPSCALE_MODEL", )
+    FUNCTION = "load_upscaler"
+
+    CATEGORY = "Searge/Files"
+
+    def load_upscaler(self, upscaler_name, ):
+        return self.upscale_model_loader.load_model(upscaler_name)
+
+
+# Util: custom upscale model loader
+
+class SeargeLoraLoader:
+    def __init__(self):
+        self.lora_loader = nodes.LoraLoader()
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "model": ("MODEL",),
+                    "clip": ("CLIP",),
+                    "lora_name": ("LORA_NAME",),
+                    "strength_model": ("FLOAT", {"default": 1.0, "min": -10.0, "max": 10.0, "step": 0.01}),
+                    "strength_clip": ("FLOAT", {"default": 1.0, "min": -10.0, "max": 10.0, "step": 0.01}),
+                    },
+                }
+    RETURN_TYPES = ("MODEL", "CLIP", )
+    FUNCTION = "load_lora"
+
+    CATEGORY = "Searge/Files"
+
+    def load_lora(self, model, clip, lora_name, strength_model, strength_clip, ):
+        return self.lora_loader.load_lora(model, clip, lora_name, strength_model, strength_clip)
 
 
 # Tool: Muxer for selecting between 3 latent inputs
@@ -1118,7 +1207,7 @@ class SeargeOutput4:
                     },
                 }
 
-    RETURN_TYPES = ("MODEL_NAMES", folder_paths.get_filename_list("checkpoints"), folder_paths.get_filename_list("checkpoints"), folder_paths.get_filename_list("vae"), folder_paths.get_filename_list("upscale_models"), folder_paths.get_filename_list("upscale_models"), folder_paths.get_filename_list("loras"), )
+    RETURN_TYPES = ("MODEL_NAMES", "CHECKPOINT_NAME", "CHECKPOINT_NAME", "VAE_NAME", "UPSCALER_NAME", "UPSCALER_NAME", "LORA_NAME", )
     RETURN_NAMES = ("model_names", "base_model", "refiner_model", "vae_model", "main_upscale_model", "support_upscale_model", "lora_model", )
     FUNCTION = "demux"
 
@@ -1369,6 +1458,10 @@ NODE_CLASS_MAPPINGS = {
     "SeargeFloatMath": SeargeFloatMath,
 
     "SeargeImageSave": SeargeImageSave,
+    "SeargeCheckpointLoader": SeargeCheckpointLoader,
+    "SeargeVAELoader": SeargeVAELoader,
+    "SeargeUpscaleModelLoader": SeargeUpscaleModelLoader,
+    "SeargeLoraLoader": SeargeLoraLoader,
 
     "SeargeLatentMuxer3": SeargeLatentMuxer3,
     "SeargeConditioningMuxer5": SeargeConditioningMuxer5,
@@ -1402,22 +1495,26 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeSDXLBasePromptEncoder": "SDXL Base Prompt Encoder (SeargeSDXL)",
     "SeargeSDXLRefinerPromptEncoder": "SDXL Refiner Prompt Encoder (SeargeSDXL)",
 
-    "SeargePromptText": "Prompt text input (SeargeSDXL)",
-    "SeargePromptCombiner": "Prompt combiner (SeargeSDXL)",
+    "SeargePromptText": "Prompt text input",
+    "SeargePromptCombiner": "Prompt combiner",
 
-    "SeargeIntegerConstant": "Integer Constant (SeargeSDXL)",
-    "SeargeIntegerPair": "Integer Pair (SeargeSDXL)",
-    "SeargeIntegerMath": "Integer Math (SeargeSDXL)",
-    "SeargeIntegerScaler": "Integer Scaler (SeargeSDXL)",
+    "SeargeIntegerConstant": "Integer Constant",
+    "SeargeIntegerPair": "Integer Pair",
+    "SeargeIntegerMath": "Integer Math",
+    "SeargeIntegerScaler": "Integer Scaler",
 
-    "SeargeFloatConstant": "Float Constant (SeargeSDXL)",
-    "SeargeFloatPair": "Float Pair (SeargeSDXL)",
-    "SeargeFloatMath": "Float Math (SeargeSDXL)",
+    "SeargeFloatConstant": "Float Constant",
+    "SeargeFloatPair": "Float Pair",
+    "SeargeFloatMath": "Float Math",
 
-    "SeargeImageSave": "Save Image (SeargeSDXL)",
+    "SeargeImageSave": "Save Image",
+    "SeargeCheckpointLoader": "Checkpoint Loader",
+    "SeargeVAELoader": "VAE Loader",
+    "SeargeUpscaleModelLoader": "Upscale Model Loader",
+    "SeargeLoraLoader": "Lora Loader",
 
-    "SeargeLatentMuxer3": "3-Way Muxer for Latents (SeargeSDXL)",
-    "SeargeConditioningMuxer5": "5-Way Muxer for Conditioning (SeargeSDXL)",
+    "SeargeLatentMuxer3": "3-Way Muxer for Latents",
+    "SeargeConditioningMuxer5": "5-Way Muxer for Conditioning",
 
     "SeargeParameterProcessor": "Parameter Processor",
     "SeargeInput1": "Prompts",
