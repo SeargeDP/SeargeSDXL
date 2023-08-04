@@ -814,15 +814,13 @@ class SeargeParameterProcessor:
     STATES = ["disabled", "enabled"]
     OPERATION_MODE = ["text to image", "image to image", "inpainting"]
     PROMPT_STYLE = ["simple", "subject focus", "style focus", "weighted", "overlay"]
-    STYLE_TEMPLATE = ["none", "test"]
+    STYLE_TEMPLATE = ["none", "test", "from_preprocessor"]
     SAVE_TO = ["output folder", "input folder"]
 
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
                     "inputs": ("PARAMETER_INPUTS", ),
-                    },
-                "optional": {
                     },
                 }
 
@@ -874,51 +872,57 @@ class SeargeParameterProcessor:
                 parameters["hrf_seed"] = seed + 3
 
         style_template = parameters["style_template"]
-        match style_template:
-            case "none":
-                pass
-            case "test":
-                if parameters["noise_offset"] is not None:
-                    parameters["noise_offset"] = 1 - parameters["hrf_noise_offset"]
-                if parameters["hrf_noise_offset"] is not None:
-                    parameters["hrf_noise_offset"] = 1 - parameters["hrf_noise_offset"]
-            case _:
-                # TODO: apply style based on its name here...
-                pass
+        if style_template is not None:
+            match style_template:
+                case "none":
+                    pass
+                case "test":
+                    if parameters["noise_offset"] is not None:
+                        parameters["noise_offset"] = 1 - parameters["hrf_noise_offset"]
+                    if parameters["hrf_noise_offset"] is not None:
+                        parameters["hrf_noise_offset"] = 1 - parameters["hrf_noise_offset"]
+                case "from_preprocessor":
+                    # this does nothing here, but will be used in the preprocessor
+                    pass
+                case _:
+                    # TODO: apply style based on its name here...
+                    pass
 
         operation_mode = parameters["operation_mode"]
-        match operation_mode:
-            case "text to image":
-                parameters["operation_selector"] = 0
-                # always fully denoise in img2img mode
-                parameters["denoise"] = 1.0
-            case "image to image":
-                parameters["operation_selector"] = 1
-            case "inpainting":
-                parameters["operation_selector"] = 2
-                # inpainting doesn't support hires fix
-                parameters["hrf_steps"] = 0
-            case _:
-                pass
+        if operation_mode is not None:
+            match operation_mode:
+                case "text to image":
+                    parameters["operation_selector"] = 0
+                    # always fully denoise in img2img mode
+                    parameters["denoise"] = 1.0
+                case "image to image":
+                    parameters["operation_selector"] = 1
+                case "inpainting":
+                    parameters["operation_selector"] = 2
+                    # inpainting doesn't support hires fix
+                    parameters["hrf_steps"] = 0
+                case _:
+                    pass
 
         prompt_style = parameters["prompt_style"]
-        match prompt_style:
-            case "simple":
-                parameters["prompt_style_selector"] = 0
-                main_prompt = parameters["main_prompt"]
-                parameters["secondary_prompt"] = main_prompt
-                parameters["style_prompt"] = ""
-                parameters["negative_style"] = ""
-            case "subject focus":
-                parameters["prompt_style_selector"] = 1
-            case "style focus":
-                parameters["prompt_style_selector"] = 2
-            case "weighted":
-                parameters["prompt_style_selector"] = 3
-            case "overlay":
-                parameters["prompt_style_selector"] = 4
-            case _:
-                pass
+        if prompt_style is not None:
+            match prompt_style:
+                case "simple":
+                    parameters["prompt_style_selector"] = 0
+                    main_prompt = parameters["main_prompt"]
+                    parameters["secondary_prompt"] = main_prompt
+                    parameters["style_prompt"] = ""
+                    parameters["negative_style"] = ""
+                case "subject focus":
+                    parameters["prompt_style_selector"] = 1
+                case "style focus":
+                    parameters["prompt_style_selector"] = 2
+                case "weighted":
+                    parameters["prompt_style_selector"] = 3
+                case "overlay":
+                    parameters["prompt_style_selector"] = 4
+                case _:
+                    pass
 
         # TODO: replace this special logic and the dirty hacks by creating new generated parameters for saving
         save_image = parameters["save_image"]
@@ -936,6 +940,40 @@ class SeargeParameterProcessor:
                     parameters["hires_fix"] = SeargeParameterProcessor.STATES[1]
 
         return (parameters, )
+
+
+
+
+# UI: Parameter Processor
+
+class SeargeStylePreprocessor:
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "inputs": ("PARAMETER_INPUTS", ),
+                    "active_style_name": ("STRING", {"multiline": False, "default": ""}),
+                    "style_definitions": ("STRING", {"multiline": True, "default": "[unfinished work in progress]"}),
+                    },
+                }
+
+    RETURN_TYPES = ("PARAMETER_INPUTS", )
+    RETURN_NAMES = ("inputs", )
+    FUNCTION = "process"
+
+    CATEGORY = "Searge/UI"
+
+    def process(self, inputs, active_style_name, style_definitions):
+        if inputs is None:
+            inputs = {}
+
+        style_template = inputs["style_template"]
+        if style_template is None or style_template != SeargeParameterProcessor.STYLE_TEMPLATE[2]:
+            return (inputs,)
+
+        # TODO: do what needs to be done to apply the selected style
+
+        return (inputs, )
 
 
 # UI: Prompt Inputs
@@ -1467,6 +1505,8 @@ NODE_CLASS_MAPPINGS = {
     "SeargeConditioningMuxer5": SeargeConditioningMuxer5,
 
     "SeargeParameterProcessor": SeargeParameterProcessor,
+    "SeargeStylePreprocessor": SeargeStylePreprocessor,
+
     "SeargeInput1": SeargeInput1,
     "SeargeOutput1": SeargeOutput1,
     "SeargeInput2": SeargeInput2,
@@ -1517,6 +1557,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeConditioningMuxer5": "5-Way Muxer for Conditioning",
 
     "SeargeParameterProcessor": "Parameter Processor",
+    "SeargeStylePreprocessor": "Style Preprocessor (wip)",
+
     "SeargeInput1": "Prompts",
     "SeargeOutput1": "Prompts",
     "SeargeInput2": "Generation Parameters",

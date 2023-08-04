@@ -1,6 +1,6 @@
 {
-  "last_node_id": 356,
-  "last_link_id": 943,
+  "last_node_id": 357,
+  "last_link_id": 945,
   "nodes": [
     {
       "id": 133,
@@ -216,7 +216,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 209,
+      "order": 210,
       "mode": 0,
       "inputs": [
         {
@@ -272,7 +272,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 56,
+      "order": 57,
       "mode": 0,
       "inputs": [
         {
@@ -318,7 +318,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 61,
+      "order": 62,
       "mode": 0,
       "inputs": [
         {
@@ -359,7 +359,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 62,
+      "order": 63,
       "mode": 0,
       "inputs": [
         {
@@ -564,7 +564,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 79,
+      "order": 80,
       "mode": 0,
       "inputs": [
         {
@@ -639,7 +639,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 80,
+      "order": 81,
       "mode": 0,
       "inputs": [
         {
@@ -714,7 +714,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 81,
+      "order": 82,
       "mode": 0,
       "inputs": [
         {
@@ -789,7 +789,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 82,
+      "order": 83,
       "mode": 0,
       "inputs": [
         {
@@ -864,7 +864,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 74,
+      "order": 75,
       "mode": 0,
       "inputs": [
         {
@@ -938,7 +938,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 63,
+      "order": 64,
       "mode": 0,
       "inputs": [
         {
@@ -1075,7 +1075,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 89,
+      "order": 90,
       "mode": 0,
       "inputs": [
         {
@@ -1185,7 +1185,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 84,
+      "order": 85,
       "mode": 0,
       "inputs": [
         {
@@ -1227,7 +1227,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 114,
+      "order": 115,
       "mode": 0,
       "inputs": [
         {
@@ -1320,7 +1320,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 68,
+      "order": 69,
       "mode": 0,
       "inputs": [
         {
@@ -1362,7 +1362,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 60,
+      "order": 61,
       "mode": 0,
       "inputs": [
         {
@@ -1404,7 +1404,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 64,
+      "order": 65,
       "mode": 0,
       "inputs": [
         {
@@ -1446,7 +1446,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 57,
+      "order": 58,
       "mode": 0,
       "inputs": [
         {
@@ -1496,7 +1496,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 58,
+      "order": 59,
       "mode": 0,
       "inputs": [
         {
@@ -1578,7 +1578,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 90,
+      "order": 91,
       "mode": 0,
       "inputs": [
         {
@@ -1619,7 +1619,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 196,
+      "order": 197,
       "mode": 0,
       "inputs": [
         {
@@ -1667,7 +1667,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 198,
+      "order": 199,
       "mode": 0,
       "inputs": [
         {
@@ -1708,7 +1708,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 164,
+      "order": 165,
       "mode": 0,
       "inputs": [
         {
@@ -1814,7 +1814,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 115,
+      "order": 116,
       "mode": 0,
       "inputs": [
         {
@@ -1958,7 +1958,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 140,
+      "order": 141,
       "mode": 0,
       "inputs": [
         {
@@ -2061,7 +2061,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 172,
+      "order": 173,
       "mode": 0,
       "inputs": [
         {
@@ -2135,7 +2135,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 173,
+      "order": 174,
       "mode": 0,
       "inputs": [
         {
@@ -2301,7 +2301,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 150,
+      "order": 151,
       "mode": 0,
       "inputs": [
         {
@@ -2342,7 +2342,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 156,
+      "order": 157,
       "mode": 0,
       "inputs": [
         {
@@ -2383,7 +2383,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 160,
+      "order": 161,
       "mode": 0,
       "inputs": [
         {
@@ -2424,7 +2424,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 177,
+      "order": 178,
       "mode": 0,
       "inputs": [
         {
@@ -2467,7 +2467,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 178,
+      "order": 179,
       "mode": 0,
       "inputs": [
         {
@@ -2510,7 +2510,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 179,
+      "order": 180,
       "mode": 0,
       "inputs": [
         {
@@ -2553,7 +2553,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 95,
+      "order": 96,
       "mode": 0,
       "inputs": [
         {
@@ -2594,7 +2594,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 96,
+      "order": 97,
       "mode": 0,
       "inputs": [
         {
@@ -2635,7 +2635,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 97,
+      "order": 98,
       "mode": 0,
       "inputs": [
         {
@@ -2676,7 +2676,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 98,
+      "order": 99,
       "mode": 0,
       "inputs": [
         {
@@ -2717,7 +2717,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 93,
+      "order": 94,
       "mode": 0,
       "inputs": [
         {
@@ -2758,7 +2758,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 94,
+      "order": 95,
       "mode": 0,
       "inputs": [
         {
@@ -2799,7 +2799,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 99,
+      "order": 100,
       "mode": 0,
       "inputs": [
         {
@@ -2840,7 +2840,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 100,
+      "order": 101,
       "mode": 0,
       "inputs": [
         {
@@ -2881,7 +2881,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 87,
+      "order": 88,
       "mode": 0,
       "inputs": [
         {
@@ -3170,7 +3170,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 107,
+      "order": 108,
       "mode": 0,
       "inputs": [
         {
@@ -3216,7 +3216,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 108,
+      "order": 109,
       "mode": 0,
       "inputs": [
         {
@@ -3262,7 +3262,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 109,
+      "order": 110,
       "mode": 0,
       "inputs": [
         {
@@ -3308,7 +3308,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 110,
+      "order": 111,
       "mode": 0,
       "inputs": [
         {
@@ -3354,7 +3354,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 86,
+      "order": 87,
       "mode": 0,
       "inputs": [
         {
@@ -3553,7 +3553,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 105,
+      "order": 106,
       "mode": 0,
       "inputs": [
         {
@@ -3598,7 +3598,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 106,
+      "order": 107,
       "mode": 0,
       "inputs": [
         {
@@ -3643,7 +3643,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 88,
+      "order": 89,
       "mode": 0,
       "inputs": [
         {
@@ -3769,7 +3769,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 111,
+      "order": 112,
       "mode": 0,
       "inputs": [
         {
@@ -3814,7 +3814,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 112,
+      "order": 113,
       "mode": 0,
       "inputs": [
         {
@@ -3904,7 +3904,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 70,
+      "order": 71,
       "mode": 0,
       "inputs": [
         {
@@ -3995,7 +3995,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 199,
+      "order": 200,
       "mode": 0,
       "inputs": [
         {
@@ -4025,7 +4025,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 190,
+      "order": 191,
       "mode": 0,
       "inputs": [
         {
@@ -4067,7 +4067,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 191,
+      "order": 192,
       "mode": 0,
       "inputs": [
         {
@@ -4109,7 +4109,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 192,
+      "order": 193,
       "mode": 0,
       "inputs": [
         {
@@ -4151,7 +4151,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 204,
+      "order": 205,
       "mode": 0,
       "inputs": [
         {
@@ -4181,7 +4181,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 201,
+      "order": 202,
       "mode": 0,
       "inputs": [
         {
@@ -4509,7 +4509,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 102,
+      "order": 103,
       "mode": 0,
       "inputs": [
         {
@@ -4551,7 +4551,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 116,
+      "order": 117,
       "mode": 0,
       "inputs": [
         {
@@ -4592,7 +4592,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 141,
+      "order": 142,
       "mode": 0,
       "inputs": [
         {
@@ -4634,7 +4634,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 202,
+      "order": 203,
       "mode": 0,
       "inputs": [
         {
@@ -4765,7 +4765,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 181,
+      "order": 182,
       "mode": 0,
       "inputs": [
         {
@@ -4890,7 +4890,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 187,
+      "order": 188,
       "mode": 0,
       "inputs": [
         {
@@ -4973,7 +4973,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 165,
+      "order": 166,
       "mode": 0,
       "inputs": [
         {
@@ -5188,7 +5188,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 65,
+      "order": 66,
       "mode": 0,
       "inputs": [
         {
@@ -5401,7 +5401,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 71,
+      "order": 72,
       "mode": 0,
       "inputs": [
         {
@@ -5443,7 +5443,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 205,
+      "order": 206,
       "mode": 0,
       "inputs": [
         {
@@ -5485,7 +5485,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 189,
+      "order": 190,
       "mode": 0,
       "inputs": [
         {
@@ -5573,7 +5573,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 72,
+      "order": 73,
       "mode": 0,
       "inputs": [
         {
@@ -5661,7 +5661,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 66,
+      "order": 67,
       "mode": 0,
       "inputs": [
         {
@@ -5703,7 +5703,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 75,
+      "order": 76,
       "mode": 0,
       "inputs": [
         {
@@ -5770,7 +5770,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 208,
+      "order": 209,
       "mode": 0,
       "inputs": [
         {
@@ -5888,7 +5888,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 207,
+      "order": 208,
       "mode": 0,
       "inputs": [
         {
@@ -5906,51 +5906,6 @@
       "bgcolor": "#335"
     },
     {
-      "id": 170,
-      "type": "Reroute",
-      "pos": [
-        3100,
-        700
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 54,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 534,
-          "pos": [
-            37.5,
-            0
-          ],
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "PARAMETERS",
-          "links": [
-            533
-          ],
-          "label": "data"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": true
-      },
-      "color": "#222",
-      "bgcolor": "#000"
-    },
-    {
       "id": 104,
       "type": "Reroute",
       "pos": [
@@ -5964,7 +5919,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 206,
+      "order": 207,
       "mode": 0,
       "inputs": [
         {
@@ -5993,179 +5948,6 @@
       },
       "color": "#223",
       "bgcolor": "#335"
-    },
-    {
-      "id": 270,
-      "type": "SeargeInput1",
-      "pos": [
-        2300,
-        430
-      ],
-      "size": {
-        "0": 300,
-        "1": 270
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 44,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "inputs",
-          "type": "PARAMETER_INPUTS",
-          "link": 722
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 729
-        },
-        {
-          "name": "mask",
-          "type": "MASK",
-          "link": 730,
-          "slot_index": 2
-        },
-        {
-          "name": "main_prompt",
-          "type": "STRING",
-          "link": 723,
-          "widget": {
-            "name": "main_prompt",
-            "config": [
-              "STRING",
-              {
-                "multiline": true,
-                "default": ""
-              }
-            ]
-          }
-        },
-        {
-          "name": "secondary_prompt",
-          "type": "STRING",
-          "link": 724,
-          "widget": {
-            "name": "secondary_prompt",
-            "config": [
-              "STRING",
-              {
-                "multiline": true,
-                "default": ""
-              }
-            ]
-          }
-        },
-        {
-          "name": "style_prompt",
-          "type": "STRING",
-          "link": 725,
-          "widget": {
-            "name": "style_prompt",
-            "config": [
-              "STRING",
-              {
-                "multiline": true,
-                "default": ""
-              }
-            ]
-          }
-        },
-        {
-          "name": "negative_prompt",
-          "type": "STRING",
-          "link": 726,
-          "widget": {
-            "name": "negative_prompt",
-            "config": [
-              "STRING",
-              {
-                "multiline": true,
-                "default": ""
-              }
-            ]
-          }
-        },
-        {
-          "name": "negative_style",
-          "type": "STRING",
-          "link": 727,
-          "widget": {
-            "name": "negative_style",
-            "config": [
-              "STRING",
-              {
-                "multiline": true,
-                "default": ""
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "inputs",
-          "type": "PARAMETER_INPUTS",
-          "links": [
-            728
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SeargeInput1"
-      },
-      "widgets_values": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
-      "color": "#222",
-      "bgcolor": "#000"
-    },
-    {
-      "id": 131,
-      "type": "SeargeParameterProcessor",
-      "pos": [
-        2800,
-        430
-      ],
-      "size": {
-        "0": 200,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 51,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "inputs",
-          "type": "PARAMETER_INPUTS",
-          "link": 728
-        }
-      ],
-      "outputs": [
-        {
-          "name": "parameters",
-          "type": "PARAMETERS",
-          "links": [
-            534
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SeargeParameterProcessor"
-      },
-      "color": "#323",
-      "bgcolor": "#535"
     },
     {
       "id": 271,
@@ -6272,7 +6054,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 193,
+      "order": 194,
       "mode": 0,
       "inputs": [
         {
@@ -6324,7 +6106,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 194,
+      "order": 195,
       "mode": 0,
       "inputs": [
         {
@@ -6354,7 +6136,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 174,
+      "order": 175,
       "mode": 0,
       "inputs": [
         {
@@ -6457,7 +6239,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 166,
+      "order": 167,
       "mode": 0,
       "inputs": [
         {
@@ -6593,7 +6375,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 180,
+      "order": 181,
       "mode": 0,
       "inputs": [
         {
@@ -6714,7 +6496,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 197,
+      "order": 198,
       "mode": 0,
       "inputs": [
         {
@@ -6766,7 +6548,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 195,
+      "order": 196,
       "mode": 0,
       "inputs": [
         {
@@ -7094,7 +6876,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 76,
+      "order": 77,
       "mode": 0,
       "inputs": [
         {
@@ -7226,7 +7008,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 67,
+      "order": 68,
       "mode": 0,
       "inputs": [
         {
@@ -7330,7 +7112,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 73,
+      "order": 74,
       "mode": 0,
       "inputs": [
         {
@@ -7402,7 +7184,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 101,
+      "order": 102,
       "mode": 0,
       "inputs": [
         {
@@ -7550,7 +7332,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 176,
+      "order": 177,
       "mode": 0,
       "inputs": [
         {
@@ -7593,7 +7375,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 92,
+      "order": 93,
       "mode": 0,
       "inputs": [
         {
@@ -7634,7 +7416,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 91,
+      "order": 92,
       "mode": 0,
       "inputs": [
         {
@@ -7716,7 +7498,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 104,
+      "order": 105,
       "mode": 0,
       "inputs": [
         {
@@ -7796,7 +7578,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 143,
+      "order": 144,
       "mode": 0,
       "inputs": [
         {
@@ -7842,7 +7624,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 103,
+      "order": 104,
       "mode": 0,
       "inputs": [
         {
@@ -7889,7 +7671,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 118,
+      "order": 119,
       "mode": 0,
       "inputs": [
         {
@@ -7932,7 +7714,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 182,
+      "order": 183,
       "mode": 0,
       "inputs": [
         {
@@ -8020,7 +7802,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 167,
+      "order": 168,
       "mode": 0,
       "inputs": [
         {
@@ -8065,7 +7847,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 77,
+      "order": 78,
       "mode": 0,
       "inputs": [
         {
@@ -8103,7 +7885,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 117,
+      "order": 118,
       "mode": 0,
       "inputs": [
         {
@@ -8144,7 +7926,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 142,
+      "order": 143,
       "mode": 0,
       "inputs": [
         {
@@ -8186,7 +7968,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 139,
+      "order": 140,
       "mode": 0,
       "inputs": [
         {
@@ -8232,7 +8014,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 85,
+      "order": 86,
       "mode": 0,
       "inputs": [
         {
@@ -8317,7 +8099,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 78,
+      "order": 79,
       "mode": 0,
       "inputs": [
         {
@@ -8409,7 +8191,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 200,
+      "order": 201,
       "mode": 0,
       "inputs": [
         {
@@ -8450,7 +8232,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 121,
+      "order": 122,
       "mode": 0,
       "inputs": [
         {
@@ -8492,7 +8274,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 126,
+      "order": 127,
       "mode": 0,
       "inputs": [
         {
@@ -8534,7 +8316,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 129,
+      "order": 130,
       "mode": 0,
       "inputs": [
         {
@@ -8576,7 +8358,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 130,
+      "order": 131,
       "mode": 0,
       "inputs": [
         {
@@ -8618,7 +8400,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 161,
+      "order": 162,
       "mode": 0,
       "inputs": [
         {
@@ -8659,7 +8441,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 157,
+      "order": 158,
       "mode": 0,
       "inputs": [
         {
@@ -8700,7 +8482,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 149,
+      "order": 150,
       "mode": 0,
       "inputs": [
         {
@@ -8741,7 +8523,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 155,
+      "order": 156,
       "mode": 0,
       "inputs": [
         {
@@ -8782,7 +8564,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 154,
+      "order": 155,
       "mode": 0,
       "inputs": [
         {
@@ -8823,7 +8605,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 151,
+      "order": 152,
       "mode": 0,
       "inputs": [
         {
@@ -9088,7 +8870,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 186,
+      "order": 187,
       "mode": 0,
       "inputs": [
         {
@@ -9128,7 +8910,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 184,
+      "order": 185,
       "mode": 0,
       "inputs": [
         {
@@ -9168,7 +8950,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 185,
+      "order": 186,
       "mode": 0,
       "inputs": [
         {
@@ -9208,7 +8990,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 183,
+      "order": 184,
       "mode": 0,
       "inputs": [
         {
@@ -9248,7 +9030,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 69,
+      "order": 70,
       "mode": 0,
       "inputs": [
         {
@@ -9290,7 +9072,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 175,
+      "order": 176,
       "mode": 0,
       "inputs": [
         {
@@ -9377,7 +9159,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 119,
+      "order": 120,
       "mode": 0,
       "inputs": [
         {
@@ -9423,7 +9205,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 124,
+      "order": 125,
       "mode": 0,
       "inputs": [
         {
@@ -9469,7 +9251,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 132,
+      "order": 133,
       "mode": 0,
       "inputs": [
         {
@@ -9515,7 +9297,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 136,
+      "order": 137,
       "mode": 0,
       "inputs": [
         {
@@ -9561,7 +9343,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 120,
+      "order": 121,
       "mode": 0,
       "inputs": [
         {
@@ -9629,7 +9411,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 125,
+      "order": 126,
       "mode": 0,
       "inputs": [
         {
@@ -9697,7 +9479,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 131,
+      "order": 132,
       "mode": 0,
       "inputs": [
         {
@@ -9765,7 +9547,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 135,
+      "order": 136,
       "mode": 0,
       "inputs": [
         {
@@ -9832,7 +9614,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 123,
+      "order": 124,
       "mode": 0,
       "inputs": [
         {
@@ -9878,7 +9660,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 127,
+      "order": 128,
       "mode": 0,
       "inputs": [
         {
@@ -9924,7 +9706,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 133,
+      "order": 134,
       "mode": 0,
       "inputs": [
         {
@@ -9971,7 +9753,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 137,
+      "order": 138,
       "mode": 0,
       "inputs": [
         {
@@ -10018,7 +9800,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 122,
+      "order": 123,
       "mode": 0,
       "inputs": [
         {
@@ -10064,7 +9846,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 128,
+      "order": 129,
       "mode": 0,
       "inputs": [
         {
@@ -10110,7 +9892,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 134,
+      "order": 135,
       "mode": 0,
       "inputs": [
         {
@@ -10156,7 +9938,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 138,
+      "order": 139,
       "mode": 0,
       "inputs": [
         {
@@ -10203,7 +9985,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 145,
+      "order": 146,
       "mode": 0,
       "inputs": [
         {
@@ -10245,7 +10027,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 146,
+      "order": 147,
       "mode": 0,
       "inputs": [
         {
@@ -10286,7 +10068,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 162,
+      "order": 163,
       "mode": 0,
       "inputs": [
         {
@@ -10326,7 +10108,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 158,
+      "order": 159,
       "mode": 0,
       "inputs": [
         {
@@ -10366,7 +10148,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 152,
+      "order": 153,
       "mode": 0,
       "inputs": [
         {
@@ -10406,7 +10188,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 148,
+      "order": 149,
       "mode": 0,
       "inputs": [
         {
@@ -10447,7 +10229,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 163,
+      "order": 164,
       "mode": 0,
       "inputs": [
         {
@@ -10486,7 +10268,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 159,
+      "order": 160,
       "mode": 0,
       "inputs": [
         {
@@ -10525,7 +10307,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 153,
+      "order": 154,
       "mode": 0,
       "inputs": [
         {
@@ -10564,7 +10346,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 147,
+      "order": 148,
       "mode": 0,
       "inputs": [
         {
@@ -10604,7 +10386,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 83,
+      "order": 84,
       "mode": 0,
       "inputs": [
         {
@@ -10659,7 +10441,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 169,
+      "order": 170,
       "mode": 0,
       "inputs": [
         {
@@ -10743,7 +10525,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 168,
+      "order": 169,
       "mode": 0,
       "inputs": [
         {
@@ -10828,7 +10610,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 170,
+      "order": 171,
       "mode": 0,
       "inputs": [
         {
@@ -10914,7 +10696,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 171,
+      "order": 172,
       "mode": 0,
       "inputs": [
         {
@@ -11000,7 +10782,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 144,
+      "order": 145,
       "mode": 0,
       "inputs": [
         {
@@ -11041,7 +10823,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 113,
+      "order": 114,
       "mode": 0,
       "inputs": [
         {
@@ -11094,7 +10876,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 188,
+      "order": 189,
       "mode": 0,
       "inputs": [
         {
@@ -11190,7 +10972,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 210,
+      "order": 211,
       "mode": 0,
       "inputs": [
         {
@@ -11310,7 +11092,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 203,
+      "order": 204,
       "mode": 0,
       "inputs": [
         {
@@ -11422,7 +11204,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 59,
+      "order": 60,
       "mode": 0,
       "inputs": [
         {
@@ -11829,6 +11611,268 @@
       },
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 270,
+      "type": "SeargeInput1",
+      "pos": [
+        1800,
+        130
+      ],
+      "size": {
+        "0": 300,
+        "1": 270
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs",
+          "type": "PARAMETER_INPUTS",
+          "link": 722
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 729
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 730,
+          "slot_index": 2
+        },
+        {
+          "name": "main_prompt",
+          "type": "STRING",
+          "link": 723,
+          "widget": {
+            "name": "main_prompt",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": ""
+              }
+            ]
+          }
+        },
+        {
+          "name": "secondary_prompt",
+          "type": "STRING",
+          "link": 724,
+          "widget": {
+            "name": "secondary_prompt",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": ""
+              }
+            ]
+          }
+        },
+        {
+          "name": "style_prompt",
+          "type": "STRING",
+          "link": 725,
+          "widget": {
+            "name": "style_prompt",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": ""
+              }
+            ]
+          }
+        },
+        {
+          "name": "negative_prompt",
+          "type": "STRING",
+          "link": 726,
+          "widget": {
+            "name": "negative_prompt",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": ""
+              }
+            ]
+          }
+        },
+        {
+          "name": "negative_style",
+          "type": "STRING",
+          "link": 727,
+          "widget": {
+            "name": "negative_style",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": ""
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "inputs",
+          "type": "PARAMETER_INPUTS",
+          "links": [
+            945
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeInput1"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 131,
+      "type": "SeargeParameterProcessor",
+      "pos": [
+        3000,
+        130
+      ],
+      "size": {
+        "0": 200,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs",
+          "type": "PARAMETER_INPUTS",
+          "link": 944
+        }
+      ],
+      "outputs": [
+        {
+          "name": "parameters",
+          "type": "PARAMETERS",
+          "links": [
+            534
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeParameterProcessor"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 357,
+      "type": "SeargeStylePreprocessor",
+      "pos": [
+        2200,
+        130
+      ],
+      "size": [
+        700,
+        970
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs",
+          "type": "PARAMETER_INPUTS",
+          "link": 945
+        }
+      ],
+      "outputs": [
+        {
+          "name": "inputs",
+          "type": "PARAMETER_INPUTS",
+          "links": [
+            944
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeStylePreprocessor"
+      },
+      "widgets_values": [
+        "test",
+        "[unfinished work in progress]"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 170,
+      "type": "Reroute",
+      "pos": [
+        3200,
+        1000
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 534,
+          "pos": [
+            37.5,
+            0
+          ],
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "PARAMETERS",
+          "links": [
+            533
+          ],
+          "label": "data"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": true
+      },
+      "color": "#222",
+      "bgcolor": "#000"
     }
   ],
   "links": [
@@ -13377,14 +13421,6 @@
       "STRING"
     ],
     [
-      728,
-      270,
-      0,
-      131,
-      0,
-      "PARAMETER_INPUTS"
-    ],
-    [
       729,
       268,
       0,
@@ -14551,6 +14587,22 @@
       180,
       0,
       "*"
+    ],
+    [
+      944,
+      357,
+      0,
+      131,
+      0,
+      "PARAMETER_INPUTS"
+    ],
+    [
+      945,
+      270,
+      0,
+      357,
+      0,
+      "PARAMETER_INPUTS"
     ]
   ],
   "groups": [
