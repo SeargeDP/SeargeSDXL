@@ -13,6 +13,7 @@ Instead of having separate workflows for different tasks, everything is now inte
 - Updated workflow to make use of the added node types
 - Adjusted the default settings for some parameters in the workflow
 - Fixed some reported issues with the workflow and custom nodes
+- Prepared the workflow for an upcoming feature
 
 ## What's new in v3.0?
 - Completely overhauled **user interface**, now even easier to use than before
