@@ -225,7 +225,7 @@ class SeargeEnablerInputs:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-                    "state": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
+                    "state": (SeargeParameterProcessor.STATES, {"default": SeargeParameterProcessor.STATES[1]}),
                     },
                 }
 
@@ -245,7 +245,7 @@ class SeargeSaveFolderInputs:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-                    "save_to": (SeargeParameterProcessor.SAVE_TO, {"default": "output folder"}),
+                    "save_to": (SeargeParameterProcessor.SAVE_TO, {"default": SeargeParameterProcessor.SAVE_TO[0]}),
                     },
                 }
 
@@ -665,8 +665,8 @@ class SeargeImageSave:
         return {"required": {
                     "images": ("IMAGE", ),
                     "filename_prefix": ("STRING", {"default": "SeargeSDXL-%date%/Image"}),
-                    "state": ("ENABLE_STATE", {"default": "enabled"}),
-                    "save_to": ("SAVE_FOLDER", {"default": "output folder"}),
+                    "state": ("ENABLE_STATE", {"default": SeargeParameterProcessor.STATES[1]}),
+                    "save_to": ("SAVE_FOLDER", {"default": SeargeParameterProcessor.SAVE_TO[0]}),
                     },
                 "hidden": {
                     "prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO"
@@ -684,12 +684,11 @@ class SeargeImageSave:
         if state == SeargeParameterProcessor.STATES[0]:
             return {}
 
-        match save_to:
-            case "input folder":
-                output_dir = folder_paths.get_input_directory()
-                filename_prefix = "output-%date%"
-            case _:
-                output_dir = folder_paths.get_output_directory()
+        if save_to == SeargeParameterProcessor.SAVE_TO[1]:
+            output_dir = folder_paths.get_input_directory()
+            filename_prefix = "output-%date%"
+        else:
+            output_dir = folder_paths.get_output_directory()
 
         filename_prefix = filename_prefix.replace("%date%", datetime.now().strftime("%Y-%m-%d"))
 
@@ -823,13 +822,12 @@ class SeargeLatentMuxer3:
     CATEGORY = "Searge/FlowControl"
 
     def mux(self, input0, input1, input2, input_selector, ):
-        match input_selector:
-            case 1:
-                return (input1,)
-            case 2:
-                return (input2,)
-            case _:
-                return (input0, )
+        if input_selector == 1:
+            return (input1,)
+        elif input_selector == 2:
+            return (input2,)
+        else:
+            return (input0, )
 
 
 # Tool: Muxer for selecting between 5 conditioning inputs
@@ -851,11 +849,10 @@ class SeargeConditioningMuxer2:
     CATEGORY = "Searge/FlowControl"
 
     def mux(self, input0, input1, input_selector, ):
-        match input_selector:
-            case 1:
-                return (input1,)
-            case _:
-                return (input0, )
+        if input_selector == 1:
+            return (input1,)
+        else:
+            return (input0, )
 
 
 # Tool: Muxer for selecting between 5 conditioning inputs
@@ -880,17 +877,16 @@ class SeargeConditioningMuxer5:
     CATEGORY = "Searge/FlowControl"
 
     def mux(self, input0, input1, input2, input3, input4, input_selector, ):
-        match input_selector:
-            case 1:
-                return (input1,)
-            case 2:
-                return (input2,)
-            case 3:
-                return (input3,)
-            case 4:
-                return (input4,)
-            case _:
-                return (input0, )
+        if input_selector == 1:
+            return (input1,)
+        elif input_selector == 2:
+            return (input2,)
+        elif input_selector == 3:
+            return (input3,)
+        elif input_selector == 4:
+            return (input4,)
+        else:
+            return (input0, )
 
 
 # UI: Parameter Processor
@@ -907,7 +903,7 @@ class SeargeParameterProcessor:
     # sorted from easy-to-use to harder-to-use
     PROMPT_STYLE = ["simple", "3 prompts G+L-N", "subject focus", "style focus", "weighted", "overlay", "subject - style", "style - subject", "style only", "weighted - overlay", "overlay - weighted"]
     # (work in progress)
-    STYLE_TEMPLATE = ["none", "test", "from_preprocessor"]
+    STYLE_TEMPLATE = ["none", "from preprocessor", "test"]
     # save folder for generated images
     SAVE_TO = ["output folder", "input folder"]
 
@@ -967,36 +963,36 @@ class SeargeParameterProcessor:
 
         style_template = parameters["style_template"]
         if style_template is not None:
-            match style_template:
-                case "none":
-                    pass
-                case "test":
-                    if parameters["noise_offset"] is not None:
-                        parameters["noise_offset"] = 1 - parameters["hrf_noise_offset"]
-                    if parameters["hrf_noise_offset"] is not None:
-                        parameters["hrf_noise_offset"] = 1 - parameters["hrf_noise_offset"]
-                case "from_preprocessor":
-                    # this does nothing here, but will be used in the preprocessor
-                    pass
-                case _:
-                    # TODO: apply style based on its name here...
-                    pass
+            # "from preprocessor"
+            if style_template == SeargeParameterProcessor.STYLE_TEMPLATE[1]:
+                # this does nothing here, but will be used in the preprocessor
+                pass
+            # "test"
+            if style_template == SeargeParameterProcessor.STYLE_TEMPLATE[2]:
+                if parameters["noise_offset"] is not None:
+                    parameters["noise_offset"] = 1 - parameters["hrf_noise_offset"]
+                if parameters["hrf_noise_offset"] is not None:
+                    parameters["hrf_noise_offset"] = 1 - parameters["hrf_noise_offset"]
+            # incl. SeargeParameterProcessor.STYLE_TEMPLATE[0] -> "none"
+            else:
+                # TODO: apply style based on its name here...
+                pass
 
         operation_mode = parameters["operation_mode"]
         if operation_mode is not None:
-            match operation_mode:
-                case "text to image":
-                    parameters["operation_selector"] = 0
-                    # always fully denoise in img2img mode
-                    parameters["denoise"] = 1.0
-                case "image to image":
-                    parameters["operation_selector"] = 1
-                case "inpainting":
-                    parameters["operation_selector"] = 2
-                    # inpainting doesn't support hires fix
-                    parameters["hrf_steps"] = 0
-                case _:
-                    pass
+            # "image to image":
+            if operation_mode == SeargeParameterProcessor.OPERATION_MODE[1]:
+                parameters["operation_selector"] = 1
+            # "inpainting":
+            elif operation_mode == SeargeParameterProcessor.OPERATION_MODE[2]:
+                parameters["operation_selector"] = 2
+                # inpainting doesn't support hires fix
+                parameters["hrf_steps"] = 0
+            # incl. SeargeParameterProcessor.OPERATION_MODE[0] -> "text to image":
+            else:
+                parameters["operation_selector"] = 0
+                # always fully denoise in img2img mode
+                parameters["denoise"] = 1.0
 
         prompt_style = parameters["prompt_style"]
         if prompt_style is not None:
@@ -1095,7 +1091,7 @@ class SeargeStylePreprocessor:
             inputs = {}
 
         style_template = inputs["style_template"]
-        if style_template is None or style_template != SeargeParameterProcessor.STYLE_TEMPLATE[2]:
+        if style_template is None or style_template != SeargeParameterProcessor.STYLE_TEMPLATE[1]:
             return (inputs,)
 
         # TODO: do what needs to be done to apply the selected style
@@ -1186,8 +1182,8 @@ class SeargeInput2:
                     "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
                     "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
                     "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
-                    "save_image": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
-                    "save_directory": (SeargeParameterProcessor.SAVE_TO, {"default": "output folder"}),
+                    "save_image": (SeargeParameterProcessor.STATES, {"default": SeargeParameterProcessor.STATES[1]}),
+                    "save_directory": (SeargeParameterProcessor.SAVE_TO, {"default": SeargeParameterProcessor.SAVE_TO[0]}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -1257,11 +1253,11 @@ class SeargeInput3:
         return {"required": {
                     "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.05}),
-                    "refiner_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": "soft"}),
+                    "refiner_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": SeargeParameterProcessor.REFINER_INTENSITY[1]}),
                     "precondition_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
                     "batch_size": ("INT", {"default": 1, "min": 1, "max": 4}),
                     "upscale_resolution_factor": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
-                    "save_upscaled_image": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
+                    "save_upscaled_image": (SeargeParameterProcessor.STATES, {"default": SeargeParameterProcessor.STATES[1]}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -1399,7 +1395,7 @@ class SeargeInput5:
                     "refiner_conditioning_scale": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
                     "style_prompt_power": ("FLOAT", {"default": 0.33, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "negative_style_power": ("FLOAT", {"default": 0.67, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "style_template": (SeargeParameterProcessor.STYLE_TEMPLATE, {"default": "none"}),
+                    "style_template": (SeargeParameterProcessor.STYLE_TEMPLATE, {"default": SeargeParameterProcessor.STYLE_TEMPLATE[0]}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
@@ -1458,12 +1454,12 @@ class SeargeInput6:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-                    "hires_fix": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
+                    "hires_fix": (SeargeParameterProcessor.STATES, {"default": SeargeParameterProcessor.STATES[1]}),
                     "hrf_steps": ("INT", {"default": 0, "min": 0, "max": 100}),
                     "hrf_denoise": ("FLOAT", {"default": 0.1, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "hrf_upscale_factor": ("FLOAT", {"default": 1.5, "min": 0.25, "max": 4.0, "step": 0.25}),
-                    "hrf_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": "soft"}),
-                    "hrf_seed_offset": (SeargeParameterProcessor.HRF_SEED_OFFSET, {"default": "distinct"}),
+                    "hrf_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": SeargeParameterProcessor.REFINER_INTENSITY[1]}),
+                    "hrf_seed_offset": (SeargeParameterProcessor.HRF_SEED_OFFSET, {"default": SeargeParameterProcessor.HRF_SEED_OFFSET[1]}),
                     "hrf_smoothness": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05}),
                     },
                 "optional": {
@@ -1529,8 +1525,8 @@ class SeargeInput7:
     def INPUT_TYPES(s):
         return {"required": {
                     "lora_strength": ("FLOAT", {"default": 0.2, "min": 0.0, "max": 1.0, "step": 0.05}),
-                    "operation_mode": (SeargeParameterProcessor.OPERATION_MODE, {"default": "text to image"}),
-                    "prompt_style": (SeargeParameterProcessor.PROMPT_STYLE, {"default": "simple"}),
+                    "operation_mode": (SeargeParameterProcessor.OPERATION_MODE, {"default": SeargeParameterProcessor.OPERATION_MODE[0]}),
+                    "prompt_style": (SeargeParameterProcessor.PROMPT_STYLE, {"default": SeargeParameterProcessor.PROMPT_STYLE[0]}),
                     },
                 "optional": {
                     "inputs": ("PARAMETER_INPUTS", ),
