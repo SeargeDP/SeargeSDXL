@@ -1,6 +1,6 @@
 {
-  "last_node_id": 458,
-  "last_link_id": 1224,
+  "last_node_id": 460,
+  "last_link_id": 1268,
   "nodes": [
     {
       "id": 133,
@@ -16,7 +16,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 31,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
@@ -69,7 +69,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 24,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -117,7 +117,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 37,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -253,7 +253,7 @@
         "text": ""
       },
       "widgets_values": [
-        "=== How to prompt this workflow in other prompt modes than \"simple\" ===\n\nMain Prompt\n-----------\nThe subject of the image in natural language\n* Example: a cat with a hat in a grass field\n\n\nSecondary Prompt\n----------------\nA keyword/tag list version of the main prompts\n* Example: cat with hat, in grass field\n\n\nStyle and References Prompt\n---------------------------\nA description of the style of the image, the main style should be the first word and can be emphasized by surrounding it with ~*~\n* Example: ~*~oil painting~*~ in the style of [artist name], vibrant colors\n\n\nNegative Prompt\n---------------\nSubjects that should not appear in the image\n* Example: jpeg artifacts, noise\n\n\nNegative Style Prompt\n---------------------\nStyles and concepts that should not be used to generate the image\n* Example: photograph, anime\n\n=== In \"simple\" prompt mode only the main prompt and negative prompt are used ==="
+        "=== How to prompt this workflow in other prompt modes than \"simple\" ===\n\nMain Prompt\n-----------\nThe subject of the image in natural language\n* Example: a cat with a hat in a grass field\n\n\nSecondary Prompt\n----------------\nA keyword/tag list version of the main prompts\n* Example: cat with hat, in grass field\n\n\nStyle and References Prompt\n---------------------------\nA description of the style of the image, the main style should be the first word\n* Example: ~*~oil painting~*~ in the style of [artist name], vibrant colors\n\n\nNegative Prompt\n---------------\nSubjects that should not appear in the image\n* Example: jpeg artifacts, noise\n\n\nNegative Style Prompt\n---------------------\nStyles and concepts that should not be used to generate the image\n* Example: photograph, anime\n\n      === In \"simple\" prompt mode only the main and negative prompts are used ===\n     === In \"3 prompts\" prompt mode it's main, secondary, and negative prompts ==="
       ],
       "color": "#222",
       "bgcolor": "#000"
@@ -272,7 +272,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 59,
+      "order": 58,
       "mode": 0,
       "inputs": [
         {
@@ -318,7 +318,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 64,
+      "order": 63,
       "mode": 0,
       "inputs": [
         {
@@ -359,7 +359,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 65,
+      "order": 64,
       "mode": 0,
       "inputs": [
         {
@@ -400,7 +400,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 25,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -441,7 +441,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 26,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -482,7 +482,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 27,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -523,7 +523,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 29,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
@@ -564,7 +564,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 82,
+      "order": 81,
       "mode": 0,
       "inputs": [
         {
@@ -639,7 +639,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 83,
+      "order": 82,
       "mode": 0,
       "inputs": [
         {
@@ -714,7 +714,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 84,
+      "order": 83,
       "mode": 0,
       "inputs": [
         {
@@ -789,7 +789,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 85,
+      "order": 84,
       "mode": 0,
       "inputs": [
         {
@@ -864,7 +864,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 75,
+      "order": 74,
       "mode": 0,
       "inputs": [
         {
@@ -938,7 +938,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 80,
+      "order": 79,
       "mode": 0,
       "inputs": [
         {
@@ -1073,7 +1073,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 70,
+      "order": 69,
       "mode": 0,
       "inputs": [
         {
@@ -1115,7 +1115,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 63,
+      "order": 62,
       "mode": 0,
       "inputs": [
         {
@@ -1157,7 +1157,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 66,
+      "order": 65,
       "mode": 0,
       "inputs": [
         {
@@ -1198,7 +1198,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 60,
+      "order": 59,
       "mode": 0,
       "inputs": [
         {
@@ -1248,7 +1248,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 28,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
@@ -1567,7 +1567,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 54,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -1613,7 +1613,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 45,
+      "order": 44,
       "mode": 0,
       "inputs": [
         {
@@ -1673,10 +1673,11 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1063
+            1063,
+            1267
           ],
           "slot_index": 0,
-          "label": "b-"
+          "label": "wb-"
         }
       ],
       "properties": {
@@ -1714,10 +1715,11 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1073
+            1073,
+            1262
           ],
           "slot_index": 0,
-          "label": "r+"
+          "label": "wr+"
         }
       ],
       "properties": {
@@ -1755,10 +1757,11 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1083
+            1083,
+            1268
           ],
           "slot_index": 0,
-          "label": "r-"
+          "label": "wr-"
         }
       ],
       "properties": {
@@ -3221,7 +3224,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 38,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -3266,7 +3269,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 72,
+      "order": 71,
       "mode": 0,
       "inputs": [
         {
@@ -3311,7 +3314,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 48,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -3709,7 +3712,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 30,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
@@ -3752,7 +3755,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 51,
+      "order": 50,
       "mode": 0,
       "inputs": [
         {
@@ -3872,7 +3875,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 57,
+      "order": 56,
       "mode": 0,
       "inputs": [
         {
@@ -4046,7 +4049,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 44,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
@@ -4088,7 +4091,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 35,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
@@ -4130,7 +4133,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 52,
+      "order": 51,
       "mode": 0,
       "inputs": [
         {
@@ -4176,7 +4179,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 43,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
@@ -4222,7 +4225,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 68,
+      "order": 67,
       "mode": 0,
       "inputs": [
         {
@@ -4265,7 +4268,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 36,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -4308,7 +4311,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 49,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -4350,7 +4353,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 32,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -4393,7 +4396,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 39,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -4435,7 +4438,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 73,
+      "order": 72,
       "mode": 0,
       "inputs": [
         {
@@ -4561,7 +4564,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 40,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -4607,7 +4610,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 74,
+      "order": 73,
       "mode": 0,
       "inputs": [
         {
@@ -4872,7 +4875,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 41,
+      "order": 40,
       "mode": 0,
       "inputs": [
         {
@@ -4915,7 +4918,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 17,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -5067,7 +5070,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 55,
+      "order": 54,
       "mode": 0,
       "inputs": [
         {
@@ -5114,7 +5117,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 34,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
@@ -5289,7 +5292,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 71,
+      "order": 70,
       "mode": 0,
       "inputs": [
         {
@@ -5393,7 +5396,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 77,
+      "order": 76,
       "mode": 0,
       "inputs": [
         {
@@ -5889,7 +5892,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 50,
+      "order": 49,
       "mode": 0,
       "inputs": [
         {
@@ -6232,7 +6235,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 78,
+      "order": 77,
       "mode": 0,
       "inputs": [
         {
@@ -6278,7 +6281,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 47,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -6379,7 +6382,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1084
+            1084,
+            1264
           ],
           "label": "cr-",
           "slot_index": 0
@@ -6420,7 +6424,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1074
+            1074,
+            1266
           ],
           "label": "cr+",
           "slot_index": 0
@@ -6461,7 +6466,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1064
+            1064,
+            1263
           ],
           "label": "cb-",
           "slot_index": 0
@@ -6502,7 +6508,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1080
+            1260
           ],
           "label": "sr-",
           "slot_index": 0
@@ -6676,7 +6682,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 23,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -6913,7 +6919,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 81,
+      "order": 80,
       "mode": 0,
       "inputs": [
         {
@@ -6996,7 +7002,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 42,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -7883,10 +7889,11 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1053
+            1053,
+            1261
           ],
           "slot_index": 0,
-          "label": "b+"
+          "label": "wb+"
         }
       ],
       "properties": {
@@ -7925,9 +7932,10 @@
           "type": "CONDITIONING",
           "links": [
             1081,
-            1222
+            1246
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfr-"
         }
       ],
       "properties": {
@@ -7966,9 +7974,10 @@
           "type": "CONDITIONING",
           "links": [
             1071,
-            1218
+            1240
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfr+"
         }
       ],
       "properties": {
@@ -8007,9 +8016,10 @@
           "type": "CONDITIONING",
           "links": [
             1061,
-            1221
+            1245
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfb-"
         }
       ],
       "properties": {
@@ -8049,9 +8059,10 @@
           "type": "CONDITIONING",
           "links": [
             1051,
-            1217
+            1238
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfb+"
         }
       ],
       "properties": {
@@ -8090,9 +8101,10 @@
           "type": "CONDITIONING",
           "links": [
             1082,
-            1220
+            1242
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfr-"
         }
       ],
       "properties": {
@@ -8131,9 +8143,10 @@
           "type": "CONDITIONING",
           "links": [
             1072,
-            1224
+            1244
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfr+"
         }
       ],
       "properties": {
@@ -8172,9 +8185,10 @@
           "type": "CONDITIONING",
           "links": [
             1062,
-            1219
+            1241
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfb-"
         }
       ],
       "properties": {
@@ -8214,9 +8228,10 @@
           "type": "CONDITIONING",
           "links": [
             1052,
-            1223
+            1243
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfb+"
         }
       ],
       "properties": {
@@ -8254,7 +8269,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1054
+            1054,
+            1265
           ],
           "label": "cb+",
           "slot_index": 0
@@ -8276,7 +8292,7 @@
       ],
       "size": {
         "0": 300,
-        "1": 70
+        "1": 86
       },
       "flags": {
         "pinned": true
@@ -8312,6 +8328,12 @@
           "links": [],
           "shape": 3,
           "slot_index": 2
+        },
+        {
+          "name": "prompt_style_group",
+          "type": "INT",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -8391,32 +8413,6 @@
       "bgcolor": "#535"
     },
     {
-      "id": 344,
-      "type": "Note",
-      "pos": [
-        650,
-        1130
-      ],
-      "size": {
-        "0": 400,
-        "1": 70
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 10,
-      "mode": 0,
-      "title": "Off by default for performance reasons",
-      "properties": {
-        "text": ""
-      },
-      "widgets_values": [
-        "            Connect this \"jumper\" to enable UPSCALING\n                (this is NOT related to hires fix)\n when it's disconnected ignore the warnings printed to the console"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
       "id": 341,
       "type": "Reroute",
       "pos": [
@@ -8468,7 +8464,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -8509,7 +8505,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 16,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -8550,7 +8546,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -8594,7 +8590,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 62,
+      "order": 61,
       "mode": 0,
       "inputs": [
         {
@@ -8691,7 +8687,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -8782,7 +8778,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 18,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -8838,7 +8834,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 19,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -8894,7 +8890,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 20,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -8934,7 +8930,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 21,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -8975,7 +8971,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 22,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -9016,7 +9012,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 46,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
@@ -9149,7 +9145,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 56,
+      "order": 55,
       "mode": 0,
       "inputs": [
         {
@@ -9189,7 +9185,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 53,
+      "order": 52,
       "mode": 0,
       "inputs": [
         {
@@ -9233,7 +9229,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 58,
+      "order": 57,
       "mode": 0,
       "inputs": [
         {
@@ -10634,7 +10630,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 67,
+      "order": 66,
       "mode": 0,
       "inputs": [
         {
@@ -10740,7 +10736,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 61,
+      "order": 60,
       "mode": 0,
       "inputs": [
         {
@@ -10781,7 +10777,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 69,
+      "order": 68,
       "mode": 0,
       "inputs": [
         {
@@ -10827,7 +10823,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 33,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -10873,7 +10869,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 76,
+      "order": 75,
       "mode": 0,
       "inputs": [
         {
@@ -10909,7 +10905,7 @@
         4530
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -10976,7 +10972,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Positive Base Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -10994,7 +10990,7 @@
         4780
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -11060,7 +11056,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Negative Base Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -11078,7 +11074,7 @@
         5030
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -11146,7 +11142,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Positive Refiner Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -11164,7 +11160,7 @@
         5280
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -11232,7 +11228,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Negative Refiner Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -11374,7 +11370,7 @@
         5780
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -11440,7 +11436,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Negative Base Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -11458,7 +11454,7 @@
         6030
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -11526,7 +11522,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Positive Refiner Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -11544,7 +11540,7 @@
         6280
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -11612,7 +11608,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Negative Refiner Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -11630,7 +11626,7 @@
         5530
       ],
       "size": {
-        "0": 250,
+        "0": 300,
         "1": 170
       },
       "flags": {
@@ -11697,7 +11693,7 @@
           "slot_index": 0
         }
       ],
-      "title": "5-Way Muxer",
+      "title": "Positive Base Muxer",
       "properties": {
         "Node name for S&R": "SeargeConditioningMuxer5"
       },
@@ -11721,7 +11717,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 201,
+      "order": 199,
       "mode": 0,
       "inputs": [
         {
@@ -11737,7 +11733,8 @@
           "links": [
             1055
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sb+"
         }
       ],
       "properties": {
@@ -11761,7 +11758,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 199,
+      "order": 197,
       "mode": 0,
       "inputs": [
         {
@@ -11777,7 +11774,8 @@
           "links": [
             1056
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfb+"
         }
       ],
       "properties": {
@@ -11801,7 +11799,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 197,
+      "order": 195,
       "mode": 0,
       "inputs": [
         {
@@ -11817,7 +11815,8 @@
           "links": [
             1057
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfb+"
         }
       ],
       "properties": {
@@ -11841,7 +11840,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 196,
+      "order": 193,
       "mode": 0,
       "inputs": [
         {
@@ -11857,7 +11856,8 @@
           "links": [
             1058
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "wb+"
         }
       ],
       "properties": {
@@ -11881,7 +11881,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 195,
+      "order": 191,
       "mode": 0,
       "inputs": [
         {
@@ -11897,7 +11897,8 @@
           "links": [
             1059
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "cb+"
         }
       ],
       "properties": {
@@ -11937,7 +11938,8 @@
           "links": [
             1069
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sb-"
         }
       ],
       "properties": {
@@ -11977,7 +11979,8 @@
           "links": [
             1068
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfb-"
         }
       ],
       "properties": {
@@ -12017,7 +12020,8 @@
           "links": [
             1067
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfb-"
         }
       ],
       "properties": {
@@ -12041,7 +12045,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 203,
+      "order": 202,
       "mode": 0,
       "inputs": [
         {
@@ -12057,7 +12061,8 @@
           "links": [
             1066
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "wb-"
         }
       ],
       "properties": {
@@ -12081,7 +12086,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 202,
+      "order": 200,
       "mode": 0,
       "inputs": [
         {
@@ -12097,7 +12102,8 @@
           "links": [
             1065
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "cb-"
         }
       ],
       "properties": {
@@ -12137,7 +12143,8 @@
           "links": [
             1079
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sr+"
         }
       ],
       "properties": {
@@ -12161,7 +12168,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 213,
+      "order": 215,
       "mode": 0,
       "inputs": [
         {
@@ -12177,7 +12184,8 @@
           "links": [
             1078
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfr+"
         }
       ],
       "properties": {
@@ -12201,7 +12209,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 215,
+      "order": 217,
       "mode": 0,
       "inputs": [
         {
@@ -12217,7 +12225,8 @@
           "links": [
             1077
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfr+"
         }
       ],
       "properties": {
@@ -12257,7 +12266,8 @@
           "links": [
             1076
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "wr+"
         }
       ],
       "properties": {
@@ -12281,7 +12291,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 212,
+      "order": 213,
       "mode": 0,
       "inputs": [
         {
@@ -12297,7 +12307,8 @@
           "links": [
             1075
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "cr+"
         }
       ],
       "properties": {
@@ -12327,7 +12338,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 1080
+          "link": 1260
         }
       ],
       "outputs": [
@@ -12337,7 +12348,8 @@
           "links": [
             1089
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sr-"
         }
       ],
       "properties": {
@@ -12361,7 +12373,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 222,
+      "order": 224,
       "mode": 0,
       "inputs": [
         {
@@ -12377,7 +12389,8 @@
           "links": [
             1088
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfr-"
         }
       ],
       "properties": {
@@ -12401,7 +12414,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 224,
+      "order": 226,
       "mode": 0,
       "inputs": [
         {
@@ -12417,7 +12430,8 @@
           "links": [
             1087
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfr-"
         }
       ],
       "properties": {
@@ -12457,7 +12471,8 @@
           "links": [
             1086
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "wr-"
         }
       ],
       "properties": {
@@ -12481,7 +12496,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 221,
+      "order": 222,
       "mode": 0,
       "inputs": [
         {
@@ -12497,7 +12512,8 @@
           "links": [
             1085
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "cr-"
         }
       ],
       "properties": {
@@ -12521,13 +12537,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 200,
+      "order": 198,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1217,
+          "link": 1238,
           "slot_index": 0
         }
       ],
@@ -12538,7 +12554,8 @@
           "links": [
             1109
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfb+"
         }
       ],
       "properties": {
@@ -12562,13 +12579,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 198,
+      "order": 196,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1223,
+          "link": 1243,
           "slot_index": 0
         }
       ],
@@ -12579,7 +12596,8 @@
           "links": [
             1108
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfb+"
         }
       ],
       "properties": {
@@ -12620,7 +12638,8 @@
           "links": [
             1107
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "bso+"
         }
       ],
       "properties": {
@@ -12644,13 +12663,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 190,
+      "order": 194,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1171,
+          "link": 1261,
           "slot_index": 0
         }
       ],
@@ -12661,7 +12680,8 @@
           "links": [
             1106
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": " wb+"
         }
       ],
       "properties": {
@@ -12685,13 +12705,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 191,
+      "order": 192,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1172,
+          "link": 1265,
           "slot_index": 0
         }
       ],
@@ -12702,7 +12722,8 @@
           "links": [
             1105
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": " cb+"
         }
       ],
       "properties": {
@@ -12732,7 +12753,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 1219,
+          "link": 1241,
           "slot_index": 0
         }
       ],
@@ -12743,7 +12764,8 @@
           "links": [
             1104
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfb-"
         }
       ],
       "properties": {
@@ -12773,7 +12795,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 1221,
+          "link": 1245,
           "slot_index": 0
         }
       ],
@@ -12784,7 +12806,8 @@
           "links": [
             1103
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfb-"
         }
       ],
       "properties": {
@@ -12808,7 +12831,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 192,
+      "order": 190,
       "mode": 0,
       "inputs": [
         {
@@ -12825,7 +12848,8 @@
           "links": [
             1102
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "bso-"
         }
       ],
       "properties": {
@@ -12849,13 +12873,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 193,
+      "order": 201,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1176,
+          "link": 1263,
           "slot_index": 0
         }
       ],
@@ -12866,7 +12890,8 @@
           "links": [
             1101
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": " cb-"
         }
       ],
       "properties": {
@@ -12890,13 +12915,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 194,
+      "order": 203,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1177,
+          "link": 1267,
           "slot_index": 0
         }
       ],
@@ -12907,7 +12932,8 @@
           "links": [
             1100
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": " wb-"
         }
       ],
       "properties": {
@@ -12931,13 +12957,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 214,
+      "order": 216,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1218,
+          "link": 1240,
           "slot_index": 0
         }
       ],
@@ -12948,7 +12974,8 @@
           "links": [
             1099
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfr+"
         }
       ],
       "properties": {
@@ -12972,13 +12999,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 216,
+      "order": 218,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1224,
+          "link": 1244,
           "slot_index": 0
         }
       ],
@@ -12989,7 +13016,8 @@
           "links": [
             1098
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfr+"
         }
       ],
       "properties": {
@@ -13013,7 +13041,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 217,
+      "order": 219,
       "mode": 0,
       "inputs": [
         {
@@ -13030,7 +13058,8 @@
           "links": [
             1097
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "rso+"
         }
       ],
       "properties": {
@@ -13054,13 +13083,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 218,
+      "order": 212,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1181,
+          "link": 1262,
           "slot_index": 0
         }
       ],
@@ -13071,7 +13100,8 @@
           "links": [
             1096
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": " wr+"
         }
       ],
       "properties": {
@@ -13095,13 +13125,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 219,
+      "order": 214,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1182,
+          "link": 1266,
           "slot_index": 0
         }
       ],
@@ -13112,7 +13142,8 @@
           "links": [
             1095
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": " cr+"
         }
       ],
       "properties": {
@@ -13136,13 +13167,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 225,
+      "order": 227,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1220,
+          "link": 1242,
           "slot_index": 0
         }
       ],
@@ -13153,7 +13184,8 @@
           "links": [
             1094
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "sfr-"
         }
       ],
       "properties": {
@@ -13177,13 +13209,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 223,
+      "order": 225,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1222,
+          "link": 1246,
           "slot_index": 0
         }
       ],
@@ -13194,7 +13226,8 @@
           "links": [
             1093
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pfr-"
         }
       ],
       "properties": {
@@ -13218,7 +13251,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 226,
+      "order": 228,
       "mode": 0,
       "inputs": [
         {
@@ -13235,7 +13268,8 @@
           "links": [
             1092
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "rso-"
         }
       ],
       "properties": {
@@ -13259,13 +13293,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 227,
+      "order": 223,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1186,
+          "link": 1264,
           "slot_index": 0
         }
       ],
@@ -13276,7 +13310,8 @@
           "links": [
             1091
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "cr-"
         }
       ],
       "properties": {
@@ -13300,13 +13335,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 228,
+      "order": 221,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 1187,
+          "link": 1268,
           "slot_index": 0
         }
       ],
@@ -13317,7 +13352,8 @@
           "links": [
             1090
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "wr-"
         }
       ],
       "properties": {
@@ -13334,14 +13370,14 @@
         -1000,
         4180
       ],
-      "size": [
-        300,
-        120
-      ],
+      "size": {
+        "0": 300,
+        "1": 120
+      },
       "flags": {
         "pinned": true
       },
-      "order": 79,
+      "order": 78,
       "mode": 0,
       "inputs": [
         {
@@ -13354,8 +13390,9 @@
         {
           "name": "parameters",
           "type": "PARAMETERS",
-          "links": null,
-          "shape": 3
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
         },
         {
           "name": "operation_selector",
@@ -13378,6 +13415,14 @@
           ],
           "shape": 3,
           "slot_index": 2
+        },
+        {
+          "name": "prompt_style_group",
+          "type": "INT",
+          "links": [
+            1259
+          ],
+          "shape": 3
         }
       ],
       "properties": {
@@ -13400,7 +13445,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 86,
+      "order": 85,
       "mode": 0,
       "inputs": [
         {
@@ -13416,7 +13461,8 @@
           "links": [
             1111
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -13440,7 +13486,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 87,
+      "order": 86,
       "mode": 0,
       "inputs": [
         {
@@ -13456,7 +13502,8 @@
           "links": [
             1113
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -13480,7 +13527,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 88,
+      "order": 87,
       "mode": 0,
       "inputs": [
         {
@@ -13496,7 +13543,8 @@
           "links": [
             1115
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -13520,7 +13568,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 89,
+      "order": 88,
       "mode": 0,
       "inputs": [
         {
@@ -13536,7 +13584,8 @@
           "links": [
             1117
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -13719,7 +13768,7 @@
       "type": "Reroute",
       "pos": [
         1000,
-        4250
+        4850
       ],
       "size": [
         75,
@@ -13746,7 +13795,8 @@
             1202,
             1205
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "B-"
         }
       ],
       "properties": {
@@ -13761,7 +13811,7 @@
       "type": "Reroute",
       "pos": [
         1000,
-        4300
+        4900
       ],
       "size": [
         75,
@@ -13788,7 +13838,8 @@
             1203,
             1208
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "R+"
         }
       ],
       "properties": {
@@ -13803,7 +13854,7 @@
       "type": "Reroute",
       "pos": [
         1000,
-        4350
+        4950
       ],
       "size": [
         75,
@@ -13830,7 +13881,8 @@
             1204,
             1207
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "R-"
         }
       ],
       "properties": {
@@ -13871,7 +13923,8 @@
           "links": [
             1129
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "b-"
         }
       ],
       "properties": {
@@ -13912,7 +13965,8 @@
           "links": [
             1130
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "r+"
         }
       ],
       "properties": {
@@ -13953,7 +14007,8 @@
           "links": [
             1131
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "r-"
         }
       ],
       "properties": {
@@ -13994,7 +14049,8 @@
           "links": [
             1128
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "b+"
         }
       ],
       "properties": {
@@ -14018,7 +14074,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 90,
+      "order": 89,
       "mode": 0,
       "inputs": [
         {
@@ -14034,7 +14090,8 @@
           "links": [
             1132
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -14058,7 +14115,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 91,
+      "order": 90,
       "mode": 0,
       "inputs": [
         {
@@ -14074,7 +14131,8 @@
           "links": [
             1133
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -14098,7 +14156,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 92,
+      "order": 91,
       "mode": 0,
       "inputs": [
         {
@@ -14114,7 +14172,8 @@
           "links": [
             1134
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -14138,7 +14197,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 93,
+      "order": 92,
       "mode": 0,
       "inputs": [
         {
@@ -14154,7 +14213,8 @@
           "links": [
             1135
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "pss"
         }
       ],
       "properties": {
@@ -14234,7 +14294,8 @@
           "type": "CONDITIONING",
           "links": [
             1151
-          ]
+          ],
+          "label": "R-"
         }
       ],
       "properties": {
@@ -14273,7 +14334,8 @@
           "type": "CONDITIONING",
           "links": [
             1150
-          ]
+          ],
+          "label": "R+"
         }
       ],
       "properties": {
@@ -14313,7 +14375,8 @@
           "type": "CONDITIONING",
           "links": [
             1149
-          ]
+          ],
+          "label": "B-"
         }
       ],
       "properties": {
@@ -14352,7 +14415,8 @@
           "type": "CONDITIONING",
           "links": [
             1148
-          ]
+          ],
+          "label": "B+"
         }
       ],
       "properties": {
@@ -14393,7 +14457,7 @@
         {
           "name": "input_selector",
           "type": "INT",
-          "link": 1153,
+          "link": 1257,
           "widget": {
             "name": "input_selector",
             "config": [
@@ -14404,7 +14468,8 @@
                 "max": 1
               }
             ]
-          }
+          },
+          "slot_index": 2
         }
       ],
       "outputs": [
@@ -14458,7 +14523,7 @@
         {
           "name": "input_selector",
           "type": "INT",
-          "link": 1154,
+          "link": 1256,
           "widget": {
             "name": "input_selector",
             "config": [
@@ -14469,7 +14534,8 @@
                 "max": 1
               }
             ]
-          }
+          },
+          "slot_index": 2
         }
       ],
       "outputs": [
@@ -14499,10 +14565,10 @@
         300,
         5130
       ],
-      "size": [
-        250,
-        120
-      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
       "flags": {
         "pinned": true
       },
@@ -14523,7 +14589,7 @@
         {
           "name": "input_selector",
           "type": "INT",
-          "link": 1152,
+          "link": 1258,
           "widget": {
             "name": "input_selector",
             "config": [
@@ -14534,7 +14600,8 @@
                 "max": 1
               }
             ]
-          }
+          },
+          "slot_index": 2
         }
       ],
       "outputs": [
@@ -14588,7 +14655,7 @@
         {
           "name": "input_selector",
           "type": "INT",
-          "link": 1155,
+          "link": 1255,
           "widget": {
             "name": "input_selector",
             "config": [
@@ -14599,7 +14666,8 @@
                 "max": 1
               }
             ]
-          }
+          },
+          "slot_index": 2
         }
       ],
       "outputs": [
@@ -14942,9 +15010,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1170,
-            1171,
-            1172
+            1170
           ],
           "label": "bso+"
         }
@@ -14985,9 +15051,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1175,
-            1176,
-            1177
+            1175
           ],
           "label": "bso-"
         }
@@ -15028,9 +15092,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1180,
-            1181,
-            1182
+            1180
           ],
           "label": "rso+"
         }
@@ -15071,9 +15133,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            1185,
-            1186,
-            1187
+            1185
           ],
           "label": "rso-"
         }
@@ -15084,45 +15144,6 @@
       },
       "color": "#432",
       "bgcolor": "#653"
-    },
-    {
-      "id": 443,
-      "type": "SeargeIntegerConstant",
-      "pos": [
-        -700,
-        5440
-      ],
-      "size": {
-        "0": 210,
-        "1": 58
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 13,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "value",
-          "type": "INT",
-          "links": [
-            1152,
-            1153,
-            1154,
-            1155
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SeargeIntegerConstant"
-      },
-      "widgets_values": [
-        0
-      ],
-      "color": "#222",
-      "bgcolor": "#000"
     },
     {
       "id": 455,
@@ -15402,7 +15423,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 14,
+      "order": 12,
       "mode": 0,
       "outputs": [
         {
@@ -15429,18 +15450,88 @@
       "bgcolor": "#000"
     },
     {
-      "id": 423,
+      "id": 460,
       "type": "Reroute",
       "pos": [
-        1000,
-        4200
+        100,
+        4300
       ],
       "size": [
         75,
         26
       ],
       "flags": {
-        "pinned": false
+        "pinned": true
+      },
+      "order": 93,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1259,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1255,
+            1256,
+            1257,
+            1258
+          ],
+          "label": "grp"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 344,
+      "type": "Note",
+      "pos": [
+        600,
+        1130
+      ],
+      "size": {
+        "0": 500,
+        "1": 70
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 13,
+      "mode": 0,
+      "title": "Off by default for performance reasons",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "                  Connect this \"jumper\" to enable UPSCALING\n                      (this is NOT related to hires fix)\n      (when it's disconnected ignore the warnings printed to the console)"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 423,
+      "type": "Reroute",
+      "pos": [
+        1000,
+        4800
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
       },
       "order": 258,
       "mode": 0,
@@ -15460,7 +15551,8 @@
             1201,
             1206
           ],
-          "slot_index": 0
+          "slot_index": 0,
+          "label": "B+"
         }
       ],
       "properties": {
@@ -18257,14 +18349,6 @@
       "CONDITIONING"
     ],
     [
-      1080,
-      308,
-      0,
-      394,
-      0,
-      "*"
-    ],
-    [
       1081,
       325,
       0,
@@ -18761,38 +18845,6 @@
       "CONDITIONING"
     ],
     [
-      1152,
-      443,
-      0,
-      439,
-      2,
-      "INT"
-    ],
-    [
-      1153,
-      443,
-      0,
-      440,
-      2,
-      "INT"
-    ],
-    [
-      1154,
-      443,
-      0,
-      441,
-      2,
-      "INT"
-    ],
-    [
-      1155,
-      443,
-      0,
-      442,
-      2,
-      "INT"
-    ],
-    [
       1156,
       439,
       0,
@@ -18897,42 +18949,10 @@
       "*"
     ],
     [
-      1171,
-      450,
-      0,
-      402,
-      0,
-      "*"
-    ],
-    [
-      1172,
-      450,
-      0,
-      403,
-      0,
-      "*"
-    ],
-    [
       1175,
       451,
       0,
       406,
-      0,
-      "*"
-    ],
-    [
-      1176,
-      451,
-      0,
-      407,
-      0,
-      "*"
-    ],
-    [
-      1177,
-      451,
-      0,
-      408,
       0,
       "*"
     ],
@@ -18945,42 +18965,10 @@
       "*"
     ],
     [
-      1181,
-      452,
-      0,
-      412,
-      0,
-      "*"
-    ],
-    [
-      1182,
-      452,
-      0,
-      413,
-      0,
-      "*"
-    ],
-    [
       1185,
       453,
       0,
       416,
-      0,
-      "*"
-    ],
-    [
-      1186,
-      453,
-      0,
-      417,
-      0,
-      "*"
-    ],
-    [
-      1187,
-      453,
-      0,
-      418,
       0,
       "*"
     ],
@@ -19113,7 +19101,7 @@
       "*"
     ],
     [
-      1217,
+      1238,
       328,
       0,
       399,
@@ -19121,7 +19109,7 @@
       "*"
     ],
     [
-      1218,
+      1240,
       326,
       0,
       409,
@@ -19129,7 +19117,7 @@
       "*"
     ],
     [
-      1219,
+      1241,
       331,
       0,
       404,
@@ -19137,7 +19125,7 @@
       "*"
     ],
     [
-      1220,
+      1242,
       329,
       0,
       414,
@@ -19145,23 +19133,7 @@
       "*"
     ],
     [
-      1221,
-      327,
-      0,
-      405,
-      0,
-      "*"
-    ],
-    [
-      1222,
-      325,
-      0,
-      415,
-      0,
-      "*"
-    ],
-    [
-      1223,
+      1243,
       332,
       0,
       400,
@@ -19169,10 +19141,138 @@
       "*"
     ],
     [
-      1224,
+      1244,
       330,
       0,
       410,
+      0,
+      "*"
+    ],
+    [
+      1245,
+      327,
+      0,
+      405,
+      0,
+      "*"
+    ],
+    [
+      1246,
+      325,
+      0,
+      415,
+      0,
+      "*"
+    ],
+    [
+      1255,
+      460,
+      0,
+      442,
+      2,
+      "INT"
+    ],
+    [
+      1256,
+      460,
+      0,
+      441,
+      2,
+      "INT"
+    ],
+    [
+      1257,
+      460,
+      0,
+      440,
+      2,
+      "INT"
+    ],
+    [
+      1258,
+      460,
+      0,
+      439,
+      2,
+      "INT"
+    ],
+    [
+      1259,
+      334,
+      3,
+      460,
+      0,
+      "*"
+    ],
+    [
+      1260,
+      308,
+      0,
+      394,
+      0,
+      "*"
+    ],
+    [
+      1261,
+      214,
+      0,
+      402,
+      0,
+      "*"
+    ],
+    [
+      1262,
+      212,
+      0,
+      412,
+      0,
+      "*"
+    ],
+    [
+      1263,
+      306,
+      0,
+      407,
+      0,
+      "*"
+    ],
+    [
+      1264,
+      304,
+      0,
+      417,
+      0,
+      "*"
+    ],
+    [
+      1265,
+      307,
+      0,
+      403,
+      0,
+      "*"
+    ],
+    [
+      1266,
+      305,
+      0,
+      413,
+      0,
+      "*"
+    ],
+    [
+      1267,
+      213,
+      0,
+      408,
+      0,
+      "*"
+    ],
+    [
+      1268,
+      211,
+      0,
+      418,
       0,
       "*"
     ]

@@ -896,12 +896,19 @@ class SeargeConditioningMuxer5:
 # UI: Parameter Processor
 
 class SeargeParameterProcessor:
+    # hard - refiner uses same seed as base | soft - refiner uses different seed from base
     REFINER_INTENSITY = ["hard", "soft"]
+    # same - HRF uses same seed as image generation | distinct - HRF uses different seed than image generation
     HRF_SEED_OFFSET = ["same", "distinct"]
+    # simple "boolean"-like type
     STATES = ["disabled", "enabled"]
+    # operating modes, determine if the latent source is empty or from a source image, inpainting also uses mask
     OPERATION_MODE = ["text to image", "image to image", "inpainting"]
-    PROMPT_STYLE = ["simple", "subject focus", "style focus", "weighted", "overlay"]
+    # sorted from easy-to-use to harder-to-use
+    PROMPT_STYLE = ["simple", "3 prompts G+L-N", "subject focus", "style focus", "weighted", "overlay", "subject - style", "style - subject", "style only", "weighted - overlay", "overlay - weighted"]
+    # (work in progress)
     STYLE_TEMPLATE = ["none", "test", "from_preprocessor"]
+    # save folder for generated images
     SAVE_TO = ["output folder", "input folder"]
 
     @classmethod
@@ -993,23 +1000,56 @@ class SeargeParameterProcessor:
 
         prompt_style = parameters["prompt_style"]
         if prompt_style is not None:
-            match prompt_style:
-                case "simple":
-                    parameters["prompt_style_selector"] = 0
-                    main_prompt = parameters["main_prompt"]
-                    parameters["secondary_prompt"] = main_prompt
-                    parameters["style_prompt"] = ""
-                    parameters["negative_style"] = ""
-                case "subject focus":
-                    parameters["prompt_style_selector"] = 1
-                case "style focus":
-                    parameters["prompt_style_selector"] = 2
-                case "weighted":
-                    parameters["prompt_style_selector"] = 3
-                case "overlay":
-                    parameters["prompt_style_selector"] = 4
-                case _:
-                    pass
+            # "simple"
+            if prompt_style == SeargeParameterProcessor.PROMPT_STYLE[0]:
+                parameters["prompt_style_selector"] = 0
+                parameters["prompt_style_group"] = 0
+                main_prompt = parameters["main_prompt"]
+                parameters["secondary_prompt"] = main_prompt
+                parameters["style_prompt"] = ""
+                parameters["negative_style"] = ""
+            # "subject focus"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[2]:
+                parameters["prompt_style_selector"] = 1
+                parameters["prompt_style_group"] = 0
+            # "style focus"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[3]:
+                parameters["prompt_style_selector"] = 2
+                parameters["prompt_style_group"] = 0
+            # "weighted"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[4]:
+                parameters["prompt_style_selector"] = 3
+                parameters["prompt_style_group"] = 0
+            # "overlay"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[5]:
+                parameters["prompt_style_selector"] = 4
+                parameters["prompt_style_group"] = 0
+            # "subject - style"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[6]:
+                parameters["prompt_style_selector"] = 0
+                parameters["prompt_style_group"] = 1
+            # "style - subject"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[7]:
+                parameters["prompt_style_selector"] = 1
+                parameters["prompt_style_group"] = 1
+            # "style only"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[8]:
+                parameters["prompt_style_selector"] = 2
+                parameters["prompt_style_group"] = 1
+            # "weighted - overlay"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[9]:
+                parameters["prompt_style_selector"] = 3
+                parameters["prompt_style_group"] = 1
+            # "overlay - weighted"
+            elif prompt_style == SeargeParameterProcessor.PROMPT_STYLE[10]:
+                parameters["prompt_style_selector"] = 4
+                parameters["prompt_style_group"] = 1
+            # incl. SeargeParameterProcessor.PROMPT_STYLE[1] -> "3 prompts G+L-N"
+            else:
+                parameters["prompt_style_selector"] = 0
+                parameters["prompt_style_group"] = 0
+                parameters["style_prompt"] = ""
+                parameters["negative_style"] = ""
 
         # TODO: replace this special logic and the dirty hacks by creating new generated parameters for saving
         save_image = parameters["save_image"]
@@ -1548,8 +1588,8 @@ class SeargeGenerated1:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "INT", "INT", )
-    RETURN_NAMES = ("parameters", "operation_selector", "prompt_style_selector", )
+    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", )
+    RETURN_NAMES = ("parameters", "operation_selector", "prompt_style_selector", "prompt_style_group", )
     FUNCTION = "demux"
 
     CATEGORY = "Searge/UI/Generated"
@@ -1557,7 +1597,9 @@ class SeargeGenerated1:
     def demux(self, parameters):
         operation_selector = parameters["operation_selector"]
         prompt_style_selector = parameters["prompt_style_selector"]
-        return (parameters, operation_selector, prompt_style_selector, )
+        prompt_style_group = parameters["prompt_style_group"]
+
+        return (parameters, operation_selector, prompt_style_selector, prompt_style_group, )
 
 
 # Register nodes in ComfyUI
