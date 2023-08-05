@@ -35,6 +35,7 @@ import json
 import nodes
 import numpy as np
 import os
+import torch
 
 from comfy.cli_args import args
 from datetime import datetime
@@ -752,6 +753,7 @@ class SeargeLatentMuxer3:
                     "input1": ("LATENT", ),
                     "input2": ("LATENT", ),
                     "input_selector": ("INT", {"default": 0, "min": 0, "max": 2}),
+                    "batch_size": ("INT", {"default": 1, "min": 1, "max": 4}),
                     },
                 }
 
@@ -761,15 +763,16 @@ class SeargeLatentMuxer3:
 
     CATEGORY = "Searge/FlowControl"
 
-    def mux(self, input0, input1, input2, input_selector, ):
+    def mux(self, input0, input1, input2, input_selector, batch_size ):
         match input_selector:
             case 1:
-                return (input1,)
+                input1["samples"] = input1["samples"].repeat(batch_size, 1,1,1)
+                return (input1, )
             case 2:
-                return (input2,)
+                input2["samples"] = input2["samples"].repeat(batch_size,1,1,1)
+                return (input2, )
             case _:
                 return (input0, )
-
 
 # Tool: Muxer for selecting between 5 conditioning inputs
 
