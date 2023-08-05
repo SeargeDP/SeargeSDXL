@@ -198,6 +198,67 @@ class SeargeSDXLImage2ImageSampler:
         return (output_image, )
 
 
+# Input: sampler inputs
+
+class SeargeSamplerInputs:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
+                    "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
+                    },
+                }
+
+    RETURN_TYPES = ("SAMPLER_NAME", "SCHEDULER_NAME", )
+    RETURN_NAMES = ("sampler_name", "scheduler", )
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Inputs"
+
+    def get_value(self, sampler_name, scheduler, ):
+        return (sampler_name, scheduler, )
+
+
+# Input: enabler inputs
+
+class SeargeEnablerInputs:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "state": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
+                    },
+                }
+
+    RETURN_TYPES = ("ENABLE_STATE", )
+    RETURN_NAMES = ("state", )
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Inputs"
+
+    def get_value(self, state, ):
+        return (state, )
+
+
+# Input: save folder inputs
+
+class SeargeSaveFolderInputs:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "save_to": (SeargeParameterProcessor.SAVE_TO, {"default": "output folder"}),
+                    },
+                }
+
+    RETURN_TYPES = ("SAVE_FOLDER", )
+    RETURN_NAMES = ("save_to", )
+    FUNCTION = "get_value"
+
+    CATEGORY = "Searge/Inputs"
+
+    def get_value(self, save_to, ):
+        return (save_to, )
+
+
 # SDXL CLIP Text Encoder for prompts with base and refiner support
 
 class SeargeSDXLPromptEncoder:
@@ -1479,6 +1540,10 @@ NODE_CLASS_MAPPINGS = {
     "SeargeSDXLSampler": SeargeSDXLSampler,
     "SeargeSDXLImage2ImageSampler": SeargeSDXLImage2ImageSampler,
 
+    "SeargeSamplerInputs": SeargeSamplerInputs,
+    "SeargeEnablerInputs": SeargeEnablerInputs,
+    "SeargeSaveFolderInputs": SeargeSaveFolderInputs,
+
     "SeargeSDXLPromptEncoder": SeargeSDXLPromptEncoder,
     "SeargeSDXLBasePromptEncoder": SeargeSDXLBasePromptEncoder,
     "SeargeSDXLRefinerPromptEncoder": SeargeSDXLRefinerPromptEncoder,
@@ -1530,6 +1595,10 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeSDXLSampler": "SDXL Sampler (SeargeSDXL)",
     "SeargeSDXLImage2ImageSampler": "Image2Image Sampler (SeargeSDXL)",
+
+    "SeargeSamplerInputs": "Sampler Settings",
+    "SeargeEnablerInputs": "Enable / Disable",
+    "SeargeSaveFolderInputs": "Save Folder",
 
     "SeargeSDXLPromptEncoder": "SDXL Prompt Encoder (SeargeSDXL)",
     "SeargeSDXLBasePromptEncoder": "SDXL Base Prompt Encoder (SeargeSDXL)",
