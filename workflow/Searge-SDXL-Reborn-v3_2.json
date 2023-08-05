@@ -1,6 +1,6 @@
 {
-  "last_node_id": 370,
-  "last_link_id": 1038,
+  "last_node_id": 458,
+  "last_link_id": 1224,
   "nodes": [
     {
       "id": 133,
@@ -16,7 +16,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 29,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -69,7 +69,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 22,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -117,7 +117,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 35,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -216,7 +216,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 210,
+      "order": 296,
       "mode": 0,
       "inputs": [
         {
@@ -272,7 +272,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 57,
+      "order": 59,
       "mode": 0,
       "inputs": [
         {
@@ -318,7 +318,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 62,
+      "order": 64,
       "mode": 0,
       "inputs": [
         {
@@ -359,7 +359,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 63,
+      "order": 65,
       "mode": 0,
       "inputs": [
         {
@@ -400,7 +400,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 23,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -441,7 +441,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 24,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -482,7 +482,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 25,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
@@ -523,7 +523,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 27,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
@@ -554,8 +554,8 @@
       "id": 51,
       "type": "SeargeIntegerScaler",
       "pos": [
-        -1000,
-        5030
+        -3699.7040965118426,
+        5030.6233893932895
       ],
       "size": {
         "0": 300,
@@ -564,7 +564,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 83,
+      "order": 82,
       "mode": 0,
       "inputs": [
         {
@@ -629,8 +629,8 @@
       "id": 52,
       "type": "SeargeIntegerScaler",
       "pos": [
-        -1000,
-        5230
+        -3699.7040965118426,
+        5230.6233893932895
       ],
       "size": {
         "0": 300,
@@ -639,7 +639,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 84,
+      "order": 83,
       "mode": 0,
       "inputs": [
         {
@@ -704,8 +704,8 @@
       "id": 54,
       "type": "SeargeIntegerScaler",
       "pos": [
-        -1000,
-        5430
+        -3699.7040965118426,
+        5430.6233893932895
       ],
       "size": {
         "0": 300,
@@ -714,7 +714,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 85,
+      "order": 84,
       "mode": 0,
       "inputs": [
         {
@@ -779,8 +779,8 @@
       "id": 53,
       "type": "SeargeIntegerScaler",
       "pos": [
-        -1000,
-        5630
+        -3699.7040965118426,
+        5630.6233893932895
       ],
       "size": {
         "0": 300,
@@ -789,7 +789,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 86,
+      "order": 85,
       "mode": 0,
       "inputs": [
         {
@@ -854,8 +854,8 @@
       "id": 145,
       "type": "SeargeOutput5",
       "pos": [
-        1100,
-        4230
+        -1699.8005108491654,
+        4229.8544652066785
       ],
       "size": {
         "0": 400,
@@ -864,7 +864,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 74,
+      "order": 75,
       "mode": 0,
       "inputs": [
         {
@@ -938,7 +938,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 81,
+      "order": 80,
       "mode": 0,
       "inputs": [
         {
@@ -980,7 +980,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 109,
+      "order": 115,
       "mode": 0,
       "inputs": [
         {
@@ -1063,8 +1063,8 @@
       "id": 188,
       "type": "Reroute",
       "pos": [
-        1000,
-        4100
+        -1799.8005108491654,
+        4099.854465206677
       ],
       "size": [
         75,
@@ -1073,7 +1073,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 68,
+      "order": 70,
       "mode": 0,
       "inputs": [
         {
@@ -1105,8 +1105,8 @@
       "id": 190,
       "type": "Reroute",
       "pos": [
-        -1800,
-        4100
+        -4499.70409651184,
+        4100.623389393287
       ],
       "size": [
         75,
@@ -1115,7 +1115,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 61,
+      "order": 63,
       "mode": 0,
       "inputs": [
         {
@@ -1147,8 +1147,8 @@
       "id": 201,
       "type": "Reroute",
       "pos": [
-        300,
-        4100
+        -2399.7040965118417,
+        4100.623389393287
       ],
       "size": [
         75,
@@ -1157,7 +1157,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 64,
+      "order": 66,
       "mode": 0,
       "inputs": [
         {
@@ -1171,8 +1171,7 @@
           "name": "",
           "type": "PARAMETERS",
           "links": [
-            619,
-            766
+            619
           ],
           "slot_index": 0,
           "label": "data"
@@ -1199,7 +1198,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 58,
+      "order": 60,
       "mode": 0,
       "inputs": [
         {
@@ -1236,47 +1235,6 @@
       "bgcolor": "#000"
     },
     {
-      "id": 202,
-      "type": "Reroute",
-      "pos": [
-        -2400,
-        3600
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 59,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 621
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "PARAMETERS",
-          "links": [
-            622
-          ],
-          "slot_index": 0,
-          "label": "data"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#222",
-      "bgcolor": "#000"
-    },
-    {
       "id": 179,
       "type": "Reroute",
       "pos": [
@@ -1290,7 +1248,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 26,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
@@ -1331,7 +1289,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 87,
+      "order": 94,
       "mode": 0,
       "inputs": [
         {
@@ -1372,7 +1330,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 197,
+      "order": 283,
       "mode": 0,
       "inputs": [
         {
@@ -1420,7 +1378,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 198,
+      "order": 284,
       "mode": 0,
       "inputs": [
         {
@@ -1461,7 +1419,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 170,
+      "order": 185,
       "mode": 0,
       "inputs": [
         {
@@ -1535,7 +1493,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 171,
+      "order": 186,
       "mode": 0,
       "inputs": [
         {
@@ -1609,7 +1567,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 52,
+      "order": 54,
       "mode": 0,
       "inputs": [
         {
@@ -1655,7 +1613,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 43,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
@@ -1691,8 +1649,8 @@
       "id": 213,
       "type": "Reroute",
       "pos": [
-        2050,
-        5150
+        -749.8005108491612,
+        5149.8544652066785
       ],
       "size": [
         75,
@@ -1701,7 +1659,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 155,
+      "order": 168,
       "mode": 0,
       "inputs": [
         {
@@ -1715,7 +1673,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            900
+            1063
           ],
           "slot_index": 0,
           "label": "b-"
@@ -1732,8 +1690,8 @@
       "id": 212,
       "type": "Reroute",
       "pos": [
-        2050,
-        5200
+        -749.8005108491612,
+        5199.8544652066785
       ],
       "size": [
         75,
@@ -1742,7 +1700,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 161,
+      "order": 174,
       "mode": 0,
       "inputs": [
         {
@@ -1756,7 +1714,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            899
+            1073
           ],
           "slot_index": 0,
           "label": "r+"
@@ -1773,8 +1731,8 @@
       "id": 211,
       "type": "Reroute",
       "pos": [
-        2050,
-        5250
+        -749.8005108491612,
+        5249.8544652066785
       ],
       "size": [
         75,
@@ -1783,7 +1741,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 165,
+      "order": 179,
       "mode": 0,
       "inputs": [
         {
@@ -1797,7 +1755,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            898
+            1083
           ],
           "slot_index": 0,
           "label": "r-"
@@ -1824,13 +1782,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 181,
+      "order": 270,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 908,
+          "link": 1129,
           "slot_index": 0
         }
       ],
@@ -1867,13 +1825,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 182,
+      "order": 273,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 907,
+          "link": 1130,
           "slot_index": 0
         }
       ],
@@ -1910,13 +1868,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 183,
+      "order": 272,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 906,
+          "link": 1131,
           "slot_index": 0
         }
       ],
@@ -1943,8 +1901,8 @@
       "id": 219,
       "type": "Reroute",
       "pos": [
-        300,
-        4600
+        -2399.7040965118417,
+        4600.6233893932895
       ],
       "size": [
         75,
@@ -1953,7 +1911,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 100,
+      "order": 106,
       "mode": 0,
       "inputs": [
         {
@@ -1984,8 +1942,8 @@
       "id": 220,
       "type": "Reroute",
       "pos": [
-        300,
-        4650
+        -2399.7040965118417,
+        4650.6233893932895
       ],
       "size": [
         75,
@@ -1994,7 +1952,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 101,
+      "order": 107,
       "mode": 0,
       "inputs": [
         {
@@ -2025,8 +1983,8 @@
       "id": 221,
       "type": "Reroute",
       "pos": [
-        300,
-        4700
+        -2399.7040965118417,
+        4700.6233893932895
       ],
       "size": [
         75,
@@ -2035,7 +1993,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 102,
+      "order": 108,
       "mode": 0,
       "inputs": [
         {
@@ -2066,8 +2024,8 @@
       "id": 222,
       "type": "Reroute",
       "pos": [
-        300,
-        4750
+        -2399.7040965118417,
+        4750.6233893932895
       ],
       "size": [
         75,
@@ -2076,7 +2034,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 103,
+      "order": 109,
       "mode": 0,
       "inputs": [
         {
@@ -2107,8 +2065,8 @@
       "id": 223,
       "type": "Reroute",
       "pos": [
-        300,
-        4900
+        -2399.7040965118417,
+        4900.6233893932895
       ],
       "size": [
         75,
@@ -2117,7 +2075,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 98,
+      "order": 104,
       "mode": 0,
       "inputs": [
         {
@@ -2148,8 +2106,8 @@
       "id": 224,
       "type": "Reroute",
       "pos": [
-        300,
-        4950
+        -2399.7040965118417,
+        4950.6233893932895
       ],
       "size": [
         75,
@@ -2158,7 +2116,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 99,
+      "order": 105,
       "mode": 0,
       "inputs": [
         {
@@ -2189,8 +2147,8 @@
       "id": 225,
       "type": "Reroute",
       "pos": [
-        300,
-        5000
+        -2399.7040965118417,
+        5000.6233893932895
       ],
       "size": [
         75,
@@ -2199,7 +2157,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 104,
+      "order": 110,
       "mode": 0,
       "inputs": [
         {
@@ -2230,8 +2188,8 @@
       "id": 226,
       "type": "Reroute",
       "pos": [
-        300,
-        5050
+        -2399.7040965118417,
+        5050.6233893932895
       ],
       "size": [
         75,
@@ -2240,7 +2198,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 105,
+      "order": 111,
       "mode": 0,
       "inputs": [
         {
@@ -2271,8 +2229,8 @@
       "id": 40,
       "type": "SeargeSDXLPromptEncoder",
       "pos": [
-        -300,
-        4230
+        -2999.704096511842,
+        4230.6233893932895
       ],
       "size": {
         "0": 400,
@@ -2281,7 +2239,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 92,
+      "order": 99,
       "mode": 0,
       "inputs": [
         {
@@ -2560,8 +2518,8 @@
       "id": 227,
       "type": "Reroute",
       "pos": [
-        1000,
-        4600
+        -1799.8005108491654,
+        4599.8544652066785
       ],
       "size": [
         75,
@@ -2570,7 +2528,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 114,
+      "order": 120,
       "mode": 0,
       "inputs": [
         {
@@ -2587,9 +2545,9 @@
           "links": [
             678,
             682,
-            790,
             827,
-            828
+            828,
+            1118
           ],
           "slot_index": 0,
           "label": "bc +"
@@ -2606,8 +2564,8 @@
       "id": 228,
       "type": "Reroute",
       "pos": [
-        1000,
-        4650
+        -1799.8005108491654,
+        4649.8544652066785
       ],
       "size": [
         75,
@@ -2616,7 +2574,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 115,
+      "order": 121,
       "mode": 0,
       "inputs": [
         {
@@ -2652,8 +2610,8 @@
       "id": 229,
       "type": "Reroute",
       "pos": [
-        1000,
-        4700
+        -1799.8005108491654,
+        4699.8544652066785
       ],
       "size": [
         75,
@@ -2662,7 +2620,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 116,
+      "order": 122,
       "mode": 0,
       "inputs": [
         {
@@ -2698,8 +2656,8 @@
       "id": 230,
       "type": "Reroute",
       "pos": [
-        1000,
-        4750
+        -1799.8005108491654,
+        4749.8544652066785
       ],
       "size": [
         75,
@@ -2708,7 +2666,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 117,
+      "order": 123,
       "mode": 0,
       "inputs": [
         {
@@ -2744,8 +2702,8 @@
       "id": 41,
       "type": "SeargeSDXLBasePromptEncoder",
       "pos": [
-        -300,
-        4830
+        -2999.704096511842,
+        4830.6233893932895
       ],
       "size": {
         "0": 400,
@@ -2754,7 +2712,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 91,
+      "order": 98,
       "mode": 0,
       "inputs": [
         {
@@ -2943,8 +2901,8 @@
       "id": 231,
       "type": "Reroute",
       "pos": [
-        1000,
-        4900
+        -1799.8005108491654,
+        4899.8544652066785
       ],
       "size": [
         75,
@@ -2953,7 +2911,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 112,
+      "order": 118,
       "mode": 0,
       "inputs": [
         {
@@ -2971,7 +2929,8 @@
             686,
             781,
             836,
-            840
+            840,
+            1164
           ],
           "slot_index": 0,
           "label": "bsc +"
@@ -2988,8 +2947,8 @@
       "id": 232,
       "type": "Reroute",
       "pos": [
-        1000,
-        4950
+        -1799.8005108491654,
+        4949.8544652066785
       ],
       "size": [
         75,
@@ -2998,7 +2957,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 113,
+      "order": 119,
       "mode": 0,
       "inputs": [
         {
@@ -3016,7 +2975,8 @@
             687,
             782,
             837,
-            841
+            841,
+            1165
           ],
           "slot_index": 0,
           "label": "bsc -"
@@ -3033,8 +2993,8 @@
       "id": 42,
       "type": "SeargeSDXLRefinerPromptEncoder",
       "pos": [
-        -300,
-        5230
+        -2999.704096511842,
+        5230.6233893932895
       ],
       "size": {
         "0": 400,
@@ -3043,7 +3003,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 93,
+      "order": 100,
       "mode": 0,
       "inputs": [
         {
@@ -3159,8 +3119,8 @@
       "id": 233,
       "type": "Reroute",
       "pos": [
-        1000,
-        5000
+        -1799.8005108491654,
+        4999.8544652066785
       ],
       "size": [
         75,
@@ -3169,7 +3129,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 118,
+      "order": 124,
       "mode": 0,
       "inputs": [
         {
@@ -3187,7 +3147,8 @@
             688,
             783,
             838,
-            842
+            842,
+            1166
           ],
           "slot_index": 0,
           "label": "rsc +"
@@ -3204,8 +3165,8 @@
       "id": 234,
       "type": "Reroute",
       "pos": [
-        1000,
-        5050
+        -1799.8005108491654,
+        5049.8544652066785
       ],
       "size": [
         75,
@@ -3214,7 +3175,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 119,
+      "order": 125,
       "mode": 0,
       "inputs": [
         {
@@ -3232,7 +3193,8 @@
             689,
             784,
             839,
-            843
+            843,
+            1167
           ],
           "slot_index": 0,
           "label": "rsc -"
@@ -3259,7 +3221,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 36,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -3304,7 +3266,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 71,
+      "order": 72,
       "mode": 0,
       "inputs": [
         {
@@ -3349,7 +3311,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 46,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -3395,7 +3357,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 199,
+      "order": 285,
       "mode": 0,
       "inputs": [
         {
@@ -3425,7 +3387,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 194,
+      "order": 279,
       "mode": 0,
       "inputs": [
         {
@@ -3467,7 +3429,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 195,
+      "order": 282,
       "mode": 0,
       "inputs": [
         {
@@ -3509,7 +3471,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 196,
+      "order": 281,
       "mode": 0,
       "inputs": [
         {
@@ -3551,7 +3513,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 205,
+      "order": 291,
       "mode": 0,
       "inputs": [
         {
@@ -3581,7 +3543,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 94,
+      "order": 101,
       "mode": 0,
       "inputs": [
         {
@@ -3623,7 +3585,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 106,
+      "order": 112,
       "mode": 0,
       "inputs": [
         {
@@ -3664,7 +3626,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 120,
+      "order": 126,
       "mode": 0,
       "inputs": [
         {
@@ -3706,7 +3668,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 204,
+      "order": 290,
       "mode": 0,
       "inputs": [
         {
@@ -3747,7 +3709,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 28,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
@@ -3790,7 +3752,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 49,
+      "order": 51,
       "mode": 0,
       "inputs": [
         {
@@ -3837,7 +3799,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 178,
+      "order": 230,
       "mode": 0,
       "inputs": [
         {
@@ -3910,7 +3872,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 55,
+      "order": 57,
       "mode": 0,
       "inputs": [
         {
@@ -3962,7 +3924,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 184,
+      "order": 240,
       "mode": 0,
       "inputs": [
         {
@@ -4045,7 +4007,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 145,
+      "order": 155,
       "mode": 0,
       "inputs": [
         {
@@ -4084,7 +4046,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 42,
+      "order": 44,
       "mode": 0,
       "inputs": [
         {
@@ -4126,7 +4088,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 33,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -4168,7 +4130,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 50,
+      "order": 52,
       "mode": 0,
       "inputs": [
         {
@@ -4214,7 +4176,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 41,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
@@ -4260,7 +4222,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 66,
+      "order": 68,
       "mode": 0,
       "inputs": [
         {
@@ -4303,7 +4265,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 34,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -4346,7 +4308,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 47,
+      "order": 49,
       "mode": 0,
       "inputs": [
         {
@@ -4388,7 +4350,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 30,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -4431,7 +4393,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 37,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -4473,7 +4435,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 72,
+      "order": 73,
       "mode": 0,
       "inputs": [
         {
@@ -4515,7 +4477,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 206,
+      "order": 292,
       "mode": 0,
       "inputs": [
         {
@@ -4557,7 +4519,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 193,
+      "order": 280,
       "mode": 0,
       "inputs": [
         {
@@ -4589,8 +4551,8 @@
       "id": 251,
       "type": "Reroute",
       "pos": [
-        -500,
-        4150
+        -3199.704096511842,
+        4150.623389393285
       ],
       "size": [
         75,
@@ -4599,7 +4561,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 38,
+      "order": 40,
       "mode": 0,
       "inputs": [
         {
@@ -4635,8 +4597,8 @@
       "id": 250,
       "type": "Reroute",
       "pos": [
-        -600,
-        4150
+        -3299.704096511842,
+        4150.623389393285
       ],
       "size": [
         75,
@@ -4645,7 +4607,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 73,
+      "order": 74,
       "mode": 0,
       "inputs": [
         {
@@ -4676,131 +4638,6 @@
       },
       "color": "#432",
       "bgcolor": "#653"
-    },
-    {
-      "id": 184,
-      "type": "Reroute",
-      "pos": [
-        -800,
-        2700
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 31,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 564,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CLIP",
-          "links": [
-            719
-          ],
-          "slot_index": 0,
-          "label": "r m"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 182,
-      "type": "Reroute",
-      "pos": [
-        -1000,
-        2200
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 67,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 562,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CLIP",
-          "links": [
-            716
-          ],
-          "slot_index": 0,
-          "label": "b m"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 200,
-      "type": "Reroute",
-      "pos": [
-        2400,
-        4100
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 75,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 617
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "PARAMETERS",
-          "links": [
-            616
-          ],
-          "slot_index": 0,
-          "label": "data"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#222",
-      "bgcolor": "#000"
     },
     {
       "id": 45,
@@ -4842,7 +4679,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 209,
+      "order": 295,
       "mode": 0,
       "inputs": [
         {
@@ -4960,7 +4797,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 208,
+      "order": 294,
       "mode": 0,
       "inputs": [
         {
@@ -4991,7 +4828,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 207,
+      "order": 293,
       "mode": 0,
       "inputs": [
         {
@@ -5035,7 +4872,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 39,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -5078,7 +4915,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 15,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -5126,7 +4963,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 190,
+      "order": 250,
       "mode": 0,
       "inputs": [
         {
@@ -5156,7 +4993,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 177,
+      "order": 229,
       "mode": 0,
       "inputs": [
         {
@@ -5230,7 +5067,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 53,
+      "order": 55,
       "mode": 0,
       "inputs": [
         {
@@ -5277,7 +5114,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 32,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
@@ -5320,7 +5157,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 76,
+      "order": 96,
       "mode": 0,
       "inputs": [
         {
@@ -5442,8 +5279,8 @@
       "id": 153,
       "type": "SeargeOutput1",
       "pos": [
-        -1700,
-        4530
+        -4399.70409651184,
+        4530.6233893932895
       ],
       "size": {
         "0": 400,
@@ -5452,7 +5289,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 70,
+      "order": 71,
       "mode": 0,
       "inputs": [
         {
@@ -5546,8 +5383,8 @@
       "id": 161,
       "type": "SeargeOutput5",
       "pos": [
-        -1700,
-        4830
+        -4399.70409651184,
+        4830.6233893932895
       ],
       "size": {
         "0": 400,
@@ -5556,7 +5393,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 78,
+      "order": 77,
       "mode": 0,
       "inputs": [
         {
@@ -5628,13 +5465,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 180,
+      "order": 271,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 909,
+          "link": 1128,
           "slot_index": 0
         }
       ],
@@ -5671,7 +5508,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 90,
+      "order": 117,
       "mode": 0,
       "inputs": [
         {
@@ -5712,7 +5549,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 89,
+      "order": 116,
       "mode": 0,
       "inputs": [
         {
@@ -5794,7 +5631,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 97,
+      "order": 130,
       "mode": 0,
       "inputs": [
         {
@@ -5874,7 +5711,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 124,
+      "order": 188,
       "mode": 0,
       "inputs": [
         {
@@ -5920,7 +5757,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 96,
+      "order": 129,
       "mode": 0,
       "inputs": [
         {
@@ -5967,7 +5804,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 111,
+      "order": 159,
       "mode": 0,
       "inputs": [
         {
@@ -6010,7 +5847,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 179,
+      "order": 252,
       "mode": 0,
       "inputs": [
         {
@@ -6052,7 +5889,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 48,
+      "order": 50,
       "mode": 0,
       "inputs": [
         {
@@ -6098,7 +5935,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 148,
+      "order": 231,
       "mode": 0,
       "inputs": [
         {
@@ -6143,7 +5980,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 77,
+      "order": 97,
       "mode": 0,
       "inputs": [
         {
@@ -6181,7 +6018,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 110,
+      "order": 158,
       "mode": 0,
       "inputs": [
         {
@@ -6222,7 +6059,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 123,
+      "order": 187,
       "mode": 0,
       "inputs": [
         {
@@ -6264,7 +6101,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 122,
+      "order": 128,
       "mode": 0,
       "inputs": [
         {
@@ -6310,7 +6147,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 82,
+      "order": 103,
       "mode": 0,
       "inputs": [
         {
@@ -6395,7 +6232,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 79,
+      "order": 78,
       "mode": 0,
       "inputs": [
         {
@@ -6441,7 +6278,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 45,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -6487,7 +6324,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 201,
+      "order": 287,
       "mode": 0,
       "inputs": [
         {
@@ -6515,179 +6352,11 @@
       "bgcolor": "#335"
     },
     {
-      "id": 300,
-      "type": "Reroute",
-      "pos": [
-        1800,
-        4300
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 127,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 790,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            801
-          ],
-          "slot_index": 0,
-          "label": "bc +"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 301,
-      "type": "Reroute",
-      "pos": [
-        1800,
-        4350
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 132,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 791,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            800
-          ],
-          "slot_index": 0,
-          "label": "bc -"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 302,
-      "type": "Reroute",
-      "pos": [
-        1800,
-        4400
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 135,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 792,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            799
-          ],
-          "slot_index": 0,
-          "label": "rc +"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 303,
-      "type": "Reroute",
-      "pos": [
-        1800,
-        4450
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 136,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 793,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            798
-          ],
-          "slot_index": 0,
-          "label": "rc -"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 304,
       "type": "Reroute",
       "pos": [
-        2050,
-        4750
+        -749.8005108491612,
+        4749.8544652066785
       ],
       "size": [
         75,
@@ -6696,7 +6365,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 166,
+      "order": 180,
       "mode": 0,
       "inputs": [
         {
@@ -6710,7 +6379,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            902
+            1084
           ],
           "label": "cr-",
           "slot_index": 0
@@ -6727,8 +6396,8 @@
       "id": 305,
       "type": "Reroute",
       "pos": [
-        2050,
-        4700
+        -749.8005108491612,
+        4699.8544652066785
       ],
       "size": [
         75,
@@ -6737,7 +6406,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 162,
+      "order": 175,
       "mode": 0,
       "inputs": [
         {
@@ -6751,7 +6420,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            903
+            1074
           ],
           "label": "cr+",
           "slot_index": 0
@@ -6768,8 +6437,8 @@
       "id": 306,
       "type": "Reroute",
       "pos": [
-        2050,
-        4650
+        -749.8005108491612,
+        4649.8544652066785
       ],
       "size": [
         75,
@@ -6778,7 +6447,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 154,
+      "order": 167,
       "mode": 0,
       "inputs": [
         {
@@ -6792,7 +6461,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            904
+            1064
           ],
           "label": "cb-",
           "slot_index": 0
@@ -6809,8 +6478,8 @@
       "id": 308,
       "type": "Reroute",
       "pos": [
-        2050,
-        4450
+        -749.8005108491612,
+        4449.8544652066785
       ],
       "size": [
         75,
@@ -6819,7 +6488,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 160,
+      "order": 173,
       "mode": 0,
       "inputs": [
         {
@@ -6833,91 +6502,9 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            889
+            1080
           ],
           "label": "sr-",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 309,
-      "type": "Reroute",
-      "pos": [
-        2050,
-        4400
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 159,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 799
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            888
-          ],
-          "label": "sr+",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 310,
-      "type": "Reroute",
-      "pos": [
-        2050,
-        4350
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 156,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 800
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            887
-          ],
-          "label": "sb-",
           "slot_index": 0
         }
       ],
@@ -7089,7 +6676,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 21,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -7166,7 +6753,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 189,
+      "order": 276,
       "mode": 0,
       "inputs": [
         {
@@ -7206,7 +6793,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 187,
+      "order": 274,
       "mode": 0,
       "inputs": [
         {
@@ -7246,7 +6833,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 188,
+      "order": 277,
       "mode": 0,
       "inputs": [
         {
@@ -7286,7 +6873,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 186,
+      "order": 275,
       "mode": 0,
       "inputs": [
         {
@@ -7326,13 +6913,13 @@
       "flags": {
         "pinned": true
       },
-      "order": 69,
+      "order": 81,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 766
+          "link": 1039
         }
       ],
       "outputs": [
@@ -7368,7 +6955,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 172,
+      "order": 241,
       "mode": 0,
       "inputs": [
         {
@@ -7409,7 +6996,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 40,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
@@ -7445,8 +7032,8 @@
       "id": 55,
       "type": "ConditioningCombine",
       "pos": [
-        1700,
-        4530
+        -1099.8005108491657,
+        4529.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7455,7 +7042,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 125,
+      "order": 133,
       "mode": 0,
       "inputs": [
         {
@@ -7491,8 +7078,8 @@
       "id": 56,
       "type": "ConditioningCombine",
       "pos": [
-        1700,
-        4640
+        -1099.8005108491657,
+        4639.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7501,7 +7088,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 130,
+      "order": 138,
       "mode": 0,
       "inputs": [
         {
@@ -7537,8 +7124,8 @@
       "id": 57,
       "type": "ConditioningCombine",
       "pos": [
-        1700,
-        4750
+        -1099.8005108491657,
+        4749.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7547,7 +7134,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 138,
+      "order": 146,
       "mode": 0,
       "inputs": [
         {
@@ -7583,8 +7170,8 @@
       "id": 58,
       "type": "ConditioningCombine",
       "pos": [
-        1700,
-        4860
+        -1099.8005108491657,
+        4859.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7593,7 +7180,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 142,
+      "order": 151,
       "mode": 0,
       "inputs": [
         {
@@ -7629,8 +7216,8 @@
       "id": 75,
       "type": "ConditioningAverage ",
       "pos": [
-        1700,
-        5030
+        -1099.8005108491657,
+        5029.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7639,7 +7226,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 126,
+      "order": 134,
       "mode": 0,
       "inputs": [
         {
@@ -7697,8 +7284,8 @@
       "id": 76,
       "type": "ConditioningAverage ",
       "pos": [
-        1700,
-        5140
+        -1099.8005108491657,
+        5139.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7707,7 +7294,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 131,
+      "order": 139,
       "mode": 0,
       "inputs": [
         {
@@ -7765,8 +7352,8 @@
       "id": 77,
       "type": "ConditioningAverage ",
       "pos": [
-        1700,
-        5250
+        -1099.8005108491657,
+        5249.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7775,7 +7362,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 137,
+      "order": 145,
       "mode": 0,
       "inputs": [
         {
@@ -7833,8 +7420,8 @@
       "id": 78,
       "type": "ConditioningAverage ",
       "pos": [
-        1700,
-        5360
+        -1099.8005108491657,
+        5359.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7843,7 +7430,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 141,
+      "order": 150,
       "mode": 0,
       "inputs": [
         {
@@ -7900,8 +7487,8 @@
       "id": 313,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        5530
+        -1099.8005108491657,
+        5529.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7910,7 +7497,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 129,
+      "order": 136,
       "mode": 0,
       "inputs": [
         {
@@ -7946,8 +7533,8 @@
       "id": 318,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        5640
+        -1099.8005108491657,
+        5639.8544652066785
       ],
       "size": {
         "0": 300,
@@ -7956,7 +7543,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 133,
+      "order": 141,
       "mode": 0,
       "inputs": [
         {
@@ -7992,8 +7579,8 @@
       "id": 319,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        5750
+        -1099.8005108491657,
+        5749.8544652066785
       ],
       "size": {
         "0": 300,
@@ -8002,7 +7589,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 139,
+      "order": 147,
       "mode": 0,
       "inputs": [
         {
@@ -8039,8 +7626,8 @@
       "id": 320,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        5860
+        -1099.8005108491657,
+        5859.8544652066785
       ],
       "size": {
         "0": 300,
@@ -8049,7 +7636,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 143,
+      "order": 152,
       "mode": 0,
       "inputs": [
         {
@@ -8086,8 +7673,8 @@
       "id": 321,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        6030
+        -1099.8005108491657,
+        6029.8544652066785
       ],
       "size": {
         "0": 300,
@@ -8096,7 +7683,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 128,
+      "order": 135,
       "mode": 0,
       "inputs": [
         {
@@ -8132,8 +7719,8 @@
       "id": 322,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        6140
+        -1099.8005108491657,
+        6139.8544652066785
       ],
       "size": {
         "0": 300,
@@ -8142,7 +7729,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 134,
+      "order": 142,
       "mode": 0,
       "inputs": [
         {
@@ -8178,8 +7765,8 @@
       "id": 323,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        6250
+        -1099.8005108491657,
+        6249.8544652066785
       ],
       "size": {
         "0": 300,
@@ -8188,7 +7775,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 140,
+      "order": 148,
       "mode": 0,
       "inputs": [
         {
@@ -8224,8 +7811,8 @@
       "id": 324,
       "type": "ConditioningConcat",
       "pos": [
-        1700,
-        6360
+        -1099.8005108491657,
+        6359.8544652066785
       ],
       "size": {
         "0": 300,
@@ -8234,7 +7821,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 144,
+      "order": 153,
       "mode": 0,
       "inputs": [
         {
@@ -8271,8 +7858,8 @@
       "id": 214,
       "type": "Reroute",
       "pos": [
-        2050,
-        5100
+        -749.8005108491612,
+        5099.8544652066785
       ],
       "size": [
         75,
@@ -8281,7 +7868,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 150,
+      "order": 163,
       "mode": 0,
       "inputs": [
         {
@@ -8296,7 +7883,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            901
+            1053
           ],
           "slot_index": 0,
           "label": "b+"
@@ -8310,52 +7897,11 @@
       "bgcolor": "#653"
     },
     {
-      "id": 311,
-      "type": "Reroute",
-      "pos": [
-        2050,
-        4300
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 151,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 801
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            886
-          ],
-          "label": "sb+",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 325,
       "type": "Reroute",
       "pos": [
-        2050,
-        5750
+        -749.8005108491612,
+        5749.8544652066785
       ],
       "size": [
         75,
@@ -8364,7 +7910,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 167,
+      "order": 181,
       "mode": 0,
       "inputs": [
         {
@@ -8378,7 +7924,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            894
+            1081,
+            1222
           ],
           "slot_index": 0
         }
@@ -8394,8 +7941,8 @@
       "id": 326,
       "type": "Reroute",
       "pos": [
-        2050,
-        5700
+        -749.8005108491612,
+        5699.8544652066785
       ],
       "size": [
         75,
@@ -8404,7 +7951,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 163,
+      "order": 176,
       "mode": 0,
       "inputs": [
         {
@@ -8418,7 +7965,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            895
+            1071,
+            1218
           ],
           "slot_index": 0
         }
@@ -8434,8 +7982,8 @@
       "id": 327,
       "type": "Reroute",
       "pos": [
-        2050,
-        5650
+        -749.8005108491612,
+        5649.8544652066785
       ],
       "size": [
         75,
@@ -8444,7 +7992,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 157,
+      "order": 170,
       "mode": 0,
       "inputs": [
         {
@@ -8458,7 +8006,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            896
+            1061,
+            1221
           ],
           "slot_index": 0
         }
@@ -8474,8 +8023,8 @@
       "id": 328,
       "type": "Reroute",
       "pos": [
-        2050,
-        5600
+        -749.8005108491612,
+        5599.8544652066785
       ],
       "size": [
         75,
@@ -8484,7 +8033,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 153,
+      "order": 165,
       "mode": 0,
       "inputs": [
         {
@@ -8499,7 +8048,8 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            897
+            1051,
+            1217
           ],
           "slot_index": 0
         }
@@ -8515,8 +8065,8 @@
       "id": 329,
       "type": "Reroute",
       "pos": [
-        2050,
-        6250
+        -749.8005108491612,
+        6249.8544652066785
       ],
       "size": [
         75,
@@ -8525,7 +8075,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 168,
+      "order": 182,
       "mode": 0,
       "inputs": [
         {
@@ -8539,8 +8089,10 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            890
-          ]
+            1082,
+            1220
+          ],
+          "slot_index": 0
         }
       ],
       "properties": {
@@ -8554,8 +8106,90 @@
       "id": 330,
       "type": "Reroute",
       "pos": [
-        2050,
-        6200
+        -749.8005108491612,
+        6199.8544652066785
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 177,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 846
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1072,
+            1224
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 331,
+      "type": "Reroute",
+      "pos": [
+        -749.8005108491612,
+        6149.8544652066785
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 171,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 847
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1062,
+            1219
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 332,
+      "type": "Reroute",
+      "pos": [
+        -749.8005108491612,
+        6099.8544652066785
       ],
       "size": [
         75,
@@ -8570,84 +8204,6 @@
         {
           "name": "",
           "type": "*",
-          "link": 846
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            891
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 331,
-      "type": "Reroute",
-      "pos": [
-        2050,
-        6150
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 158,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 847
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            892
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 332,
-      "type": "Reroute",
-      "pos": [
-        2050,
-        6100
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 152,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
           "link": 848,
           "slot_index": 0
         }
@@ -8657,8 +8213,10 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            893
-          ]
+            1052,
+            1223
+          ],
+          "slot_index": 0
         }
       ],
       "properties": {
@@ -8669,407 +8227,11 @@
       "bgcolor": "#653"
     },
     {
-      "id": 334,
-      "type": "SeargeGenerated1",
-      "pos": [
-        1900,
-        4180
-      ],
-      "size": {
-        "0": 300,
-        "1": 70
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 80,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "parameters",
-          "type": "PARAMETERS",
-          "link": 881
-        }
-      ],
-      "outputs": [
-        {
-          "name": "parameters",
-          "type": "PARAMETERS",
-          "links": null,
-          "shape": 3
-        },
-        {
-          "name": "operation_selector",
-          "type": "INT",
-          "links": null,
-          "shape": 3
-        },
-        {
-          "name": "prompt_style_selector",
-          "type": "INT",
-          "links": [
-            882,
-            883,
-            884,
-            885
-          ],
-          "shape": 3,
-          "slot_index": 2
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SeargeGenerated1"
-      },
-      "color": "#222",
-      "bgcolor": "#000"
-    },
-    {
-      "id": 336,
-      "type": "SeargeConditioningMuxer5",
-      "pos": [
-        2290,
-        4780
-      ],
-      "size": {
-        "0": 210,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 174,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input0",
-          "type": "CONDITIONING",
-          "link": 887
-        },
-        {
-          "name": "input1",
-          "type": "CONDITIONING",
-          "link": 896,
-          "slot_index": 1
-        },
-        {
-          "name": "input2",
-          "type": "CONDITIONING",
-          "link": 892,
-          "slot_index": 2
-        },
-        {
-          "name": "input3",
-          "type": "CONDITIONING",
-          "link": 900,
-          "slot_index": 3
-        },
-        {
-          "name": "input4",
-          "type": "CONDITIONING",
-          "link": 904,
-          "slot_index": 4
-        },
-        {
-          "name": "input_selector",
-          "type": "INT",
-          "link": 882,
-          "widget": {
-            "name": "input_selector",
-            "config": [
-              "INT",
-              {
-                "default": 0,
-                "min": 0,
-                "max": 4
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "output",
-          "type": "CONDITIONING",
-          "links": [
-            908
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "5-Way Muxer",
-      "properties": {
-        "Node name for S&R": "SeargeConditioningMuxer5"
-      },
-      "widgets_values": [
-        0
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 337,
-      "type": "SeargeConditioningMuxer5",
-      "pos": [
-        2300,
-        4530
-      ],
-      "size": {
-        "0": 210,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 173,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input0",
-          "type": "CONDITIONING",
-          "link": 886
-        },
-        {
-          "name": "input1",
-          "type": "CONDITIONING",
-          "link": 897,
-          "slot_index": 1
-        },
-        {
-          "name": "input2",
-          "type": "CONDITIONING",
-          "link": 893,
-          "slot_index": 2
-        },
-        {
-          "name": "input3",
-          "type": "CONDITIONING",
-          "link": 901,
-          "slot_index": 3
-        },
-        {
-          "name": "input4",
-          "type": "CONDITIONING",
-          "link": 905,
-          "slot_index": 4
-        },
-        {
-          "name": "input_selector",
-          "type": "INT",
-          "link": 885,
-          "widget": {
-            "name": "input_selector",
-            "config": [
-              "INT",
-              {
-                "default": 0,
-                "min": 0,
-                "max": 4
-              }
-            ]
-          },
-          "slot_index": 5
-        }
-      ],
-      "outputs": [
-        {
-          "name": "output",
-          "type": "CONDITIONING",
-          "links": [
-            909
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "5-Way Muxer",
-      "properties": {
-        "Node name for S&R": "SeargeConditioningMuxer5"
-      },
-      "widgets_values": [
-        0
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 338,
-      "type": "SeargeConditioningMuxer5",
-      "pos": [
-        2300,
-        5030
-      ],
-      "size": {
-        "0": 210,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 175,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input0",
-          "type": "CONDITIONING",
-          "link": 888,
-          "slot_index": 0
-        },
-        {
-          "name": "input1",
-          "type": "CONDITIONING",
-          "link": 895,
-          "slot_index": 1
-        },
-        {
-          "name": "input2",
-          "type": "CONDITIONING",
-          "link": 891,
-          "slot_index": 2
-        },
-        {
-          "name": "input3",
-          "type": "CONDITIONING",
-          "link": 899,
-          "slot_index": 3
-        },
-        {
-          "name": "input4",
-          "type": "CONDITIONING",
-          "link": 903,
-          "slot_index": 4
-        },
-        {
-          "name": "input_selector",
-          "type": "INT",
-          "link": 884,
-          "widget": {
-            "name": "input_selector",
-            "config": [
-              "INT",
-              {
-                "default": 0,
-                "min": 0,
-                "max": 4
-              }
-            ]
-          },
-          "slot_index": 5
-        }
-      ],
-      "outputs": [
-        {
-          "name": "output",
-          "type": "CONDITIONING",
-          "links": [
-            907
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "5-Way Muxer",
-      "properties": {
-        "Node name for S&R": "SeargeConditioningMuxer5"
-      },
-      "widgets_values": [
-        0
-      ],
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
-      "id": 339,
-      "type": "SeargeConditioningMuxer5",
-      "pos": [
-        2300,
-        5280
-      ],
-      "size": {
-        "0": 210,
-        "1": 170
-      },
-      "flags": {
-        "pinned": true
-      },
-      "order": 176,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input0",
-          "type": "CONDITIONING",
-          "link": 889,
-          "slot_index": 0
-        },
-        {
-          "name": "input1",
-          "type": "CONDITIONING",
-          "link": 894,
-          "slot_index": 1
-        },
-        {
-          "name": "input2",
-          "type": "CONDITIONING",
-          "link": 890,
-          "slot_index": 2
-        },
-        {
-          "name": "input3",
-          "type": "CONDITIONING",
-          "link": 898,
-          "slot_index": 3
-        },
-        {
-          "name": "input4",
-          "type": "CONDITIONING",
-          "link": 902,
-          "slot_index": 4
-        },
-        {
-          "name": "input_selector",
-          "type": "INT",
-          "link": 883,
-          "widget": {
-            "name": "input_selector",
-            "config": [
-              "INT",
-              {
-                "default": 0,
-                "min": 0,
-                "max": 4
-              }
-            ]
-          },
-          "slot_index": 5
-        }
-      ],
-      "outputs": [
-        {
-          "name": "output",
-          "type": "CONDITIONING",
-          "links": [
-            906
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "5-Way Muxer",
-      "properties": {
-        "Node name for S&R": "SeargeConditioningMuxer5"
-      },
-      "widgets_values": [
-        0
-      ],
-      "color": "#332922",
-      "bgcolor": "#593930"
-    },
-    {
       "id": 307,
       "type": "Reroute",
       "pos": [
-        2050,
-        4600
+        -749.8005108491612,
+        4599.8544652066785
       ],
       "size": [
         75,
@@ -9078,7 +8240,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 149,
+      "order": 162,
       "mode": 0,
       "inputs": [
         {
@@ -9092,7 +8254,7 @@
           "name": "",
           "type": "CONDITIONING",
           "links": [
-            905
+            1054
           ],
           "label": "cb+",
           "slot_index": 0
@@ -9119,7 +8281,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 108,
+      "order": 114,
       "mode": 0,
       "inputs": [
         {
@@ -9172,7 +8334,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 185,
+      "order": 257,
       "mode": 0,
       "inputs": [
         {
@@ -9268,7 +8430,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 211,
+      "order": 297,
       "mode": 0,
       "inputs": [
         {
@@ -9347,7 +8509,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 14,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -9432,7 +8594,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 60,
+      "order": 62,
       "mode": 0,
       "inputs": [
         {
@@ -9529,7 +8691,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 13,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -9620,7 +8782,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 16,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -9676,7 +8838,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 17,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -9732,7 +8894,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 18,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -9772,7 +8934,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 19,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -9813,7 +8975,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 20,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -9854,7 +9016,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 44,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -9987,7 +9149,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 54,
+      "order": 56,
       "mode": 0,
       "inputs": [
         {
@@ -10027,7 +9189,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 51,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -10071,7 +9233,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 56,
+      "order": 58,
       "mode": 0,
       "inputs": [
         {
@@ -10116,7 +9278,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 95,
+      "order": 102,
       "mode": 0,
       "inputs": [
         {
@@ -10237,7 +9399,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 192,
+      "order": 278,
       "mode": 0,
       "inputs": [
         {
@@ -10438,7 +9600,7 @@
         "Node name for S&R": "SeargeSDXLSampler"
       },
       "widgets_values": [
-        0,
+        213103709520708,
         "randomize",
         20,
         7,
@@ -10465,7 +9627,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 200,
+      "order": 286,
       "mode": 0,
       "inputs": [
         {
@@ -10507,7 +9669,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 191,
+      "order": 251,
       "mode": 0,
       "inputs": [
         {
@@ -10549,7 +9711,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 146,
+      "order": 156,
       "mode": 0,
       "inputs": [
         {
@@ -10652,7 +9814,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 169,
+      "order": 184,
       "mode": 0,
       "inputs": [
         {
@@ -10744,7 +9906,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 203,
+      "order": 289,
       "mode": 0,
       "inputs": [
         {
@@ -10787,7 +9949,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 202,
+      "order": 288,
       "mode": 0,
       "inputs": [
         {
@@ -11030,7 +10192,7 @@
         "Node name for S&R": "SeargeSDXLImage2ImageSampler"
       },
       "widgets_values": [
-        0,
+        862579782100573,
         "randomize",
         20,
         7,
@@ -11059,7 +10221,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 147,
+      "order": 157,
       "mode": 0,
       "inputs": [
         {
@@ -11160,7 +10322,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 121,
+      "order": 127,
       "mode": 0,
       "inputs": [
         {
@@ -11254,7 +10416,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 107,
+      "order": 113,
       "mode": 0,
       "inputs": [
         {
@@ -11366,7 +10528,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 88,
+      "order": 95,
       "mode": 0,
       "inputs": [
         {
@@ -11462,8 +10624,8 @@
       "id": 370,
       "type": "SeargeOutput2",
       "pos": [
-        -1700,
-        4230
+        -4399.70409651184,
+        4230.6233893932895
       ],
       "size": {
         "0": 400,
@@ -11472,7 +10634,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 65,
+      "order": 67,
       "mode": 0,
       "inputs": [
         {
@@ -11563,6 +10725,4750 @@
       },
       "color": "#222",
       "bgcolor": "#000"
+    },
+    {
+      "id": 202,
+      "type": "Reroute",
+      "pos": [
+        -4500,
+        3600
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 621
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "PARAMETERS",
+          "links": [
+            622
+          ],
+          "slot_index": 0,
+          "label": "data"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 182,
+      "type": "Reroute",
+      "pos": [
+        -2100,
+        3600
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 69,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 562,
+          "slot_index": 0,
+          "pos": [
+            37.5,
+            0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CLIP",
+          "links": [
+            716
+          ],
+          "slot_index": 0,
+          "label": "b m"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": true
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 184,
+      "type": "Reroute",
+      "pos": [
+        -2000,
+        3600
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 564,
+          "slot_index": 0,
+          "pos": [
+            37.5,
+            0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CLIP",
+          "links": [
+            719
+          ],
+          "slot_index": 0,
+          "label": "r m"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": true
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 200,
+      "type": "Reroute",
+      "pos": [
+        400,
+        4100
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 76,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 617
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "PARAMETERS",
+          "links": [
+            616,
+            1039
+          ],
+          "slot_index": 0,
+          "label": "data"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 337,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        4530
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 233,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1055
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1056,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1057,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1058,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1059,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1111,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          },
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1043
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 336,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        4780
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 234,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1069
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1068,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1067,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1066,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1065,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1113,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1049
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 338,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        5030
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 236,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1079,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1078,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1077,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1076,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1075,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1115,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          },
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1041
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 339,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        5280
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 238,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1089,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1088,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1087,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1086,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1085,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1117,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          },
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1040
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 373,
+      "type": "Reroute",
+      "pos": [
+        100,
+        4950
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 244,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1049,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1145
+          ],
+          "label": "B-",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 372,
+      "type": "Reroute",
+      "pos": [
+        100,
+        5000
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 246,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1041
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1146
+          ],
+          "label": "R+",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 371,
+      "type": "Reroute",
+      "pos": [
+        100,
+        5050
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 248,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1040
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1147
+          ],
+          "slot_index": 0,
+          "label": "R-"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 375,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        5780
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 235,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1104
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1103,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1102,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1101,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1100,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1133,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1141
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 377,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        6030
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 237,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1099,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1098,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1097,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1096,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1095,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1134,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          },
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1142
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 378,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        6280
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 239,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1094,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1093,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1092,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1091,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1090,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1135,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          },
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1143
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 376,
+      "type": "SeargeConditioningMuxer5",
+      "pos": [
+        -300,
+        5530
+      ],
+      "size": {
+        "0": 250,
+        "1": 170
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 232,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1109
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1108,
+          "slot_index": 1
+        },
+        {
+          "name": "input2",
+          "type": "CONDITIONING",
+          "link": 1107,
+          "slot_index": 2
+        },
+        {
+          "name": "input3",
+          "type": "CONDITIONING",
+          "link": 1106,
+          "slot_index": 3
+        },
+        {
+          "name": "input4",
+          "type": "CONDITIONING",
+          "link": 1105,
+          "slot_index": 4
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1132,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 4
+              }
+            ]
+          },
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1140
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "5-Way Muxer",
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer5"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 379,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        4500
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 201,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1050
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1055
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 380,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        4530
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 199,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1051
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1056
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 381,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        4560
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 197,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1052
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1057
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 382,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        4590
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 196,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1053
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1058
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 383,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        4620
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 195,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1054
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1059
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 384,
+      "type": "Reroute",
+      "pos": [
+        -439.69344968515696,
+        4750.48178896125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 204,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1060
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1069
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 385,
+      "type": "Reroute",
+      "pos": [
+        -439.69344968515696,
+        4780.48178896125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 205,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1061
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1068
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 386,
+      "type": "Reroute",
+      "pos": [
+        -439.69344968515696,
+        4810.48178896125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 207,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1062
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1067
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 387,
+      "type": "Reroute",
+      "pos": [
+        -439.69344968515696,
+        4840.48178896125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 203,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1063
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1066
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 388,
+      "type": "Reroute",
+      "pos": [
+        -439.69344968515696,
+        4870.48178896125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 202,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1064
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1065
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 389,
+      "type": "Reroute",
+      "pos": [
+        -440.0128247178442,
+        5001.5996420061765
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 209,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1070
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1079
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 390,
+      "type": "Reroute",
+      "pos": [
+        -440.0128247178442,
+        5031.5996420061765
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 213,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1071
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1078
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 391,
+      "type": "Reroute",
+      "pos": [
+        -440.0128247178442,
+        5061.5996420061765
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 215,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1072
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1077
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 392,
+      "type": "Reroute",
+      "pos": [
+        -440.0128247178442,
+        5091.5996420061765
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 211,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1073
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1076
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 393,
+      "type": "Reroute",
+      "pos": [
+        -440.0128247178442,
+        5121.5996420061765
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 212,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1074
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1075
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 394,
+      "type": "Reroute",
+      "pos": [
+        -439.69898297216025,
+        5250.479291084056
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 210,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1080
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1089
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 395,
+      "type": "Reroute",
+      "pos": [
+        -439.69898297216025,
+        5280.479291084056
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 222,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1081
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1088
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 396,
+      "type": "Reroute",
+      "pos": [
+        -439.69898297216025,
+        5310.479291084056
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 224,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1082
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1087
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 397,
+      "type": "Reroute",
+      "pos": [
+        -439.69898297216025,
+        5340.479291084056
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 220,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1083
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1086
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 398,
+      "type": "Reroute",
+      "pos": [
+        -439.69898297216025,
+        5370.479291084056
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 221,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1084
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1085
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 399,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5501.284406981773
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 200,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1217,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1109
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 400,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5531.284406981773
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 198,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1223,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1108
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 401,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5561.284406981773
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 189,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1170,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1107
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 402,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5591.284406981773
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 190,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1171,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1106
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 403,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5621.284406981773
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 191,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1172,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1105
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 404,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5750.331942842333
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 208,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1219,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1104
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 405,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5780.331942842333
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 206,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1221,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1103
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 406,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5810.331942842333
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 192,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1175,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1102
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 407,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5840.331942842333
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 193,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1176,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1101
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 408,
+      "type": "Reroute",
+      "pos": [
+        -440.0594766173699,
+        5870.331942842333
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 194,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1177,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1100
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 409,
+      "type": "Reroute",
+      "pos": [
+        -439.14068030080034,
+        6001.215889755803
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 214,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1218,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1099
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 410,
+      "type": "Reroute",
+      "pos": [
+        -439.14068030080034,
+        6031.215889755803
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 216,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1224,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1098
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 411,
+      "type": "Reroute",
+      "pos": [
+        -439.14068030080034,
+        6061.215889755803
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 217,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1180,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1097
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 412,
+      "type": "Reroute",
+      "pos": [
+        -439.14068030080034,
+        6091.215889755803
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 218,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1181,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1096
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 413,
+      "type": "Reroute",
+      "pos": [
+        -439.14068030080034,
+        6121.215889755803
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 219,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1182,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1095
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 414,
+      "type": "Reroute",
+      "pos": [
+        -440.9787184458908,
+        6249.804604522524
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 225,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1220,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1094
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 415,
+      "type": "Reroute",
+      "pos": [
+        -440.9787184458908,
+        6279.804604522524
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 223,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1222,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1093
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 416,
+      "type": "Reroute",
+      "pos": [
+        -440.9787184458908,
+        6309.804604522524
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 226,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1185,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1092
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 417,
+      "type": "Reroute",
+      "pos": [
+        -440.9787184458908,
+        6339.804604522524
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 227,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1186,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1091
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 418,
+      "type": "Reroute",
+      "pos": [
+        -440.9787184458908,
+        6369.804604522524
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 228,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1187,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1090
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 334,
+      "type": "SeargeGenerated1",
+      "pos": [
+        -1000,
+        4180
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 79,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "parameters",
+          "type": "PARAMETERS",
+          "link": 881
+        }
+      ],
+      "outputs": [
+        {
+          "name": "parameters",
+          "type": "PARAMETERS",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "operation_selector",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "prompt_style_selector",
+          "type": "INT",
+          "links": [
+            1110,
+            1112,
+            1114,
+            1116,
+            1136,
+            1137,
+            1138,
+            1139
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeGenerated1"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 419,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        4650
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 86,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1111
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 420,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        4900
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 87,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1112
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1113
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 421,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        5150
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 88,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1114
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1115
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 422,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        5400
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 89,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1116
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1117
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 303,
+      "type": "Reroute",
+      "pos": [
+        -1100,
+        4450
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 144,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 793,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            798
+          ],
+          "slot_index": 0,
+          "label": "rc -"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 302,
+      "type": "Reroute",
+      "pos": [
+        -1100,
+        4410
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 143,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 792,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            799
+          ],
+          "slot_index": 0,
+          "label": "rc +"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 301,
+      "type": "Reroute",
+      "pos": [
+        -1100,
+        4370
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 140,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 791,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            800
+          ],
+          "slot_index": 0,
+          "label": "bc -"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 300,
+      "type": "Reroute",
+      "pos": [
+        -1100,
+        4330
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 137,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1118,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            801
+          ],
+          "slot_index": 0,
+          "label": "bc +"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 424,
+      "type": "Reroute",
+      "pos": [
+        1000,
+        4250
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 259,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1157,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1202,
+            1205
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 425,
+      "type": "Reroute",
+      "pos": [
+        1000,
+        4300
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 260,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1158,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1203,
+            1208
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 426,
+      "type": "Reroute",
+      "pos": [
+        1000,
+        4350
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 261,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1159,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1204,
+            1207
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 428,
+      "type": "Reroute",
+      "pos": [
+        2501.334326171875,
+        4251.2181640625
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 266,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1210,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1129
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 429,
+      "type": "Reroute",
+      "pos": [
+        2501.334326171875,
+        4301.2181640625
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 269,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1211,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1130
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 430,
+      "type": "Reroute",
+      "pos": [
+        2501.334326171875,
+        4351.2181640625
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 268,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1212,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1131
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 427,
+      "type": "Reroute",
+      "pos": [
+        2501.334326171875,
+        4201.2181640625
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 267,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1209,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1128
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 431,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        5650
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 90,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1136
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1132
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 432,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        5900
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 91,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1137
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1133
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 433,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        6150
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 92,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1138
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1134
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 434,
+      "type": "Reroute",
+      "pos": [
+        -440,
+        6400
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 93,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1139
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            1135
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 374,
+      "type": "Reroute",
+      "pos": [
+        100,
+        4900
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 243,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1043
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1144
+          ],
+          "label": "B+",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 435,
+      "type": "Reroute",
+      "pos": [
+        100.58035101247651,
+        6050.94617317214
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 249,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1143
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1151
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 436,
+      "type": "Reroute",
+      "pos": [
+        100.58035101247651,
+        6000.94617317214
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 247,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1142
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1150
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 437,
+      "type": "Reroute",
+      "pos": [
+        100.58035101247651,
+        5950.94617317214
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 245,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1141,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1149
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 438,
+      "type": "Reroute",
+      "pos": [
+        100.58035101247651,
+        5900.94617317214
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 242,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1140
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1148
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 440,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        300,
+        5330
+      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 254,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1145
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1149,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1153,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1157
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 441,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        300,
+        5530
+      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 255,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1146
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1150,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1154,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1158
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 439,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        300,
+        5130
+      ],
+      "size": [
+        250,
+        120
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 253,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1144
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1148,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1152,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1156
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 442,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        300,
+        5730
+      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 256,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1147
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1151,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1155,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1159
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 309,
+      "type": "Reroute",
+      "pos": [
+        -750,
+        4410
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 172,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 799
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1070
+          ],
+          "label": "sr+",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 310,
+      "type": "Reroute",
+      "pos": [
+        -750,
+        4370
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 169,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 800
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1060
+          ],
+          "label": "sb-",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 311,
+      "type": "Reroute",
+      "pos": [
+        -750,
+        4330
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 166,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 801
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1050
+          ],
+          "label": "sb+",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 446,
+      "type": "Reroute",
+      "pos": [
+        -1098.3110595703124,
+        6450.41689453125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 131,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1164,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1160
+          ],
+          "slot_index": 0,
+          "label": "bs+"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 447,
+      "type": "Reroute",
+      "pos": [
+        -1098.3110595703124,
+        6490.41689453125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 132,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1165,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1161
+          ],
+          "slot_index": 0,
+          "label": "bs-"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 448,
+      "type": "Reroute",
+      "pos": [
+        -1098.3110595703124,
+        6530.41689453125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 149,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1166,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1162
+          ],
+          "slot_index": 0,
+          "label": "rs+"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 449,
+      "type": "Reroute",
+      "pos": [
+        -1098.3110595703124,
+        6570.41689453125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 154,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1167,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1163
+          ],
+          "slot_index": 0,
+          "label": "rs-"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 450,
+      "type": "Reroute",
+      "pos": [
+        -879.539599609375,
+        6450.50380859375
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 160,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1160,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1170,
+            1171,
+            1172
+          ],
+          "label": "bso+"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 451,
+      "type": "Reroute",
+      "pos": [
+        -879.539599609375,
+        6490.50380859375
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 161,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1161,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1175,
+            1176,
+            1177
+          ],
+          "label": "bso-"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 452,
+      "type": "Reroute",
+      "pos": [
+        -879.539599609375,
+        6530.50380859375
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 178,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1162,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1180,
+            1181,
+            1182
+          ],
+          "label": "rso+"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 453,
+      "type": "Reroute",
+      "pos": [
+        -879.539599609375,
+        6570.50380859375
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 183,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1163,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1185,
+            1186,
+            1187
+          ],
+          "label": "rso-"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 443,
+      "type": "SeargeIntegerConstant",
+      "pos": [
+        -700,
+        5440
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 13,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "links": [
+            1152,
+            1153,
+            1154,
+            1155
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeIntegerConstant"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 455,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        1500,
+        4630
+      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 262,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1202,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1206,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1198,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1210
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 456,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        1500,
+        4830
+      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 265,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1203,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1207,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1199,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1211
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 457,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        1500,
+        5030
+      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 264,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1204,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1208,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1200,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1212
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 454,
+      "type": "SeargeConditioningMuxer2",
+      "pos": [
+        1500,
+        4430
+      ],
+      "size": {
+        "0": 250,
+        "1": 120
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 263,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input0",
+          "type": "CONDITIONING",
+          "link": 1201,
+          "slot_index": 0
+        },
+        {
+          "name": "input1",
+          "type": "CONDITIONING",
+          "link": 1205,
+          "slot_index": 1
+        },
+        {
+          "name": "input_selector",
+          "type": "INT",
+          "link": 1197,
+          "widget": {
+            "name": "input_selector",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            1209
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeargeConditioningMuxer2"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 458,
+      "type": "SeargeIntegerConstant",
+      "pos": [
+        1000,
+        4540
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "pinned": true
+      },
+      "order": 14,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "links": [
+            1197,
+            1198,
+            1199,
+            1200
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "SWAP + / -",
+      "properties": {
+        "Node name for S&R": "SeargeIntegerConstant"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 423,
+      "type": "Reroute",
+      "pos": [
+        1000,
+        4200
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 258,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1156,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            1201,
+            1206
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#432",
+      "bgcolor": "#653"
     }
   ],
   "links": [
@@ -12695,14 +16601,6 @@
       "MASK"
     ],
     [
-      766,
-      201,
-      0,
-      291,
-      0,
-      "*"
-    ],
-    [
       767,
       291,
       0,
@@ -12861,14 +16759,6 @@
       293,
       0,
       "PARAMETERS"
-    ],
-    [
-      790,
-      227,
-      0,
-      300,
-      0,
-      "*"
     ],
     [
       791,
@@ -13237,230 +17127,6 @@
       334,
       0,
       "PARAMETERS"
-    ],
-    [
-      882,
-      334,
-      2,
-      336,
-      5,
-      "INT"
-    ],
-    [
-      883,
-      334,
-      2,
-      339,
-      5,
-      "INT"
-    ],
-    [
-      884,
-      334,
-      2,
-      338,
-      5,
-      "INT"
-    ],
-    [
-      885,
-      334,
-      2,
-      337,
-      5,
-      "INT"
-    ],
-    [
-      886,
-      311,
-      0,
-      337,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      887,
-      310,
-      0,
-      336,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      888,
-      309,
-      0,
-      338,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      889,
-      308,
-      0,
-      339,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      890,
-      329,
-      0,
-      339,
-      2,
-      "CONDITIONING"
-    ],
-    [
-      891,
-      330,
-      0,
-      338,
-      2,
-      "CONDITIONING"
-    ],
-    [
-      892,
-      331,
-      0,
-      336,
-      2,
-      "CONDITIONING"
-    ],
-    [
-      893,
-      332,
-      0,
-      337,
-      2,
-      "CONDITIONING"
-    ],
-    [
-      894,
-      325,
-      0,
-      339,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      895,
-      326,
-      0,
-      338,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      896,
-      327,
-      0,
-      336,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      897,
-      328,
-      0,
-      337,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      898,
-      211,
-      0,
-      339,
-      3,
-      "CONDITIONING"
-    ],
-    [
-      899,
-      212,
-      0,
-      338,
-      3,
-      "CONDITIONING"
-    ],
-    [
-      900,
-      213,
-      0,
-      336,
-      3,
-      "CONDITIONING"
-    ],
-    [
-      901,
-      214,
-      0,
-      337,
-      3,
-      "CONDITIONING"
-    ],
-    [
-      902,
-      304,
-      0,
-      339,
-      4,
-      "CONDITIONING"
-    ],
-    [
-      903,
-      305,
-      0,
-      338,
-      4,
-      "CONDITIONING"
-    ],
-    [
-      904,
-      306,
-      0,
-      336,
-      4,
-      "CONDITIONING"
-    ],
-    [
-      905,
-      307,
-      0,
-      337,
-      4,
-      "CONDITIONING"
-    ],
-    [
-      906,
-      339,
-      0,
-      218,
-      0,
-      "*"
-    ],
-    [
-      907,
-      338,
-      0,
-      217,
-      0,
-      "*"
-    ],
-    [
-      908,
-      336,
-      0,
-      216,
-      0,
-      "*"
-    ],
-    [
-      909,
-      337,
-      0,
-      215,
-      0,
-      "*"
     ],
     [
       910,
@@ -14309,6 +17975,1206 @@
       364,
       2,
       "SAVE_FOLDER"
+    ],
+    [
+      1039,
+      200,
+      0,
+      291,
+      0,
+      "*"
+    ],
+    [
+      1040,
+      339,
+      0,
+      371,
+      0,
+      "*"
+    ],
+    [
+      1041,
+      338,
+      0,
+      372,
+      0,
+      "*"
+    ],
+    [
+      1043,
+      337,
+      0,
+      374,
+      0,
+      "*"
+    ],
+    [
+      1049,
+      336,
+      0,
+      373,
+      0,
+      "*"
+    ],
+    [
+      1050,
+      311,
+      0,
+      379,
+      0,
+      "*"
+    ],
+    [
+      1051,
+      328,
+      0,
+      380,
+      0,
+      "*"
+    ],
+    [
+      1052,
+      332,
+      0,
+      381,
+      0,
+      "*"
+    ],
+    [
+      1053,
+      214,
+      0,
+      382,
+      0,
+      "*"
+    ],
+    [
+      1054,
+      307,
+      0,
+      383,
+      0,
+      "*"
+    ],
+    [
+      1055,
+      379,
+      0,
+      337,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1056,
+      380,
+      0,
+      337,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1057,
+      381,
+      0,
+      337,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1058,
+      382,
+      0,
+      337,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1059,
+      383,
+      0,
+      337,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1060,
+      310,
+      0,
+      384,
+      0,
+      "*"
+    ],
+    [
+      1061,
+      327,
+      0,
+      385,
+      0,
+      "*"
+    ],
+    [
+      1062,
+      331,
+      0,
+      386,
+      0,
+      "*"
+    ],
+    [
+      1063,
+      213,
+      0,
+      387,
+      0,
+      "*"
+    ],
+    [
+      1064,
+      306,
+      0,
+      388,
+      0,
+      "*"
+    ],
+    [
+      1065,
+      388,
+      0,
+      336,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1066,
+      387,
+      0,
+      336,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1067,
+      386,
+      0,
+      336,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1068,
+      385,
+      0,
+      336,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1069,
+      384,
+      0,
+      336,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1070,
+      309,
+      0,
+      389,
+      0,
+      "*"
+    ],
+    [
+      1071,
+      326,
+      0,
+      390,
+      0,
+      "*"
+    ],
+    [
+      1072,
+      330,
+      0,
+      391,
+      0,
+      "*"
+    ],
+    [
+      1073,
+      212,
+      0,
+      392,
+      0,
+      "*"
+    ],
+    [
+      1074,
+      305,
+      0,
+      393,
+      0,
+      "*"
+    ],
+    [
+      1075,
+      393,
+      0,
+      338,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1076,
+      392,
+      0,
+      338,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1077,
+      391,
+      0,
+      338,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1078,
+      390,
+      0,
+      338,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1079,
+      389,
+      0,
+      338,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1080,
+      308,
+      0,
+      394,
+      0,
+      "*"
+    ],
+    [
+      1081,
+      325,
+      0,
+      395,
+      0,
+      "*"
+    ],
+    [
+      1082,
+      329,
+      0,
+      396,
+      0,
+      "*"
+    ],
+    [
+      1083,
+      211,
+      0,
+      397,
+      0,
+      "*"
+    ],
+    [
+      1084,
+      304,
+      0,
+      398,
+      0,
+      "*"
+    ],
+    [
+      1085,
+      398,
+      0,
+      339,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1086,
+      397,
+      0,
+      339,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1087,
+      396,
+      0,
+      339,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1088,
+      395,
+      0,
+      339,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1089,
+      394,
+      0,
+      339,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1090,
+      418,
+      0,
+      378,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1091,
+      417,
+      0,
+      378,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1092,
+      416,
+      0,
+      378,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1093,
+      415,
+      0,
+      378,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1094,
+      414,
+      0,
+      378,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1095,
+      413,
+      0,
+      377,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1096,
+      412,
+      0,
+      377,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1097,
+      411,
+      0,
+      377,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1098,
+      410,
+      0,
+      377,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1099,
+      409,
+      0,
+      377,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1100,
+      408,
+      0,
+      375,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1101,
+      407,
+      0,
+      375,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1102,
+      406,
+      0,
+      375,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1103,
+      405,
+      0,
+      375,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1104,
+      404,
+      0,
+      375,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1105,
+      403,
+      0,
+      376,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1106,
+      402,
+      0,
+      376,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      1107,
+      401,
+      0,
+      376,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1108,
+      400,
+      0,
+      376,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1109,
+      399,
+      0,
+      376,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1110,
+      334,
+      2,
+      419,
+      0,
+      "*"
+    ],
+    [
+      1111,
+      419,
+      0,
+      337,
+      5,
+      "INT"
+    ],
+    [
+      1112,
+      334,
+      2,
+      420,
+      0,
+      "*"
+    ],
+    [
+      1113,
+      420,
+      0,
+      336,
+      5,
+      "INT"
+    ],
+    [
+      1114,
+      334,
+      2,
+      421,
+      0,
+      "*"
+    ],
+    [
+      1115,
+      421,
+      0,
+      338,
+      5,
+      "INT"
+    ],
+    [
+      1116,
+      334,
+      2,
+      422,
+      0,
+      "*"
+    ],
+    [
+      1117,
+      422,
+      0,
+      339,
+      5,
+      "INT"
+    ],
+    [
+      1118,
+      227,
+      0,
+      300,
+      0,
+      "*"
+    ],
+    [
+      1128,
+      427,
+      0,
+      215,
+      0,
+      "*"
+    ],
+    [
+      1129,
+      428,
+      0,
+      216,
+      0,
+      "*"
+    ],
+    [
+      1130,
+      429,
+      0,
+      217,
+      0,
+      "*"
+    ],
+    [
+      1131,
+      430,
+      0,
+      218,
+      0,
+      "*"
+    ],
+    [
+      1132,
+      431,
+      0,
+      376,
+      5,
+      "INT"
+    ],
+    [
+      1133,
+      432,
+      0,
+      375,
+      5,
+      "INT"
+    ],
+    [
+      1134,
+      433,
+      0,
+      377,
+      5,
+      "INT"
+    ],
+    [
+      1135,
+      434,
+      0,
+      378,
+      5,
+      "INT"
+    ],
+    [
+      1136,
+      334,
+      2,
+      431,
+      0,
+      "*"
+    ],
+    [
+      1137,
+      334,
+      2,
+      432,
+      0,
+      "*"
+    ],
+    [
+      1138,
+      334,
+      2,
+      433,
+      0,
+      "*"
+    ],
+    [
+      1139,
+      334,
+      2,
+      434,
+      0,
+      "*"
+    ],
+    [
+      1140,
+      376,
+      0,
+      438,
+      0,
+      "*"
+    ],
+    [
+      1141,
+      375,
+      0,
+      437,
+      0,
+      "*"
+    ],
+    [
+      1142,
+      377,
+      0,
+      436,
+      0,
+      "*"
+    ],
+    [
+      1143,
+      378,
+      0,
+      435,
+      0,
+      "*"
+    ],
+    [
+      1144,
+      374,
+      0,
+      439,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1145,
+      373,
+      0,
+      440,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1146,
+      372,
+      0,
+      441,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1147,
+      371,
+      0,
+      442,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1148,
+      438,
+      0,
+      439,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1149,
+      437,
+      0,
+      440,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1150,
+      436,
+      0,
+      441,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1151,
+      435,
+      0,
+      442,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1152,
+      443,
+      0,
+      439,
+      2,
+      "INT"
+    ],
+    [
+      1153,
+      443,
+      0,
+      440,
+      2,
+      "INT"
+    ],
+    [
+      1154,
+      443,
+      0,
+      441,
+      2,
+      "INT"
+    ],
+    [
+      1155,
+      443,
+      0,
+      442,
+      2,
+      "INT"
+    ],
+    [
+      1156,
+      439,
+      0,
+      423,
+      0,
+      "*"
+    ],
+    [
+      1157,
+      440,
+      0,
+      424,
+      0,
+      "*"
+    ],
+    [
+      1158,
+      441,
+      0,
+      425,
+      0,
+      "*"
+    ],
+    [
+      1159,
+      442,
+      0,
+      426,
+      0,
+      "*"
+    ],
+    [
+      1160,
+      446,
+      0,
+      450,
+      0,
+      "*"
+    ],
+    [
+      1161,
+      447,
+      0,
+      451,
+      0,
+      "*"
+    ],
+    [
+      1162,
+      448,
+      0,
+      452,
+      0,
+      "*"
+    ],
+    [
+      1163,
+      449,
+      0,
+      453,
+      0,
+      "*"
+    ],
+    [
+      1164,
+      231,
+      0,
+      446,
+      0,
+      "*"
+    ],
+    [
+      1165,
+      232,
+      0,
+      447,
+      0,
+      "*"
+    ],
+    [
+      1166,
+      233,
+      0,
+      448,
+      0,
+      "*"
+    ],
+    [
+      1167,
+      234,
+      0,
+      449,
+      0,
+      "*"
+    ],
+    [
+      1170,
+      450,
+      0,
+      401,
+      0,
+      "*"
+    ],
+    [
+      1171,
+      450,
+      0,
+      402,
+      0,
+      "*"
+    ],
+    [
+      1172,
+      450,
+      0,
+      403,
+      0,
+      "*"
+    ],
+    [
+      1175,
+      451,
+      0,
+      406,
+      0,
+      "*"
+    ],
+    [
+      1176,
+      451,
+      0,
+      407,
+      0,
+      "*"
+    ],
+    [
+      1177,
+      451,
+      0,
+      408,
+      0,
+      "*"
+    ],
+    [
+      1180,
+      452,
+      0,
+      411,
+      0,
+      "*"
+    ],
+    [
+      1181,
+      452,
+      0,
+      412,
+      0,
+      "*"
+    ],
+    [
+      1182,
+      452,
+      0,
+      413,
+      0,
+      "*"
+    ],
+    [
+      1185,
+      453,
+      0,
+      416,
+      0,
+      "*"
+    ],
+    [
+      1186,
+      453,
+      0,
+      417,
+      0,
+      "*"
+    ],
+    [
+      1187,
+      453,
+      0,
+      418,
+      0,
+      "*"
+    ],
+    [
+      1197,
+      458,
+      0,
+      454,
+      2,
+      "INT"
+    ],
+    [
+      1198,
+      458,
+      0,
+      455,
+      2,
+      "INT"
+    ],
+    [
+      1199,
+      458,
+      0,
+      456,
+      2,
+      "INT"
+    ],
+    [
+      1200,
+      458,
+      0,
+      457,
+      2,
+      "INT"
+    ],
+    [
+      1201,
+      423,
+      0,
+      454,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1202,
+      424,
+      0,
+      455,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1203,
+      425,
+      0,
+      456,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1204,
+      426,
+      0,
+      457,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      1205,
+      424,
+      0,
+      454,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1206,
+      423,
+      0,
+      455,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1207,
+      426,
+      0,
+      456,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1208,
+      425,
+      0,
+      457,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1209,
+      454,
+      0,
+      427,
+      0,
+      "*"
+    ],
+    [
+      1210,
+      455,
+      0,
+      428,
+      0,
+      "*"
+    ],
+    [
+      1211,
+      456,
+      0,
+      429,
+      0,
+      "*"
+    ],
+    [
+      1212,
+      457,
+      0,
+      430,
+      0,
+      "*"
+    ],
+    [
+      1217,
+      328,
+      0,
+      399,
+      0,
+      "*"
+    ],
+    [
+      1218,
+      326,
+      0,
+      409,
+      0,
+      "*"
+    ],
+    [
+      1219,
+      331,
+      0,
+      404,
+      0,
+      "*"
+    ],
+    [
+      1220,
+      329,
+      0,
+      414,
+      0,
+      "*"
+    ],
+    [
+      1221,
+      327,
+      0,
+      405,
+      0,
+      "*"
+    ],
+    [
+      1222,
+      325,
+      0,
+      415,
+      0,
+      "*"
+    ],
+    [
+      1223,
+      332,
+      0,
+      400,
+      0,
+      "*"
+    ],
+    [
+      1224,
+      330,
+      0,
+      410,
+      0,
+      "*"
     ]
   ],
   "groups": [
@@ -14325,7 +19191,7 @@
     {
       "title": "Prompt Parsing",
       "bounding": [
-        -1899,
+        -4599,
         4000,
         2399,
         1900
@@ -14335,10 +19201,10 @@
     {
       "title": "Prompt Processing",
       "bounding": [
-        901,
+        -1899,
         4001,
-        1798,
-        2598
+        2498,
+        2798
       ],
       "color": "#b58b2a"
     },
@@ -14391,6 +19257,16 @@
         1099
       ],
       "color": "#a1309b"
+    },
+    {
+      "title": "Experimental Prompt Post-Processing",
+      "bounding": [
+        901,
+        4001,
+        1798,
+        2598
+      ],
+      "color": "#3f789e"
     }
   ],
   "config": {},

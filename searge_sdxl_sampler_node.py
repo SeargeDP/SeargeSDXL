@@ -834,6 +834,32 @@ class SeargeLatentMuxer3:
 
 # Tool: Muxer for selecting between 5 conditioning inputs
 
+class SeargeConditioningMuxer2:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+                    "input0": ("CONDITIONING", ),
+                    "input1": ("CONDITIONING", ),
+                    "input_selector": ("INT", {"default": 0, "min": 0, "max": 1}),
+                    },
+                }
+
+    RETURN_TYPES = ("CONDITIONING", )
+    RETURN_NAMES = ("output", )
+    FUNCTION = "mux"
+
+    CATEGORY = "Searge/FlowControl"
+
+    def mux(self, input0, input1, input_selector, ):
+        match input_selector:
+            case 1:
+                return (input1,)
+            case _:
+                return (input0, )
+
+
+# Tool: Muxer for selecting between 5 conditioning inputs
+
 class SeargeConditioningMuxer5:
     @classmethod
     def INPUT_TYPES(s):
@@ -1567,6 +1593,7 @@ NODE_CLASS_MAPPINGS = {
     "SeargeLoraLoader": SeargeLoraLoader,
 
     "SeargeLatentMuxer3": SeargeLatentMuxer3,
+    "SeargeConditioningMuxer2": SeargeConditioningMuxer2,
     "SeargeConditioningMuxer5": SeargeConditioningMuxer5,
 
     "SeargeParameterProcessor": SeargeParameterProcessor,
@@ -1623,6 +1650,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeLoraLoader": "Lora Loader",
 
     "SeargeLatentMuxer3": "3-Way Muxer for Latents",
+    "SeargeConditioningMuxer2": "2-Way Muxer for Conditioning",
     "SeargeConditioningMuxer5": "5-Way Muxer for Conditioning",
 
     "SeargeParameterProcessor": "Parameter Processor",
