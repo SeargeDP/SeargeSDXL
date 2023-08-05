@@ -681,12 +681,15 @@ class SeargeImageSave:
     CATEGORY = "Searge/Files"
 
     def save_images(self, images, filename_prefix, state, save_to, prompt=None, extra_pnginfo=None):
+        # "disabled"
         if state == SeargeParameterProcessor.STATES[0]:
             return {}
 
+        # "input folder"
         if save_to == SeargeParameterProcessor.SAVE_TO[1]:
             output_dir = folder_paths.get_input_directory()
             filename_prefix = "output-%date%"
+        # incl. SeargeParameterProcessor.SAVE_TO[0] -> "output folder"
         else:
             output_dir = folder_paths.get_output_directory()
 
@@ -931,35 +934,36 @@ class SeargeParameterProcessor:
 
         saturation = parameters["refiner_intensity"]
         if saturation is not None:
-            if saturation == SeargeParameterProcessor.REFINER_INTENSITY[0]:
-                parameters["noise_offset"] = 0
-            elif saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
+            # "soft"
+            if saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
                 parameters["noise_offset"] = 1
+            # incl. SeargeParameterProcessor.REFINER_INTENSITY[1] -> "hard"
             else:
-                parameters["noise_offset"] = 1
+                parameters["noise_offset"] = 0
 
         hires_fix = parameters["hires_fix"]
+        # "disabled"
         if hires_fix is not None and hires_fix == SeargeParameterProcessor.STATES[0]:
             parameters["hrf_steps"] = 0
 
         hrf_saturation = parameters["hrf_intensity"]
         if hrf_saturation is not None:
-            if hrf_saturation == SeargeParameterProcessor.REFINER_INTENSITY[0]:
-                parameters["hrf_noise_offset"] = 0
-            elif hrf_saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
+            # "soft"
+            if hrf_saturation == SeargeParameterProcessor.REFINER_INTENSITY[1]:
                 parameters["hrf_noise_offset"] = 1
+            # incl. SeargeParameterProcessor.REFINER_INTENSITY[0] -> "hard"
             else:
-                parameters["hrf_noise_offset"] = 1
+                parameters["hrf_noise_offset"] = 0
 
         seed_offset = parameters["hrf_seed_offset"]
         if seed_offset is not None:
             seed = parameters["seed"] if parameters["seed"] is not None else 0
-            if seed_offset == SeargeParameterProcessor.HRF_SEED_OFFSET[0]:
-                parameters["hrf_seed"] = seed
-            elif seed_offset == SeargeParameterProcessor.HRF_SEED_OFFSET[1]:
+            # "distinct"
+            if seed_offset == SeargeParameterProcessor.HRF_SEED_OFFSET[1]:
                 parameters["hrf_seed"] = seed + 3
+            # incl. SeargeParameterProcessor.HRF_SEED_OFFSET[0] -> "same"
             else:
-                parameters["hrf_seed"] = seed + 3
+                parameters["hrf_seed"] = seed
 
         style_template = parameters["style_template"]
         if style_template is not None:
@@ -1050,12 +1054,14 @@ class SeargeParameterProcessor:
         # TODO: replace this special logic and the dirty hacks by creating new generated parameters for saving
         save_image = parameters["save_image"]
         if save_image is not None:
+            # "disabled"
             if save_image == SeargeParameterProcessor.STATES[0]:
                 # when image saving is disabled, we also don't want to save the upscaled image, even if that's enabled
                 parameters["save_upscaled_image"] = SeargeParameterProcessor.STATES[0]
                 # HACK: this is a bit dirty, but the variable hires_fix determines if the image should be saved
                 #       but when image saving is disabled, we don't want that to happen
                 parameters["hires_fix"] = SeargeParameterProcessor.STATES[0]
+            # "enabled"
             else:
                 # in case we are saving to the input folder, we need to enable saving after the hires fix, even
                 # if that's disabled in the settings
@@ -1091,6 +1097,7 @@ class SeargeStylePreprocessor:
             inputs = {}
 
         style_template = inputs["style_template"]
+        # not "from preprocessor"
         if style_template is None or style_template != SeargeParameterProcessor.STYLE_TEMPLATE[1]:
             return (inputs,)
 
