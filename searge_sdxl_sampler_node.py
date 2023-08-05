@@ -58,8 +58,8 @@ class SeargeSDXLSampler:
                     "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xfffffffffffffff0}),
                     "steps": ("INT", {"default": 20, "min": 1, "max": 200}),
                     "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
-                    "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
-                    "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
+                    "sampler_name": ("SAMPLER_NAME", {"default": "ddim"}),
+                    "scheduler": ("SCHEDULER_NAME", {"default": "ddim_uniform"}),
                     "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "denoise": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01}),
                     },
@@ -127,8 +127,8 @@ class SeargeSDXLImage2ImageSampler:
                     "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xfffffffffffffff0}),
                     "steps": ("INT", {"default": 20, "min": 0, "max": 200}),
                     "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
-                    "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
-                    "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
+                    "sampler_name": ("SAMPLER_NAME", {"default": "ddim"}),
+                    "scheduler": ("SCHEDULER_NAME", {"default": "ddim_uniform"}),
                     "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
                     "denoise": ("FLOAT", {"default": 0.25, "min": 0.0, "max": 1.0, "step": 0.01}),
                     },
@@ -604,8 +604,8 @@ class SeargeImageSave:
         return {"required": {
                     "images": ("IMAGE", ),
                     "filename_prefix": ("STRING", {"default": "SeargeSDXL-%date%/Image"}),
-                    "state": (SeargeParameterProcessor.STATES, {"default": "enabled"}),
-                    "save_to": (SeargeParameterProcessor.SAVE_TO, {"default": "output folder"}),
+                    "state": ("ENABLE_STATE", {"default": "enabled"}),
+                    "save_to": ("SAVE_FOLDER", {"default": "output folder"}),
                     },
                 "hidden": {
                     "prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO"
@@ -1102,7 +1102,7 @@ class SeargeOutput2:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", comfy.samplers.KSampler.SAMPLERS, comfy.samplers.KSampler.SCHEDULERS, SeargeParameterProcessor.STATES, SeargeParameterProcessor.SAVE_TO, )
+    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", "SAMPLER_NAME", "SCHEDULER_NAME", "ENABLE_STATE", "SAVE_FOLDER", )
     RETURN_NAMES = ("parameters", "seed", "image_width", "image_height", "steps", "cfg", "sampler_name", "scheduler", "save_image", "save_directory", )
     FUNCTION = "demux"
 
@@ -1176,7 +1176,7 @@ class SeargeOutput3:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "INT", "INT", "INT", "FLOAT", SeargeParameterProcessor.STATES, )
+    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "INT", "INT", "INT", "FLOAT", "ENABLE_STATE", )
     RETURN_NAMES = ("parameters", "denoise", "base_ratio", "refiner_strength", "noise_offset", "precondition_steps", "batch_size", "upscale_resolution_factor", "save_upscaled_image", )
     FUNCTION = "demux"
 
@@ -1377,7 +1377,7 @@ class SeargeOutput6:
                     },
                 }
 
-    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", SeargeParameterProcessor.STATES, "FLOAT", )
+    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", "ENABLE_STATE", "FLOAT", )
     RETURN_NAMES = ("parameters", "hrf_steps", "hrf_denoise", "hrf_upscale_factor", "hrf_noise_offset", "hrf_seed", "hires_fix", "hrf_smoothness", )
     FUNCTION = "demux"
 
