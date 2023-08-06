@@ -9383,7 +9383,7 @@
     },
     {
       "id": 358,
-      "type": "SeargeSDXLSampler",
+      "type": "SeargeSDXLSampler2",
       "pos": [
         4600,
         4730
@@ -9593,7 +9593,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "SeargeSDXLSampler"
+        "Node name for S&R": "SeargeSDXLSampler2"
       },
       "widgets_values": [
         213103709520708,

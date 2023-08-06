@@ -41,10 +41,12 @@ from datetime import datetime
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 
+from .modules.legacy import SeargeSDXLSampler
+
 
 # SDXL Sampler with base and refiner support
 
-class SeargeSDXLSampler:
+class SeargeSDXLSampler2:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -1608,7 +1610,7 @@ class SeargeGenerated1:
 # Register nodes in ComfyUI
 
 NODE_CLASS_MAPPINGS = {
-    "SeargeSDXLSampler": SeargeSDXLSampler,
+    "SeargeSDXLSampler2": SeargeSDXLSampler2,
     "SeargeSDXLImage2ImageSampler": SeargeSDXLImage2ImageSampler,
 
     "SeargeSamplerInputs": SeargeSamplerInputs,
@@ -1659,13 +1661,15 @@ NODE_CLASS_MAPPINGS = {
     "SeargeInput7": SeargeInput7,
     "SeargeOutput7": SeargeOutput7,
     "SeargeGenerated1": SeargeGenerated1,
+
+    "SeargeSDXLSampler": SeargeSDXLSampler,
 }
 
 
 # Human readable names for the nodes
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "SeargeSDXLSampler": "SDXL Sampler (SeargeSDXL)",
+    "SeargeSDXLSampler2": "SDXL Sampler (SeargeSDXL)",
     "SeargeSDXLImage2ImageSampler": "Image2Image Sampler (SeargeSDXL)",
 
     "SeargeSamplerInputs": "Sampler Settings",
@@ -1688,11 +1692,11 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeFloatPair": "Float Pair",
     "SeargeFloatMath": "Float Math",
 
-    "SeargeImageSave": "Save Image",
-    "SeargeCheckpointLoader": "Checkpoint Loader",
-    "SeargeVAELoader": "VAE Loader",
-    "SeargeUpscaleModelLoader": "Upscale Model Loader",
-    "SeargeLoraLoader": "Lora Loader",
+    "SeargeImageSave": "Save Image (SeargeSDXL)",
+    "SeargeCheckpointLoader": "Checkpoint Loader (SeargeSDXL)",
+    "SeargeVAELoader": "VAE Loader (SeargeSDXL)",
+    "SeargeUpscaleModelLoader": "Upscale Model Loader (SeargeSDXL)",
+    "SeargeLoraLoader": "Lora Loader (SeargeSDXL)",
 
     "SeargeLatentMuxer3": "3-Way Muxer for Latents",
     "SeargeConditioningMuxer2": "2-Way Muxer for Conditioning",
@@ -1716,4 +1720,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeInput7": "Misc Parameters",
     "SeargeOutput7": "Misc Parameters",
     "SeargeGenerated1": "Flow Control Parameters",
+
+    "SeargeSDXLSampler": "Legacy SDXL Sampler (SeargeSDXL)",
 }
