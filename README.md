@@ -8,12 +8,12 @@ Instead of having separate workflows for different tasks, everything is now inte
 
 ### Always use the latest version of the workflow json file with the latest version of the custom nodes!
 
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Overview.png" width="768">
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Example.png" width="768">
 
 
 ## What's new in v3.2?
 - More prompting modes, including the "3-prompt" style that's common in other workflows
-using separate prompts for the 2 CLIP models in SDXL (CLIP G & CLIP L)and a negative prompt
+using separate prompts for the 2 CLIP models in SDXL (CLIP G & CLIP L) and a negative prompt
   - **3-Prompt G+L-N** - Similar to simple mode, but cares about *a main, a secondary, and a negative prompt*
 and **ignores** the *additional style prompting fields*, this is great to get similar results as on other
 workflows and makes it easier to compare the images
@@ -61,7 +61,7 @@ style for now (called *test*)
 separate for *main pass* and *hires-fix pass*
 - *(... many more things probably, since the workflow was almost completely re-made)*
 
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Example.png" width="768">
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-UI.png" width="768">
 
 
 
@@ -111,12 +111,14 @@ The simple workflow has not returned as a separate workflow, but is now also ful
 To enable it, switch the **prompt mode** option to simple and it will only pay attention to the main prompt
 and the negative prompt.
 
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Overview.png" width="768">
+
 
 
 ## Workflow Description
 
 ### Reborn
-The **Reborn v3.0** workflow is a new workflow, created from scratch. It requires the latest additions to the
+The **Reborn v3.x** workflow is a new workflow, created from scratch. It requires the latest additions to the
 SeargeSDXL custom node extension, because it makes use of some new node types.
 
 The interface for using this new workflow is also designed in a different way, with all parameters that
@@ -157,35 +159,25 @@ The *Denoise* parameter works the same way as in image to image, but only masked
 # The Workflow
 The workflow is included in the `workflow` folder.
 
-## Reborn Workflow v3.0 Operating Modes
+## Reborn Workflow v3.x Operating Modes
 
 ### Text to Image Mode
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-1.png" width="768">
+<br>
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-reborn.png" width="512">
 
 ### Image to Image Mode
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-2.png" width="768">
+<br>
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-img2img.png" width="512">
 
 ### Inpainting Mode
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-3.png" width="768">
-
-
-
-## Example images generated with these operating modes
-
-### Reborn Workflow
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-reborn.png" width="768">
-
-### Image to Image Workflow
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-img2img.png" width="768">
-
-### Inpainting Workflow
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-inpaint.png" width="768">
+<br>
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-inpaint.png" width="512">
 
 
 
