@@ -120,8 +120,8 @@ Or switch the **prompt mode** to **3 prompts** and only the *main prompt*, the *
 # The Workflow
 The workflow is included in the `workflow` folder.
 
-After updating Searge SDXL, always make sure to load the latest version of the json file. Older versions of the
-workflow are often not compatible anymore with the updated node extension.
+**After updating Searge SDXL, always make sure to load the latest version of the json file. Older versions of the
+workflow are often not compatible anymore with the updated node extension.**
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Overview.png" width="768">
 
@@ -139,6 +139,8 @@ Starting from version 3.0 all 3 operating modes (text-to-image, image-to-image, 
 from the same workflow and can be switched with an option.
 
 ## Reborn Workflow v3.x Operating Modes
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/UI-operation-mode.png" width="512">
 
 ### Text to Image Mode
 In this mode you can generate images from text descriptions. The source image and the mask (next to the prompt inputs)
@@ -181,6 +183,73 @@ The *Denoise* parameter works the same way as in image to image, but only masked
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-3.png" width="768">
 <br>
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-inpaint.png" width="512">
+
+
+
+# Prompting Modes
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/UI-prompt-style.png" width="512">
+
+## Reborn Workflow v3.x Prompting Modes
+
+### Simple
+Just cares about the **main** and the **negative** prompt and **ignores** the *additional prompting fields*, this
+is great to get started with SDXL, ComfyUI, and this workflow
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/01-simple.jpg" width="512">
+
+### 3-Prompt G+L-N
+Similar to simple mode, but cares about the **main & secondary** and the **negative** prompt
+and **ignores** the *additional style prompting fields*, this is great to get similar results as on other
+workflows and makes it easier to compare the images
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/02-3_prompts.jpg" width="512">
+
+### Subject Focus
+In this mode the *main & secondary* prompts are **more important** than the *style* prompts
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/03-subject_focus.jpg" width="512">
+
+### Style Focus
+In this mode the *style* prompts are **more important** than the *main & secondary* prompts
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/04-style_focus.jpg" width="512">
+
+### Weighted
+In this mode the **balance** between *main & secondary* prompts and *style prompts* can be influenced with
+the **style prompt power** and **negative prompt power** option
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/05-weighted.jpg" width="512">
+
+### Overlay
+In this mode the *main & secondary* prompts and the *style* prompts are **competing with each other**
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/06-overlay.jpg" width="512">
+
+### Subject - Style
+The *main & secondary* positives with the *style* negatives
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/07-subject-style.jpg" width="512">
+
+### Style - Subject
+The *style* positives with the *main & secondary* negatives
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/08-style-subject.jpg" width="512">
+
+### Style Only
+**Only** the *style* prompt and *negative style* prompt are used, the *main & secondary* and *negative* are ignored
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/09-style_only.jpg" width="512">
+
+### Weighted - Overlay
+The *main & secondary* and *style* prompts are **weighted**, the *negative* and *negative style* prompts are **overlaid**
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/10-weighted-overlay.jpg" width="512">
+
+### Overlay - Weighted
+The *main & secondary* and *style* prompts are **overlaid**, the *negative* and *negative style* prompts are **weighted**
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/11-overlay-weighted.jpg" width="512">
 
 
 
