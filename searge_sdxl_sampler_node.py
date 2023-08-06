@@ -1531,7 +1531,7 @@ class SeargeInput7:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-                    "lora_strength": ("FLOAT", {"default": 0.2, "min": 0.0, "max": 1.0, "step": 0.05}),
+                    "lora_strength": ("FLOAT", {"default": 0.2, "min": -10.0, "max": 10.0, "step": 0.05}),
                     "operation_mode": (SeargeParameterProcessor.OPERATION_MODE, {"default": SeargeParameterProcessor.OPERATION_MODE[0]}),
                     "prompt_style": (SeargeParameterProcessor.PROMPT_STYLE, {"default": SeargeParameterProcessor.PROMPT_STYLE[0]}),
                     },
