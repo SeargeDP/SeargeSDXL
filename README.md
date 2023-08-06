@@ -2,10 +2,29 @@
 *Custom nodes extension* for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 including *a workflow* to use *SDXL 1.0* with both the *base and refiner* checkpoints.
 
-# Version 3.1
+
+# Version 3.2
 Instead of having separate workflows for different tasks, everything is now integrated in **one workflow file**.
 
+### Always use the latest version of the workflow json file with the latest version of the custom nodes!
+
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Overview.png" width="768">
+
+
+## What's new in v3.2?
+- More prompting modes, including the "3-prompt" style that's common in other workflows
+using separate prompts for the 2 CLIP models in SDXL (CLIP G & CLIP L)and a negative prompt
+  - **3-Prompt G+L-N** - Similar to simple mode, but cares about *a main, a secondary, and a negative prompt*
+and **ignores** the *additional style prompting fields*, this is great to get similar results as on other
+workflows and makes it easier to compare the images
+  - **Subject - Style** - The *subject focused* positives with the *style focused* negatives
+  - **Style - Subject** - The *style focused* positives with the *subject focused* negatives
+  - **Style Only** - **Only** the positive and negative **style prompts** are used and *main/secondary/negative are ignored*
+  - **Weighted - Overlay** - The positive prompts are *weighted* and the negative prompts are *overlaid*
+  - **Overlay - Weighted** - The positive prompts are *overlaid* and the negative prompts are *weighted*
+- Better bug fix for the "exploding" the search box issue, should finally be fixed *(for real)* now
+- Some additional node types to make it easier to still use my nodes in other custom workflows
+- The custom node extension should now also work on **Python 3.9** again, it required 3.10 before
 
 ## What's new in v3.1?
 - Fixed the issue with "exploding" the search box when this extension is installed
@@ -77,7 +96,8 @@ separate for *main pass* and *hires-fix pass*
 - download [SDXL 1.0 base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors) and copy it into `ComfyUI/models/checkpoints`
 - download [SDXL 1.0 refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors) and copy it into `ComfyUI/models/checkpoints`
 - download [Fixed SDXL 0.9 vae](https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors) and copy it into `ComfyUI/models/vae`
-- download [SDXL Offset Noise LoRA](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors) and copy it into `ComfyUI/models/loras`
+- download [SDXL Offset Noise LoRA](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors)
+and copy it into `ComfyUI/models/loras`
 - download [4x_NMKD-Siax_200k upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Siax_200k.pth) and copy it into `ComfyUI/models/upscale_models`
 - download [4x-UltraSharp upscaler](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth) and copy it into `ComfyUI/models/upscale_models`
 
@@ -183,8 +203,10 @@ understand better how the included workflows work.
 
 ### Inputs
 - **base_model** - connect the SDXL base model here, provided via a `Load Checkpoint` node 
-- **base_positive** - recommended to use a `CLIPTextEncodeSDXL` with 4096 for `width`, `height`, `target_width`, and `target_height`
-- **base_negative** - recommended to use a `CLIPTextEncodeSDXL` with 4096 for `width`, `height`, `target_width`, and `target_height`
+- **base_positive** - recommended to use a `CLIPTextEncodeSDXL` with 4096 for `width`, `height`,
+`target_width`, and `target_height`
+- **base_negative** - recommended to use a `CLIPTextEncodeSDXL` with 4096 for `width`, `height`,
+`target_width`, and `target_height`
 - **refiner_model** - connect the SDXL refiner model here, provided via a `Load Checkpoint` node 
 - **refiner_positive** - recommended to use a `CLIPTextEncodeSDXLRefiner` with 2048 for `width`, and `height`
 - **refiner_negative** - recommended to use a `CLIPTextEncodeSDXLRefiner` with 2048 for `width`, and `height`
@@ -192,9 +214,11 @@ understand better how the included workflows work.
 - **noise_seed** - the random seed for generating the image
 - **steps** - total steps for the sampler, it will internally be split into base steps and refiner steps
 - **cfg** - CFG scale (classifier free guidance), values between 3.0 and 12.0 are most commonly used
-- **sampler_name** - the noise sampler _(I prefer dpmpp_2m with the karras scheduler, sometimes ddim with the ddim_uniform scheduler)_
+- **sampler_name** - the noise sampler _(I prefer dpmpp_2m with the karras scheduler, sometimes ddim
+with the ddim_uniform scheduler)_
 - **scheduler** - the scheduler to use with the sampler selected in `sampler_name`
-- **base_ratio** - the ratio between base model steps and refiner model steps _(0.8 = 80% base model and 20% refiner model, with 30 total steps that's 24 base steps and 6 refiner steps)_
+- **base_ratio** - the ratio between base model steps and refiner model steps _(0.8 = 80% base model and 20% refiner
+model, with 30 total steps that's 24 base steps and 6 refiner steps)_
 - **denoise** - denoising factor, keep this at 1.0 when creating new images from an empty latent and between 0.0-1.0 in the img2img workflow
 
 ### Outputs
