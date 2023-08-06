@@ -104,20 +104,30 @@ and copy it into `ComfyUI/models/loras`
 
 
 # More Information
-Now **3** operating modes are included in in the workflow, the *.json-file* for it is in the `workflow` folder.
+Now **3** operating modes are included in the workflow, the *.json-file* for it is in the `workflow` folder.
 They are called *text2image*, *image2image*, and *inpainting*.
 
-The simple workflow has not returned as a separate workflow, but is now also fully integrated.
-To enable it, switch the **prompt mode** option to simple and it will only pay attention to the main prompt
-and the negative prompt.
+The simple workflow has not returned as a separate workflow, but is now also *fully integrated*.
+
+To enable it, switch the **prompt mode** option to **simple** and it will only pay attention to the *main prompt*
+and the *negative prompt*.
+
+Or switch the **prompt mode** to **3 prompts** and only the *main prompt*, the *secondary prompt*, and the
+*negative prompt* are used.
+
+
+
+# The Workflow
+The workflow is included in the `workflow` folder.
+
+After updating Searge SDXL, always make sure to load the latest version of the json file. Older versions of the
+workflow are often not compatible anymore with the updated node extension.
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Overview.png" width="768">
 
 
 
-## Workflow Description
-
-### Reborn
+# Searge SDXL Reborn Workflow Description
 The **Reborn v3.x** workflow is a new workflow, created from scratch. It requires the latest additions to the
 SeargeSDXL custom node extension, because it makes use of some new node types.
 
@@ -128,8 +138,18 @@ important element on the screen at the same time without scrolling.
 Starting from version 3.0 all 3 operating modes (text-to-image, image-to-image, and inpainting) are available
 from the same workflow and can be switched with an option.
 
-### Image to Image
-In this workflow you should first copy an image into the `ConfyUI/input` directory.
+## Reborn Workflow v3.x Operating Modes
+
+### Text to Image Mode
+In this mode you can generate images from text descriptions. The source image and the mask (next to the prompt inputs)
+are not used in this mode.
+
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-1.png" width="768">
+<br>
+<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-reborn.png" width="512">
+
+### Image to Image Mode
+In this mode you should first copy an image into the `ConfyUI/input` directory.
 Alternatively you can change the option for the **save directory** to **input folder** when generating images, in that
 case you have to press the ComfyUI *Refresh* button and it should show up in the image loader node.
 
@@ -143,37 +163,20 @@ Ranges are from *0.0* for "no change" to *1.0* for "completely change".
 Good values to try are probably in the *0.2* to *0.8* range.
 With examples of *0.25* for "very little change", *0.5* for "some changes", or *0.75* for "a lot of changes"
 
-### Inpainting
-This is similar to the image to image workflow.
-But it also lets you define a mask for selective changes of only parts of the image.
-
-To use this workflow, prepare a source image the same way as described in the image to image workflow.
-Then **right click** on the *Inpainting Mask* image (the bottom one next to the input prompts) and select
-**Open in Mask Editor**.
-
-Paint your mask and then press the *Save to node* button when you are done.
-The *Denoise* parameter works the same way as in image to image, but only masked areas will be changed.
-
-
-
-# The Workflow
-The workflow is included in the `workflow` folder.
-
-## Reborn Workflow v3.x Operating Modes
-
-### Text to Image Mode
-
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-1.png" width="768">
-<br>
-<img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-reborn.png" width="512">
-
-### Image to Image Mode
-
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-2.png" width="768">
 <br>
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-img2img.png" width="512">
 
 ### Inpainting Mode
+This is similar to the image to image mode.
+But it also lets you define a mask for selective changes of only parts of the image.
+
+To use this mode, prepare a source image the same way as described in the image to image workflow.
+Then **right click** on the *Inpainting Mask* image (the bottom one next to the input prompts) and select
+**Open in Mask Editor**.
+
+Paint your mask and then press the *Save to node* button when you are done.
+The *Denoise* parameter works the same way as in image to image, but only masked areas will be changed.
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-workflow-3.png" width="768">
 <br>
