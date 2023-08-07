@@ -41,163 +41,20 @@ from datetime import datetime
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 
+from .modules.sampling import SeargeSDXLSampler2
+from .modules.sampling import SeargeSDXLImage2ImageSampler2
+from .modules.sampling import SeargeSDXLSampler3
+from .modules.sampling import SeargeSDXLImage2ImageSampler3
+
+from .modules.prompting import SeargeSDXLPromptEncoder
+from .modules.prompting import SeargeSDXLBasePromptEncoder
+from .modules.prompting import SeargeSDXLRefinerPromptEncoder
+
+from .modules.prompting import SeargePromptText
+from .modules.prompting import SeargePromptCombiner
+
 from .modules.legacy import SeargeSDXLSampler
-
-
-# SDXL Sampler with base and refiner support
-
-class SeargeSDXLSampler2:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "base_model": ("MODEL",),
-                    "base_positive": ("CONDITIONING", ),
-                    "base_negative": ("CONDITIONING", ),
-                    "refiner_model": ("MODEL",),
-                    "refiner_positive": ("CONDITIONING", ),
-                    "refiner_negative": ("CONDITIONING", ),
-                    "latent_image": ("LATENT", ),
-                    "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xfffffffffffffff0}),
-                    "steps": ("INT", {"default": 20, "min": 1, "max": 200}),
-                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
-                    "sampler_name": ("SAMPLER_NAME", {"default": "ddim"}),
-                    "scheduler": ("SCHEDULER_NAME", {"default": "ddim_uniform"}),
-                    "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "denoise": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    },
-                "optional": {
-                    "refiner_prep_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
-                    "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
-                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 1.0, "step": 0.05}),
-                    },
-                }
-
-    RETURN_TYPES = ("LATENT", )
-    FUNCTION = "sample"
-
-    CATEGORY = "Searge/Sampling"
-
-    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, latent_image, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, refiner_prep_steps=None, noise_offset=None, refiner_strength=None):
-        base_steps = int(steps * (base_ratio + 0.0001))
-
-        if noise_offset is None:
-            noise_offset = 1
-
-        if refiner_strength is None:
-            refiner_strength = 1.0
-
-        if refiner_strength < 0.01:
-            refiner_strength = 0.01
-
-        if denoise < 0.01:
-            return (latent_image, )
-
-        start_at_step = 0
-        input_latent = latent_image
-
-        if refiner_prep_steps is not None:
-            if refiner_prep_steps >= base_steps:
-                refiner_prep_steps = base_steps - 1
-
-            if refiner_prep_steps > 0:
-                start_at_step = refiner_prep_steps
-                precondition_result = nodes.common_ksampler(refiner_model, noise_seed + 2, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, latent_image, denoise=denoise, disable_noise=False, start_step=steps - refiner_prep_steps, last_step=steps, force_full_denoise=False)
-                input_latent = precondition_result[0]
-
-        if base_steps >= steps:
-            return nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=start_at_step, last_step=steps, force_full_denoise=True)
-
-        base_result = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=start_at_step, last_step=base_steps, force_full_denoise=True)
-
-        return nodes.common_ksampler(refiner_model, noise_seed + noise_offset, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise * refiner_strength, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
-
-
-# SDXL Image2Image Sampler (incl. HiRes Fix)
-
-class SeargeSDXLImage2ImageSampler:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "base_model": ("MODEL",),
-                    "base_positive": ("CONDITIONING", ),
-                    "base_negative": ("CONDITIONING", ),
-                    "refiner_model": ("MODEL",),
-                    "refiner_positive": ("CONDITIONING",),
-                    "refiner_negative": ("CONDITIONING",),
-                    "image": ("IMAGE", ),
-                    "vae": ("VAE",),
-                    "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xfffffffffffffff0}),
-                    "steps": ("INT", {"default": 20, "min": 0, "max": 200}),
-                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
-                    "sampler_name": ("SAMPLER_NAME", {"default": "ddim"}),
-                    "scheduler": ("SCHEDULER_NAME", {"default": "ddim_uniform"}),
-                    "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "denoise": ("FLOAT", {"default": 0.25, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    },
-                "optional": {
-                    "upscale_model": ("UPSCALE_MODEL",),
-                    "scaled_width": ("INT", {"default": 1536, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "scaled_height": ("INT", {"default": 1536, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "noise_offset": ("INT", {"default": 1, "min": 0, "max": 1}),
-                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.05}),
-                    "softness": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05}),
-                    },
-                }
-
-    RETURN_TYPES = ("IMAGE", )
-    FUNCTION = "sample"
-
-    CATEGORY = "Searge/Sampling"
-
-    def sample(self, base_model, base_positive, base_negative, refiner_model, refiner_positive, refiner_negative, image, vae, noise_seed, steps, cfg, sampler_name, scheduler, base_ratio, denoise, softness, upscale_model=None, scaled_width=None, scaled_height=None, noise_offset=None, refiner_strength=None):
-        base_steps = int(steps * (base_ratio + 0.0001))
-
-        if noise_offset is None:
-            noise_offset = 1
-
-        if refiner_strength is None:
-            refiner_strength = 1.0
-
-        if refiner_strength < 0.01:
-            refiner_strength = 0.01
-
-        if steps < 1:
-            return (image, )
-
-        scaled_image = image
-
-        use_upscale_model = upscale_model is not None and softness < 0.9999
-        if use_upscale_model:
-            upscale_result = comfy_extras.nodes_upscale_model.ImageUpscaleWithModel().upscale(upscale_model, image)
-            scaled_image = upscale_result[0]
-
-        if scaled_width is not None and scaled_height is not None:
-            upscale_result = nodes.ImageScale().upscale(scaled_image, "bicubic", scaled_width, scaled_height, "center")
-            scaled_image = upscale_result[0]
-
-        if use_upscale_model and softness > 0.0001:
-            upscale_result = nodes.ImageScale().upscale(image, "bicubic", scaled_width, scaled_height, "center")
-            scaled_original = upscale_result[0]
-
-            blend_result = comfy_extras.nodes_post_processing.Blend().blend_images(scaled_image, scaled_original, softness, "normal")
-            scaled_image = blend_result[0]
-
-        if denoise < 0.01:
-            return (scaled_image, )
-
-        vae_encode_result = nodes.VAEEncode().encode(vae, scaled_image)
-        input_latent = vae_encode_result[0]
-
-        if base_steps >= steps:
-            result_latent = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=0, last_step=steps, force_full_denoise=True)
-        else:
-            base_result = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=0, last_step=base_steps, force_full_denoise=True)
-            result_latent = nodes.common_ksampler(refiner_model, noise_seed + noise_offset, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise * refiner_strength, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
-
-        vae_decode_result = nodes.VAEDecode().decode(vae, result_latent[0])
-        output_image = vae_decode_result[0]
-
-        return (output_image, )
+from .modules.legacy import SeargeSDXLImage2ImageSampler
 
 
 # Input: sampler inputs
@@ -259,228 +116,6 @@ class SeargeSaveFolderInputs:
 
     def get_value(self, save_to, ):
         return (save_to, )
-
-
-# SDXL CLIP Text Encoder for prompts with base and refiner support
-
-class SeargeSDXLPromptEncoder:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "base_clip": ("CLIP", ),
-                    "refiner_clip": ("CLIP", ),
-                    "pos_g": ("STRING", {"multiline": True, "default": "POS_G"}),
-                    "pos_l": ("STRING", {"multiline": True, "default": "POS_L"}),
-                    "pos_r": ("STRING", {"multiline": True, "default": "POS_R"}),
-                    "neg_g": ("STRING", {"multiline": True, "default": "NEG_G"}),
-                    "neg_l": ("STRING", {"multiline": True, "default": "NEG_L"}),
-                    "neg_r": ("STRING", {"multiline": True, "default": "NEG_R"}),
-                    "base_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "base_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "crop_w": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "crop_h": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "target_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "target_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "pos_ascore": ("FLOAT", {"default": 6.0, "min": 0.0, "max": 1000.0, "step": 0.01}),
-                    "neg_ascore": ("FLOAT", {"default": 2.5, "min": 0.0, "max": 1000.0, "step": 0.01}),
-                    "refiner_width": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "refiner_height": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    },
-                }
-
-    RETURN_TYPES = ("CONDITIONING", "CONDITIONING", "CONDITIONING", "CONDITIONING", )
-    RETURN_NAMES = ("base_positive", "base_negative", "refiner_positive", "refiner_negative", )
-    FUNCTION = "encode"
-
-    CATEGORY = "Searge/ClipEncoding"
-
-    def encode(self, base_clip, refiner_clip, pos_g, pos_l, pos_r, neg_g, neg_l, neg_r, base_width, base_height, crop_w, crop_h, target_width, target_height, pos_ascore, neg_ascore, refiner_width, refiner_height, ):
-        empty = base_clip.tokenize("")
-
-        # positive base prompt
-        tokens1 = base_clip.tokenize(pos_g)
-        tokens1["l"] = base_clip.tokenize(pos_l)["l"]
-
-        if len(tokens1["l"]) != len(tokens1["g"]):
-            while len(tokens1["l"]) < len(tokens1["g"]):
-                tokens1["l"] += empty["l"]
-            while len(tokens1["l"]) > len(tokens1["g"]):
-                tokens1["g"] += empty["g"]
-
-        cond1, pooled1 = base_clip.encode_from_tokens(tokens1, return_pooled=True)
-        res1 = [[cond1, {"pooled_output": pooled1, "width": base_width, "height": base_height, "crop_w": crop_w, "crop_h": crop_h, "target_width": target_width, "target_height": target_height}]]
-
-        # negative base prompt
-        tokens2 = base_clip.tokenize(neg_g)
-        tokens2["l"] = base_clip.tokenize(neg_l)["l"]
-
-        if len(tokens2["l"]) != len(tokens2["g"]):
-            while len(tokens2["l"]) < len(tokens2["g"]):
-                tokens2["l"] += empty["l"]
-            while len(tokens2["l"]) > len(tokens2["g"]):
-                tokens2["g"] += empty["g"]
-
-        cond2, pooled2 = base_clip.encode_from_tokens(tokens2, return_pooled=True)
-        res2 = [[cond2, {"pooled_output": pooled2, "width": base_width, "height": base_height, "crop_w": crop_w, "crop_h": crop_h, "target_width": target_width, "target_height": target_height}]]
-
-
-        # positive refiner prompt
-        tokens3 = refiner_clip.tokenize(pos_r)
-        cond3, pooled3 = refiner_clip.encode_from_tokens(tokens3, return_pooled=True)
-        res3 = [[cond3, {"pooled_output": pooled3, "aesthetic_score": pos_ascore, "width": refiner_width, "height": refiner_height}]]
-
-        # negative refiner prompt
-        tokens4 = refiner_clip.tokenize(neg_r)
-        cond4, pooled4 = refiner_clip.encode_from_tokens(tokens4, return_pooled=True)
-        res4 = [[cond4, {"pooled_output": pooled4, "aesthetic_score": neg_ascore, "width": refiner_width, "height": refiner_height}]]
-
-        return (res1, res2, res3, res4, )
-
-
-# SDXL CLIP Text Encoder for base prompts
-
-class SeargeSDXLBasePromptEncoder:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "base_clip": ("CLIP", ),
-                    "pos_g": ("STRING", {"multiline": True, "default": "POS_G"}),
-                    "pos_l": ("STRING", {"multiline": True, "default": "POS_L"}),
-                    "neg_g": ("STRING", {"multiline": True, "default": "NEG_G"}),
-                    "neg_l": ("STRING", {"multiline": True, "default": "NEG_L"}),
-                    "base_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "base_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "crop_w": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "crop_h": ("INT", {"default": 0, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "target_width": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "target_height": ("INT", {"default": 4096, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    },
-                }
-
-    RETURN_TYPES = ("CONDITIONING", "CONDITIONING", )
-    RETURN_NAMES = ("base_positive", "base_negative", )
-    FUNCTION = "encode"
-
-    CATEGORY = "Searge/ClipEncoding"
-
-    def encode(self, base_clip, pos_g, pos_l, neg_g, neg_l, base_width, base_height, crop_w, crop_h, target_width, target_height, ):
-        empty = base_clip.tokenize("")
-
-        # positive base prompt
-        tokens1 = base_clip.tokenize(pos_g)
-        tokens1["l"] = base_clip.tokenize(pos_l)["l"]
-
-        if len(tokens1["l"]) != len(tokens1["g"]):
-            while len(tokens1["l"]) < len(tokens1["g"]):
-                tokens1["l"] += empty["l"]
-            while len(tokens1["l"]) > len(tokens1["g"]):
-                tokens1["g"] += empty["g"]
-
-        cond1, pooled1 = base_clip.encode_from_tokens(tokens1, return_pooled=True)
-        res1 = [[cond1, {"pooled_output": pooled1, "width": base_width, "height": base_height, "crop_w": crop_w, "crop_h": crop_h, "target_width": target_width, "target_height": target_height}]]
-
-        # negative base prompt
-        tokens2 = base_clip.tokenize(neg_g)
-        tokens2["l"] = base_clip.tokenize(neg_l)["l"]
-
-        if len(tokens2["l"]) != len(tokens2["g"]):
-            while len(tokens2["l"]) < len(tokens2["g"]):
-                tokens2["l"] += empty["l"]
-            while len(tokens2["l"]) > len(tokens2["g"]):
-                tokens2["g"] += empty["g"]
-
-        cond2, pooled2 = base_clip.encode_from_tokens(tokens2, return_pooled=True)
-        res2 = [[cond2, {"pooled_output": pooled2, "width": base_width, "height": base_height, "crop_w": crop_w, "crop_h": crop_h, "target_width": target_width, "target_height": target_height}]]
-
-        return (res1, res2, )
-
-
-# SDXL CLIP Text Encoder for prompts with base and refiner support
-
-class SeargeSDXLRefinerPromptEncoder:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "refiner_clip": ("CLIP", ),
-                    "pos_r": ("STRING", {"multiline": True, "default": "POS_R"}),
-                    "neg_r": ("STRING", {"multiline": True, "default": "NEG_R"}),
-                    "pos_ascore": ("FLOAT", {"default": 6.0, "min": 0.0, "max": 1000.0, "step": 0.01}),
-                    "neg_ascore": ("FLOAT", {"default": 2.5, "min": 0.0, "max": 1000.0, "step": 0.01}),
-                    "refiner_width": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "refiner_height": ("INT", {"default": 2048, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    },
-                }
-
-    RETURN_TYPES = ("CONDITIONING", "CONDITIONING", )
-    RETURN_NAMES = ("refiner_positive", "refiner_negative", )
-    FUNCTION = "encode"
-
-    CATEGORY = "Searge/ClipEncoding"
-
-    def encode(self, refiner_clip, pos_r, neg_r, pos_ascore, neg_ascore, refiner_width, refiner_height, ):
-
-        # positive refiner prompt
-        tokens1 = refiner_clip.tokenize(pos_r)
-        cond1, pooled1 = refiner_clip.encode_from_tokens(tokens1, return_pooled=True)
-        res1 = [[cond1, {"pooled_output": pooled1, "aesthetic_score": pos_ascore, "width": refiner_width, "height": refiner_height}]]
-
-        # negative refiner prompt
-        tokens2 = refiner_clip.tokenize(neg_r)
-        cond2, pooled2 = refiner_clip.encode_from_tokens(tokens2, return_pooled=True)
-        res2 = [[cond2, {"pooled_output": pooled2, "aesthetic_score": neg_ascore, "width": refiner_width, "height": refiner_height}]]
-
-        return (res1, res2, )
-
-
-# Tool: text input node for prompt text
-
-class SeargePromptText:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "prompt": ("STRING", {"default": "", "multiline": True}),
-                    },
-                }
-
-    RETURN_TYPES = ("STRING", )
-    RETURN_NAMES = ("prompt", )
-    FUNCTION = "get_value"
-
-    CATEGORY = "Searge/Prompting"
-
-    def get_value(self, prompt):
-        return (prompt,)
-
-
-# Tool: text input node for prompt text
-
-class SeargePromptCombiner:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "prompt1": ("STRING", {"default": "", "multiline": True}),
-                    "separator": ("STRING", {"default": ", ", "multiline": False}),
-                    "prompt2": ("STRING", {"default": "", "multiline": True}),
-                    },
-                }
-
-    RETURN_TYPES = ("STRING", )
-    RETURN_NAMES = ("combined prompt", )
-    FUNCTION = "get_value"
-
-    CATEGORY = "Searge/Prompting"
-
-    def get_value(self, prompt1, separator, prompt2, ):
-        len1 = len(prompt1)
-        len2 = len(prompt2)
-        prompt = ""
-        if len1 > 0 and len2 > 0:
-            prompt = prompt1 + separator + prompt2
-        elif len1 > 0:
-            prompt = prompt1
-        elif len2 > 0:
-            prompt = prompt2
-        return (prompt,)
 
 
 # Tool: integer constant
@@ -992,8 +627,6 @@ class SeargeParameterProcessor:
             # "inpainting":
             elif operation_mode == SeargeParameterProcessor.OPERATION_MODE[2]:
                 parameters["operation_selector"] = 2
-                # inpainting doesn't support hires fix
-                parameters["hrf_steps"] = 0
             # incl. SeargeParameterProcessor.OPERATION_MODE[0] -> "text to image":
             else:
                 parameters["operation_selector"] = 0
@@ -1611,7 +1244,9 @@ class SeargeGenerated1:
 
 NODE_CLASS_MAPPINGS = {
     "SeargeSDXLSampler2": SeargeSDXLSampler2,
-    "SeargeSDXLImage2ImageSampler": SeargeSDXLImage2ImageSampler,
+    "SeargeSDXLImage2ImageSampler2": SeargeSDXLImage2ImageSampler2,
+    "SeargeSDXLSampler3": SeargeSDXLSampler3,
+    "SeargeSDXLImage2ImageSampler3": SeargeSDXLImage2ImageSampler3,
 
     "SeargeSamplerInputs": SeargeSamplerInputs,
     "SeargeEnablerInputs": SeargeEnablerInputs,
@@ -1663,22 +1298,25 @@ NODE_CLASS_MAPPINGS = {
     "SeargeGenerated1": SeargeGenerated1,
 
     "SeargeSDXLSampler": SeargeSDXLSampler,
+    "SeargeSDXLImage2ImageSampler": SeargeSDXLImage2ImageSampler,
 }
 
 
 # Human readable names for the nodes
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "SeargeSDXLSampler2": "SDXL Sampler (SeargeSDXL)",
-    "SeargeSDXLImage2ImageSampler": "Image2Image Sampler (SeargeSDXL)",
+    "SeargeSDXLSampler2": "SDXL Sampler v2 (Searge)",
+    "SeargeSDXLImage2ImageSampler2": "Image2Image Sampler v2 (Searge)",
+    "SeargeSDXLSampler3": "SDXL Sampler v3 (Searge)",
+    "SeargeSDXLImage2ImageSampler3": "Image2Image Sampler v3 (Searge)",
 
     "SeargeSamplerInputs": "Sampler Settings",
     "SeargeEnablerInputs": "Enable / Disable",
     "SeargeSaveFolderInputs": "Save Folder",
 
-    "SeargeSDXLPromptEncoder": "SDXL Prompt Encoder (SeargeSDXL)",
-    "SeargeSDXLBasePromptEncoder": "SDXL Base Prompt Encoder (SeargeSDXL)",
-    "SeargeSDXLRefinerPromptEncoder": "SDXL Refiner Prompt Encoder (SeargeSDXL)",
+    "SeargeSDXLPromptEncoder": "SDXL Prompt Encoder (Searge)",
+    "SeargeSDXLBasePromptEncoder": "SDXL Base Prompt Encoder (Searge)",
+    "SeargeSDXLRefinerPromptEncoder": "SDXL Refiner Prompt Encoder (Searge)",
 
     "SeargePromptText": "Prompt text input",
     "SeargePromptCombiner": "Prompt combiner",
@@ -1692,11 +1330,11 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeFloatPair": "Float Pair",
     "SeargeFloatMath": "Float Math",
 
-    "SeargeImageSave": "Save Image (SeargeSDXL)",
-    "SeargeCheckpointLoader": "Checkpoint Loader (SeargeSDXL)",
-    "SeargeVAELoader": "VAE Loader (SeargeSDXL)",
-    "SeargeUpscaleModelLoader": "Upscale Model Loader (SeargeSDXL)",
-    "SeargeLoraLoader": "Lora Loader (SeargeSDXL)",
+    "SeargeImageSave": "Save Image (Searge)",
+    "SeargeCheckpointLoader": "Checkpoint Loader (Searge)",
+    "SeargeVAELoader": "VAE Loader (Searge)",
+    "SeargeUpscaleModelLoader": "Upscale Model Loader (Searge)",
+    "SeargeLoraLoader": "Lora Loader (Searge)",
 
     "SeargeLatentMuxer3": "3-Way Muxer for Latents",
     "SeargeConditioningMuxer2": "2-Way Muxer for Conditioning",
@@ -1721,5 +1359,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeargeOutput7": "Misc Parameters",
     "SeargeGenerated1": "Flow Control Parameters",
 
-    "SeargeSDXLSampler": "Legacy SDXL Sampler (SeargeSDXL)",
+    "SeargeSDXLSampler": "Legacy SDXL Sampler (Searge)",
+    "SeargeSDXLImage2ImageSampler": "Legacy Image2Image Sampler (Searge)",
 }
