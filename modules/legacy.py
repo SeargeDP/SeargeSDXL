@@ -4,7 +4,7 @@ Custom nodes for SDXL in ComfyUI
 
 MIT License
 
-Copyright (c) 2023 SeargeDP
+Copyright (c) 2023 Searge
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,7 @@ import comfy.samplers
 import comfy_extras.nodes_post_processing
 import comfy_extras.nodes_upscale_model
 import nodes
+
 
 # SDXL Sampler with base and refiner support
 

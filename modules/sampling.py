@@ -4,7 +4,7 @@ Custom nodes for SDXL in ComfyUI
 
 MIT License
 
-Copyright (c) 2023 SeargeDP
+Copyright (c) 2023 Searge
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -289,7 +289,7 @@ class SeargeSDXLImage2ImageSampler2:
 
 # SDXL Sampler with base and refiner support
 
-class SeargeSDXLSampler3:
+class SeargeSDXLSamplerV3:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -353,10 +353,13 @@ class SeargeSDXLSampler3:
 
         return sdxl_ksampler(base_model, refiner_model, noise_seed, base_steps, refiner_steps, cfg, sampler_name, scheduler, base_positive, base_negative, refiner_positive, refiner_negative, input_latent, denoise=denoise, disable_noise=False, start_step=start_at_step, last_step=steps, force_full_denoise=True)
 
+#        base_result = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=start_at_step, last_step=base_steps, force_full_denoise=True)
+#        return nodes.common_ksampler(refiner_model, noise_seed + noise_offset, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise * refiner_strength, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
+
 
 # SDXL Image2Image Sampler (incl. HiRes Fix)
 
-class SeargeSDXLImage2ImageSampler3:
+class SeargeSDXLImage2ImageSamplerV3:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -435,6 +438,9 @@ class SeargeSDXLImage2ImageSampler3:
             result_latent = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=0, last_step=steps, force_full_denoise=True)
         else:
             result_latent = sdxl_ksampler(base_model, refiner_model, noise_seed, base_steps, refiner_steps, cfg, sampler_name, scheduler, base_positive, base_negative, refiner_positive, refiner_negative, input_latent, denoise=denoise, disable_noise=False, start_step=0, last_step=steps, force_full_denoise=True)
+
+#            base_result = nodes.common_ksampler(base_model, noise_seed, steps, cfg, sampler_name, scheduler, base_positive, base_negative, input_latent, denoise=denoise, disable_noise=False, start_step=0, last_step=base_steps, force_full_denoise=True)
+#            result_latent = nodes.common_ksampler(refiner_model, noise_seed + noise_offset, steps, cfg, sampler_name, scheduler, refiner_positive, refiner_negative, base_result[0], denoise=denoise * refiner_strength, disable_noise=False, start_step=base_steps, last_step=steps, force_full_denoise=True)
 
         vae_decode_result = nodes.VAEDecode().decode(vae, result_latent[0])
         output_image = vae_decode_result[0]

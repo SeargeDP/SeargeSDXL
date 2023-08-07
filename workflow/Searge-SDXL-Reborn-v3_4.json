@@ -4663,7 +4663,7 @@
         "text": ""
       },
       "widgets_values": [
-        "     Improved Searge SDXL \"Reborn\" workflows for SDXL 1.0   |   Version 3.4 updated on Aug 07, 2023\n\n             !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n 1024 x 1024, 1152 x 896, 896 x 1152, 1216 x 832, 832 x 1216, 1344 x 768, 768 x 1344, 1536 x 640, 640 x 1536\n\nNOTE: All upscale factors are applied to the image size from generation parameters, not the actual image size"
+        "     Improved Searge SDXL \"Reborn\" workflows for SDXL 1.0   |   Version 3.4 updated on Aug 08, 2023\n\n             !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n 1024 x 1024, 1152 x 896, 896 x 1152, 1216 x 832, 832 x 1216, 1344 x 768, 768 x 1344, 1536 x 640, 640 x 1536\n\nNOTE: All upscale factors are applied to the image size from generation parameters, not the actual image size"
       ],
       "color": "#323",
       "bgcolor": "#535"
