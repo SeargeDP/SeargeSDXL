@@ -3,13 +3,27 @@
 including *a workflow* to use *SDXL 1.0* with both the *base and refiner* checkpoints.
 
 
-# Version 3.2
+# Version 3.4
 Instead of having separate workflows for different tasks, everything is now integrated in **one workflow file**.
 
 ### Always use the latest version of the workflow json file with the latest version of the custom nodes!
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/Searge-SDXL-Example.png" width="768">
 
+
+## What's new in v3.4?
+- Minor tweaks and fixes and the beginnings of some code restructuring, nothing user should notice in the workflows
+- Preparations for more upcoming improvements in a compatible way
+- Added compatibility with v1.x workflows, these have been used in some tutorials and did not work anymore with newer
+versions of the extension
+- *(backwards compatibility with v2.x and older v3.x version - before v3.3 - is unfortunately not possible)*
+
+## What about v3.3?
+- Starting from v3.3 the custom node extension will always be compatible with workflows created with v3.3 or later
+- *(backwards compatibility with v2.x, v3.0, v3.1. and v3.2 workflows is unfortunately not possible)*
+- Going forward, older versions of workflow will remain in the `workflow` folder, I still highly recommend to **always 
+use the latest version** and loading it **from the JSON file** instead of the example images 
+- *Version 3.3 has never been publicly released*
 
 ## What's new in v3.2?
 - More prompting modes, including the "3-prompt" style that's common in other workflows
