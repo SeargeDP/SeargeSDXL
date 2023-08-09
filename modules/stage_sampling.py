@@ -114,11 +114,11 @@ class SeargeStageSampling:
         ]
 
         any_changes = (
-            base_changed or
-            refiner_changed or
-            base_cond_changed or
-            refiner_cond_changed or
-            latent_changed)
+                base_changed or
+                refiner_changed or
+                base_cond_changed or
+                refiner_cond_changed or
+                latent_changed)
 
         sampled_changed = access.changed_in_cache(Names.C_SAMPLED, parameters)
         if any_changes or sampled_changed:

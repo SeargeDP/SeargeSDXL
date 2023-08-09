@@ -66,12 +66,16 @@ class NodeWrapper:
     vae_decoder = nodes.VAEDecode()
     vae_encoder = nodes.VAEEncode()
     vae_loader = nodes.VAELoader()
+    zero_out_cond = nodes.ConditioningZeroOut()
 
     @staticmethod
     def sdxl_sampler(base_model, base_positive, base_negative, latent_image, noise_seed, steps, cfg,
                      sampler_name, scheduler, refiner_model=None, refiner_positive=None, refiner_negative=None,
                      base_ratio=0.8, denoise=1.0, cfg_method=None, dynamic_base_cfg=0.0, dynamic_refiner_cfg=0.0,
                      refiner_detail_boost=0.0):
+        if base_model is None:
+            return None
+
         has_refiner_model = refiner_model is not None
 
         base_steps = int(steps * (base_ratio + 0.0001)) if has_refiner_model else steps
@@ -81,7 +85,7 @@ class NodeWrapper:
             cfg_method = None
 
         if denoise < 0.005:
-            return (latent_image,)
+            return latent_image
 
         if refiner_steps == 0 or not has_refiner_model:
             result = sdxl_ksampler(base_model, None, noise_seed, base_steps, 0, cfg, sampler_name,
@@ -102,7 +106,7 @@ class NodeWrapper:
     def common_sampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent,
                        denoise=1.0, disable_noise=False, start_step=None, last_step=None, force_full_denoise=False):
         result = nodes.common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative,
-                        latent, denoise=denoise, disable_noise=disable_noise, start_step=start_step,
-                        last_step=last_step, force_full_denoise=force_full_denoise)
+                                       latent, denoise=denoise, disable_noise=disable_noise, start_step=start_step,
+                                       last_step=last_step, force_full_denoise=force_full_denoise)
 
         return result[0]

@@ -68,8 +68,8 @@ class SeargeStageVAEDecodeSampled:
         batch_size = access.get_active_setting(UI.S_OPERATING_MODE, UI.F_BATCH_SIZE, 1)
 
         any_changes = (
-            vae_changed or
-            latent_changed
+                vae_changed or
+                latent_changed
         )
 
         vae_decoded_changed = access.changed_in_cache(Names.C_VAE_DECODED, [])

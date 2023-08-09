@@ -1,0 +1,124 @@
+{
+    "version_info": {
+        "extension_version": "3.999",
+        "workflow_version": "3.999-RC"
+    },
+    "prompts": {
+        "main_prompt": "a close up of a person wearing a suit and tie, peaky blinders (2018), attractive androgynous humanoid, wearing teal beanie, william dafoe, beige fedora, in roger deakins style, fire behind him, jaguar, red ascot and a field cap, robe, perfect face, ripley scott, mummy",
+        "secondary_prompt": "a close up of a person wearing a suit and tie, peaky blinders, teal color graded, focus on two androids, interstellar movie, wears a destroyed hat, emaciated, england, absolute chad, very very very beautifull face, long dark shadows, late 40s aged, incredible wide screenshot, diamond, sad men",
+        "style_prompt": "photo of <prompt>. highly detailed, professional, gritty, sharp focus, high budget hollywood movie, inspired by William Brodie",
+        "negative_main_prompt": "dirty, out of focus",
+        "negative_secondary_prompt": "mud",
+        "negative_style_prompt": "mud"
+    },
+    "operating_mode": {
+        "workflow_mode": "text-to-image",
+        "prompting_mode": "default - all prompts",
+        "batch_size": 1
+    },
+    "generation_parameters": {
+        "seed": 56421668291,
+        "image_size_preset": "832x1216 (2:3)",
+        "image_width": 832,
+        "image_height": 1216,
+        "steps": 30,
+        "cfg": 5,
+        "sampler_preset": "1 - DPM++ 2M Karras",
+        "sampler_name": "dpmpp_2m",
+        "scheduler": "karras",
+        "base_vs_refiner_ratio": 0.8
+    },
+    "conditioning_parameters": {
+        "base_conditioning_scale": 2,
+        "refiner_conditioning_scale": 1.5,
+        "target_conditioning_scale": 2,
+        "positive_conditioning_scale": 1.5,
+        "negative_conditioning_scale": 0.75,
+        "positive_aesthetic_score": 6,
+        "negative_aesthetic_score": 2.5,
+        "precondition_mode": "gaussian",
+        "precondition_strength": 0.25
+    },
+    "advanced_parameters": {
+        "dynamic_cfg_method": "rescale",
+        "dynamic_cfg_factor": 0.5,
+        "refiner_detail_boost": 0.4,
+        "contrast_factor": 0.05,
+        "saturation_factor": 0.1,
+        "latent_detailer": "none"
+    },
+    "img2img_inpainting": {
+        "denoise": 1.0,
+        "inpaint_mask_blur": 8,
+        "inpaint_mask_mode": "masked - full"
+    },
+    "high_resolution": {
+        "hires_mode": "none",
+        "hires_scale": "1.5x",
+        "hires_denoise": 0.2,
+        "hires_softness": 0.1,
+        "hires_detail_boost": 0.5,
+        "hires_contrast_factor": 0.05,
+        "hires_saturation_factor": 0.1,
+        "hires_latent_detailer": "none",
+        "final_upscale_size": "none"
+    },
+    "checkpoints": {
+        "base_checkpoint": "sd_xl_base_1.0_0.9vae.safetensors",
+        "refiner_checkpoint": "sd_xl_refiner_1.0_0.9vae.safetensors",
+        "vae_checkpoint": "sdxl_vae.safetensors"
+    },
+    "upscale_models": {
+        "detail_processor": "1x-ITF-SkinDiffDetail-Lite-v1.pth",
+        "high_res_upscaler": "4x_Nickelback_70000G.pth",
+        "primary_upscaler": "4x-UltraSharp.pth",
+        "secondary_upscaler": "4x_NMKD-Siax_200k.pth"
+    },
+    "loras": {
+        "lora_stack": [
+            {
+                "lora_name": "sd_xl_offset_example-lora_1.0.safetensors",
+                "lora_strength": 0.5
+            },
+            {
+                "lora_name": "none",
+                "lora_strength": 0.5
+            },
+            {
+                "lora_name": "none",
+                "lora_strength": 0.5
+            },
+            {
+                "lora_name": "none",
+                "lora_strength": 0.5
+            },
+            {
+                "lora_name": "none",
+                "lora_strength": 0.5
+            }
+        ]
+    },
+    "prompt_styling": {
+        "example": "example"
+    },
+    "custom_prompting": {
+        "example": "example"
+    },
+    "condition_mixing": {
+        "example": "example"
+    },
+    "debug_information": {
+        "processed_prompts": {
+            "base_positive_main_prompt": "photo of a close up of a person wearing a suit and tie, peaky blinders (2018), attractive androgynous humanoid, wearing teal beanie, william dafoe, beige fedora, in roger deakins style, fire behind him, jaguar, red ascot and a field cap, robe, perfect face, ripley scott, mummy. highly detailed, professional, gritty, sharp focus, high budget hollywood movie, inspired by William Brodie",
+            "base_positive_secondary_prompt": "photo of a close up of a person wearing a suit and tie, peaky blinders, teal color graded, focus on two androids, interstellar movie, wears a destroyed hat, emaciated, england, absolute chad, very very very beautifull face, long dark shadows, late 40s aged, incredible wide screenshot, diamond, sad men. highly detailed, professional, gritty, sharp focus, high budget hollywood movie, inspired by William Brodie",
+            "base_positive_style_prompt": "photo of . highly detailed, professional, gritty, sharp focus, high budget hollywood movie, inspired by William Brodie",
+            "base_negative_main_prompt": "dirty, out of focus",
+            "base_negative_secondary_prompt": "mud",
+            "base_negative_style_prompt": "mud",
+            "refiner_positive_prompt": "photo of a close up of a person wearing a suit and tie, peaky blinders (2018), attractive androgynous humanoid, wearing teal beanie, william dafoe, beige fedora, in roger deakins style, fire behind him, jaguar, red ascot and a field cap, robe, perfect face, ripley scott, mummy. highly detailed, professional, gritty, sharp focus, high budget hollywood movie, inspired by William Brodie",
+            "refiner_positive_style_prompt": "photo of . highly detailed, professional, gritty, sharp focus, high budget hollywood movie, inspired by William Brodie",
+            "refiner_negative_prompt": "dirty, out of focus. mud",
+            "refiner_negative_style_prompt": "mud"
+        }
+    }
+}

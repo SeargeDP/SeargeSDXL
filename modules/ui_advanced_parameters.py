@@ -38,12 +38,12 @@ class SeargeAdvancedParameters:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "dynamic_cfg_method": (UI.DYNAMIC_CFG_METHODS,  {"default": UI.NONE},),
-                "dynamic_cfg_factor": ("FLOAT",  {"default": 0.0, "min": -1.0, "max": 1.0, "step": 0.05},),
-                "refiner_detail_boost": ("FLOAT",  {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
-                "contrast_factor": ("FLOAT",  {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
-                "saturation_factor": ("FLOAT",  {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
-                "latent_detailer": (UI.LATENT_DETAILERS,  {"default": UI.NONE},),
+                "dynamic_cfg_method": (UI.DYNAMIC_CFG_METHODS, {"default": UI.NONE},),
+                "dynamic_cfg_factor": ("FLOAT", {"default": 0.0, "min": -1.0, "max": 1.0, "step": 0.05},),
+                "refiner_detail_boost": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
+                "contrast_factor": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
+                "saturation_factor": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
+                "latent_detailer": (UI.LATENT_DETAILERS, {"default": UI.NONE},),
             },
             "optional": {
                 "data": ("SRG_DATA_STREAM",),
@@ -57,7 +57,8 @@ class SeargeAdvancedParameters:
     CATEGORY = UI.CATEGORY_UI_INPUTS
 
     @staticmethod
-    def create_dict(dynamic_cfg_method, dynamic_cfg_factor, refiner_detail_boost, contrast_factor, saturation_factor, latent_detailer):
+    def create_dict(dynamic_cfg_method, dynamic_cfg_factor, refiner_detail_boost, contrast_factor, saturation_factor,
+                    latent_detailer):
         return {
             UI.F_DYNAMIC_CFG_METHOD: dynamic_cfg_method,
             UI.F_DYNAMIC_CFG_FACTOR: round(dynamic_cfg_factor, 3),
@@ -67,8 +68,8 @@ class SeargeAdvancedParameters:
             UI.F_LATENT_DETAILER: latent_detailer,
         }
 
-    def get(self, dynamic_cfg_method, dynamic_cfg_factor, refiner_detail_boost, contrast_factor, saturation_factor, latent_detailer,
-            data=None):
+    def get(self, dynamic_cfg_method, dynamic_cfg_factor, refiner_detail_boost, contrast_factor, saturation_factor,
+            latent_detailer, data=None):
         if data is None:
             data = {}
 

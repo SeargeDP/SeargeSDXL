@@ -28,6 +28,95 @@ SOFTWARE.
 
 import torch
 
+import comfy
+
+from nodes import common_ksampler
+
+
+class SeargeSamplerAdvanced:
+    UPSCALE_METHODS = ["nearest-exact", "bilinear", "area", "bicubic", "bislerp"]
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "model": ("MODEL",),
+                "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                "steps": ("INT", {"default": 20, "min": 1, "max": 10000}),
+                "cfg": ("FLOAT", {"default": 8.0, "min": 0.0, "max": 100.0, "step": 0.5}),
+                "sampler_name": (comfy.samplers.KSampler.SAMPLERS,),
+                "scheduler": (comfy.samplers.KSampler.SCHEDULERS,),
+                "positive": ("CONDITIONING",),
+                "negative": ("CONDITIONING",),
+                "latent_image": ("LATENT",),
+                "denoise": ("FLOAT", {"default": 1.0, "min": 0.05, "max": 1.0, "step": 0.05}),
+                "scale_factor": ("FLOAT", {"default": 1.5, "min": 1.0, "max": 2.0, "step": 0.5}),
+                "scale_denoise": ("FLOAT", {"default": 0.75, "min": 0.05, "max": 1.0, "step": 0.05}),
+                "scale_method": (s.UPSCALE_METHODS,),
+            }
+        }
+
+    RETURN_TYPES = ("LATENT",)
+    RETURN_NAMES = ("latent",)
+    FUNCTION = "sample"
+
+    CATEGORY = "Searge/_deprecated_/_test_"
+
+    def sample(self, model, noise_seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image,
+               denoise, scale_factor, scale_denoise, scale_method):
+
+        if scale_factor < 1.001:
+            return common_ksampler(model, noise_seed, steps, cfg, sampler_name, scheduler, positive, negative,
+                                   latent_image, denoise=denoise, disable_noise=False, start_step=0,
+                                   last_step=steps, force_full_denoise=True)
+
+        total_steps = int(steps * (scale_factor + 0.001))
+
+        result = common_ksampler(model, noise_seed, steps, cfg, sampler_name, scheduler, positive, negative,
+                                 latent_image, denoise=denoise, disable_noise=False, start_step=0,
+                                 last_step=steps, force_full_denoise=True)
+
+        samples = result[0]
+
+        extra_steps = max(0, total_steps - steps)
+        width = samples["samples"].shape[3]
+        height = samples["samples"].shape[2]
+        new_width = int(width * (scale_factor + 0.001))
+        new_height = int(height * (scale_factor + 0.001))
+
+        s = samples.copy()
+
+        print("Starting at {0}x{0}".format(width, height))
+
+        step_size = 5
+
+        # restore_steps = extra_steps
+        restore_steps = int((steps + 1) // 2)
+        # restore_steps = int((extra_steps + 1) // 2)
+
+        extra_step = 0
+        while extra_step < extra_steps:
+            target_width = width + int((new_width - width) * (extra_step + step_size) // extra_steps)
+            target_height = height + int((new_height - height) * (extra_step + step_size) // extra_steps)
+
+            print("Scaling to {0}x{0}".format(target_width, target_height))
+
+            s["samples"] = comfy.utils.common_upscale(samples["samples"], target_width, target_height,
+                                                      scale_method, "disabled")
+
+            samples = s
+
+            result = common_ksampler(model, noise_seed, restore_steps, cfg, sampler_name, scheduler, positive,
+                                     negative, samples, denoise=scale_denoise, disable_noise=False, start_step=0,
+                                     last_step=restore_steps, force_full_denoise=True)
+
+            samples = result[0]
+            extra_step += step_size
+
+        return (samples,)
+
+
+# --------------------====================--------------------
 
 def gaussian_latent_noise(width=128, height=128, seed=-1, fac=0.5, batch_size=1, nul=0.0, srnd=False, ver="xl"):
     limit = {

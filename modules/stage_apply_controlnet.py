@@ -58,6 +58,9 @@ class SeargeStageApplyControlnet:
         base_cond = access.get_from_pipeline(Names.P_BASE_CONDITIONING)
         base_cond_changed = access.changed_in_pipeline(Names.P_BASE_CONDITIONING)
 
+        if base_cond is not None:
+            base_cond = base_cond.copy()
+
         clip_vision_changed = access.changed_in_pipeline(Names.P_CLIP_VISION_MODEL)
         canny_changed = access.changed_in_pipeline(Names.P_CN_CANNY_MODEL)
         depth_changed = access.changed_in_pipeline(Names.P_CN_DEPTH_MODEL)
@@ -65,25 +68,47 @@ class SeargeStageApplyControlnet:
         sketch_changed = access.changed_in_pipeline(Names.P_CN_SKETCH_MODEL)
         custom_changed = access.changed_in_pipeline(Names.P_CN_CUSTOM_MODEL)
 
+        ignore_positive = access.get_active_setting(Names.S_CONDITION_ZEROING, Names.F_ZERO_POSITIVES, False)
+        ignore_negative = access.get_active_setting(Names.S_CONDITION_ZEROING, Names.F_ZERO_NEGATIVES, False)
+
         (cn_stack, images_changed) = self.comparable_stack(stack)
 
+        parameters = [
+            cn_stack,
+            ignore_positive,
+            ignore_negative,
+        ]
+
         any_changes = (
-            images_changed or
-            base_cond_changed or
-            clip_vision_changed or
-            canny_changed or
-            depth_changed or
-            recolor_changed or
-            sketch_changed or
-            custom_changed
+                images_changed or
+                base_cond_changed or
+                clip_vision_changed or
+                canny_changed or
+                depth_changed or
+                recolor_changed or
+                sketch_changed or
+                custom_changed
         )
 
-        applied_controlnet_changed = access.changed_in_cache(Names.C_APPLIED_CONTROLNET, cn_stack)
+        applied_controlnet_changed = access.changed_in_cache(Names.C_APPLIED_CONTROLNET, parameters)
         if any_changes or applied_controlnet_changed:
+
+            base_positive = retrieve_parameter(Names.F_BASE_POSITIVE, base_cond)
+            base_negative = retrieve_parameter(Names.F_BASE_NEGATIVE, base_cond)
+
+            if ignore_positive:
+                base_positive = NodeWrapper.zero_out_cond.zero_out(base_positive)[0]
+
+            if ignore_negative:
+                base_negative = NodeWrapper.zero_out_cond.zero_out(base_negative)[0]
+
+            base_cond[Names.F_BASE_POSITIVE] = base_positive
+            base_cond[Names.F_BASE_NEGATIVE] = base_negative
+
             (base_positive, base_negative, changed_cond) = self.apply_controlnet(access, stack, base_cond)
 
-            access.update_in_cache(Names.C_APPLIED_CONTROLNET, cn_stack, (base_positive, base_negative,
-                                                                          base_cond, changed_cond))
+            access.update_in_cache(Names.C_APPLIED_CONTROLNET, parameters, (base_positive, base_negative,
+                                                                            base_cond, changed_cond))
 
             access.update_in_pipeline(Names.P_BASE_CONDITIONING, base_cond)
 
@@ -129,7 +154,6 @@ class SeargeStageApplyControlnet:
         return (new_stack, images_changed,)
 
     def apply_controlnet(self, access, stack, base_cond):
-
         base_positive = retrieve_parameter(Names.F_BASE_POSITIVE, base_cond)
         base_negative = retrieve_parameter(Names.F_BASE_NEGATIVE, base_cond)
 

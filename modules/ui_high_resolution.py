@@ -45,7 +45,7 @@ class SeargeHighResolution:
                 "hires_detail_boost": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
                 "hires_contrast_factor": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
                 "hires_saturation_factor": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),
-                "hires_latent_detailer": ([UI.NONE],),  # TODO: implement later
+                "hires_latent_detailer": (UI.LATENT_DETAILERS, {"default": UI.NONE},),
                 "final_upscale_size": (UI.UPSCALE_FACTORS, {"default": UI.NONE},),
             },
             "optional": {

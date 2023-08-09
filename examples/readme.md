@@ -1,8 +1,13 @@
 
 # Example Images
 
+<img src="example-0-signature.png" width="512">
+
 All images in this folder, except `example-2-quality-settings.png`, have the workflow embedded and can be loaded into
 ComfyUI to re-create them.
+
+The workflow can also save a [separate text file](example-0-signature.txt) with the parameters that were used for
+generating an image. 
 
 To do that either load the images via the `Load` button or just drag one of the images
 on the browser window that has ComfyUI loaded.
@@ -20,10 +25,6 @@ This is a variation of example 1, but with some settings changed to produce a hi
 result in the end.
 
 <img src="example-2-high-quality.png" width="512">
-
-Here is an overview of the main settings that can be used to get higher quality results.
-
-<img src="example-2-quality-settings.png" width="512">
 
 ## Example 3 - Watching the Universe End
 
@@ -55,3 +56,7 @@ but using one of the 5 included controlnet/revision stages instead.
 Using one of the 5 included controlnet/revision stages to create a realistic looking image of a warrior.
 
 <img src="example-7-controlnet-sketch-warrior.png" width="512">
+
+This is the same image, but without using controlnet
+
+<img src="example-7-controlnet-off-warrior.png" width="512">

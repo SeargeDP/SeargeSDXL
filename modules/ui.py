@@ -42,19 +42,19 @@ from .custom_sdxl_ksampler import CfgMethods
 # ====================================================================================================
 
 class Defs:
-    DEV_MODE = True  # do NOT disable this in test releases or things will break, some required code is missing
+    DEV_MODE = True
 
-    VERSION = "3.991-dev" if DEV_MODE else "4.0"
+    VERSION = "3.999" if DEV_MODE else "4.0"
 
     WORKFLOW_VERSIONS = [
         "3.991-dev",
+        "3.999-RC",
     ] if DEV_MODE else [
         "4.0",
     ]
 
     # --- don't touch these ---
-    CLASS_POSTFIX = "Dev" if DEV_MODE else ""
-    CATEGORY = "Searge-Dev" if DEV_MODE else "Searge"
+    CATEGORY = "Searge"
     EXTENSION_PATH = str(Path(getframeinfo(currentframe()).filename).resolve().parent.parent)
 
 
@@ -106,6 +106,8 @@ class UI:
     PROMPTING_MAIN_AND_NEGATIVE_ONLY = "main and neg. only"
     PROMPTING_MAIN_SECONDARY_AND_NEGATIVE = "main, sec., and neg."
     PROMPTING_MAIN_ALL_EXCEPT_SECONDARY = "all except sec."
+    PROMPTING_IGNORE_EMPTY = "ignore empty"
+    PROMPTING_IGNORE_ALL = "ignore all"
 
     PROMPTING_MODES = [
         PROMPTING_DEFAULT,
@@ -113,6 +115,8 @@ class UI:
         PROMPTING_MAIN_AND_NEGATIVE_ONLY,
         PROMPTING_MAIN_SECONDARY_AND_NEGATIVE,
         PROMPTING_MAIN_ALL_EXCEPT_SECONDARY,
+        PROMPTING_IGNORE_EMPTY,
+        PROMPTING_IGNORE_ALL,
     ]
 
     SAMPLERS = KSampler.SAMPLERS
@@ -216,6 +220,7 @@ class UI:
     ]
 
     PRECONDITION_MODE_GAUSSIAN = "gaussian"
+    # TODO: refiner preconditioning
 
     PRECONDITION_MODES = [
         NONE,

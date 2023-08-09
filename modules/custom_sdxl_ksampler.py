@@ -29,13 +29,16 @@ SOFTWARE.
 import torch
 import warnings
 
-import comfy.model_management
 import comfy.sample
 import comfy.samplers
 import comfy.utils
 import latent_preview
 
+from comfy.ldm.modules.diffusionmodules.openaimodel import UNetModel
+from comfy.model_management import get_torch_device, batch_area_memory, load_models_gpu
+
 from .utils import slerp_latents
+from .utils import bilateral_blur
 
 
 # --------------------------------------------------------------------------------
@@ -48,12 +51,49 @@ class CfgMethods:
 
 # --------------------------------------------------------------------------------
 
+def unet_function(func, params):
+    cond_or_uncond = params["cond_or_uncond"]
+
+    input_x = params["input"]
+    timestep = params["timestep"]
+    c = params["c"]
+
+    transformer_options = c["transformer_options"]
+    transformer_options["uc_mask"] = torch.Tensor(cond_or_uncond).to(input_x).float()[:, None, None, None]
+
+    return func(input_x, timestep, **c)
+
+
+# --------------------------------------------------------------------------------
+
+def new_unet_forward(self, x, timesteps=None, context=None, y=None, control=None, transformer_options={}, **kwargs):
+    x0 = old_unet_forward(self, x, timesteps, context, y, control, transformer_options, **kwargs)
+
+    # do filtering here
+    if "uc_mask" in transformer_options:
+        uc_mask = transformer_options["uc_mask"]
+
+        sharpness = 2.0
+        alpha = 1.0 - (timesteps / 999.0)[:, None, None, None].clone()
+        alpha *= 0.001 * sharpness
+        degraded_x0 = bilateral_blur(x0, (13, 13), 3.0, 3.0) * alpha + x0 * (1.0 - alpha)
+        x0 = x0 * uc_mask + degraded_x0 * (1.0 - uc_mask)
+
+    return x0
+
+
+old_unet_forward = UNetModel.forward
+UNetModel.forward = new_unet_forward
+
+
+# --------------------------------------------------------------------------------
+
 def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg, sampler_name, scheduler,
                 base_positive, base_negative, refiner_positive, refiner_negative, latent_image, batch_inds,
                 denoise=1.0, start_step=None, last_step=None, force_full_denoise=False, noise_mask=None, sigmas=None,
                 base_callback=None, refiner_callback=None, disable_pbar=False, seed=None, cfg_method=None,
                 dynamic_base_cfg=0.0, dynamic_refiner_cfg=0.0, refiner_detail_boost=0.0):
-    device = comfy.model_management.get_torch_device()
+    device = get_torch_device()
 
     if noise_mask is not None:
         noise_mask = comfy.sample.prepare_mask(noise_mask, noise.shape, device)
@@ -114,9 +154,10 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
 
         return uncond + noise_pred * new_magnitude * cond_scale
 
-    if cfg_method is not None:
-        base_model = base_model.clone()
+    base_model = base_model.clone()
+    base_model.set_model_unet_function_wrapper(unet_function)
 
+    if cfg_method is not None:
         if cfg_method == CfgMethods.INTERPOLATE:
             base_model.set_model_sampler_cfg_function(base_cfg_callback)
         elif cfg_method == CfgMethods.RESCALE and dynamic_base_cfg > 0.0:
@@ -124,8 +165,11 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         elif cfg_method == CfgMethods.TONEMAP and dynamic_base_cfg > 0.0:
             base_model.set_model_sampler_cfg_function(base_tonemap_reinhard)
 
-    base_models, inference_memory = comfy.sample.get_additional_models(base_positive, base_negative, base_model.model_dtype())
-    comfy.model_management.load_models_gpu([base_model] + base_models, comfy.model_management.batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory)
+    base_models, inference_memory = comfy.sample.get_additional_models(base_positive, base_negative,
+                                                                       base_model.model_dtype())
+
+    memory_required = batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory
+    load_models_gpu([base_model] + base_models, memory_required)
 
     real_base_model = base_model.model
 
@@ -138,12 +182,12 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     neg_base_copy = comfy.sample.broadcast_cond(base_negative, noise.shape[0], device)
 
     base_sampler = comfy.samplers.KSampler(real_base_model, steps=steps, device=device, sampler=sampler_name,
-                                       scheduler=scheduler, denoise=denoise, model_options=base_model.model_options)
+                                           scheduler=scheduler, denoise=denoise, model_options=base_model.model_options)
 
     base_samples = base_sampler.sample(noise, pos_base_copy, neg_base_copy, cfg=cfg, latent_image=latent_image,
-                               start_step=start_step, last_step=base_steps, force_full_denoise=False,
-                               denoise_mask=noise_mask, sigmas=sigmas, callback=base_callback,
-                               disable_pbar=disable_pbar, seed=seed)
+                                       start_step=start_step, last_step=base_steps, force_full_denoise=False,
+                                       denoise_mask=noise_mask, sigmas=sigmas, callback=base_callback,
+                                       disable_pbar=disable_pbar, seed=seed)
 
     comfy.sample.cleanup_additional_models(base_models)
 
@@ -196,9 +240,8 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         ro_cfg = torch.std(x_cfg, dim=(1, 2, 3), keepdim=True)
 
         x_rescaled = x_cfg * (ro_pos / ro_cfg)
-        x_final = multiplier * x_rescaled + (1.0 - multiplier) * x_cfg
 
-        return x_final
+        return multiplier * x_rescaled + (1.0 - multiplier) * x_cfg
 
     def refiner_tonemap_reinhard(args):
         multiplier = dynamic_refiner_cfg if dynamic_refiner_cfg >= 0.0 else -dynamic_refiner_cfg
@@ -222,9 +265,10 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
 
         return uncond + noise_pred * new_magnitude * cond_scale
 
-    if cfg_method is not None:
-        refiner_model = refiner_model.clone()
+    refiner_model = refiner_model.clone()
+    refiner_model.set_model_unet_function_wrapper(unet_function)
 
+    if cfg_method is not None:
         if cfg_method == CfgMethods.INTERPOLATE:
             refiner_model.set_model_sampler_cfg_function(refiner_cfg_callback)
         elif cfg_method == CfgMethods.RESCALE and dynamic_refiner_cfg > 0.0:
@@ -232,8 +276,11 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         elif cfg_method == CfgMethods.TONEMAP and dynamic_refiner_cfg > 0.0:
             refiner_model.set_model_sampler_cfg_function(refiner_tonemap_reinhard)
 
-    refiner_models, inference_memory = comfy.sample.get_additional_models(refiner_positive, refiner_negative, refiner_model.model_dtype())
-    comfy.model_management.load_models_gpu([refiner_model] + refiner_models, comfy.model_management.batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory)
+    refiner_models, inference_memory = comfy.sample.get_additional_models(refiner_positive, refiner_negative,
+                                                                          refiner_model.model_dtype())
+
+    memory_required = batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory
+    load_models_gpu([refiner_model] + refiner_models, memory_required)
 
     real_refiner_model = refiner_model.model
 
@@ -241,12 +288,14 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     neg_refiner_copy = comfy.sample.broadcast_cond(refiner_negative, noise.shape[0], device)
 
     refiner_sampler = comfy.samplers.KSampler(real_refiner_model, steps=steps, device=device, sampler=sampler_name,
-                                       scheduler=scheduler, denoise=denoise, model_options=refiner_model.model_options)
+                                              scheduler=scheduler, denoise=denoise,
+                                              model_options=refiner_model.model_options)
 
-    refiner_samples = refiner_sampler.sample(noise, pos_refiner_copy, neg_refiner_copy, cfg=cfg, latent_image=latent_from_base,
-                              start_step=base_steps, last_step=last_step, force_full_denoise=force_full_denoise,
-                              denoise_mask=noise_mask, sigmas=sigmas, callback=refiner_callback,
-                              disable_pbar=disable_pbar, seed=seed)
+    refiner_samples = refiner_sampler.sample(noise, pos_refiner_copy, neg_refiner_copy, cfg=cfg,
+                                             latent_image=latent_from_base, start_step=base_steps, last_step=last_step,
+                                             force_full_denoise=force_full_denoise,
+                                             denoise_mask=noise_mask, sigmas=sigmas, callback=refiner_callback,
+                                             disable_pbar=disable_pbar, seed=seed)
 
     refiner_samples = refiner_samples.cpu()
 
@@ -261,7 +310,7 @@ def sdxl_ksampler(base_model, refiner_model, seed, base_steps, refiner_steps, cf
                   base_positive, base_negative, refiner_positive, refiner_negative, latent, denoise=1.0,
                   disable_noise=False, start_step=None, last_step=None, force_full_denoise=False, cfg_method=None,
                   dynamic_base_cfg=0.0, dynamic_refiner_cfg=0.0, refiner_detail_boost=0.0):
-    device = comfy.model_management.get_torch_device()
+    device = get_torch_device()
     latent_image = latent["samples"]
 
     batch_inds = None

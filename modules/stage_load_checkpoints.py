@@ -26,6 +26,8 @@ SOFTWARE.
 
 """
 
+import folder_paths
+
 from .data_utils import retrieve_parameter
 from .mb_pipeline import PipelineAccess
 from .names import Names
@@ -61,7 +63,10 @@ class SeargeStageLoadCheckpoints:
         if base_changed:
             base_name = access.get_active_setting(UI.S_CHECKPOINTS, UI.F_BASE_CHECKPOINT)
 
-            base_checkpoint = NodeWrapper.checkpoint_loader.load_checkpoint(base_name)
+            if folder_paths.get_full_path("checkpoints", base_name) is None:
+                base_checkpoint = (None, None, None)
+            else:
+                base_checkpoint = NodeWrapper.checkpoint_loader.load_checkpoint(base_name)
 
             access.update_in_cache(Names.C_BASE_CHECKPOINT, [base_name], base_checkpoint)
         else:
@@ -72,19 +77,19 @@ class SeargeStageLoadCheckpoints:
         base_vae = base_checkpoint[2]
 
         if base_changed:
-            access.update_in_pipeline(Names.P_BASE_MODEL, base_model)
-            access.update_in_pipeline(Names.P_BASE_CLIP, base_clip)
-            access.update_in_pipeline(Names.P_BASE_VAE, base_vae)
+            access.update_in_pipeline(Names.P_BASE_MODEL, base_model, True)
+            access.update_in_pipeline(Names.P_BASE_CLIP, base_clip, True)
+            access.update_in_pipeline(Names.P_BASE_VAE, base_vae, True)
         else:
-            access.restore_in_pipeline(Names.P_BASE_MODEL, base_model)
-            access.restore_in_pipeline(Names.P_BASE_CLIP, base_clip)
-            access.restore_in_pipeline(Names.P_BASE_VAE, base_vae)
+            access.restore_in_pipeline(Names.P_BASE_MODEL, base_model, True)
+            access.restore_in_pipeline(Names.P_BASE_CLIP, base_clip, True)
+            access.restore_in_pipeline(Names.P_BASE_VAE, base_vae, True)
 
         refiner_changed = access.setting_changed(UI.S_CHECKPOINTS, UI.F_REFINER_CHECKPOINT)
         if refiner_changed:
             refiner_name = access.get_active_setting(UI.S_CHECKPOINTS, UI.F_REFINER_CHECKPOINT, UI.NONE)
 
-            if refiner_name == UI.NONE:
+            if refiner_name == UI.NONE or folder_paths.get_full_path("checkpoints", refiner_name) is None:
                 refiner_checkpoint = (None, None, None,)
             else:
                 refiner_checkpoint = NodeWrapper.checkpoint_loader.load_checkpoint(refiner_name)
@@ -98,20 +103,20 @@ class SeargeStageLoadCheckpoints:
         refiner_vae = refiner_checkpoint[2]
 
         if refiner_changed:
-            access.update_in_pipeline(Names.P_REFINER_MODEL, refiner_model)
-            access.update_in_pipeline(Names.P_REFINER_CLIP, refiner_clip)
-            access.update_in_pipeline(Names.P_REFINER_VAE, refiner_vae)
+            access.update_in_pipeline(Names.P_REFINER_MODEL, refiner_model, True)
+            access.update_in_pipeline(Names.P_REFINER_CLIP, refiner_clip, True)
+            access.update_in_pipeline(Names.P_REFINER_VAE, refiner_vae, True)
         else:
-            access.restore_in_pipeline(Names.P_REFINER_MODEL, refiner_model)
-            access.restore_in_pipeline(Names.P_REFINER_CLIP, refiner_clip)
-            access.restore_in_pipeline(Names.P_REFINER_VAE, refiner_vae)
+            access.restore_in_pipeline(Names.P_REFINER_MODEL, refiner_model, True)
+            access.restore_in_pipeline(Names.P_REFINER_CLIP, refiner_clip, True)
+            access.restore_in_pipeline(Names.P_REFINER_VAE, refiner_vae, True)
 
         vae_changed = access.setting_changed(UI.S_CHECKPOINTS, UI.F_VAE_CHECKPOINT)
         if vae_changed:
             vae_name = access.get_active_setting(UI.S_CHECKPOINTS, UI.F_VAE_CHECKPOINT, UI.VAE_FROM_BASE_MODEL)
 
             if vae_name == UI.VAE_FROM_REFINER_MODEL:
-                if refiner_vae is not None:
+                if refiner_vae is not None and folder_paths.get_full_path("vae", vae_name) is not None:
                     vae_checkpoint = refiner_vae
                 else:
                     vae_checkpoint = base_vae
@@ -123,180 +128,180 @@ class SeargeStageLoadCheckpoints:
                 vae_checkpoint = NodeWrapper.vae_loader.load_vae(vae_name)[0]
 
             access.update_in_cache(Names.C_VAE_CHECKPOINT, [vae_name], vae_checkpoint)
-            access.update_in_pipeline(Names.P_VAE_MODEL, vae_checkpoint)
+            access.update_in_pipeline(Names.P_VAE_MODEL, vae_checkpoint, True)
         else:
             vae_checkpoint = access.get_from_cache(Names.C_VAE_CHECKPOINT)
-            access.restore_in_pipeline(Names.P_VAE_MODEL, vae_checkpoint)
+            access.restore_in_pipeline(Names.P_VAE_MODEL, vae_checkpoint, True)
 
         vae_model = vae_checkpoint
 
         hires_upscaler_changed = access.setting_changed(UI.S_UPSCALE_MODELS, UI.F_HIGH_RES_UPSCALER)
         if hires_upscaler_changed:
-            hires_upscaler_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_HIGH_RES_UPSCALER, UI.NONE)
+            hires_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_HIGH_RES_UPSCALER, UI.NONE)
 
-            if hires_upscaler_name != UI.NONE:
-                hires_upscaler_model = NodeWrapper.upscale_loader.load_model(hires_upscaler_name)[0]
+            if hires_name != UI.NONE and folder_paths.get_full_path("upscale_models", hires_name) is not None:
+                hires_upscaler_model = NodeWrapper.upscale_loader.load_model(hires_name)[0]
             else:
                 hires_upscaler_model = None
 
-            access.update_in_cache(Names.C_HIRES_UPSCALE_MODEL, [hires_upscaler_name], hires_upscaler_model)
-            access.update_in_pipeline(Names.P_HIRES_UPSCALER, hires_upscaler_model)
+            access.update_in_cache(Names.C_HIRES_UPSCALE_MODEL, [hires_name], hires_upscaler_model)
+            access.update_in_pipeline(Names.P_HIRES_UPSCALER, hires_upscaler_model, True)
         else:
             hires_upscaler_model = access.get_from_cache(Names.C_HIRES_UPSCALE_MODEL)
-            access.restore_in_pipeline(Names.P_HIRES_UPSCALER, hires_upscaler_model)
+            access.restore_in_pipeline(Names.P_HIRES_UPSCALER, hires_upscaler_model, True)
 
         hires_upscaler = hires_upscaler_model
 
         primary_upscaler_changed = access.setting_changed(UI.S_UPSCALE_MODELS, UI.F_PRIMARY_UPSCALER)
         if primary_upscaler_changed:
-            primary_upscaler_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_PRIMARY_UPSCALER, UI.NONE)
+            primary_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_PRIMARY_UPSCALER, UI.NONE)
 
-            if primary_upscaler_name != UI.NONE:
-                primary_upscaler_model = NodeWrapper.upscale_loader.load_model(primary_upscaler_name)[0]
+            if primary_name != UI.NONE and folder_paths.get_full_path("upscale_models", primary_name) is not None:
+                primary_upscaler_model = NodeWrapper.upscale_loader.load_model(primary_name)[0]
             else:
                 primary_upscaler_model = None
 
-            access.update_in_cache(Names.C_PRIMARY_UPSCALE_MODEL, [primary_upscaler_name], primary_upscaler_model)
-            access.update_in_pipeline(Names.P_PRIMARY_UPSCALER, primary_upscaler_model)
+            access.update_in_cache(Names.C_PRIMARY_UPSCALE_MODEL, [primary_name], primary_upscaler_model)
+            access.update_in_pipeline(Names.P_PRIMARY_UPSCALER, primary_upscaler_model, True)
         else:
             primary_upscaler_model = access.get_from_cache(Names.C_PRIMARY_UPSCALE_MODEL)
-            access.restore_in_pipeline(Names.P_PRIMARY_UPSCALER, primary_upscaler_model)
+            access.restore_in_pipeline(Names.P_PRIMARY_UPSCALER, primary_upscaler_model, True)
 
         primary_upscaler = primary_upscaler_model
 
         secondary_upscaler_changed = access.setting_changed(UI.S_UPSCALE_MODELS, UI.F_SECONDARY_UPSCALER)
         if secondary_upscaler_changed:
-            secondary_upscaler_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_SECONDARY_UPSCALER, UI.NONE)
+            secondary_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_SECONDARY_UPSCALER, UI.NONE)
 
-            if secondary_upscaler_name != UI.NONE:
-                secondary_upscaler_model = NodeWrapper.upscale_loader.load_model(secondary_upscaler_name)[0]
+            if secondary_name != UI.NONE and folder_paths.get_full_path("upscale_models", secondary_name) is not None:
+                secondary_upscaler_model = NodeWrapper.upscale_loader.load_model(secondary_name)[0]
             else:
                 secondary_upscaler_model = None
 
-            access.update_in_cache(Names.C_SECONDARY_UPSCALE_MODEL, [secondary_upscaler_name], secondary_upscaler_model)
-            access.update_in_pipeline(Names.P_SECONDARY_UPSCALER, secondary_upscaler_model)
+            access.update_in_cache(Names.C_SECONDARY_UPSCALE_MODEL, [secondary_name], secondary_upscaler_model)
+            access.update_in_pipeline(Names.P_SECONDARY_UPSCALER, secondary_upscaler_model, True)
         else:
             secondary_upscaler_model = access.get_from_cache(Names.C_SECONDARY_UPSCALE_MODEL)
-            access.restore_in_pipeline(Names.P_SECONDARY_UPSCALER, secondary_upscaler_model)
+            access.restore_in_pipeline(Names.P_SECONDARY_UPSCALER, secondary_upscaler_model, True)
 
         secondary_upscaler = secondary_upscaler_model
 
         detail_processor_changed = access.setting_changed(UI.S_UPSCALE_MODELS, UI.F_DETAIL_PROCESSOR)
         if detail_processor_changed:
-            detail_processor_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_DETAIL_PROCESSOR, UI.NONE)
+            detailer_name = access.get_active_setting(UI.S_UPSCALE_MODELS, UI.F_DETAIL_PROCESSOR, UI.NONE)
 
-            if detail_processor_name != UI.NONE:
-                detail_processor_model = NodeWrapper.upscale_loader.load_model(detail_processor_name)[0]
+            if detailer_name != UI.NONE and folder_paths.get_full_path("upscale_models", detailer_name) is not None:
+                detail_processor_model = NodeWrapper.upscale_loader.load_model(detailer_name)[0]
             else:
                 detail_processor_model = None
 
-            access.update_in_cache(Names.C_DETAIL_PROCESSOR_MODEL, [detail_processor_name], detail_processor_model)
-            access.update_in_pipeline(Names.P_DETAIL_PROCESSOR, detail_processor_model)
+            access.update_in_cache(Names.C_DETAIL_PROCESSOR_MODEL, [detailer_name], detail_processor_model)
+            access.update_in_pipeline(Names.P_DETAIL_PROCESSOR, detail_processor_model, True)
         else:
             detail_processor_model = access.get_from_cache(Names.C_DETAIL_PROCESSOR_MODEL)
-            access.restore_in_pipeline(Names.P_DETAIL_PROCESSOR, detail_processor_model)
+            access.restore_in_pipeline(Names.P_DETAIL_PROCESSOR, detail_processor_model, True)
 
         detail_processor = detail_processor_model
 
         clip_vision_checkpoint_changed = access.setting_changed(UI.S_CONTROLNET_MODELS, UI.F_CLIP_VISION_CHECKPOINT)
         if clip_vision_checkpoint_changed:
-            clip_vision_checkpoint_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_CLIP_VISION_CHECKPOINT, UI.NONE)
+            clipvision_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_CLIP_VISION_CHECKPOINT, UI.NONE)
 
-            if clip_vision_checkpoint_name != UI.NONE:
-                clip_vision_model = NodeWrapper.clipvision_loader.load_clip(clip_vision_checkpoint_name)[0]
+            if clipvision_name != UI.NONE and folder_paths.get_full_path("clip_vision", clipvision_name) is not None:
+                clip_vision_model = NodeWrapper.clipvision_loader.load_clip(clipvision_name)[0]
             else:
                 clip_vision_model = None
 
-            access.update_in_cache(Names.C_CLIP_VISION_MODEL, [clip_vision_checkpoint_name], clip_vision_model)
-            access.update_in_pipeline(Names.P_CLIP_VISION_MODEL, clip_vision_model)
+            access.update_in_cache(Names.C_CLIP_VISION_MODEL, [clipvision_name], clip_vision_model)
+            access.update_in_pipeline(Names.P_CLIP_VISION_MODEL, clip_vision_model, True)
         else:
             clip_vision_model = access.get_from_cache(Names.C_CLIP_VISION_MODEL)
-            access.restore_in_pipeline(Names.P_CLIP_VISION_MODEL, clip_vision_model)
+            access.restore_in_pipeline(Names.P_CLIP_VISION_MODEL, clip_vision_model, True)
 
         clip_vision = clip_vision_model
 
         canny_checkpoint_changed = access.setting_changed(UI.S_CONTROLNET_MODELS, UI.F_CANNY_CHECKPOINT)
         if canny_checkpoint_changed:
-            canny_checkpoint_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_CANNY_CHECKPOINT, UI.NONE)
+            canny_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_CANNY_CHECKPOINT, UI.NONE)
 
-            if canny_checkpoint_name != UI.NONE:
-                canny_model = NodeWrapper.controlnet_loader.load_controlnet(canny_checkpoint_name)[0]
+            if canny_name != UI.NONE and folder_paths.get_full_path("controlnet", canny_name) is not None:
+                canny_model = NodeWrapper.controlnet_loader.load_controlnet(canny_name)[0]
             else:
                 canny_model = None
 
-            access.update_in_cache(Names.C_CN_CANNY_MODEL, [canny_checkpoint_name], canny_model)
-            access.update_in_pipeline(Names.P_CN_CANNY_MODEL, canny_model)
+            access.update_in_cache(Names.C_CN_CANNY_MODEL, [canny_name], canny_model)
+            access.update_in_pipeline(Names.P_CN_CANNY_MODEL, canny_model, True)
         else:
             canny_model = access.get_from_cache(Names.C_CN_CANNY_MODEL)
-            access.restore_in_pipeline(Names.P_CN_CANNY_MODEL, canny_model)
+            access.restore_in_pipeline(Names.P_CN_CANNY_MODEL, canny_model, True)
 
         cn_canny = canny_model
 
         depth_checkpoint_changed = access.setting_changed(UI.S_CONTROLNET_MODELS, UI.F_DEPTH_CHECKPOINT)
         if depth_checkpoint_changed:
-            depth_checkpoint_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_DEPTH_CHECKPOINT, UI.NONE)
+            depth_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_DEPTH_CHECKPOINT, UI.NONE)
 
-            if depth_checkpoint_name != UI.NONE:
-                depth_model = NodeWrapper.controlnet_loader.load_controlnet(depth_checkpoint_name)[0]
+            if depth_name != UI.NONE and folder_paths.get_full_path("controlnet", depth_name) is not None:
+                depth_model = NodeWrapper.controlnet_loader.load_controlnet(depth_name)[0]
             else:
                 depth_model = None
 
-            access.update_in_cache(Names.C_CN_DEPTH_MODEL, [depth_checkpoint_name], depth_model)
-            access.update_in_pipeline(Names.P_CN_DEPTH_MODEL, depth_model)
+            access.update_in_cache(Names.C_CN_DEPTH_MODEL, [depth_name], depth_model)
+            access.update_in_pipeline(Names.P_CN_DEPTH_MODEL, depth_model, True)
         else:
             depth_model = access.get_from_cache(Names.C_CN_DEPTH_MODEL)
-            access.restore_in_pipeline(Names.P_CN_DEPTH_MODEL, depth_model)
+            access.restore_in_pipeline(Names.P_CN_DEPTH_MODEL, depth_model, True)
 
         cn_depth = depth_model
 
         recolor_checkpoint_changed = access.setting_changed(UI.S_CONTROLNET_MODELS, UI.F_RECOLOR_CHECKPOINT)
         if recolor_checkpoint_changed:
-            recolor_checkpoint_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_RECOLOR_CHECKPOINT, UI.NONE)
+            recolor_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_RECOLOR_CHECKPOINT, UI.NONE)
 
-            if recolor_checkpoint_name != UI.NONE:
-                recolor_model = NodeWrapper.controlnet_loader.load_controlnet(recolor_checkpoint_name)[0]
+            if recolor_name != UI.NONE and folder_paths.get_full_path("controlnet", recolor_name) is not None:
+                recolor_model = NodeWrapper.controlnet_loader.load_controlnet(recolor_name)[0]
             else:
                 recolor_model = None
 
-            access.update_in_cache(Names.C_CN_RECOLOR_MODEL, [recolor_checkpoint_name], recolor_model)
-            access.update_in_pipeline(Names.P_CN_RECOLOR_MODEL, recolor_model)
+            access.update_in_cache(Names.C_CN_RECOLOR_MODEL, [recolor_name], recolor_model)
+            access.update_in_pipeline(Names.P_CN_RECOLOR_MODEL, recolor_model, True)
         else:
             recolor_model = access.get_from_cache(Names.C_CN_RECOLOR_MODEL)
-            access.restore_in_pipeline(Names.P_CN_RECOLOR_MODEL, recolor_model)
+            access.restore_in_pipeline(Names.P_CN_RECOLOR_MODEL, recolor_model, True)
 
         cn_recolor = recolor_model
 
         sketch_checkpoint_changed = access.setting_changed(UI.S_CONTROLNET_MODELS, UI.F_SKETCH_CHECKPOINT)
         if sketch_checkpoint_changed:
-            sketch_checkpoint_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_SKETCH_CHECKPOINT, UI.NONE)
+            sketch_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_SKETCH_CHECKPOINT, UI.NONE)
 
-            if sketch_checkpoint_name != UI.NONE:
-                sketch_model = NodeWrapper.controlnet_loader.load_controlnet(sketch_checkpoint_name)[0]
+            if sketch_name != UI.NONE and folder_paths.get_full_path("controlnet", sketch_name) is not None:
+                sketch_model = NodeWrapper.controlnet_loader.load_controlnet(sketch_name)[0]
             else:
                 sketch_model = None
 
-            access.update_in_cache(Names.C_CN_SKETCH_MODEL, [sketch_checkpoint_name], sketch_model)
-            access.update_in_pipeline(Names.P_CN_SKETCH_MODEL, sketch_model)
+            access.update_in_cache(Names.C_CN_SKETCH_MODEL, [sketch_name], sketch_model)
+            access.update_in_pipeline(Names.P_CN_SKETCH_MODEL, sketch_model, True)
         else:
             sketch_model = access.get_from_cache(Names.C_CN_SKETCH_MODEL)
-            access.restore_in_pipeline(Names.P_CN_SKETCH_MODEL, sketch_model)
+            access.restore_in_pipeline(Names.P_CN_SKETCH_MODEL, sketch_model, True)
 
         cn_sketch = sketch_model
 
         custom_checkpoint_changed = access.setting_changed(UI.S_CONTROLNET_MODELS, UI.F_CUSTOM_CHECKPOINT)
         if custom_checkpoint_changed:
-            custom_checkpoint_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_CUSTOM_CHECKPOINT, UI.NONE)
+            custom_name = access.get_active_setting(UI.S_CONTROLNET_MODELS, UI.F_CUSTOM_CHECKPOINT, UI.NONE)
 
-            if custom_checkpoint_name != UI.NONE:
-                custom_model = NodeWrapper.controlnet_loader.load_controlnet(custom_checkpoint_name)[0]
+            if custom_name != UI.NONE and folder_paths.get_full_path("controlnet", custom_name) is not None:
+                custom_model = NodeWrapper.controlnet_loader.load_controlnet(custom_name)[0]
             else:
                 custom_model = None
 
-            access.update_in_cache(Names.C_CN_CUSTOM_MODEL, [custom_checkpoint_name], custom_model)
-            access.update_in_pipeline(Names.P_CN_CUSTOM_MODEL, custom_model)
+            access.update_in_cache(Names.C_CN_CUSTOM_MODEL, [custom_name], custom_model)
+            access.update_in_pipeline(Names.P_CN_CUSTOM_MODEL, custom_model, True)
         else:
             custom_model = access.get_from_cache(Names.C_CN_CUSTOM_MODEL)
-            access.restore_in_pipeline(Names.P_CN_CUSTOM_MODEL, custom_model)
+            access.restore_in_pipeline(Names.P_CN_CUSTOM_MODEL, custom_model, True)
 
         cn_custom = custom_model
 

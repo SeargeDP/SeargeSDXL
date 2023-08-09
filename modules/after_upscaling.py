@@ -32,7 +32,7 @@ from .ui import UI
 
 
 # ====================================================================================================
-# Output from magic box for custom stage after a VAE decode
+# Output from magic box for custom stage after upscaling
 # ====================================================================================================
 
 class SeargeCustomAfterUpscaling:

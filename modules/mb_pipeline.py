@@ -32,7 +32,7 @@ from .ui import UI
 
 
 # ====================================================================================================
-# Pipeline
+# Magic Box Pipeline
 # ====================================================================================================
 
 class Pipeline:
@@ -162,7 +162,11 @@ class PipelineAccess:
         if field_name not in structure:
             structure = retrieve_parameter(structure_name, retrieve_parameter("new_settings", self.pipeline))
 
-        return retrieve_parameter(field_name, structure, default)
+        field = retrieve_parameter(field_name, structure)
+        if default is not None and field is None:
+            field = default
+
+        return field
 
     def get_old_setting(self, structure_name, field_name):
         structure = retrieve_parameter(structure_name, retrieve_parameter("old_overrides", self.pipeline, {}), {})
@@ -182,11 +186,11 @@ class PipelineAccess:
 
     # -----===== pipeline stream =====-----
 
-    def update_in_pipeline(self, name, value):
+    def update_in_pipeline(self, name, value, allow_none=False):
         if self.pipeline is None or "stream" not in self.pipeline:
             return False
 
-        if value is None:
+        if value is None and not allow_none:
             return False
 
         self.pipeline["stream"][name] = {
@@ -196,11 +200,11 @@ class PipelineAccess:
 
         return True
 
-    def restore_in_pipeline(self, name, value):
+    def restore_in_pipeline(self, name, value, allow_none=False):
         if self.pipeline is None or "stream" not in self.pipeline:
             return False
 
-        if value is None:
+        if value is None and not allow_none:
             return False
 
         self.pipeline["stream"][name] = {

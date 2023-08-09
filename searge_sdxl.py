@@ -26,8 +26,6 @@ SOFTWARE.
 
 """
 
-from .modules.ui import Defs
-
 from .modules.prompt_text_input import SeargeTextInputV2
 from .modules.prompt_adapter import SeargePromptAdapterV2
 from .modules.image_adapter import SeargeImageAdapterV2
@@ -61,79 +59,100 @@ from .modules.after_upscaling import SeargeCustomAfterUpscaling
 
 from .modules.debug_printer import SeargeDebugPrinter
 
+# from .modules.sdxl_sampler import SeargeSDXLSamplerV4
+# from .modules.sdxl_sampler_input import SeargeSDXLSamplerV4Inputs
+# from .modules.sdxl_sampler_output import SeargeSDXLSamplerV4Outputs
+
+# from .modules.prompt_adapter_output import SeargePromptAdapterV2Output
 
 # ====================================================================================================
 # Register nodes in ComfyUI
 # ====================================================================================================
 
 SEARGE_CLASS_MAPPINGS = {
-    f"SeargeTextInputV2{Defs.CLASS_POSTFIX}": SeargeTextInputV2,
-    f"SeargePromptAdapterV2{Defs.CLASS_POSTFIX}": SeargePromptAdapterV2,
-    f"SeargeImageAdapterV2{Defs.CLASS_POSTFIX}": SeargeImageAdapterV2,
-    f"SeargeControlnetAdapterV2{Defs.CLASS_POSTFIX}": SeargeControlnetAdapterV2,
+    f"SeargeTextInputV2": SeargeTextInputV2,
+    f"SeargePromptAdapterV2": SeargePromptAdapterV2,
+    f"SeargeImageAdapterV2": SeargeImageAdapterV2,
+    f"SeargeControlnetAdapterV2": SeargeControlnetAdapterV2,
 
-    f"SeargeSeparator{Defs.CLASS_POSTFIX}": SeargeSeparator,
-    f"SeargePreviewImage{Defs.CLASS_POSTFIX}": SeargePreviewImage,
+    f"SeargeSeparator": SeargeSeparator,
+    f"SeargePreviewImage": SeargePreviewImage,
 
-    f"SeargeAdvancedParameters{Defs.CLASS_POSTFIX}": SeargeAdvancedParameters,
-    f"SeargeConditioningParameters{Defs.CLASS_POSTFIX}": SeargeConditioningParameters,
-    f"SeargeConditionMixing{Defs.CLASS_POSTFIX}": SeargeConditionMixing,
-    f"SeargeControlnetModels{Defs.CLASS_POSTFIX}": SeargeControlnetModels,
-    f"SeargeCustomPromptMode{Defs.CLASS_POSTFIX}": SeargeCustomPromptMode,
-    f"SeargeGenerationParameters{Defs.CLASS_POSTFIX}": SeargeGenerationParameters,
-    f"SeargeHighResolution{Defs.CLASS_POSTFIX}": SeargeHighResolution,
-    f"SeargeImage2ImageAndInpainting{Defs.CLASS_POSTFIX}": SeargeImage2ImageAndInpainting,
-    f"SeargeImageSaving{Defs.CLASS_POSTFIX}": SeargeImageSaving,
-    f"SeargeLoras{Defs.CLASS_POSTFIX}": SeargeLoras,
-    f"SeargeModelSelector{Defs.CLASS_POSTFIX}": SeargeModelSelector,
-    f"SeargeOperatingMode{Defs.CLASS_POSTFIX}": SeargeOperatingMode,
-    f"SeargePromptStyles{Defs.CLASS_POSTFIX}": SeargePromptStyles,
-    f"SeargeUpscaleModels{Defs.CLASS_POSTFIX}": SeargeUpscaleModels,
+    f"SeargeAdvancedParameters": SeargeAdvancedParameters,
+    f"SeargeConditioningParameters": SeargeConditioningParameters,
+    f"SeargeConditionMixing": SeargeConditionMixing,
+    f"SeargeControlnetModels": SeargeControlnetModels,
+    f"SeargeCustomPromptMode": SeargeCustomPromptMode,
+    f"SeargeGenerationParameters": SeargeGenerationParameters,
+    f"SeargeHighResolution": SeargeHighResolution,
+    f"SeargeImage2ImageAndInpainting": SeargeImage2ImageAndInpainting,
+    f"SeargeImageSaving": SeargeImageSaving,
+    f"SeargeLoras": SeargeLoras,
+    f"SeargeModelSelector": SeargeModelSelector,
+    f"SeargeOperatingMode": SeargeOperatingMode,
+    f"SeargePromptStyles": SeargePromptStyles,
+    f"SeargeUpscaleModels": SeargeUpscaleModels,
 
-    f"SeargeMagicBox{Defs.CLASS_POSTFIX}": SeargeMagicBox,
-    f"SeargePipelineStart{Defs.CLASS_POSTFIX}": SeargePipelineStart,
-    f"SeargePipelineTerminator{Defs.CLASS_POSTFIX}": SeargePipelineTerminator,
+    f"SeargeMagicBox": SeargeMagicBox,
+    f"SeargePipelineStart": SeargePipelineStart,
+    f"SeargePipelineTerminator": SeargePipelineTerminator,
 
-    f"SeargeCustomAfterVaeDecode{Defs.CLASS_POSTFIX}": SeargeCustomAfterVaeDecode,
-    f"SeargeCustomAfterUpscaling{Defs.CLASS_POSTFIX}": SeargeCustomAfterUpscaling,
+    f"SeargeCustomAfterVaeDecode": SeargeCustomAfterVaeDecode,
+    f"SeargeCustomAfterUpscaling": SeargeCustomAfterUpscaling,
 
-    f"SeargeDebugPrinter{Defs.CLASS_POSTFIX}": SeargeDebugPrinter,
+    f"SeargeDebugPrinter": SeargeDebugPrinter,
 }
+
+# SEARGE_CLASS_MAPPINGS = SEARGE_CLASS_MAPPINGS | {
+#     f"SeargeSDXLSamplerV4": SeargeSDXLSamplerV4,
+#     f"SeargeSDXLSamplerV4Inputs": SeargeSDXLSamplerV4Inputs,
+#     f"SeargeSDXLSamplerV4Outputs": SeargeSDXLSamplerV4Outputs,
+#
+#     f"SeargePromptAdapterV2Output": SeargePromptAdapterV2Output,
+# }
 
 # ====================================================================================================
 # Human readable names for the nodes
 # ====================================================================================================
 
 SEARGE_DISPLAY_NAME_MAPPINGS = {
-    f"SeargeTextInputV2{Defs.CLASS_POSTFIX}": "Text Input v2",
-    f"SeargePromptAdapterV2{Defs.CLASS_POSTFIX}": "Prompt Adapter v2",
-    f"SeargeImageAdapterV2{Defs.CLASS_POSTFIX}": "Image Adapter v2",
-    f"SeargeControlnetAdapterV2{Defs.CLASS_POSTFIX}": "Controlnet Adapter v2",
+    f"SeargeTextInputV2": "Text Input v2",
+    f"SeargePromptAdapterV2": "Prompt Adapter v2",
+    f"SeargeImageAdapterV2": "Image Adapter v2",
+    f"SeargeControlnetAdapterV2": "Controlnet Adapter v2",
 
-    f"SeargeSeparator{Defs.CLASS_POSTFIX}": "Separator",
-    f"SeargePreviewImage{Defs.CLASS_POSTFIX}": "SeargePreviewImage",
+    f"SeargeSeparator": "Separator",
+    f"SeargePreviewImage": "SeargePreviewImage",
 
-    f"SeargeAdvancedParameters{Defs.CLASS_POSTFIX}": "Advanced Parameters v2",
-    f"SeargeConditioningParameters{Defs.CLASS_POSTFIX}": "Conditioning Parameters v2",
-    f"SeargeConditionMixing{Defs.CLASS_POSTFIX}": "Condition Mixing v2",
-    f"SeargeControlnetModels{Defs.CLASS_POSTFIX}": "Controlnet Models Selector v2",
-    f"SeargeCustomPromptMode{Defs.CLASS_POSTFIX}": "Custom Prompt Mode v2",
-    f"SeargeGenerationParameters{Defs.CLASS_POSTFIX}": "Generation Parameters v2",
-    f"SeargeHighResolution{Defs.CLASS_POSTFIX}": "High Resolution v2",
-    f"SeargeImage2ImageAndInpainting{Defs.CLASS_POSTFIX}": "Image to Image and Inpainting v2",
-    f"SeargeImageSaving{Defs.CLASS_POSTFIX}": "Image Saving v2",
-    f"SeargeLoras{Defs.CLASS_POSTFIX}": "Lora Selector v2",
-    f"SeargeModelSelector{Defs.CLASS_POSTFIX}": "Model Selector v2",
-    f"SeargeOperatingMode{Defs.CLASS_POSTFIX}": "Operating Mode v2",
-    f"SeargePromptStyles{Defs.CLASS_POSTFIX}": "Prompt Styles v2",
-    f"SeargeUpscaleModels{Defs.CLASS_POSTFIX}": "Upscale Models Selector v2",
+    f"SeargeAdvancedParameters": "Advanced Parameters v2",
+    f"SeargeConditioningParameters": "Conditioning Parameters v2",
+    f"SeargeConditionMixing": "Condition Mixing v2",
+    f"SeargeControlnetModels": "Controlnet Models Selector v2",
+    f"SeargeCustomPromptMode": "Custom Prompt Mode v2",
+    f"SeargeGenerationParameters": "Generation Parameters v2",
+    f"SeargeHighResolution": "High Resolution v2",
+    f"SeargeImage2ImageAndInpainting": "Image to Image and Inpainting v2",
+    f"SeargeImageSaving": "Image Saving v2",
+    f"SeargeLoras": "Lora Selector v2",
+    f"SeargeModelSelector": "Model Selector v2",
+    f"SeargeOperatingMode": "Operating Mode v2",
+    f"SeargePromptStyles": "Prompt Styles v2",
+    f"SeargeUpscaleModels": "Upscale Models Selector v2",
 
-    f"SeargeMagicBox{Defs.CLASS_POSTFIX}": "Searge's Magic Box for SDXL",
-    f"SeargePipelineStart{Defs.CLASS_POSTFIX}": "Magic Box Pipeline Start",
-    f"SeargePipelineTerminator{Defs.CLASS_POSTFIX}": "Magic Box Pipeline Terminator",
+    f"SeargeMagicBox": "Searge's Magic Box for SDXL",
+    f"SeargePipelineStart": "Magic Box Pipeline Start",
+    f"SeargePipelineTerminator": "Magic Box Pipeline Terminator",
 
-    f"SeargeCustomAfterVaeDecode{Defs.CLASS_POSTFIX}": "After VAE Decode",
-    f"SeargeCustomAfterUpscaling{Defs.CLASS_POSTFIX}": "After Upscaling",
+    f"SeargeCustomAfterVaeDecode": "After VAE Decode",
+    f"SeargeCustomAfterUpscaling": "After Upscaling",
 
-    f"SeargeDebugPrinter{Defs.CLASS_POSTFIX}": "Debug Printer",
+    f"SeargeDebugPrinter": "Debug Printer",
 }
+
+# SEARGE_DISPLAY_NAME_MAPPINGS = SEARGE_DISPLAY_NAME_MAPPINGS | {
+#     f"SeargeSDXLSamplerV4": "SDXL Sampler v4",
+#     f"SeargeSDXLSamplerV4Inputs": "SDXL Sampler v4 Inputs",
+#     f"SeargeSDXLSamplerV4Outputs": "SDXL Sampler v4 Outputs",
+#
+#     f"SeargePromptAdapterV2Output": "Prompt Adapter v2 Output",
+# }

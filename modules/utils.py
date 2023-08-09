@@ -28,6 +28,8 @@ SOFTWARE.
 
 import torch
 
+from torch.nn.functional import pad
+
 
 def next_multiple_of(value, factor):
     return int(int((value + factor - 1) // factor) * factor)
@@ -95,3 +97,72 @@ def slerp(factor, input1, input2):
 def slerp_latents(latent1, latent2, factor):
     result = slerp(factor, latent1.clone(), latent2.clone())
     return result
+
+
+def bilateral_blur(inp, kernel_size, sigma_color, sigma_space, border_type='reflect', color_distance_type='l1'):
+    if isinstance(sigma_color, torch.Tensor):
+        sigma_color = sigma_color.to(device=inp.device, dtype=inp.dtype).view(-1, 1, 1, 1, 1)
+
+    ky, kx = _unpack_2d_ks(kernel_size)
+
+    pad_y, pad_x = (ky - 1) // 2, (kx - 1) // 2
+
+    padded_input = pad(inp, (pad_x, pad_x, pad_y, pad_y), mode=border_type)
+    unfolded_input = padded_input.unfold(2, ky, 1).unfold(3, kx, 1).flatten(-2)  # (B, C, H, W, Ky x Kx)
+
+    diff = unfolded_input - inp.unsqueeze(-1)
+    if color_distance_type == "l1":
+        color_distance_sq = diff.abs().sum(1, keepdim=True).square()
+    elif color_distance_type == "l2":
+        color_distance_sq = diff.square().sum(1, keepdim=True)
+    else:
+        color_distance_sq = diff.abs().sum(1, keepdim=True).square()
+
+    color_kernel = (-0.5 / sigma_color ** 2 * color_distance_sq).exp()  # (B, 1, H, W, Ky x Kx)
+
+    space_kernel = get_gaussian_kernel2d(kernel_size, sigma_space, inp.device, inp.dtype)
+    space_kernel = space_kernel.view(-1, 1, 1, 1, kx * ky)
+
+    kernel = space_kernel * color_kernel
+    out = (unfolded_input * kernel).sum(-1) / kernel.sum(-1)
+    return out
+
+
+def _unpack_2d_ks(kernel_size):
+    if isinstance(kernel_size, int):
+        ky = kx = kernel_size
+    else:
+        ky, kx = kernel_size
+
+    return (int(ky), int(kx))
+
+
+def get_gaussian_kernel2d(kernel_size, sigma, device, dtype):
+    if isinstance(sigma, tuple):
+        sigma = torch.tensor([sigma], device=device, dtype=dtype)
+    else:
+        sigma = torch.tensor([[sigma, sigma]], device=device, dtype=dtype)
+
+    ksize_y, ksize_x = _unpack_2d_ks(kernel_size)
+    sigma_y, sigma_x = sigma[:, 0, None], sigma[:, 1, None]
+
+    kernel_y = get_gaussian_kernel1d(ksize_y, sigma_y, device, dtype)[..., None]
+    kernel_x = get_gaussian_kernel1d(ksize_x, sigma_x, device, dtype)[..., None]
+
+    return kernel_y * kernel_x.view(-1, 1, ksize_x)
+
+
+def get_gaussian_kernel1d(kernel_size, sigma, device, dtype):
+    if isinstance(sigma, float):
+        sigma = torch.tensor([[sigma]], device=device, dtype=dtype)
+
+    batch_size = sigma.shape[0]
+
+    x = (torch.arange(kernel_size, device=sigma.device, dtype=sigma.dtype) - kernel_size // 2).expand(batch_size, -1)
+
+    if kernel_size % 2 == 0:
+        x = x + 0.5
+
+    gauss = torch.exp(-x.pow(2.0) / (2 * sigma.pow(2.0)))
+
+    return gauss / gauss.sum(-1, keepdim=True)

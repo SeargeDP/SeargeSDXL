@@ -36,7 +36,7 @@ from .utils import next_multiple_of
 
 
 # --------------------------------------------------------------------------------
-# Stage: Sampling
+# Stage: High Resolution
 # --------------------------------------------------------------------------------
 
 class SeargeStageHighResolution:
@@ -106,6 +106,7 @@ class SeargeStageHighResolution:
         hires_denoise = access.get_active_setting(UI.S_HIGH_RESOLUTION, UI.F_HIRES_DENOISE, 0.2)
         hires_softness = access.get_active_setting(UI.S_HIGH_RESOLUTION, UI.F_HIRES_SOFTNESS, 0.5)
         hires_detail_boost = access.get_active_setting(UI.S_HIGH_RESOLUTION, UI.F_HIRES_DETAIL_BOOST, 0.0)
+        hires_detailer = access.get_active_setting(UI.S_HIGH_RESOLUTION, UI.F_HIRES_LATENT_DETAILER, UI.NONE)
 
         if not has_refiner:
             refiner_model = None
@@ -133,8 +134,8 @@ class SeargeStageHighResolution:
             upscale_factor = 2.0
 
         (image_width, image_height) = get_image_size(image)
-        new_image_width = next_multiple_of(image_width * upscale_factor, self.SIZE_MULTIPLE_OF)
-        new_image_height = next_multiple_of(image_height * upscale_factor, self.SIZE_MULTIPLE_OF)
+        new_width = next_multiple_of(image_width * upscale_factor, self.SIZE_MULTIPLE_OF)
+        new_height = next_multiple_of(image_height * upscale_factor, self.SIZE_MULTIPLE_OF)
 
         # use this to make sure old cached latents are not kept when the high resolution mode changes
         def cleanup_cache():
@@ -150,14 +151,14 @@ class SeargeStageHighResolution:
                 image_height,
                 hires_scale,
                 upscale_factor,
-                new_image_width,
-                new_image_height,
+                new_width,
+                new_height,
                 hires_softness,
             ]
 
             any_changes = (
-                vae_changed or
-                image_changed)
+                    vae_changed or
+                    image_changed)
 
             hires_latent_changed = access.changed_in_cache(Names.C_HIRES_LATENT_SIMPLE, parameters)
             if any_changes or hires_latent_changed:
@@ -165,14 +166,13 @@ class SeargeStageHighResolution:
                 need_bicubic = hires_softness > 0.001
 
                 if need_nearest:
-                    nearest = NodeWrapper.image_scale.upscale(image, "nearest-exact", new_image_width,
-                                                              new_image_height, "center")[0]
+                    nearest = NodeWrapper.image_scale.upscale(image, "nearest-exact", new_width, new_height,
+                                                              "center")[0]
                 else:
                     nearest = None
 
                 if need_bicubic:
-                    bicubic = NodeWrapper.image_scale.upscale(image, "bicubic", new_image_width,
-                                                              new_image_height, "center")[0]
+                    bicubic = NodeWrapper.image_scale.upscale(image, "bicubic", new_width, new_height, "center")[0]
                 else:
                     bicubic = None
 
@@ -202,16 +202,17 @@ class SeargeStageHighResolution:
                 image_height,
                 hires_scale,
                 upscale_factor,
-                new_image_width,
-                new_image_height,
+                new_width,
+                new_height,
                 hires_softness,
+                hires_detailer,
             ]
 
             any_changes = (
-                vae_changed or
-                upscaler_changed or
-                detail_processor_changed or
-                image_changed)
+                    vae_changed or
+                    upscaler_changed or
+                    detail_processor_changed or
+                    image_changed)
 
             hires_latent_changed = access.changed_in_cache(Names.C_HIRES_LATENT_NORMAL, parameters)
             if any_changes or hires_latent_changed:
@@ -229,20 +230,47 @@ class SeargeStageHighResolution:
                             if scaled_width != 4 * image_width or scaled_height != 4 * image_height:
                                 print("Warning: high res upscaler should be a 4x ESRGAN model")
 
-                        if detail_processor is not None:
+                        if detail_processor is not None and hires_detailer != UI.NONE:
                             upscaled = NodeWrapper.scale_with_model.upscale(detail_processor, upscaled)[0]
                             (detailed_width, detailed_height) = get_image_size(upscaled)
                             if detailed_width != scaled_width or detailed_height != scaled_height:
                                 print("Warning: detail processor should be a 1x ESRGAN model")
 
-                        upscaled = NodeWrapper.image_scale.upscale(upscaled, "bicubic", new_image_width,
-                                                                   new_image_height, "center")[0]
+                        if scaled_width != new_width or scaled_height != new_height:
+                            width_factor = float(scaled_width) / float(new_width)
+                            height_factor = float(scaled_height) / float(new_height)
+
+                            if width_factor >= 3.0 or height_factor >= 3.0:
+                                step_width = next_multiple_of(new_width * 2.66666, self.SIZE_MULTIPLE_OF)
+                                step_height = next_multiple_of(new_height * 2.66666, self.SIZE_MULTIPLE_OF)
+                                image = NodeWrapper.image_scale.upscale(image, "bilinear", step_width, step_height,
+                                                                        "center")[0]
+
+                            if width_factor >= 2.5 or height_factor >= 2.5:
+                                step_width = next_multiple_of(new_width * 2.0, self.SIZE_MULTIPLE_OF)
+                                step_height = next_multiple_of(new_height * 2.0, self.SIZE_MULTIPLE_OF)
+                                image = NodeWrapper.image_scale.upscale(image, "bilinear", step_width, step_height,
+                                                                        "center")[0]
+
+                            if width_factor >= 2.0 or height_factor >= 2.0:
+                                step_width = next_multiple_of(new_width * 1.5, self.SIZE_MULTIPLE_OF)
+                                step_height = next_multiple_of(new_height * 1.5, self.SIZE_MULTIPLE_OF)
+                                image = NodeWrapper.image_scale.upscale(image, "bilinear", step_width, step_height,
+                                                                        "center")[0]
+
+                            if width_factor >= 1.5 or height_factor >= 1.5:
+                                step_width = next_multiple_of(new_width * 1.33333, self.SIZE_MULTIPLE_OF)
+                                step_height = next_multiple_of(new_height * 1.33333, self.SIZE_MULTIPLE_OF)
+                                image = NodeWrapper.image_scale.upscale(image, "bilinear", step_width, step_height,
+                                                                        "center")[0]
+
+                        upscaled = NodeWrapper.image_scale.upscale(upscaled, "bicubic", new_width, new_height,
+                                                                   "center")[0]
                     else:
                         upscaled = None
 
                     if need_bicubic:
-                        bicubic = NodeWrapper.image_scale.upscale(image, "bicubic", new_image_width,
-                                                                  new_image_height, "center")[0]
+                        bicubic = NodeWrapper.image_scale.upscale(image, "bicubic", new_width, new_height, "center")[0]
                     else:
                         bicubic = None
 
@@ -292,11 +320,11 @@ class SeargeStageHighResolution:
         # DON'T DO THIS HERE (keep using the current latent variable): latent = access.get_from_pipeline(Names.P_LATENT)
 
         any_changes = (
-            base_changed or
-            refiner_changed or
-            base_cond_changed or
-            refiner_cond_changed or
-            latent_changed)
+                base_changed or
+                refiner_changed or
+                base_cond_changed or
+                refiner_cond_changed or
+                latent_changed)
 
         hires_latent_changed = access.changed_in_cache(Names.C_HIRES_LATENT, parameters)
         if any_changes or hires_latent_changed:

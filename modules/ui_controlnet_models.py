@@ -57,7 +57,8 @@ class SeargeControlnetModels:
     CATEGORY = UI.CATEGORY_UI_INPUTS
 
     @staticmethod
-    def create_dict(clip_vision, canny_checkpoint, depth_checkpoint, recolor_checkpoint, sketch_checkpoint, custom_checkpoint):
+    def create_dict(clip_vision, canny_checkpoint, depth_checkpoint, recolor_checkpoint, sketch_checkpoint,
+                    custom_checkpoint):
         return {
             UI.F_CLIP_VISION_CHECKPOINT: clip_vision,
             UI.F_CANNY_CHECKPOINT: canny_checkpoint,
@@ -67,7 +68,8 @@ class SeargeControlnetModels:
             UI.F_CUSTOM_CHECKPOINT: custom_checkpoint,
         }
 
-    def get(self, clip_vision, canny_checkpoint, depth_checkpoint, recolor_checkpoint, sketch_checkpoint, custom_checkpoint, data=None):
+    def get(self, clip_vision, canny_checkpoint, depth_checkpoint, recolor_checkpoint, sketch_checkpoint,
+            custom_checkpoint, data=None):
         if data is None:
             data = {}
 

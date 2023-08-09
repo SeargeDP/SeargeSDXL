@@ -1,43 +1,38 @@
 
-# Searge-SDXL: EVOLVED ~~v4.x~~ v3.991 for ComfyUI
+# Searge-SDXL: EVOLVED ~~v4.x~~ 3.999 for ComfyUI
 
 *Custom nodes extension* for [ComfyUI](https://github.com/comfyanonymous/ComfyUI),
 **including a workflow** to use *SDXL 1.0* with both the *base and refiner* checkpoints.
 
-# Public test version 3.991
 
-This version is the first public test version of the huge update to version 4.0 and is 95% feature complete.
+## This is the release candidate for v4.0
 
-## Missing features
-
-Right now the following features are still missing and are planned for the complete v4.0 release:
-
-- **Prompt Styles** - loading and applying style templates from a file
-- **More Prompting Modes** - many of the unique prompting modes from v3.x are still missing and need to be
-re-implemented in the new architecture of this extension
-- **Condition Mixing** - this is the foundation for re-introducing the v3.x prompting modes, but it's planned
-to have an even more flexible system to design your own custom prompting modes
+This is the last test version before version 4.0 is released. If no major issues are reported, this will be the
+same as v4.0 - apart from some minor tweaks like updating the version number.
 
 
 
 # Table of Content
 
 <!-- TOC -->
-* [Searge-SDXL: EVOLVED ~~v4.x~~ v3.991 for ComfyUI](#searge-sdxl-evolved-v4x-v3991-for-comfyui)
-* [Public test version 3.991](#public-test-version-3991)
-  * [Missing features](#missing-features)
+* [Searge-SDXL: EVOLVED ~~v4.x~~ 3.999 for ComfyUI](#searge-sdxl-evolved-v4x-3999-for-comfyui)
+  * [This is the release candidate for v4.0](#this-is-the-release-candidate-for-v40)
 * [Table of Content](#table-of-content)
-* [Version ~~4.0~~ 3.991](#version-40-3991)
-  * [Always use the latest version of the workflow json file with the latest version of the custom nodes!](#always-use-the-latest-version-of-the-workflow-json-file-with-the-latest-version-of-the-custom-nodes)
+* [Version 4.0](#version-40)
+    * [Always use the latest version of the workflow json file with the latest version of the custom nodes!](#always-use-the-latest-version-of-the-workflow-json-file-with-the-latest-version-of-the-custom-nodes)
 * [Installing and Updating](#installing-and-updating)
-  * [Recommended Installation of the Test Version](#recommended-installation-of-the-test-version)
-    * [Recommended Update of the Test Version](#recommended-update-of-the-test-version)
+  * [New and Recommended Installation (Windows)](#new-and-recommended-installation-windows)
+  * [Manual Installation](#manual-installation)
+    * [Alternative Installation (not recommended)](#alternative-installation-not-recommended)
+  * [Updating an Existing Installation](#updating-an-existing-installation)
   * [Checkpoints and Models for these Workflows](#checkpoints-and-models-for-these-workflows)
+    * [Description](#description)
     * [Direct Downloads](#direct-downloads)
 * [Updates](#updates)
-  * [What's new in ~~v4.0~~ 3.991?](#whats-new-in-v40-3991)
+  * [What's new in v4.0?](#whats-new-in-v40)
     * [Major Highlights](#major-highlights)
     * [Smaller Changes and Additions](#smaller-changes-and-additions-)
+    * [What is missing in v4.0?](#what-is-missing-in-v40)
 * [The Workflow File](#the-workflow-file)
   * [Documentation](#documentation)
 * [Workflow Details](#workflow-details)
@@ -50,11 +45,11 @@ to have an even more flexible system to design your own custom prompting modes
 
 
 
-# Version ~~4.0~~ 3.991
+# Version 4.0
 
 Instead of having separate workflows for different tasks, everything is integrated in **one workflow file**.
 
-## Always use the latest version of the workflow json file with the latest version of the custom nodes!
+### Always use the latest version of the workflow json file with the latest version of the custom nodes!
 
 <img src="docs/img/main_readme/banner.png" width="768">
 
@@ -62,23 +57,53 @@ Instead of having separate workflows for different tasks, everything is integrat
 
 # Installing and Updating
 
-**Note:** Before using the workflow, you may have to run the command `python.exe -m pip install opencv-python` once in
-the `python_embeded` folder of ComfyUI to install a required python dependency.
 
-## Recommended Installation of the Test Version
+## New and Recommended Installation (Windows)
 
-- Download and unpack the latest test release from the [Searge SDXL CivitAI page](https://civitai.com/models/111463) or
-the [Github releases page for this project](https://github.com/SeargeDP/SeargeSDXL/releases).
-- Drop the `SeargeSDXL-Test` folder into the `ComfyUI/custom_nodes` directory and restart ComfyUI.
+- For this to work properly, it needs to be used with the portable version of ComfyUI for Windows, read more about it
+in the ComfyUI readme file 
+- Download [this new install script](https://github.com/SeargeDP/SeargeSDXL/releases/download/v3.991/SeargeSDXL-Installer.zip)
+and unpack it into the `ComfyUI_windows_portable` directory
+- You should now have `SeargeSDXL-Installer.bat` and `SeargeSDXL-Installer.py` in the same directory as the ComfyUI
+`run_cpu.bat` and `run_nvidia_gpu.bat`
+- To verify that you are using the portable version, check if the directory `python_embeded` also exists in the same
+directory that you unpacked these install scripts to
+- Run the `SeargeSDXL-Installer.bat` script and follow the instructions on screen
+- During the public test phase, before v4.0 is released, you should switch to the test branch when the install script
+asks which branch to use
 
-### Recommended Update of the Test Version
+![Install Scripts](docs/img/installer.png)
+![Install Script Running](docs/img/installer-models.png)
 
-- When new test versions are released, before the final v4.0 update release, repeat the steps from
-the [Recommended Installation of the Test Version](#recommended-installation-of-the-test-version) section
-and overwrite existing files in the process.
+
+## Manual Installation
+
+- Navigate to your `ComfyUI/custom_nodes/` directory
+- Open a command line window in the *custom_nodes* directory
+- Run `git clone https://github.com/SeargeDP/SeargeSDXL.git`
+- Restart ComfyUI
+
+### Alternative Installation (not recommended)
+
+- Download and unpack the latest release from the [Searge SDXL CivitAI page](https://civitai.com/models/111463)
+- Drop the `SeargeSDXL` folder into the `ComfyUI/custom_nodes` directory and restart ComfyUI.
+
+## Updating an Existing Installation
+
+- Navigate to your `ComfyUI/custom_nodes/` directory
+- If you installed via `git clone` before
+  - Open a command line window in the *custom_nodes* directory
+  - Run `git pull`
+- If you installed from a zip file
+  - Unpack the `SeargeSDXL` folder from the latest release into `ComfyUI/custom_nodes`, overwrite existing files
+- Restart ComfyUI
 
 
 ## Checkpoints and Models for these Workflows
+
+**These can now also be installed with the new install script (on Windows)** instead of manually downloading them.
+
+### Description
 
 This workflow depends on certain checkpoint files to be installed in ComfyUI, here is a list of the necessary
 files that the workflow expects to be available.
@@ -93,68 +118,80 @@ I recommend to **download and copy all** these files *(the required, recommended
 
 (from Huggingface)
 
-- **(required)** download [SDXL 1.0 Base with 0.9 VAE (7 GB)](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0_0.9vae.safetensors) and copy it into `ComfyUI/models/checkpoints`
+- **(required)** download [SDXL 1.0 Base with 0.9 VAE (7 GB)](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0_0.9vae.safetensors)
+and copy it into `ComfyUI/models/checkpoints`
   - *(this should be pre-selected as the base model on the workflow already)*
 
 
-- **(recommended)** download [SDXL 1.0 Refiner with 0.9 VAE (6 GB)](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0_0.9vae.safetensors) and copy it into `ComfyUI/models/checkpoints`
+- **(recommended)** download [SDXL 1.0 Refiner with 0.9 VAE (6 GB)](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0_0.9vae.safetensors)
+and copy it into `ComfyUI/models/checkpoints`
   - *(you should select this as the refiner model on the workflow)*
 
 
-- *(optional)* download [Fixed SDXL 0.9 vae (335 MB)](https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors) and copy it into `ComfyUI/models/vae`
-  - *(instead of using the VAE that's embedded in SDXL 1.0, this one has been fixed to work in fp16 and should **fix the issue with generating black images**)*
+- *(optional)* download [Fixed SDXL 0.9 vae (335 MB)](https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors)
+and copy it into `ComfyUI/models/vae`
+  - *(instead of using the VAE that's embedded in SDXL 1.0, this one has been fixed to work in fp16 and should
+**fix the issue with generating black images**)*
 
 
-- *(optional)* download [SDXL Offset Noise LoRA (50 MB)](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors) and copy it into `ComfyUI/models/loras`
+- *(optional)* download [SDXL Offset Noise LoRA (50 MB)](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors)
+and copy it into `ComfyUI/models/loras`
   - *(the example lora that was released alongside SDXL 1.0, it can add more contrast through offset-noise)*
  
 
-- **(recommended)** download [4x-UltraSharp (67 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth) and copy it into `ComfyUI/models/upscale_models`
+- **(recommended)** download [4x-UltraSharp (67 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth)
+and copy it into `ComfyUI/models/upscale_models`
   - *(you should select this as the primary upscaler on the workflow)*
  
 
-- **(recommended)** download [4x_NMKD-Siax_200k (67 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Siax_200k.pth) and copy it into `ComfyUI/models/upscale_models`
+- **(recommended)** download [4x_NMKD-Siax_200k (67 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Siax_200k.pth)
+and copy it into `ComfyUI/models/upscale_models`
   - *(you should select this as the secondary upscaler on the workflow)*
 
 
-- **(recommended)** download [4x_Nickelback_70000G (67 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_Nickelback_70000G.pth) and copy it into `ComfyUI/models/upscale_models`
+- **(recommended)** download [4x_Nickelback_70000G (67 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_Nickelback_70000G.pth)
+and copy it into `ComfyUI/models/upscale_models`
   - *(you should select this as the high-res upscaler on the workflow)*
 
 
-- *(optional)* download [1x-ITF-SkinDiffDetail-Lite-v1 (20 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/1x-ITF-SkinDiffDetail-Lite-v1.pth) and copy it into `ComfyUI/models/upscale_models`
+- *(optional)* download [1x-ITF-SkinDiffDetail-Lite-v1 (20 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/1x-ITF-SkinDiffDetail-Lite-v1.pth)
+and copy it into `ComfyUI/models/upscale_models`
   - *(you can select this as the detail processor on the workflow)*
 
 
-- **(required)** download [ControlNetHED (30 MB)](https://huggingface.co/lllyasviel/Annotators/resolve/main/ControlNetHED.pth) and copy it into `ComfyUI/models/annotators`
+- **(required)** download [ControlNetHED (30 MB)](https://huggingface.co/lllyasviel/Annotators/resolve/main/ControlNetHED.pth)
+and copy it into `ComfyUI/models/annotators`
   - *(this will be used by the controlnet nodes)*
 
 
-- **(required)** download [res101 (531 MB)](https://huggingface.co/lllyasviel/Annotators/resolve/main/res101.pth) and copy it into `ComfyUI/models/annotators`
+- **(required)** download [res101 (531 MB)](https://huggingface.co/lllyasviel/Annotators/resolve/main/res101.pth)
+and copy it into `ComfyUI/models/annotators`
   - *(this will be used by the controlnet nodes)*
 
 
-- **(recommended)** download [clip_vision_g (3.7 GB)](https://huggingface.co/stabilityai/control-lora/resolve/main/revision/clip_vision_g.safetensors) and copy it into `ComfyUI/models/clip_vision`
+- **(recommended)** download [clip_vision_g (3.7 GB)](https://huggingface.co/stabilityai/control-lora/resolve/main/revision/clip_vision_g.safetensors)
+and copy it into `ComfyUI/models/clip_vision`
   - *(you should select this as the clip vision model on the workflow)*
 
 
-- **(recommended)** download [control-lora-canny-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-canny-rank256.safetensors) and copy it into `ComfyUI/models/controlnet`
+- **(recommended)** download [control-lora-canny-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-canny-rank256.safetensors)
+and copy it into `ComfyUI/models/controlnet`
   - *(you should select this as the canny checkpoint on the workflow)*
 
 
-- **(recommended)** download [control-lora-depth-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-depth-rank256.safetensors) and copy it into `ComfyUI/models/controlnet`
+- **(recommended)** download [control-lora-depth-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-depth-rank256.safetensors)
+and copy it into `ComfyUI/models/controlnet`
   - *(you should select this as the depth checkpoint on the workflow)*
 
 
-- **(recommended)** download [control-lora-recolor-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-recolor-rank256.safetensors) and copy it into `ComfyUI/models/controlnet`
+- **(recommended)** download [control-lora-recolor-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-recolor-rank256.safetensors)
+and copy it into `ComfyUI/models/controlnet`
   - *(you should select this as the recolor checkpoint on the workflow)*
 
 
-- **(recommended)** download [control-lora-sketch-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-sketch-rank256.safetensors) and copy it into `ComfyUI/models/controlnet`
+- **(recommended)** download [control-lora-sketch-rank256 (774 MB)](https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-sketch-rank256.safetensors)
+and copy it into `ComfyUI/models/controlnet`
   - *(you should select this as the sketch checkpoint on the workflow)*
-
-
-- *(optional)* download [OpenPoseXL2 (5 GB)](https://huggingface.co/thibaud/controlnet-openpose-sdxl-1.0/resolve/main/OpenPoseXL2.safetensors) and copy it into `ComfyUI/models/controlnet`
-  - *(you can select this as the custom controlnet checkpoint on the workflow)*
 
 
 Now everything should be prepared, but you may to have to adjust some file names in the different model selector boxes
@@ -169,21 +206,35 @@ on the workflow. Do so by clicking on the filename in the workflow UI and select
 Find information about the latest changes here.
 
 
-## What's new in ~~v4.0~~ 3.991?
+## What's new in v4.0?
 
 ### Major Highlights
 - A **complete re-write** of the custom node extension and the SDXL workflow 
 - **Highly optimized** processing pipeline, now **up to 20% faster** than in older workflow versions
 - Support for **Controlnet and Revision**, up to 5 can be applied together
 - **Multi-LoRA** support with up to 5 LoRA's at once
-- ... (TODO: list more major highlights)
+- **Better Image Quality** in many cases, some improvements to the SDXL sampler were made that can produce images
+with higher quality
+- Improved **High Resolution** modes that replace the old "Hi-Res Fix" and should generate better images
 
 ### Smaller Changes and Additions 
-- ~~Workflows created with this extension and metadata embeddings in generated images are forward-compatible with
-future updates of this project~~
-- ~~The custom node extension included in this project is backward-compatible with every workflow since version v3.3~~
-- (compatibility is not part of the public test versions, it will be back when v4.0 is released)
-- ... (TODO: list more smaller changes)
+- Workflows created with this extension and metadata embeddings in generated images are forward-compatible with
+future updates of this project
+- The custom node extension included in this project is backward-compatible with every workflow since version v3.3
+- A text file can be saved next to generated images that contains all the settings used to generate the images
+
+### What is missing in v4.0?
+Some features that were originally in v3.4 or planned for v4.x were not included in the v4.0 release, they are
+now planned for v4.1. This was decided to get this new version released earlier and the missing features should
+not be important for 99% of users.
+
+So, what is actually missing?
+
+- Prompt Styling - (new) the ability to load styles from a template file and apply them to prompts
+- Prompting Modes - (from v3.4) More advanced prompting modes, the modes from v3.4 will be re-implemented and a more
+flexible system to create custom prompting modes will be added on top of it
+- Condition Mixing - (new) This was part of the prompting modes in v3.4 but in v4.x it will be exposed in a more
+flexible way as a separate module
 
 <br><img src="docs/img/main_readme/ui-3.png" width="768">
 

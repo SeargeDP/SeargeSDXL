@@ -37,7 +37,7 @@ from .ui import UI
 
 
 # ====================================================================================================
-# Adapter for image inputs
+# Adapter for controlnet/revision inputs
 # ====================================================================================================
 
 class SeargeControlnetAdapterV2:
@@ -56,7 +56,7 @@ class SeargeControlnetAdapterV2:
             "required": {
                 "controlnet_mode": (UI.CONTROLNET_MODES, {"default": UI.NONE},),
                 "controlnet_preprocessor": ("BOOLEAN", {"default": False},),
-                "strength": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},),
+                "strength": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 10.0, "step": 0.05},),
                 "low_threshold": ("FLOAT", {"default": 0.25, "min": 0.0, "max": 1.0, "step": 0.05},),
                 "high_threshold": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},),
                 "start_percent": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},),

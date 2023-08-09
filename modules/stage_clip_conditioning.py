@@ -62,6 +62,8 @@ class SeargeStageClipConditioning:
 
         base_clip = access.get_from_pipeline(Names.P_BASE_CLIP)
         refiner_clip = access.get_from_pipeline(Names.P_REFINER_CLIP)
+
+        has_base_clip = base_clip is not None
         has_refiner_clip = refiner_clip is not None
 
         main_prompt = access.get_active_setting(UI.S_PROMPTS, UI.F_MAIN_PROMPT, "")
@@ -193,16 +195,24 @@ class SeargeStageClipConditioning:
                 Names.F_REFINER_NEGATIVE_STYLE: neg_style,
             }
 
-        base_cond_changed = access.changed_in_cache(Names.C_BASE_CONDITIONING, base_prompts)
-        if base_cond_changed or base_clip_changed:
-            encoded_base = self.encode_base(base_clip, processed_prompts, image_width, image_height,
-                                            base_cond_scale, target_cond_scale, pos_cond_scale, neg_cond_scale)
+        if has_base_clip:
+            base_cond_changed = access.changed_in_cache(Names.C_BASE_CONDITIONING, base_prompts)
+            if base_cond_changed or base_clip_changed:
+                encoded_base = self.encode_base(base_clip, processed_prompts, image_width, image_height,
+                                                base_cond_scale, target_cond_scale, pos_cond_scale, neg_cond_scale)
 
-            access.update_in_cache(Names.C_BASE_CONDITIONING, base_prompts, encoded_base)
-            access.update_in_pipeline(Names.P_BASE_CONDITIONING, pack_base_cond(encoded_base))
+                access.update_in_cache(Names.C_BASE_CONDITIONING, base_prompts, encoded_base)
+                access.update_in_pipeline(Names.P_BASE_CONDITIONING, pack_base_cond(encoded_base))
+            else:
+                encoded_base = access.get_from_cache(Names.C_BASE_CONDITIONING)
+                access.restore_in_pipeline(Names.P_BASE_CONDITIONING, pack_base_cond(encoded_base))
+
         else:
-            encoded_base = access.get_from_cache(Names.C_BASE_CONDITIONING)
-            access.restore_in_pipeline(Names.P_BASE_CONDITIONING, pack_base_cond(encoded_base))
+            encoded_base = (None, None, None, None,)
+            if base_clip_changed:
+                access.update_in_pipeline(Names.P_BASE_CONDITIONING, pack_ref_cond(encoded_base))
+            else:
+                access.restore_in_pipeline(Names.P_BASE_CONDITIONING, pack_ref_cond(encoded_base))
 
         if has_refiner_clip:
             ref_cond_changed = access.changed_in_cache(Names.C_REFINER_CONDITIONING, refiner_prompts)
@@ -339,7 +349,7 @@ class SeargeStageClipConditioning:
         return (base_pos_main, base_pos_sec, base_pos_style, base_neg_main, base_neg_sec, base_neg_style,
                 ref_pos, ref_pos_style, ref_neg, ref_neg_style)
 
-    def encode_base(self, base_clip, std_prompts, image_width, image_height,  cond_scale=1.0, target_scale=1.0,
+    def encode_base(self, base_clip, std_prompts, image_width, image_height, cond_scale=1.0, target_scale=1.0,
                     pos_scale=1.0, neg_scale=1.0):
         encoder = NodeWrapper.sdxl_clip_base_encoder
 

@@ -28,4 +28,4 @@ SOFTWARE.
 
 from .ui import Defs
 
-print("Searge-SDXL v" + Defs.VERSION + ("-dev" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)
+print("Searge-SDXL v" + Defs.VERSION + ("-RC" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)

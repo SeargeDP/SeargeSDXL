@@ -34,7 +34,7 @@ from .ui import UI
 
 
 # --------------------------------------------------------------------------------
-# Stage: VAE Decode Sampled
+# Stage: VAE Decode Hires
 # --------------------------------------------------------------------------------
 
 class SeargeStageVAEDecodeHires:
@@ -74,8 +74,8 @@ class SeargeStageVAEDecodeHires:
         ]
 
         any_changes = (
-            vae_changed or
-            latent_changed
+                vae_changed or
+                latent_changed
         )
 
         vae_decoded_changed = access.changed_in_cache(Names.C_VAE_DECODED_HIRES, parameters)
@@ -116,7 +116,8 @@ class SeargeStageVAEDecodeHires:
                     post_processed = image
 
                 if hires_mode_enabled and post_processed is not None:
-                    post_processed = NodeWrapper.image_blend.blend_images(post_processed, post_processed, hires_contrast_factor * 0.5, "multiply")[0]
+                    post_processed = NodeWrapper.image_blend.blend_images(post_processed, post_processed,
+                                                                          hires_contrast_factor * 0.5, "multiply")[0]
                 else:
                     post_processed = None
 
@@ -125,7 +126,8 @@ class SeargeStageVAEDecodeHires:
                     post_processed = image
 
                 if hires_mode_enabled and post_processed is not None:
-                    post_processed = NodeWrapper.image_blend.blend_images(post_processed, post_processed, hires_saturation_factor * 0.5, "overlay")[0]
+                    post_processed = NodeWrapper.image_blend.blend_images(post_processed, post_processed,
+                                                                          hires_saturation_factor * 0.5, "overlay")[0]
                 else:
                     post_processed = None
 

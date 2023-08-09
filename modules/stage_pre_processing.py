@@ -186,6 +186,38 @@ class SeargePreProcessData:
                 mask = access.get_from_cache(Names.C_BLURRY_MASK)
                 access.restore_in_pipeline(Names.P_MASK, mask)
 
+        prompting_mode = access.get_active_setting(UI.S_OPERATING_MODE, UI.F_PROMPTING_MODE)
+
+        main_prompt = access.get_active_setting(UI.S_PROMPTS, UI.F_MAIN_PROMPT)
+        secondary_prompt = access.get_active_setting(UI.S_PROMPTS, UI.F_SECONDARY_PROMPT)
+        style_prompt = access.get_active_setting(UI.S_PROMPTS, UI.F_STYLE_PROMPT)
+        negative_main_prompt = access.get_active_setting(UI.S_PROMPTS, UI.F_NEGATIVE_MAIN_PROMPT)
+        negative_secondary_prompt = access.get_active_setting(UI.S_PROMPTS, UI.F_NEGATIVE_SECONDARY_PROMPT)
+        negative_style_prompt = access.get_active_setting(UI.S_PROMPTS, UI.F_NEGATIVE_STYLE_PROMPT)
+
+        ignore_positive = False
+        ignore_negative = False
+
+        if prompting_mode == UI.PROMPTING_IGNORE_ALL:
+            ignore_positive = True
+            ignore_negative = True
+
+        elif prompting_mode == UI.PROMPTING_IGNORE_EMPTY:
+            ignore_positive = (
+                    (main_prompt is None or main_prompt == "") and
+                    (secondary_prompt is None or secondary_prompt == "") and
+                    (style_prompt is None or style_prompt == "")
+            )
+
+            ignore_negative = (
+                    (negative_main_prompt is None or negative_main_prompt == "") and
+                    (negative_secondary_prompt is None or negative_secondary_prompt == "") and
+                    (negative_style_prompt is None or negative_style_prompt == "")
+            )
+
+        access.override_setting(Names.S_CONDITION_ZEROING, Names.F_ZERO_POSITIVES, ignore_positive)
+        access.override_setting(Names.S_CONDITION_ZEROING, Names.F_ZERO_NEGATIVES, ignore_negative)
+
         stage_results = {
         }
 

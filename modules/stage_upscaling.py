@@ -90,9 +90,9 @@ class SeargeStageUpscaling:
         ]
 
         any_changes = (
-            primary_upscaler_changed or
-            secondary_upscaler_changed or
-            image_changed
+                primary_upscaler_changed or
+                secondary_upscaler_changed or
+                image_changed
         )
 
         upscaled_image_changed = access.changed_in_cache(Names.C_UPSCALED_IMAGE, parameters)

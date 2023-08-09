@@ -43,7 +43,7 @@ from .ui import UI
 
 
 # --------------------------------------------------------------------------------
-# Stage: TemplateForNewStages
+# Stage: Image Saving
 # --------------------------------------------------------------------------------
 
 class SeargeStageImageSaving:
@@ -93,6 +93,8 @@ class SeargeStageImageSaving:
         upscaling_output = retrieve_parameter(Names.S_UPSCALED, data)
         upscaled_images = retrieve_parameter(Names.F_UPSCALED_IMAGE, upscaling_output)
 
+        seed = access.get_active_setting(UI.S_GENERATION_PARAMETERS, UI.F_SEED)
+
         save_to_input = save_folder == UI.SAVE_TO_INPUT
         output_folder = folder_paths.get_input_directory() if save_to_input else folder_paths.get_output_directory()
 
@@ -131,6 +133,14 @@ class SeargeStageImageSaving:
         parameter_file_path = False
 
         anything_saved = False
+
+        if seed is not None:
+            if generated_image_name is not None:
+                generated_image_name = generated_image_name.replace("%seed%", str(seed))
+            if high_res_image_name is not None:
+                high_res_image_name = high_res_image_name.replace("%seed%", str(seed))
+            if upscaled_image_name is not None:
+                upscaled_image_name = upscaled_image_name.replace("%seed%", str(seed))
 
         if save_generated_image and generated_images is not None:
             generated_image_name = generated_image_name.replace("\\", "_").replace("/", "_").replace(".", "_")
@@ -180,8 +190,8 @@ class SeargeStageImageSaving:
                 UI.S_IMG2IMG_INPAINTING: access.get_effective_structure(UI.S_IMG2IMG_INPAINTING),
                 UI.S_HIGH_RESOLUTION: access.get_effective_structure(UI.S_HIGH_RESOLUTION),
                 UI.S_CHECKPOINTS: access.get_effective_structure(UI.S_CHECKPOINTS),
-                UI.S_UPSCALE_MODELS: access.get_effective_structure(UI.S_UPSCALE_MODELS),  # TODO
-                UI.S_LORAS: access.get_effective_structure(UI.S_LORAS),  # TODO
+                UI.S_UPSCALE_MODELS: access.get_effective_structure(UI.S_UPSCALE_MODELS),
+                UI.S_LORAS: access.get_effective_structure(UI.S_LORAS),
                 UI.S_PROMPT_STYLING: access.get_effective_structure(UI.S_PROMPT_STYLING),  # TODO
                 UI.S_CUSTOM_PROMPTING: access.get_effective_structure(UI.S_CUSTOM_PROMPTING),  # TODO
                 UI.S_CONDITION_MIXING: access.get_effective_structure(UI.S_CONDITION_MIXING),  # TODO

@@ -26,6 +26,8 @@ SOFTWARE.
 
 """
 
+import folder_paths
+
 from .data_utils import retrieve_parameter
 from .mb_pipeline import PipelineAccess
 from .names import Names
@@ -62,8 +64,8 @@ class SeargeStageApplyLoras:
         lora_stack = access.get_active_setting(UI.S_LORAS, UI.F_LORA_STACK, [])
 
         any_changes = (
-            base_model_changed or
-            base_clip_changed
+                base_model_changed or
+                base_clip_changed
         )
 
         applied_loras = []
@@ -73,6 +75,9 @@ class SeargeStageApplyLoras:
             for lora in lora_stack:
                 lora_name = retrieve_parameter(UI.F_LORA_NAME, lora)
                 lora_strength = retrieve_parameter(UI.F_LORA_STRENGTH, lora, 0.0)
+
+                if folder_paths.get_full_path("loras", lora_name) is None or base_model is None or base_clip is None:
+                    lora_name = None
 
                 if lora_name is not None and lora_name != UI.NONE and lora_strength != 0.0:
                     (base_model, base_clip) = NodeWrapper.lora_loader.load_lora(base_model, base_clip, lora_name,

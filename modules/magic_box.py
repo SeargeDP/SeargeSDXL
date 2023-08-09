@@ -38,6 +38,7 @@ from .stage_sampling import SeargeStageSampling
 from .stage_latent_detailer import SeargeStageLatentDetailer
 from .stage_vae_decode_sampled import SeargeStageVAEDecodeSampled
 from .stage_high_resolution import SeargeStageHighResolution
+from .stage_hires_detailer import SeargeStageHiresDetailer
 from .stage_vae_decode_hires import SeargeStageVAEDecodeHires
 from .stage_upscaling import SeargeStageUpscaling
 from .stage_image_saving import SeargeStageImageSaving
@@ -45,7 +46,7 @@ from .ui import UI
 
 
 # ====================================================================================================
-# UI: Model Selector Input
+# Searge's Magic Box
 # ====================================================================================================
 
 class SeargeMagicBox:
@@ -63,9 +64,11 @@ class SeargeMagicBox:
     LATENT_DETAILER = "latent detailer"
     VAE_DECODE_SAMPLED = "vae decode sampled"
     HIGH_RESOLUTION = "high resolution"
+    HIRES_DETAILER = "hires detailer"
     VAE_DECODE_HI_RES = "vae decode hi-res"
     UPSCALING = "upscaling"
     IMAGE_SAVING = "image saving"
+
     STAGES = [
         NONE,
         PRE_PROCESS_DATA,
@@ -80,6 +83,7 @@ class SeargeMagicBox:
         LATENT_DETAILER,
         VAE_DECODE_SAMPLED,
         HIGH_RESOLUTION,
+        HIRES_DETAILER,
         VAE_DECODE_HI_RES,
         UPSCALING,
         IMAGE_SAVING,
@@ -106,6 +110,7 @@ class SeargeMagicBox:
         self.stage_vae_decode_sampled = None
         self.stage_latent_detailer = None
         self.stage_high_resolution = None
+        self.stage_hires_detailer = None
         self.stage_vae_decode_hi_res = None
         self.stage_upscaling = None
         self.stage_image_saving = None
@@ -162,7 +167,7 @@ class SeargeMagicBox:
 
         elif stage == self.PROMPT_STYLING:
             if self.stage_prompt_styling is None:
-                print("TODO: implement stage " + stage)
+                # print("TODO: implement stage " + stage)
                 self.stage_prompt_styling = SeargeStage()
             stage_processor = self.stage_prompt_styling
 
@@ -173,7 +178,7 @@ class SeargeMagicBox:
 
         elif stage == self.CLIP_MIXING:
             if self.stage_clip_mixing is None:
-                print("TODO: implement stage " + stage)
+                # print("TODO: implement stage " + stage)
                 self.stage_clip_mixing = SeargeStage()
             stage_processor = self.stage_clip_mixing
 
@@ -206,6 +211,11 @@ class SeargeMagicBox:
             if self.stage_high_resolution is None:
                 self.stage_high_resolution = SeargeStageHighResolution()
             stage_processor = self.stage_high_resolution
+
+        elif stage == self.HIRES_DETAILER:
+            if self.stage_hires_detailer is None:
+                self.stage_hires_detailer = SeargeStageHiresDetailer()
+            stage_processor = self.stage_hires_detailer
 
         elif stage == self.VAE_DECODE_HI_RES:
             if self.stage_vae_decode_hi_res is None:

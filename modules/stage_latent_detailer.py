@@ -79,9 +79,9 @@ class SeargeStageLatentDetailer:
         ]
 
         any_changes = (
-            base_changed or
-            base_cond_changed or
-            latent_changed)
+                base_changed or
+                base_cond_changed or
+                latent_changed)
 
         sampled_changed = access.changed_in_cache(Names.C_SAMPLED_DETAILER, parameters)
         if any_changes or sampled_changed:

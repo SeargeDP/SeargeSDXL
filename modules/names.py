@@ -53,6 +53,10 @@ class Names:
     F_MAGIC_BOX_EXTENSION = "extension_version"
     F_MAGIC_BOX_WORKFLOW = "workflow_version"
 
+    S_CONDITION_ZEROING = "condition_zeroing"
+    F_ZERO_POSITIVES = "zero_positives"
+    F_ZERO_NEGATIVES = "zero_negatives"
+
     # vae decoder stage outputs
     S_VAE_DECODED = "vae_decoded"
     F_DECODED_IMAGE = "image"
@@ -131,6 +135,10 @@ class Names:
     S_HIRES_OUTPUT = "hires_output"
     F_LATENT_HIRES = "latent_hires"
 
+    # hires detailer
+    S_HIRES_DETAILED = "hires_detailed"
+    F_DETAILED_HIRES = "detailed_hires"
+
     # vae decode hires
     S_VAE_DECODED_HIRES = "vae_decoded_hires"
     F_DECODED_HIRES_IMAGE = "hires_image"
@@ -203,6 +211,9 @@ class Names:
     C_HIRES_LATENT = "hires_latent"
     C_HIRES_LATENT_SIMPLE = "hires_latent_simple"
     C_HIRES_LATENT_NORMAL = "hires_latent_normal"
+
+    # hires detailer
+    C_HIRES_DETAILER = "hires_detailer"
 
     # vae decode sampled
     C_VAE_DECODED_HIRES = "vae_decoded_hires"

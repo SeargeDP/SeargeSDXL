@@ -4,7 +4,7 @@
   "nodes": [
     {
       "id": 19,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         1140,
         40
@@ -44,7 +44,7 @@
     },
     {
       "id": 463,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         1670,
         40
@@ -84,7 +84,7 @@
     },
     {
       "id": 87,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         -1450,
         -970
@@ -127,7 +127,7 @@
     },
     {
       "id": 86,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         50,
         -970
@@ -346,7 +346,7 @@
     },
     {
       "id": 3,
-      "type": "SeargeTextInputV2Dev",
+      "type": "SeargeTextInputV2",
       "pos": [
         10,
         40
@@ -376,7 +376,7 @@
         "Node name for S&R": "MainPrompt"
       },
       "widgets_values": [
-        "a close up of a person wearing a suit and tie, peaky blinders (2018), attractive androgynous humanoid, wearing teal beanie, william dafoe, beige fedora, in roger deakins style, fire behind him, jaguar, red ascot and a field cap, robe, perfect face, ripley scott, mummy"
+        "gordon freeman from half life, glasses, shaved head, beard, wearing mech armor"
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -549,7 +549,7 @@
     },
     {
       "id": 5,
-      "type": "SeargeTextInputV2Dev",
+      "type": "SeargeTextInputV2",
       "pos": [
         10,
         250
@@ -579,14 +579,14 @@
         "Node name for S&R": "SecondaryPrompt"
       },
       "widgets_values": [
-        "a close up of a person wearing a suit and tie, peaky blinders, teal color graded, focus on two androids, interstellar movie, wears a destroyed hat, emaciated, england, absolute chad, very very very beautifull face, long dark shadows, late 40s aged, incredible wide screenshot, diamond, sad men"
+        "gordon freeman from half life, glasses, shaved head, beard, wearing mech armor"
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
     },
     {
       "id": 6,
-      "type": "SeargeTextInputV2Dev",
+      "type": "SeargeTextInputV2",
       "pos": [
         10,
         460
@@ -615,14 +615,14 @@
         "Node name for S&R": "StylePrompt"
       },
       "widgets_values": [
-        "photo of <prompt>. highly detailed, professional, gritty, sharp focus, high budget hollywood movie, inspired by William Brodie"
+        "cinematic photo <prompt>, 35mm photograph, film, bokeh, professional, 4k, highly detailed"
       ],
       "color": "#223",
       "bgcolor": "#335"
     },
     {
       "id": 7,
-      "type": "SeargeTextInputV2Dev",
+      "type": "SeargeTextInputV2",
       "pos": [
         10,
         680
@@ -652,14 +652,14 @@
         "Node name for S&R": "NegativePrompt"
       },
       "widgets_values": [
-        "dirty, out of focus"
+        "helmet"
       ],
       "color": "#322",
       "bgcolor": "#533"
     },
     {
       "id": 8,
-      "type": "SeargeTextInputV2Dev",
+      "type": "SeargeTextInputV2",
       "pos": [
         10,
         890
@@ -689,14 +689,14 @@
         "Node name for S&R": "NegativeSecondaryAndStylePrompt"
       },
       "widgets_values": [
-        "mud"
+        "drawing, painting, crayon, sketch, impressionist"
       ],
       "color": "#332922",
       "bgcolor": "#593930"
     },
     {
       "id": 524,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -2500,
         3130
@@ -753,7 +753,7 @@
     },
     {
       "id": 525,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -2100,
         3130
@@ -807,7 +807,7 @@
     },
     {
       "id": 526,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -1700,
         3130
@@ -864,7 +864,7 @@
     },
     {
       "id": 528,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -900,
         3130
@@ -921,7 +921,7 @@
     },
     {
       "id": 529,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -500,
         3130
@@ -973,12 +973,12 @@
         "data stream",
         "data stream"
       ],
-      "color": "#432",
-      "bgcolor": "#653"
+      "color": "#232",
+      "bgcolor": "#353"
     },
     {
       "id": 530,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -100,
         3130
@@ -1034,7 +1034,7 @@
     },
     {
       "id": 531,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         300,
         3130
@@ -1092,7 +1092,7 @@
     },
     {
       "id": 532,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         700,
         3130
@@ -1148,7 +1148,7 @@
     },
     {
       "id": 533,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         1100,
         3130
@@ -1206,7 +1206,7 @@
     },
     {
       "id": 536,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         2300,
         3130
@@ -1264,7 +1264,7 @@
     },
     {
       "id": 506,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -2900,
         3130
@@ -1321,7 +1321,7 @@
     },
     {
       "id": 537,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -3300,
         3130
@@ -1379,7 +1379,7 @@
     },
     {
       "id": 538,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         2700,
         3130
@@ -1440,7 +1440,7 @@
     },
     {
       "id": 539,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         3100,
         3130
@@ -1496,7 +1496,7 @@
     },
     {
       "id": 540,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         3500,
         3130
@@ -1551,7 +1551,7 @@
     },
     {
       "id": 541,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         3900,
         3130
@@ -1612,7 +1612,7 @@
     },
     {
       "id": 542,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         4300,
         3130
@@ -1667,7 +1667,7 @@
     },
     {
       "id": 543,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         4700,
         3130
@@ -1725,7 +1725,7 @@
     },
     {
       "id": 544,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         5100,
         3130
@@ -1821,7 +1821,7 @@
     },
     {
       "id": 519,
-      "type": "SeargeDebugPrinterDev",
+      "type": "SeargeDebugPrinter",
       "pos": [
         5500,
         2930
@@ -2256,7 +2256,7 @@
     },
     {
       "id": 573,
-      "type": "SeargeCustomAfterVaeDecodeDev",
+      "type": "SeargeCustomAfterVaeDecode",
       "pos": [
         3100,
         3430
@@ -2297,7 +2297,7 @@
     },
     {
       "id": 590,
-      "type": "SeargePipelineTerminatorDev",
+      "type": "SeargePipelineTerminator",
       "pos": [
         5500,
         3130
@@ -2327,7 +2327,7 @@
     },
     {
       "id": 610,
-      "type": "SeargeGenerationParametersDev",
+      "type": "SeargeGenerationParameters",
       "pos": [
         480,
         40
@@ -2363,13 +2363,13 @@
         "Node name for S&R": "SeargeGenerationParameters"
       },
       "widgets_values": [
-        56421668291,
+        56421668217,
         "increment",
-        "832x1216 (2:3)",
+        "1344x768 (16:9)",
         1024,
         1024,
         30,
-        7,
+        5,
         "1 - DPM++ 2M Karras",
         "dpmpp_2m",
         "karras",
@@ -2380,7 +2380,7 @@
     },
     {
       "id": 612,
-      "type": "SeargeImageSavingDev",
+      "type": "SeargeImageSaving",
       "pos": [
         810,
         40
@@ -2422,20 +2422,20 @@
         "output/Searge-SDXL-%date%",
         true,
         true,
-        "generated",
+        "generated-%seed%",
         true,
         true,
-        "high-res",
+        "high-res-%seed%",
         true,
         true,
-        "upscaled"
+        "upscaled-%seed%"
       ],
       "color": "#332922",
       "bgcolor": "#593930"
     },
     {
       "id": 611,
-      "type": "SeargeOperatingModeDev",
+      "type": "SeargeOperatingMode",
       "pos": [
         480,
         380
@@ -2481,7 +2481,7 @@
     },
     {
       "id": 613,
-      "type": "SeargeImage2ImageAndInpaintingDev",
+      "type": "SeargeImage2ImageAndInpainting",
       "pos": [
         810,
         380
@@ -2528,7 +2528,7 @@
     },
     {
       "id": 609,
-      "type": "SeargeModelSelectorDev",
+      "type": "SeargeModelSelector",
       "pos": [
         1140,
         620
@@ -2593,14 +2593,14 @@
         "text": ""
       },
       "widgets_values": [
-        " Searge-SDXL: EVOLVED Workflow for SDXL 1.0  |  Version 3.991 updated on Aug 27, 2023\n\n    !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n More information about using this workflow is next to the upscaled image preview -=>\n                      ( 1.25 x 1.2 = 1.5  |  1.5 x 1.333 = 2.0 )"
+        " Searge-SDXL: EVOLVED Workflow for SDXL 1.0  |  Version 3.999 updated on Aug 29, 2023\n\n    !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n More information about using this workflow is next to the upscaled image preview -=>\n                      ( 1.25 x 1.2 = 1.5  |  1.5 x 1.333 = 2.0 )"
       ],
       "color": "#323",
       "bgcolor": "#535"
     },
     {
       "id": 619,
-      "type": "SeargeConditionMixingDev",
+      "type": "SeargeConditionMixing",
       "pos": [
         2200,
         860
@@ -2642,7 +2642,7 @@
     },
     {
       "id": 616,
-      "type": "SeargeCustomPromptModeDev",
+      "type": "SeargeCustomPromptMode",
       "pos": [
         2200,
         620
@@ -2683,7 +2683,7 @@
     },
     {
       "id": 527,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         -1300,
         3130
@@ -2740,7 +2740,7 @@
     },
     {
       "id": 554,
-      "type": "SeargeCustomAfterVaeDecodeDev",
+      "type": "SeargeCustomAfterVaeDecode",
       "pos": [
         2300,
         3430
@@ -2868,7 +2868,7 @@
     },
     {
       "id": 534,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         1900,
         3130
@@ -2929,7 +2929,7 @@
     },
     {
       "id": 535,
-      "type": "SeargeMagicBoxDev",
+      "type": "SeargeMagicBox",
       "pos": [
         1500,
         3130
@@ -2987,7 +2987,7 @@
     },
     {
       "id": 634,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         2200,
         40
@@ -3046,7 +3046,7 @@
         "text": ""
       },
       "widgets_values": [
-        "\n Searge-SDXL v20230827.0815-beta-unstable-prerelease-0.007-sneak-preview-5\n\n [TODO: add description here]\n"
+        "\n Searge-SDXL v20230829.0815-beta-unstable-prerelease-0.007-sneak-preview-6\n\n [TODO: add description here]\n"
       ],
       "color": "#222",
       "bgcolor": "#000"
@@ -3446,7 +3446,7 @@
     },
     {
       "id": 484,
-      "type": "SeargeSeparatorDev",
+      "type": "SeargeSeparator",
       "pos": [
         480,
         520
@@ -3469,7 +3469,7 @@
     },
     {
       "id": 614,
-      "type": "SeargeConditioningParametersDev",
+      "type": "SeargeConditioningParameters",
       "pos": [
         480,
         590
@@ -3521,7 +3521,7 @@
     },
     {
       "id": 618,
-      "type": "SeargeHighResolutionDev",
+      "type": "SeargeHighResolution",
       "pos": [
         810,
         590
@@ -3560,12 +3560,12 @@
       },
       "widgets_values": [
         "none",
-        "1.25x",
-        0.25,
+        "1.5x",
+        0.2,
         0.1,
         0.5,
+        0.05,
         0.1,
-        0.2,
         "none",
         "none"
       ],
@@ -3574,7 +3574,7 @@
     },
     {
       "id": 615,
-      "type": "SeargeAdvancedParametersDev",
+      "type": "SeargeAdvancedParameters",
       "pos": [
         480,
         880
@@ -3613,9 +3613,9 @@
       "widgets_values": [
         "rescale",
         0.5,
-        0.15,
+        0.25,
+        0.05,
         0.1,
-        0.2,
         "none"
       ],
       "color": "#2a363b",
@@ -3623,7 +3623,7 @@
     },
     {
       "id": 617,
-      "type": "SeargePromptStylesDev",
+      "type": "SeargePromptStyles",
       "pos": [
         810,
         880
@@ -3965,7 +3965,7 @@
     },
     {
       "id": 666,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         390,
         1200
@@ -4094,7 +4094,7 @@
     },
     {
       "id": 667,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         1030,
         1200
@@ -4179,7 +4179,7 @@
     },
     {
       "id": 670,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         1670,
         1200
@@ -4264,7 +4264,7 @@
     },
     {
       "id": 672,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         2310,
         1200
@@ -4387,7 +4387,7 @@
     },
     {
       "id": 674,
-      "type": "SeargePreviewImageDev",
+      "type": "SeargePreviewImage",
       "pos": [
         2950,
         1200
@@ -4428,7 +4428,7 @@
     },
     {
       "id": 676,
-      "type": "SeargeCustomAfterUpscalingDev",
+      "type": "SeargeCustomAfterUpscaling",
       "pos": [
         4300,
         3430
@@ -4468,7 +4468,7 @@
     },
     {
       "id": 620,
-      "type": "SeargeUpscaleModelsDev",
+      "type": "SeargeUpscaleModels",
       "pos": [
         1140,
         770
@@ -4515,7 +4515,7 @@
     },
     {
       "id": 621,
-      "type": "SeargeLorasDev",
+      "type": "SeargeLoras",
       "pos": [
         1670,
         770
@@ -4611,7 +4611,7 @@
     },
     {
       "id": 628,
-      "type": "SeargePipelineStartDev",
+      "type": "SeargePipelineStart",
       "pos": [
         4100,
         860
@@ -4652,14 +4652,14 @@
         "Node name for S&R": "SeargePipelineStart"
       },
       "widgets_values": [
-        "3.991-dev"
+        "3.999-RC"
       ],
       "color": "#222",
       "bgcolor": "#000"
     },
     {
       "id": 626,
-      "type": "SeargeImageAdapterV2Dev",
+      "type": "SeargeImageAdapterV2",
       "pos": [
         -400,
         1630
@@ -4724,7 +4724,7 @@
     },
     {
       "id": 622,
-      "type": "SeargePromptAdapterV2Dev",
+      "type": "SeargePromptAdapterV2",
       "pos": [
         -400,
         -270
@@ -4802,7 +4802,7 @@
     },
     {
       "id": 683,
-      "type": "SeargeControlnetModelsDev",
+      "type": "SeargeControlnetModels",
       "pos": [
         2730,
         860
@@ -4836,7 +4836,7 @@
       ],
       "title": "Controlnet Models Selector",
       "properties": {
-        "Node name for S&R": "SeargeControlnetModelsDev"
+        "Node name for S&R": "SeargeControlnetModels"
       },
       "widgets_values": [
         "clip_vision_g.safetensors",
@@ -4851,7 +4851,7 @@
     },
     {
       "id": 678,
-      "type": "SeargeControlnetAdapterV2Dev",
+      "type": "SeargeControlnetAdapterV2",
       "pos": [
         230,
         1630
@@ -4899,7 +4899,7 @@
       ],
       "title": "Controlnet and Revision Adapter",
       "properties": {
-        "Node name for S&R": "SeargeControlnetAdapterV2Dev"
+        "Node name for S&R": "SeargeControlnetAdapterV2"
       },
       "widgets_values": [
         "none",
@@ -4917,7 +4917,7 @@
     },
     {
       "id": 679,
-      "type": "SeargeControlnetAdapterV2Dev",
+      "type": "SeargeControlnetAdapterV2",
       "pos": [
         870,
         1630
@@ -4966,7 +4966,7 @@
       ],
       "title": "Controlnet and Revision Adapter",
       "properties": {
-        "Node name for S&R": "SeargeControlnetAdapterV2Dev"
+        "Node name for S&R": "SeargeControlnetAdapterV2"
       },
       "widgets_values": [
         "none",
@@ -4984,7 +4984,7 @@
     },
     {
       "id": 680,
-      "type": "SeargeControlnetAdapterV2Dev",
+      "type": "SeargeControlnetAdapterV2",
       "pos": [
         1510,
         1630
@@ -5033,7 +5033,7 @@
       ],
       "title": "Controlnet and Revision Adapter",
       "properties": {
-        "Node name for S&R": "SeargeControlnetAdapterV2Dev"
+        "Node name for S&R": "SeargeControlnetAdapterV2"
       },
       "widgets_values": [
         "none",
@@ -5051,7 +5051,7 @@
     },
     {
       "id": 681,
-      "type": "SeargeControlnetAdapterV2Dev",
+      "type": "SeargeControlnetAdapterV2",
       "pos": [
         2150,
         1630
@@ -5100,7 +5100,7 @@
       ],
       "title": "Controlnet and Revision Adapter",
       "properties": {
-        "Node name for S&R": "SeargeControlnetAdapterV2Dev"
+        "Node name for S&R": "SeargeControlnetAdapterV2"
       },
       "widgets_values": [
         "none",
@@ -5118,7 +5118,7 @@
     },
     {
       "id": 682,
-      "type": "SeargeControlnetAdapterV2Dev",
+      "type": "SeargeControlnetAdapterV2",
       "pos": [
         2790,
         1630
@@ -5168,7 +5168,7 @@
       ],
       "title": "Controlnet and Revision Adapter",
       "properties": {
-        "Node name for S&R": "SeargeControlnetAdapterV2Dev"
+        "Node name for S&R": "SeargeControlnetAdapterV2"
       },
       "widgets_values": [
         "none",
