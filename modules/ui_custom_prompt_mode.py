@@ -26,6 +26,43 @@ SOFTWARE.
 
 """
 
-from .ui import Defs
+from .ui import UI
 
-print("Searge-SDXL v" + Defs.VERSION + ("-dev" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)
+
+# ====================================================================================================
+# UI: Custom Prompt Mode Input
+# ====================================================================================================
+
+class SeargeCustomPromptMode:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                # "example": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},),
+            },
+            "optional": {
+                "data": ("SRG_DATA_STREAM",),
+            },
+        }
+
+    RETURN_TYPES = ("SRG_DATA_STREAM",)
+    RETURN_NAMES = ("data",)
+    FUNCTION = "get"
+
+    CATEGORY = UI.CATEGORY_UI_INPUTS
+
+    @staticmethod
+    def create_dict(example):
+        return {
+            UI.EXAMPLE: example,
+        }
+
+    def get(self, data=None):
+        if data is None:
+            data = {}
+
+        data[UI.S_CUSTOM_PROMPTING] = self.create_dict(
+            "example",
+        )
+
+        return (data,)

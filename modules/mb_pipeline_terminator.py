@@ -26,6 +26,33 @@ SOFTWARE.
 
 """
 
-from .ui import Defs
+from .mb_pipeline import PipelineAccess
+from .ui import UI
 
-print("Searge-SDXL v" + Defs.VERSION + ("-dev" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)
+
+# ====================================================================================================
+# Magic Box Pipeline Terminator
+# ====================================================================================================
+
+class SeargePipelineTerminator:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+            },
+            "optional": {
+                "data": ("SRG_DATA_STREAM",),
+            },
+        }
+
+    RETURN_TYPES = ()
+    FUNCTION = "trigger"
+
+    OUTPUT_NODE = True
+
+    CATEGORY = UI.CATEGORY_MAGIC
+
+    def trigger(self, data=None):
+        access = PipelineAccess(data)
+        access.terminate_pipeline()
+        return {}

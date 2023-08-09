@@ -26,6 +26,37 @@ SOFTWARE.
 
 """
 
-from .ui import Defs
+from .data_utils import retrieve_parameter
+from .names import Names
+from .ui import UI
 
-print("Searge-SDXL v" + Defs.VERSION + ("-dev" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)
+
+# ====================================================================================================
+# Output from magic box for custom stage after a VAE decode
+# ====================================================================================================
+
+class SeargeCustomAfterUpscaling:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "custom_output": ("SRG_STAGE_OUTPUT",),
+            },
+            "optional": {
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("image",)
+    FUNCTION = "output"
+
+    CATEGORY = UI.CATEGORY_MAGIC_CUSTOM_STAGES
+
+    def output(self, custom_output):
+        if custom_output is None:
+            return (None,)
+
+        vae_decoded = retrieve_parameter(Names.S_UPSCALED, custom_output)
+        image = retrieve_parameter(Names.F_UPSCALED_IMAGE, vae_decoded)
+
+        return (image,)

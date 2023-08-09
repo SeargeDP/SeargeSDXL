@@ -26,6 +26,28 @@ SOFTWARE.
 
 """
 
-from .ui import Defs
 
-print("Searge-SDXL v" + Defs.VERSION + ("-dev" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)
+# --------------------------------------------------------------------------------
+
+def retrieve_input(name, data, stage_input):
+    if stage_input is not None and name in stage_input:
+        result = stage_input[name]
+    elif data is not None and name in data:
+        result = data[name]
+    else:
+        result = None
+
+    return result
+
+
+# --------------------------------------------------------------------------------
+
+def retrieve_parameter(name, structure, default=None):
+    if structure is None:
+        result = default
+    elif name in structure and structure[name] is not None:
+        result = structure[name]
+    else:
+        result = default
+
+    return result

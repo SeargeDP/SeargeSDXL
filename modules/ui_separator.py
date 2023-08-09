@@ -26,6 +26,26 @@ SOFTWARE.
 
 """
 
-from .ui import Defs
+from .ui import UI
 
-print("Searge-SDXL v" + Defs.VERSION + ("-dev" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)
+
+# ====================================================================================================
+# UI: Separator
+# ====================================================================================================
+
+class SeargeSeparator:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+            },
+        }
+
+    RETURN_TYPES = ()
+    RETURN_NAMES = ()
+    FUNCTION = "do_nothing"
+
+    CATEGORY = UI.CATEGORY_UI
+
+    def do_nothing(self):
+        return ()

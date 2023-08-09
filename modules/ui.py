@@ -26,507 +26,505 @@ SOFTWARE.
 
 """
 
-import comfy.samplers
 import folder_paths
 import nodes
 
-from .processing import SeargeParameterProcessor
-
-
-# UI: Prompt Inputs
-
-class SeargeInput1:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "main_prompt": ("STRING", {"multiline": True, "default": ""}),
-                    "secondary_prompt": ("STRING", {"multiline": True, "default": ""}),
-                    "style_prompt": ("STRING", {"multiline": True, "default": ""}),
-                    "negative_prompt": ("STRING", {"multiline": True, "default": ""}),
-                    "negative_style": ("STRING", {"multiline": True, "default": ""}),
-                    },
-                "optional": {
-                    "inputs": ("PARAMETER_INPUTS", ),
-                    "image": ("IMAGE",),
-                    "mask": ("MASK",),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETER_INPUTS", )
-    RETURN_NAMES = ("inputs", )
-    FUNCTION = "mux"
-
-    CATEGORY = "Searge/UI/Inputs"
-
-    def mux(self, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, inputs=None, image=None, mask=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-
-        parameters["main_prompt"] = main_prompt
-        parameters["secondary_prompt"] = secondary_prompt
-        parameters["style_prompt"] = style_prompt
-        parameters["negative_prompt"] = negative_prompt
-        parameters["negative_style"] = negative_style
-        parameters["image"] = image
-        parameters["mask"] = mask
-
-        return (parameters, )
-
-
-# UI: Prompt Outputs
-
-class SeargeOutput1:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "parameters": ("PARAMETERS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETERS", "STRING", "STRING", "STRING", "STRING", "STRING", "IMAGE", "MASK", )
-    RETURN_NAMES = ("parameters", "main_prompt", "secondary_prompt", "style_prompt", "negative_prompt", "negative_style", "image", "mask", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Outputs"
-
-    def demux(self, parameters):
-        main_prompt = parameters["main_prompt"]
-        secondary_prompt = parameters["secondary_prompt"]
-        style_prompt = parameters["style_prompt"]
-        negative_prompt = parameters["negative_prompt"]
-        negative_style = parameters["negative_style"]
-        image = parameters["image"]
-        mask = parameters["mask"]
-
-        return (parameters, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, image, mask, )
-
-
-# UI: Generation Parameters Input
-
-class SeargeInput2:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                    "image_width": ("INT", {"default": 1024, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "image_height": ("INT", {"default": 1024, "min": 0, "max": nodes.MAX_RESOLUTION, "step": 8}),
-                    "steps": ("INT", {"default": 20, "min": 0, "max": 200}),
-                    "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 30.0, "step": 0.5}),
-                    "sampler_name": (comfy.samplers.KSampler.SAMPLERS, {"default": "ddim"}),
-                    "scheduler": (comfy.samplers.KSampler.SCHEDULERS, {"default": "ddim_uniform"}),
-                    "save_image": (SeargeParameterProcessor.STATES, {"default": SeargeParameterProcessor.STATES[1]}),
-                    "save_directory": (SeargeParameterProcessor.SAVE_TO, {"default": SeargeParameterProcessor.SAVE_TO[0]}),
-                    },
-                "optional": {
-                    "inputs": ("PARAMETER_INPUTS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETER_INPUTS", )
-    RETURN_NAMES = ("inputs", )
-    FUNCTION = "mux"
-
-    CATEGORY = "Searge/UI/Inputs"
-
-    def mux(self, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, save_directory, inputs=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-
-        parameters["seed"] = seed
-        parameters["image_width"] = image_width
-        parameters["image_height"] = image_height
-        parameters["steps"] = steps
-        parameters["cfg"] = cfg
-        parameters["sampler_name"] = sampler_name
-        parameters["scheduler"] = scheduler
-        parameters["save_image"] = save_image
-        parameters["save_directory"] = save_directory
-
-        return (parameters, )
-
-
-# UI: Generation Parameters Output
-
-class SeargeOutput2:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "parameters": ("PARAMETERS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", "INT", "FLOAT", "SAMPLER_NAME", "SCHEDULER_NAME", "ENABLE_STATE", "SAVE_FOLDER", )
-    RETURN_NAMES = ("parameters", "seed", "image_width", "image_height", "steps", "cfg", "sampler_name", "scheduler", "save_image", "save_directory", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Outputs"
-
-    def demux(self, parameters):
-        seed = parameters["seed"]
-        image_width = parameters["image_width"]
-        image_height = parameters["image_height"]
-        steps = parameters["steps"]
-        cfg = parameters["cfg"]
-        sampler_name = parameters["sampler_name"]
-        scheduler = parameters["scheduler"]
-        save_image = parameters["save_image"]
-        save_directory = parameters["save_directory"]
-
-        return (parameters, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, save_directory, )
-
-
-# UI: Advanced Parameters Input
-
-class SeargeInput3:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "base_ratio": ("FLOAT", {"default": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "refiner_strength": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 1.0, "step": 0.05}),
-                    "refiner_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": SeargeParameterProcessor.REFINER_INTENSITY[1]}),
-                    "precondition_steps": ("INT", {"default": 0, "min": 0, "max": 10}),
-                    "batch_size": ("INT", {"default": 1, "min": 1, "max": 4}),
-                    "upscale_resolution_factor": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
-                    "save_upscaled_image": (SeargeParameterProcessor.STATES, {"default": SeargeParameterProcessor.STATES[1]}),
-                    },
-                "optional": {
-                    "inputs": ("PARAMETER_INPUTS", ),
-                    "denoise": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETER_INPUTS", )
-    RETURN_NAMES = ("inputs", )
-    FUNCTION = "mux"
-
-    CATEGORY = "Searge/UI/Inputs"
-
-    def mux(self, base_ratio, refiner_strength, refiner_intensity, precondition_steps, batch_size, upscale_resolution_factor, save_upscaled_image, inputs=None, denoise=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-
-        parameters["denoise"] = denoise
-        parameters["base_ratio"] = base_ratio
-        parameters["refiner_strength"] = refiner_strength
-        parameters["refiner_intensity"] = refiner_intensity
-        parameters["precondition_steps"] = precondition_steps
-        parameters["batch_size"] = batch_size
-        parameters["upscale_resolution_factor"] = upscale_resolution_factor
-        parameters["save_upscaled_image"] = save_upscaled_image
-
-        return (parameters, )
-
-
-# UI: Advanced Parameters Output
-
-class SeargeOutput3:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "parameters": ("PARAMETERS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "INT", "INT", "INT", "FLOAT", "ENABLE_STATE", )
-    RETURN_NAMES = ("parameters", "denoise", "base_ratio", "refiner_strength", "noise_offset", "precondition_steps", "batch_size", "upscale_resolution_factor", "save_upscaled_image", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Outputs"
-
-    def demux(self, parameters):
-        denoise = parameters["denoise"]
-        base_ratio = parameters["base_ratio"]
-        refiner_strength = parameters["refiner_strength"]
-        noise_offset = parameters["noise_offset"]
-        precondition_steps = parameters["precondition_steps"]
-        batch_size = parameters["batch_size"]
-        upscale_resolution_factor = parameters["upscale_resolution_factor"]
-        save_upscaled_image = parameters["save_upscaled_image"]
-
-        return (parameters, denoise, base_ratio, refiner_strength, noise_offset, precondition_steps, batch_size, upscale_resolution_factor, save_upscaled_image, )
-
-
-# UI: Model Selector Input
-
-class SeargeInput4:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "base_model": (folder_paths.get_filename_list("checkpoints"), ),
-                    "refiner_model": (folder_paths.get_filename_list("checkpoints"), ),
-                    "vae_model": (folder_paths.get_filename_list("vae"), ),
-                    "main_upscale_model": (folder_paths.get_filename_list("upscale_models"),),
-                    "support_upscale_model": (folder_paths.get_filename_list("upscale_models"),),
-                    "lora_model": (folder_paths.get_filename_list("loras"),),
-                    },
-                "optional": {
-                    "model_settings": ("MODEL_SETTINGS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("MODEL_NAMES", )
-    RETURN_NAMES = ("model_names", )
-    FUNCTION = "mux"
-
-    CATEGORY = "Searge/UI/Inputs"
-
-    def mux(self, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model, model_settings=None):
-        if model_settings is None:
-            model_names = {}
-        else:
-            model_names = model_settings
-
-        model_names["base_model"] = base_model
-        model_names["refiner_model"] = refiner_model
-        model_names["vae_model"] = vae_model
-        model_names["main_upscale_model"] = main_upscale_model
-        model_names["support_upscale_model"] = support_upscale_model
-        model_names["lora_model"] = lora_model
-
-        return (model_names, )
-
-
-# UI: Model Selector
-
-class SeargeOutput4:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "model_names": ("MODEL_NAMES", ),
-                    },
-                }
-
-    RETURN_TYPES = ("MODEL_NAMES", "CHECKPOINT_NAME", "CHECKPOINT_NAME", "VAE_NAME", "UPSCALER_NAME", "UPSCALER_NAME", "LORA_NAME", )
-    RETURN_NAMES = ("model_names", "base_model", "refiner_model", "vae_model", "main_upscale_model", "support_upscale_model", "lora_model", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Outputs"
-
-    def demux(self, model_names):
-        base_model = model_names["base_model"]
-        refiner_model = model_names["refiner_model"]
-        vae_model = model_names["vae_model"]
-        main_upscale_model = model_names["main_upscale_model"]
-        support_upscale_model = model_names["support_upscale_model"]
-        lora_model = model_names["lora_model"]
-
-        return (model_names, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model,)
-
-
-# UI: Prompt Processing Input
-
-class SeargeInput5:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "base_conditioning_scale": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
-                    "refiner_conditioning_scale": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4.0, "step": 0.25}),
-                    "style_prompt_power": ("FLOAT", {"default": 0.33, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "negative_style_power": ("FLOAT", {"default": 0.67, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "style_template": (SeargeParameterProcessor.STYLE_TEMPLATE, {"default": SeargeParameterProcessor.STYLE_TEMPLATE[0]}),
-                    },
-                "optional": {
-                    "inputs": ("PARAMETER_INPUTS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETER_INPUTS", )
-    RETURN_NAMES = ("inputs", )
-    FUNCTION = "mux"
-
-    CATEGORY = "Searge/UI/Inputs"
-
-    def mux(self, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power, style_template, inputs=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-
-        parameters["base_conditioning_scale"] = base_conditioning_scale
-        parameters["refiner_conditioning_scale"] = refiner_conditioning_scale
-        parameters["style_prompt_power"] = style_prompt_power
-        parameters["negative_style_power"] = negative_style_power
-        parameters["style_template"] = style_template
-
-        return (parameters, )
-
-
-# UI: Prompt Processing Output
-
-class SeargeOutput5:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "parameters": ("PARAMETERS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETERS", "FLOAT", "FLOAT", "FLOAT", "FLOAT", )
-    RETURN_NAMES = ("parameters", "base_conditioning_scale", "refiner_conditioning_scale", "style_prompt_power", "negative_style_power", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Outputs"
-
-    def demux(self, parameters):
-        base_conditioning_scale = parameters["base_conditioning_scale"]
-        refiner_conditioning_scale = parameters["refiner_conditioning_scale"]
-        style_prompt_power = parameters["style_prompt_power"]
-        negative_style_power = parameters["negative_style_power"]
-
-        return (parameters, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power, )
-
-
-# UI: HiResFix Parameters Input
-
-class SeargeInput6:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "hires_fix": (SeargeParameterProcessor.STATES, {"default": SeargeParameterProcessor.STATES[1]}),
-                    "hrf_steps": ("INT", {"default": 0, "min": 0, "max": 100}),
-                    "hrf_denoise": ("FLOAT", {"default": 0.1, "min": 0.0, "max": 1.0, "step": 0.01}),
-                    "hrf_upscale_factor": ("FLOAT", {"default": 1.5, "min": 0.25, "max": 4.0, "step": 0.25}),
-                    "hrf_intensity": (SeargeParameterProcessor.REFINER_INTENSITY, {"default": SeargeParameterProcessor.REFINER_INTENSITY[1]}),
-                    "hrf_seed_offset": (SeargeParameterProcessor.HRF_SEED_OFFSET, {"default": SeargeParameterProcessor.HRF_SEED_OFFSET[1]}),
-                    "hrf_smoothness": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05}),
-                    },
-                "optional": {
-                    "inputs": ("PARAMETER_INPUTS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETER_INPUTS", )
-    RETURN_NAMES = ("inputs", )
-    FUNCTION = "mux"
-
-    CATEGORY = "Searge/UI/Inputs"
-
-    def mux(self, hires_fix, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_intensity, hrf_seed_offset, hrf_smoothness, inputs=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-
-        parameters["hires_fix"] = hires_fix
-        parameters["hrf_steps"] = hrf_steps
-        parameters["hrf_denoise"] = hrf_denoise
-        parameters["hrf_upscale_factor"] = hrf_upscale_factor
-        parameters["hrf_intensity"] = hrf_intensity
-        parameters["hrf_seed_offset"] = hrf_seed_offset
-        parameters["hrf_smoothness"] = hrf_smoothness
-
-        return (parameters, )
-
-
-# UI: HiResFix Parameters Output
-
-class SeargeOutput6:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "parameters": ("PARAMETERS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETERS", "INT", "FLOAT", "FLOAT", "INT", "INT", "ENABLE_STATE", "FLOAT", )
-    RETURN_NAMES = ("parameters", "hrf_steps", "hrf_denoise", "hrf_upscale_factor", "hrf_noise_offset", "hrf_seed", "hires_fix", "hrf_smoothness", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Outputs"
-
-    def demux(self, parameters):
-        hrf_steps = parameters["hrf_steps"]
-        hrf_denoise = parameters["hrf_denoise"]
-        hrf_upscale_factor = parameters["hrf_upscale_factor"]
-        hrf_noise_offset = parameters["hrf_noise_offset"]
-        hrf_seed = parameters["hrf_seed"]
-        hires_fix = parameters["hires_fix"]
-        hrf_smoothness = parameters["hrf_smoothness"]
-
-        return (parameters, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_noise_offset, hrf_seed, hires_fix, hrf_smoothness, )
-
-
-# UI: Misc Inputs
-
-class SeargeInput7:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "lora_strength": ("FLOAT", {"default": 0.2, "min": -10.0, "max": 10.0, "step": 0.05}),
-                    "operation_mode": (SeargeParameterProcessor.OPERATION_MODE, {"default": SeargeParameterProcessor.OPERATION_MODE[0]}),
-                    "prompt_style": (SeargeParameterProcessor.PROMPT_STYLE, {"default": SeargeParameterProcessor.PROMPT_STYLE[0]}),
-                    },
-                "optional": {
-                    "inputs": ("PARAMETER_INPUTS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETER_INPUTS", )
-    RETURN_NAMES = ("inputs", )
-    FUNCTION = "mux"
-
-    CATEGORY = "Searge/UI/Inputs"
-
-    def mux(self, lora_strength, operation_mode, prompt_style, inputs=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-
-        parameters["lora_strength"] = lora_strength
-        parameters["operation_mode"] = operation_mode
-        parameters["prompt_style"] = prompt_style
-
-        return (parameters, )
-
-
-# UI: Misc Outputs
-
-class SeargeOutput7:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "parameters": ("PARAMETERS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETERS", "FLOAT", )
-    RETURN_NAMES = ("parameters", "lora_strength", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Outputs"
-
-    def demux(self, parameters):
-        lora_strength = parameters["lora_strength"]
-
-        return (parameters, lora_strength, )
-
-
-# UI: Generated outputs for flow control
-
-class SeargeGenerated1:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "parameters": ("PARAMETERS", ),
-                    },
-                }
-
-    RETURN_TYPES = ("PARAMETERS", "INT", "INT", "INT", )
-    RETURN_NAMES = ("parameters", "operation_selector", "prompt_style_selector", "prompt_style_group", )
-    FUNCTION = "demux"
-
-    CATEGORY = "Searge/UI/Generated"
-
-    def demux(self, parameters):
-        operation_selector = parameters["operation_selector"]
-        prompt_style_selector = parameters["prompt_style_selector"]
-        prompt_style_group = parameters["prompt_style_group"]
-
-        return (parameters, operation_selector, prompt_style_selector, prompt_style_group, )
+from inspect import currentframe, getframeinfo
+from pathlib import Path
+
+from comfy.samplers import KSampler
+
+from .custom_sdxl_ksampler import CfgMethods
+
+
+# ====================================================================================================
+# UI: Constants, lists, definitions
+# ====================================================================================================
+
+class Defs:
+    DEV_MODE = True  # do NOT disable this in test releases or things will break, some required code is missing
+
+    VERSION = "3.991-dev" if DEV_MODE else "4.0"
+
+    WORKFLOW_VERSIONS = [
+        "3.991-dev",
+    ] if DEV_MODE else [
+        "4.0",
+    ]
+
+    # --- don't touch these ---
+    CLASS_POSTFIX = "Dev" if DEV_MODE else ""
+    CATEGORY = "Searge-Dev" if DEV_MODE else "Searge"
+    EXTENSION_PATH = str(Path(getframeinfo(currentframe()).filename).resolve().parent.parent)
+
+
+# ====================================================================================================
+# UI: Constants, lists, definitions
+# ====================================================================================================
+
+class UI:
+    CATEGORY_DEBUG = f"{Defs.CATEGORY}/Debug"
+    CATEGORY_MAGIC = f"{Defs.CATEGORY}/Magic"
+    CATEGORY_MAGIC_CUSTOM_STAGES = f"{Defs.CATEGORY}/Magic/Custom Stages"
+    CATEGORY_SAMPLING = f"{Defs.CATEGORY}/Sampling"
+    CATEGORY_UI = f"{Defs.CATEGORY}/UI"
+    CATEGORY_UI_INPUTS = f"{Defs.CATEGORY}/UI/Inputs"
+    CATEGORY_UI_PROMPTING = f"{Defs.CATEGORY}/UI/Prompting"
+
+    MAX_RESOLUTION = nodes.MAX_RESOLUTION
+
+    EXAMPLE = "example"
+
+    # ================================================================================
+    # Selections
+    # ================================================================================
+
+    NONE = "none"
+    CUSTOM = "custom"
+    USE_SETTINGS = "none - use settings"
+
+    VAE_FROM_BASE_MODEL = "from base model"
+    VAE_FROM_REFINER_MODEL = "from refiner model"
+
+    VAE_SOURCES = [
+        VAE_FROM_BASE_MODEL,
+        VAE_FROM_REFINER_MODEL,
+    ]
+
+    WF_MODE_TEXT_TO_IMAGE = "text-to-image"
+    WF_MODE_IMAGE_TO_IMAGE = "image-to-image"
+    WF_MODE_IN_PAINTING = "in-painting"
+
+    WORKFLOW_MODES = [
+        NONE,
+        WF_MODE_TEXT_TO_IMAGE,
+        WF_MODE_IMAGE_TO_IMAGE,
+        WF_MODE_IN_PAINTING,
+    ]
+
+    PROMPTING_DEFAULT = "default - all prompts"
+    PROMPTING_MAIN_AND_NEGATIVE_ONLY = "main and neg. only"
+    PROMPTING_MAIN_SECONDARY_AND_NEGATIVE = "main, sec., and neg."
+    PROMPTING_MAIN_ALL_EXCEPT_SECONDARY = "all except sec."
+
+    PROMPTING_MODES = [
+        PROMPTING_DEFAULT,
+        CUSTOM,
+        PROMPTING_MAIN_AND_NEGATIVE_ONLY,
+        PROMPTING_MAIN_SECONDARY_AND_NEGATIVE,
+        PROMPTING_MAIN_ALL_EXCEPT_SECONDARY,
+    ]
+
+    SAMPLERS = KSampler.SAMPLERS
+    SCHEDULERS = KSampler.SCHEDULERS
+
+    SAMPLER_PRESET_DPMPP_2M_KARRAS = "1 - DPM++ 2M Karras"
+    SAMPLER_PRESET_EULER_A = "2 - Euler a"
+    SAMPLER_PRESET_DPMPP_2M_SDE_KARRAS = "3 - DPM++ 2M SDE Karras"
+    SAMPLER_PRESET_DPMPP_3M_SDE_EXPONENTIAL = "4 - DPM++ 3M SDE Exp"
+    SAMPLER_PRESET_DDIM_UNIFORM = "5 - DDIM Uniform"
+
+    SAMPLER_PRESETS = [
+        USE_SETTINGS,
+        SAMPLER_PRESET_DPMPP_2M_KARRAS,
+        SAMPLER_PRESET_EULER_A,
+        SAMPLER_PRESET_DPMPP_2M_SDE_KARRAS,
+        SAMPLER_PRESET_DPMPP_3M_SDE_EXPONENTIAL,
+        SAMPLER_PRESET_DDIM_UNIFORM,
+    ]
+
+    RESOLUTION_1024x1024 = "1024x1024 (1:1)"
+    RESOLUTION_1152x896 = "1152x896 (4:3)"
+    RESOLUTION_1216x832 = "1216x832 (3:2)"
+    RESOLUTION_1344x768 = "1344x768 (16:9)"
+    RESOLUTION_1536x640 = "1536x640 (21:9)"
+    RESOLUTION_896x1152 = "896x1152 (3:4)"
+    RESOLUTION_832x1216 = "832x1216 (2:3)"
+    RESOLUTION_768x1344 = "768x1344 (9:16)"
+    RESOLUTION_640x1536 = "640x1536 (9:21)"
+    RESOLUTION_FROM_IMAGE = "from source image"
+
+    RESOLUTION_PRESETS = [
+        USE_SETTINGS,
+        RESOLUTION_1024x1024,
+        RESOLUTION_1152x896,
+        RESOLUTION_1216x832,
+        RESOLUTION_1344x768,
+        RESOLUTION_1536x640,
+        RESOLUTION_896x1152,
+        RESOLUTION_832x1216,
+        RESOLUTION_768x1344,
+        RESOLUTION_640x1536,
+        RESOLUTION_FROM_IMAGE,
+    ]
+
+    SAVE_DISABLED = "none - don't save"
+    SAVE_TO_OUTPUT = "output"
+    SAVE_TO_OUTPUT_DATE = "output/%date%"
+    SAVE_TO_OUTPUT_SEARGE_SDXL_DATE = "output/Searge-SDXL-%date%"
+    SAVE_TO_INPUT = "input"
+
+    SAVE_FOLDERS = [
+        SAVE_DISABLED,
+        SAVE_TO_OUTPUT,
+        SAVE_TO_OUTPUT_DATE,
+        SAVE_TO_OUTPUT_SEARGE_SDXL_DATE,
+        SAVE_TO_INPUT,
+    ]
+
+    CFG_INTERPOLATE = CfgMethods.INTERPOLATE
+    CFG_RESCALE = CfgMethods.RESCALE
+    CFG_TONEMAP = CfgMethods.TONEMAP
+
+    DYNAMIC_CFG_METHODS = [
+        NONE,
+        CFG_INTERPOLATE,
+        CFG_RESCALE,
+        CFG_TONEMAP,
+    ]
+
+    DETAILER_NORMAL = "normal"
+    DETAILER_SOFT = "soft"
+    DETAILER_BLURRY = "blurry"
+    DETAILER_SOFT_BLURRY = "soft blurry"
+
+    LATENT_DETAILERS = [
+        NONE,
+        DETAILER_NORMAL,
+        DETAILER_SOFT,
+        DETAILER_BLURRY,
+        DETAILER_SOFT_BLURRY,
+    ]
+
+    HIRES_MODE_SIMPLE = "simple - fast"
+    HIRES_MODE_NORMAL = "normal"
+
+    HIRES_MODES = [
+        NONE,
+        HIRES_MODE_SIMPLE,
+        HIRES_MODE_NORMAL,
+    ]
+
+    HIRES_SCALE_1_25 = "1.25x"
+    HIRES_SCALE_1_5 = "1.5x"
+    HIRES_SCALE_2_0 = "2x"
+
+    HIRES_SCALE_FACTORS = [
+        HIRES_SCALE_1_25,
+        HIRES_SCALE_1_5,
+        HIRES_SCALE_2_0,
+    ]
+
+    PRECONDITION_MODE_GAUSSIAN = "gaussian"
+
+    PRECONDITION_MODES = [
+        NONE,
+        PRECONDITION_MODE_GAUSSIAN,
+    ]
+
+    UPSCALE_FACTOR_1_2 = "1.2x"
+    UPSCALE_FACTOR_1_25 = "1.25x"
+    UPSCALE_FACTOR_1_333 = "1.333x"
+    UPSCALE_FACTOR_1_5 = "1.5x"
+    UPSCALE_FACTOR_2_0 = "2.0x"
+    UPSCALE_FACTOR_3_0 = "3.0x"
+    UPSCALE_FACTOR_4_0 = "4.0x"
+
+    UPSCALE_FACTORS = [
+        NONE,
+        UPSCALE_FACTOR_1_2,
+        UPSCALE_FACTOR_1_25,
+        UPSCALE_FACTOR_1_333,
+        UPSCALE_FACTOR_1_5,
+        UPSCALE_FACTOR_2_0,
+        UPSCALE_FACTOR_3_0,
+        UPSCALE_FACTOR_4_0,
+    ]
+
+    MASK_MODE_DRAWN_FULL = "masked - full"
+    MASK_MODE_UPLOADED_FULL = "uploaded - full"
+
+    MASK_MODES = [
+        MASK_MODE_DRAWN_FULL,
+        MASK_MODE_UPLOADED_FULL,
+    ]
+
+    CN_MODE_REVISION = "revision"
+    CN_MODE_CANNY = "canny"
+    CN_MODE_DEPTH = "depth"
+    CN_MODE_RECOLOR = "recolor"
+    CN_MODE_SKETCH = "sketch"
+
+    CONTROLNET_MODES = [
+        NONE,
+        CN_MODE_REVISION,
+        CN_MODE_CANNY,
+        CN_MODE_DEPTH,
+        CN_MODE_RECOLOR,
+        CN_MODE_SKETCH,
+        CUSTOM,
+    ]
+
+    # ================================================================================
+    # Selection Methods
+    # ================================================================================
+
+    @staticmethod
+    def CHECKPOINTS():
+        return folder_paths.get_filename_list("checkpoints")
+
+    @staticmethod
+    def CHECKPOINTS_WITH_NONE():
+        return [UI.NONE] + folder_paths.get_filename_list("checkpoints")
+
+    @staticmethod
+    def VAE_WITH_EMBEDDED():
+        return UI.VAE_SOURCES + folder_paths.get_filename_list("vae")
+
+    @staticmethod
+    def UPSCALERS_WITH_NONE():
+        return [UI.NONE] + folder_paths.get_filename_list("upscale_models")
+
+    @staticmethod
+    def UPSCALERS_1x_WITH_NONE():
+        return [UI.NONE] + [fn for fn in folder_paths.get_filename_list("upscale_models") if fn.startswith("1x")]
+
+    @staticmethod
+    def UPSCALERS_4x_WITH_NONE():
+        return [UI.NONE] + [fn for fn in folder_paths.get_filename_list("upscale_models") if fn.startswith("4x")]
+
+    @staticmethod
+    def LORAS_WITH_NONE():
+        return [UI.NONE] + folder_paths.get_filename_list("loras")
+
+    @staticmethod
+    def CONTROLNETS_WITH_NONE():
+        return [UI.NONE] + folder_paths.get_filename_list("controlnet")
+
+    @staticmethod
+    def CLIP_VISION_WITH_NONE():
+        return [UI.NONE] + folder_paths.get_filename_list("clip_vision")
+
+    # ================================================================================
+    # PROCESSING
+    # ================================================================================
+
+    ALL_UI_INPUTS = []
+
+    S_EXAMPLE_STRUCTURE = "example_structure"
+    F_EXAMPLE_FIELD = "example_field"
+
+    # ================================================================================
+    # UI DATA OUTPUTS
+    # ================================================================================
+
+    # UI: Prompt Adapter
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_PROMPTS = "prompts"
+    ALL_UI_INPUTS += [S_PROMPTS]
+
+    F_MAIN_PROMPT = "main_prompt"
+    F_SECONDARY_PROMPT = "secondary_prompt"
+    F_STYLE_PROMPT = "style_prompt"
+    F_NEGATIVE_MAIN_PROMPT = "negative_main_prompt"
+    F_NEGATIVE_SECONDARY_PROMPT = "negative_secondary_prompt"
+    F_NEGATIVE_STYLE_PROMPT = "negative_style_prompt"
+
+    # UI: Prompt Adapter
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_IMAGE_INPUTS = "image_inputs"
+    ALL_UI_INPUTS += [S_IMAGE_INPUTS]
+
+    F_SOURCE_IMAGE = "source_image"
+    F_SOURCE_IMAGE_CHANGED = "source_image_changed"
+    F_IMAGE_MASK = "image_mask"
+    F_IMAGE_MASK_CHANGED = "image_mask_changed"
+    F_UPLOADED_MASK = "uploaded_mask"
+    F_UPLOADED_MASK_CHANGED = "uploaded_mask_changed"
+
+    # UI: Controlnet Models
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_CONTROLNET_MODELS = "controlnet_models"
+    ALL_UI_INPUTS += [S_CONTROLNET_MODELS]
+
+    F_CLIP_VISION_CHECKPOINT = "clip_vision_checkpoint"
+    F_CANNY_CHECKPOINT = "canny_checkpoint"
+    F_DEPTH_CHECKPOINT = "depth_checkpoint"
+    F_RECOLOR_CHECKPOINT = "recolor_checkpoint"
+    F_SKETCH_CHECKPOINT = "sketch_checkpoint"
+    F_CUSTOM_CHECKPOINT = "custom_checkpoint"
+
+    # UI: Controlnet Adapter
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_CONTROLNET_INPUTS = "controlnet_inputs"
+    ALL_UI_INPUTS += [S_CONTROLNET_INPUTS]
+
+    F_CN_STACK = "cn_stack"
+
+    # per controlnet settings
+    F_REV_CN_IMAGE = "cn_image"
+    F_REV_CN_IMAGE_CHANGED = "cn_image_changed"
+    F_REV_CN_MODE = "cn_pre_mode"
+    F_CN_PRE_PROCESSOR = "cn_pre_processor"
+    F_REV_CN_STRENGTH = "cn_rev_strength"
+    F_CN_LOW_THRESHOLD = "cn_low_threshold"
+    F_CN_HIGH_THRESHOLD = "cn_high_threshold"
+    F_CN_START = "cn_start"
+    F_CN_END = "cn_end"
+    F_REV_NOISE_AUGMENTATION = "rev_noise_augmentation"
+    F_REV_ENHANCER = "rev_enhancer"
+
+    # UI: Model Selector
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_CHECKPOINTS = "checkpoints"
+    ALL_UI_INPUTS += [S_CHECKPOINTS]
+
+    F_BASE_CHECKPOINT = "base_checkpoint"
+    F_REFINER_CHECKPOINT = "refiner_checkpoint"
+    F_VAE_CHECKPOINT = "vae_checkpoint"
+
+    # UI: Generation Parameters
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_GENERATION_PARAMETERS = "generation_parameters"
+    ALL_UI_INPUTS += [S_GENERATION_PARAMETERS]
+
+    F_SEED = "seed"
+    F_IMAGE_SIZE_PRESET = "image_size_preset"
+    F_IMAGE_WIDTH = "image_width"
+    F_IMAGE_HEIGHT = "image_height"
+    F_STEPS = "steps"
+    F_CFG = "cfg"
+    F_SAMPLER_PRESET = "sampler_preset"
+    F_SAMPLER_NAME = "sampler_name"
+    F_SCHEDULER = "scheduler"
+    F_BASE_VS_REFINER_RATIO = "base_vs_refiner_ratio"
+
+    # UI: Conditioning Parameters
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_CONDITIONING_PARAMETERS = "conditioning_parameters"
+    ALL_UI_INPUTS += [S_CONDITIONING_PARAMETERS]
+
+    F_BASE_CONDITIONING_SCALE = "base_conditioning_scale"
+    F_REFINER_CONDITIONING_SCALE = "refiner_conditioning_scale"
+    F_TARGET_CONDITIONING_SCALE = "target_conditioning_scale"
+    F_POSITIVE_CONDITIONING_SCALE = "positive_conditioning_scale"
+    F_NEGATIVE_CONDITIONING_SCALE = "negative_conditioning_scale"
+    F_POSITIVE_AESTHETIC_SCORE = "positive_aesthetic_score"
+    F_NEGATIVE_AESTHETIC_SCORE = "negative_aesthetic_score"
+    F_PRECONDITION_MODE = "precondition_mode"
+    F_PRECONDITION_STRENGTH = "precondition_strength"
+
+    # UI: Advanced Parameters
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_ADVANCED_PARAMETERS = "advanced_parameters"
+    ALL_UI_INPUTS += [S_ADVANCED_PARAMETERS]
+
+    F_DYNAMIC_CFG_METHOD = "dynamic_cfg_method"
+    F_DYNAMIC_CFG_FACTOR = "dynamic_cfg_factor"
+    F_REFINER_DETAIL_BOOST = "refiner_detail_boost"
+    F_CONTRAST_FACTOR = "contrast_factor"
+    F_SATURATION_FACTOR = "saturation_factor"
+    F_LATENT_DETAILER = "latent_detailer"
+
+    # UI: Image Saving
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_IMAGE_SAVING = "image_saving"
+    ALL_UI_INPUTS += [S_IMAGE_SAVING]
+
+    F_SAVE_PARAMETERS_FILE = "save_parameters_file",
+    F_SAVE_FOLDER = "save_folder",
+    F_SAVE_GENERATED_IMAGE = "save_generated_image",
+    F_EMBED_WORKFLOW_IN_GENERATED = "embed_workflow_in_generated",
+    F_GENERATED_IMAGE_NAME = "generated_image_name",
+    F_SAVE_HIGH_RES_IMAGE = "save_high_res_image",
+    F_EMBED_WORKFLOW_IN_HIGH_RES = "embed_workflow_in_high_res",
+    F_HIGH_RES_IMAGE_NAME = "high_res_image_name",
+    F_SAVE_UPSCALED_IMAGE = "save_upscaled_image",
+    F_EMBED_WORKFLOW_IN_UPSCALED = "embed_workflow_in_upscaled",
+    F_UPSCALED_IMAGE_NAME = "upscaled_image_name",
+
+    # UI: Operating Mode
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_OPERATING_MODE = "operating_mode"
+    ALL_UI_INPUTS += [S_OPERATING_MODE]
+
+    F_WORKFLOW_MODE = "workflow_mode"
+    F_PROMPTING_MODE = "prompting_mode"
+    F_BATCH_SIZE = "batch_size"
+
+    # UI: Operating Mode
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_IMG2IMG_INPAINTING = "img2img_inpainting"
+    ALL_UI_INPUTS += [S_IMG2IMG_INPAINTING]
+
+    F_DENOISE = "denoise"
+    F_INPAINT_MASK_BLUR = "inpaint_mask_blur"
+    F_INPAINT_MASK_MODE = "inpaint_mask_mode"
+
+    # UI: Custom Prompt Mode
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_CUSTOM_PROMPTING = "custom_prompting"
+    ALL_UI_INPUTS += [S_CUSTOM_PROMPTING]
+
+    # UI: Prompt Styles
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_PROMPT_STYLING = "prompt_styling"
+    ALL_UI_INPUTS += [S_PROMPT_STYLING]
+
+    # UI: High Resolution
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_HIGH_RESOLUTION = "high_resolution"
+    ALL_UI_INPUTS += [S_HIGH_RESOLUTION]
+
+    F_HIRES_MODE = "hires_mode"
+    F_HIRES_SCALE = "hires_scale"
+    F_HIRES_DENOISE = "hires_denoise"
+    F_HIRES_SOFTNESS = "hires_softness"
+    F_HIRES_DETAIL_BOOST = "hires_detail_boost"
+    F_HIRES_CONTRAST_FACTOR = "hires_contrast_factor"
+    F_HIRES_SATURATION_FACTOR = "hires_saturation_factor"
+    F_HIRES_LATENT_DETAILER = "hires_latent_detailer"
+    F_FINAL_UPSCALE_SIZE = "final_upscale_size"
+
+    # UI: Condition Mixing
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_CONDITION_MIXING = "condition_mixing"
+    ALL_UI_INPUTS += [S_CONDITION_MIXING]
+
+    # UI: Upscale Models
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_UPSCALE_MODELS = "upscale_models"
+    ALL_UI_INPUTS += [S_UPSCALE_MODELS]
+
+    F_HIGH_RES_UPSCALER = "high_res_upscaler"
+    F_PRIMARY_UPSCALER = "primary_upscaler"
+    F_SECONDARY_UPSCALER = "secondary_upscaler"
+    F_DETAIL_PROCESSOR = "detail_processor"
+
+    # UI: Loras
+    # --------------------------------------------------------------------------------
+    # output structure and field names
+    S_LORAS = "loras"
+    ALL_UI_INPUTS += [S_LORAS]
+
+    F_LORA_STACK = "lora_stack"
+
+    # per lora settings
+    F_LORA_NAME = "lora_name"
+    F_LORA_STRENGTH = "lora_strength"

@@ -26,6 +26,27 @@ SOFTWARE.
 
 """
 
-from .ui import Defs
+from .ui import UI
 
-print("Searge-SDXL v" + Defs.VERSION + ("-dev" if Defs.DEV_MODE else "") + " in " + Defs.EXTENSION_PATH)
+
+# ====================================================================================================
+# Text input node for prompt text
+# ====================================================================================================
+
+class SeargeTextInputV2:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True},),
+            },
+        }
+
+    RETURN_TYPES = ("SRG_PROMPT_TEXT",)
+    RETURN_NAMES = ("prompt_text",)
+    FUNCTION = "get_value"
+
+    CATEGORY = UI.CATEGORY_UI_PROMPTING
+
+    def get_value(self, prompt):
+        return (prompt,)
