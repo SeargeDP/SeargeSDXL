@@ -152,6 +152,13 @@ important element on the screen at the same time without scrolling.
 Starting from version 3.0 all 3 operating modes (text-to-image, image-to-image, and inpainting) are available
 from the same workflow and can be switched with an option.
 
+## Video
+
+[The amazing Youtube channel Nerdy Rodent has a video about this workflow](https://www.youtube.com/watch?v=_Qi0Dgrz1TM).
+
+*(and while you are watching the video, don't forget to subscribe to their channel)*
+
+
 ## Reborn Workflow v3.x Operating Modes
 
 <img src="https://github.com/SeargeDP/SeargeSDXL/blob/main/example/UI-operation-mode.png" width="512">
