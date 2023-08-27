@@ -124,8 +124,8 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         elif cfg_method == CfgMethods.TONEMAP and dynamic_base_cfg > 0.0:
             base_model.set_model_sampler_cfg_function(base_tonemap_reinhard)
 
-    base_models = comfy.sample.get_additional_models(base_positive, base_negative)
-    comfy.model_management.load_models_gpu([base_model] + base_models, comfy.model_management.batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]))
+    base_models, inference_memory = comfy.sample.get_additional_models(base_positive, base_negative, base_model.model_dtype())
+    comfy.model_management.load_models_gpu([base_model] + base_models, comfy.model_management.batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory)
 
     real_base_model = base_model.model
 
@@ -232,8 +232,8 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         elif cfg_method == CfgMethods.TONEMAP and dynamic_refiner_cfg > 0.0:
             refiner_model.set_model_sampler_cfg_function(refiner_tonemap_reinhard)
 
-    refiner_models = comfy.sample.get_additional_models(refiner_positive, refiner_negative)
-    comfy.model_management.load_models_gpu([refiner_model] + refiner_models, comfy.model_management.batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]))
+    refiner_models, inference_memory = comfy.sample.get_additional_models(refiner_positive, refiner_negative, refiner_model.model_dtype())
+    comfy.model_management.load_models_gpu([refiner_model] + refiner_models, comfy.model_management.batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory)
 
     real_refiner_model = refiner_model.model
 
