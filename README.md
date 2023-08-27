@@ -62,6 +62,9 @@ Instead of having separate workflows for different tasks, everything is integrat
 
 # Installing and Updating
 
+**Note:** Before using the workflow, you may have to run the command `python.exe -m pip install opencv-python` once in
+the `python_embeded` folder of ComfyUI to install a required python dependency.
+
 ## Recommended Installation of the Test Version
 
 - Download and unpack the latest test release from the [Searge SDXL CivitAI page](https://civitai.com/models/111463) or
