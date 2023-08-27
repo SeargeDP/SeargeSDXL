@@ -118,7 +118,7 @@ I recommend to **download and copy all** these files *(the required, recommended
   - *(you should select this as the high-res upscaler on the workflow)*
 
 
-- *(optional)* download [1x-ITF-SkinDiffDetail-Lite-v1 (20 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_Nickelback_70000G.pth) and copy it into `ComfyUI/models/upscale_models`
+- *(optional)* download [1x-ITF-SkinDiffDetail-Lite-v1 (20 MB)](https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/1x-ITF-SkinDiffDetail-Lite-v1.pth) and copy it into `ComfyUI/models/upscale_models`
   - *(you can select this as the detail processor on the workflow)*
 
 
