@@ -179,9 +179,10 @@ Find information about the latest changes here.
 - ... (TODO: list more major highlights)
 
 ### Smaller Changes and Additions 
-- Workflows created with this extension and metadata embeddings in generated images are forward-compatible with
-future updates of this project
-- The custom node extension included in this project is backward-compatible with every workflow since version v3.3
+- ~~Workflows created with this extension and metadata embeddings in generated images are forward-compatible with
+future updates of this project~~
+- ~~The custom node extension included in this project is backward-compatible with every workflow since version v3.3~~
+- (compatibility is not part of the public test versions, it will be back when v4.0 is released)
 - ... (TODO: list more smaller changes)
 
 <br><img src="docs/img/main_readme/ui-3.png" width="768">
