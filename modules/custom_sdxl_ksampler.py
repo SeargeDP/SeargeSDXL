@@ -194,7 +194,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     noise = torch.zeros(base_samples.size(), dtype=base_samples.dtype, layout=base_samples.layout, device=device)
 
     if refiner_steps < 1:
-        return base_samples
+        return base_samples.cpu()
 
     if refiner_detail_boost > 0.0:
         new_noise = comfy.sample.prepare_noise(original_latent, seed + 1, batch_inds).to(device)
