@@ -1,22 +1,15 @@
 
-# Searge-SDXL: EVOLVED ~~v4.x~~ 3.999 for ComfyUI
+# Searge-SDXL: EVOLVED v4.x for ComfyUI
 
 *Custom nodes extension* for [ComfyUI](https://github.com/comfyanonymous/ComfyUI),
 **including a workflow** to use *SDXL 1.0* with both the *base and refiner* checkpoints.
-
-
-## This is the release candidate for v4.0
-
-This is the last test version before version 4.0 is released. If no major issues are reported, this will be the
-same as v4.0 - apart from some minor tweaks like updating the version number.
 
 
 
 # Table of Content
 
 <!-- TOC -->
-* [Searge-SDXL: EVOLVED ~~v4.x~~ 3.999 for ComfyUI](#searge-sdxl-evolved-v4x-3999-for-comfyui)
-  * [This is the release candidate for v4.0](#this-is-the-release-candidate-for-v40)
+* [Searge-SDXL: EVOLVED v4.x for ComfyUI](#searge-sdxl-evolved-v4x-for-comfyui)
 * [Table of Content](#table-of-content)
 * [Version 4.0](#version-40)
     * [Always use the latest version of the workflow json file with the latest version of the custom nodes!](#always-use-the-latest-version-of-the-workflow-json-file-with-the-latest-version-of-the-custom-nodes)
@@ -62,15 +55,13 @@ Instead of having separate workflows for different tasks, everything is integrat
 
 - For this to work properly, it needs to be used with the portable version of ComfyUI for Windows, read more about it
 in the ComfyUI readme file 
-- Download [this new install script](https://github.com/SeargeDP/SeargeSDXL/releases/download/v3.991/SeargeSDXL-Installer.zip)
+- Download [this new install script](https://github.com/SeargeDP/SeargeSDXL/releases/download/v3.999/SeargeSDXL-Installer.zip)
 and unpack it into the `ComfyUI_windows_portable` directory
 - You should now have `SeargeSDXL-Installer.bat` and `SeargeSDXL-Installer.py` in the same directory as the ComfyUI
 `run_cpu.bat` and `run_nvidia_gpu.bat`
 - To verify that you are using the portable version, check if the directory `python_embeded` also exists in the same
 directory that you unpacked these install scripts to
 - Run the `SeargeSDXL-Installer.bat` script and follow the instructions on screen
-- During the public test phase, before v4.0 is released, you should switch to the test branch when the install script
-asks which branch to use
 
 ![Install Scripts](docs/img/installer.png)
 ![Install Script Running](docs/img/installer-models.png)

@@ -2369,7 +2369,7 @@
         1024,
         1024,
         30,
-        5,
+        4,
         "1 - DPM++ 2M Karras",
         "dpmpp_2m",
         "karras",
@@ -2593,7 +2593,7 @@
         "text": ""
       },
       "widgets_values": [
-        " Searge-SDXL: EVOLVED Workflow for SDXL 1.0  |  Version 3.999 updated on Aug 29, 2023\n\n    !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n More information about using this workflow is next to the upscaled image preview -=>\n                      ( 1.25 x 1.2 = 1.5  |  1.5 x 1.333 = 2.0 )"
+        "  Searge-SDXL: EVOLVED Workflow for SDXL 1.0  |  Version 4.0 updated on Aug 31, 2023\n\n    !!! REQUIRES CUSTOM NODE EXTENSION: https://github.com/SeargeDP/SeargeSDXL !!!\n\n More information about using this workflow is next to the upscaled image preview -=>\n                      ( 1.25 x 1.2 = 1.5  |  1.5 x 1.333 = 2.0 )"
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -3046,7 +3046,7 @@
         "text": ""
       },
       "widgets_values": [
-        "\n Searge-SDXL v20230829.0815-beta-unstable-prerelease-0.007-sneak-preview-6\n\n [TODO: add description here]\n"
+        "\n Searge-SDXL v20230831.0815-beta-unstable-prerelease-0.007-sneak-preview-7\n\n [TODO: add description here]\n"
       ],
       "color": "#222",
       "bgcolor": "#000"
@@ -3514,7 +3514,7 @@
         6,
         2.5,
         "gaussian",
-        0.1
+        0.5
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -3559,14 +3559,14 @@
         "Node name for S&R": "SeargeHighResolution"
       },
       "widgets_values": [
-        "none",
+        "normal",
         "1.5x",
-        0.2,
+        0.25,
         0.1,
-        0.5,
+        0.7,
         0.05,
         0.1,
-        "none",
+        "normal",
         "none"
       ],
       "color": "#233",
@@ -3613,10 +3613,10 @@
       "widgets_values": [
         "rescale",
         0.5,
-        0.25,
-        0.05,
+        0.55,
         0.1,
-        "none"
+        0.2,
+        "soft"
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
@@ -4506,7 +4506,7 @@
       },
       "widgets_values": [
         "1x-ITF-SkinDiffDetail-Lite-v1.pth",
-        "4x_Nickelback_70000G.pth",
+        "4x-UltraSharp.pth",
         "4x-UltraSharp.pth",
         "4x_NMKD-Siax_200k.pth"
       ],
@@ -4652,7 +4652,7 @@
         "Node name for S&R": "SeargePipelineStart"
       },
       "widgets_values": [
-        "3.999-RC"
+        "4.0"
       ],
       "color": "#222",
       "bgcolor": "#000"
