@@ -69,6 +69,8 @@ directory that you unpacked these install scripts to
 
 ## Manual Installation
 
+- If you are not using the install script, you have to run the command `python -m pip install opencv-python` in the
+python environment for ComfyUI at least once, to install a required dependency
 - Navigate to your `ComfyUI/custom_nodes/` directory
 - Open a command line window in the *custom_nodes* directory
 - Run `git clone https://github.com/SeargeDP/SeargeSDXL.git`
