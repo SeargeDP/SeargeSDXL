@@ -73,6 +73,9 @@ def new_unet_forward(self, x, timesteps=None, context=None, y=None, control=None
     if "uc_mask" in transformer_options:
         uc_mask = transformer_options["uc_mask"]
 
+        count = timesteps.shape[0] // uc_mask.shape[0]
+        uc_mask = uc_mask.repeat(count, 1, 1, 1)
+
         sharpness = 2.0
         alpha = 1.0 - (timesteps / 999.0)[:, None, None, None].clone()
         alpha *= 0.001 * sharpness

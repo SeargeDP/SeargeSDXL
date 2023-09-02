@@ -97,7 +97,7 @@ class SeargeDebugPrinter:
                 print(prefix + spaces + key + '"' + v + '",')
             elif isinstance(v, dict):
                 # dirty hack: we don't need to print the whole workflow and prompt
-                if k != Names.MAGIC_BOX_HIDDEN:
+                if k != Names.S_MAGIC_BOX_HIDDEN:
                     print(prefix + spaces + key + '{')
                     print_dict(v, ind + 1, '"', True)
                     print(prefix + spaces + '},')
