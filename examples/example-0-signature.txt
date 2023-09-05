@@ -1,7 +1,7 @@
 {
     "version_info": {
-        "extension_version": "4.0",
-        "workflow_version": "4.0"
+        "extension_version": "4.1",
+        "workflow_version": "4.1"
     },
     "prompts": {
         "main_prompt": "a close up of a person wearing a suit and tie, peaky blinders (2018), attractive androgynous humanoid, wearing teal beanie, william dafoe, beige fedora, in roger deakins style, fire behind him, jaguar, red ascot and a field cap, robe, perfect face, ripley scott, mummy",

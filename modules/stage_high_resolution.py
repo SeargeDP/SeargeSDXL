@@ -108,6 +108,8 @@ class SeargeStageHighResolution:
         hires_detail_boost = access.get_active_setting(UI.S_HIGH_RESOLUTION, UI.F_HIRES_DETAIL_BOOST, 0.0)
         hires_detailer = access.get_active_setting(UI.S_HIGH_RESOLUTION, UI.F_HIRES_LATENT_DETAILER, UI.NONE)
 
+        hires_detailer_enabled = hires_detailer != UI.NONE
+
         if not has_refiner:
             refiner_model = None
             refiner_positive = None
@@ -205,7 +207,7 @@ class SeargeStageHighResolution:
                 new_width,
                 new_height,
                 hires_softness,
-                hires_detailer,
+                hires_detailer_enabled,
             ]
 
             any_changes = (
@@ -230,7 +232,7 @@ class SeargeStageHighResolution:
                             if scaled_width != 4 * image_width or scaled_height != 4 * image_height:
                                 print("Warning: high res upscaler should be a 4x ESRGAN model")
 
-                        if detail_processor is not None and hires_detailer != UI.NONE:
+                        if detail_processor is not None and hires_detailer_enabled:
                             upscaled = NodeWrapper.scale_with_model.upscale(detail_processor, upscaled)[0]
                             (detailed_width, detailed_height) = get_image_size(upscaled)
                             if detailed_width != scaled_width or detailed_height != scaled_height:

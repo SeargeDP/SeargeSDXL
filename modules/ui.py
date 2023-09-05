@@ -44,13 +44,14 @@ from .custom_sdxl_ksampler import CfgMethods
 class Defs:
     DEV_MODE = False
 
-    VERSION = "3.999" if DEV_MODE else "4.0"
+    VERSION = "3.999" if DEV_MODE else "4.1"
 
     WORKFLOW_VERSIONS = [
         "3.991-dev",
         "3.999-RC",
     ] if DEV_MODE else [
         "4.0",
+        "4.1",
     ]
 
     # --- don't touch these ---
