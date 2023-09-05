@@ -11,7 +11,7 @@
 <!-- TOC -->
 * [Searge-SDXL: EVOLVED v4.x for ComfyUI](#searge-sdxl-evolved-v4x-for-comfyui)
 * [Table of Content](#table-of-content)
-* [Version 4.0](#version-40)
+* [Version 4.1](#version-41)
     * [Always use the latest version of the workflow json file with the latest version of the custom nodes!](#always-use-the-latest-version-of-the-workflow-json-file-with-the-latest-version-of-the-custom-nodes)
 * [Installing and Updating](#installing-and-updating)
   * [New and Recommended Installation (Windows)](#new-and-recommended-installation-windows)
@@ -22,6 +22,9 @@
     * [Description](#description)
     * [Direct Downloads](#direct-downloads)
 * [Updates](#updates)
+  * [What's new in v4.1?](#whats-new-in-v41)
+    * [Bug Fixes](#bug-fixes)
+    * [Other Changes](#other-changes)
   * [What's new in v4.0?](#whats-new-in-v40)
     * [Major Highlights](#major-highlights)
     * [Smaller Changes and Additions](#smaller-changes-and-additions-)
