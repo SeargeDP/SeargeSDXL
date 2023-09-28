@@ -11,7 +11,7 @@
 <!-- TOC -->
 * [Searge-SDXL: EVOLVED v4.x for ComfyUI](#searge-sdxl-evolved-v4x-for-comfyui)
 * [Table of Content](#table-of-content)
-* [Version 4.1](#version-41)
+* [Version 4.2](#version-42)
     * [Always use the latest version of the workflow json file with the latest version of the custom nodes!](#always-use-the-latest-version-of-the-workflow-json-file-with-the-latest-version-of-the-custom-nodes)
 * [Installing and Updating](#installing-and-updating)
   * [New and Recommended Installation (Windows)](#new-and-recommended-installation-windows)
@@ -22,8 +22,11 @@
     * [Description](#description)
     * [Direct Downloads](#direct-downloads)
 * [Updates](#updates)
-  * [What's new in v4.1?](#whats-new-in-v41)
+  * [What's new in v4.2?](#whats-new-in-v42)
     * [Bug Fixes](#bug-fixes)
+    * [New Features](#new-features)
+  * [What's new in v4.1?](#whats-new-in-v41)
+    * [Bug Fixes](#bug-fixes-1)
     * [Other Changes](#other-changes)
   * [What's new in v4.0?](#whats-new-in-v40)
     * [Major Highlights](#major-highlights)
@@ -41,7 +44,7 @@
 
 
 
-# Version 4.1
+# Version 4.2
 
 Instead of having separate workflows for different tasks, everything is integrated in **one workflow file**.
 
@@ -202,6 +205,19 @@ on the workflow. Do so by clicking on the filename in the workflow UI and select
 Find information about the latest changes here.
 
 
+## What's new in v4.2?
+This update contains bug fixes that address issues found after v4.0 was released.
+
+### Bug Fixes
+- A recent change in ComfyUI conflicted with my implementation of inpainting, this is now fixed and inpainting should
+work again
+
+### New Features
+- Support for FreeU has been added and is included in the v4.2 workflow
+- **Note:** the images in the example folder are still embedding v4.1 of the workflow, to use FreeU load the new
+workflow from the `.json` file in the `workflow` folder
+
+
 ## What's new in v4.1?
 This update contains bug fixes that address issues found after v4.0 was released.
 
@@ -234,8 +250,8 @@ future updates of this project
 
 ### What is missing in v4.0?
 Some features that were originally in v3.4 or planned for v4.x were not included in the v4.0 release, they are
-now planned for v4.1. This was decided to get this new version released earlier and the missing features should
-not be important for 99% of users.
+now planned for a future version. This was decided to get this new version released earlier and the missing features
+should not be important for 99% of users.
 
 So, what is actually missing?
 
