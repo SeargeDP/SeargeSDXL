@@ -31,6 +31,7 @@ import comfy_extras.nodes_mask
 import comfy_extras.nodes_post_processing
 import comfy_extras.nodes_clip_sdxl
 import comfy_extras.nodes_upscale_model
+import comfy_extras.nodes_freelunch
 
 from .custom_sdxl_ksampler import sdxl_ksampler
 from .ui import UI
@@ -47,6 +48,7 @@ class NodeWrapper:
     controlnet_advanced = nodes.ControlNetApplyAdvanced()
     controlnet_loader = nodes.ControlNetLoader()
     empty_latent = nodes.EmptyLatentImage()
+    freeu = comfy_extras.nodes_freelunch.FreeU()
     image_blend = comfy_extras.nodes_post_processing.Blend()
     image_blur = comfy_extras.nodes_post_processing.Blur()
     image_composite = comfy_extras.nodes_mask.ImageCompositeMasked()

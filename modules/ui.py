@@ -44,7 +44,7 @@ from .custom_sdxl_ksampler import CfgMethods
 class Defs:
     DEV_MODE = False
 
-    VERSION = "3.999" if DEV_MODE else "4.1"
+    VERSION = "3.999" if DEV_MODE else "4.2"
 
     WORKFLOW_VERSIONS = [
         "3.991-dev",
@@ -52,6 +52,7 @@ class Defs:
     ] if DEV_MODE else [
         "4.0",
         "4.1",
+        "4.2",
     ]
 
     # --- don't touch these ---
@@ -269,6 +270,20 @@ class UI:
         CN_MODE_RECOLOR,
         CN_MODE_SKETCH,
         CUSTOM,
+    ]
+
+    FREEU_DEFAULT = "default"
+    FREEU_SD_XL = "sdxl"
+    FREEU_SD_1_5 = "sd-1.5"
+    FREEU_SD_2_1 = "sd-2.1"
+
+    FREEU_MODES = [
+        NONE,
+        CUSTOM,
+        FREEU_DEFAULT,
+        FREEU_SD_XL,
+        FREEU_SD_2_1,
+        FREEU_SD_1_5,
     ]
 
     # ================================================================================
@@ -534,3 +549,12 @@ class UI:
     # per lora settings
     F_LORA_NAME = "lora_name"
     F_LORA_STRENGTH = "lora_strength"
+
+    S_FREEU = "freeu"
+    ALL_UI_INPUTS += [S_FREEU]
+
+    F_FREEU_MODE = "freeu_mode"
+    F_FREEU_B1 = "freeu_b1"
+    F_FREEU_B2 = "freeu_b2"
+    F_FREEU_S1 = "freeu_s1"
+    F_FREEU_S2 = "freeu_s2"

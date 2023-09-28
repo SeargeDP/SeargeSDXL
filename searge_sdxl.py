@@ -49,6 +49,7 @@ from .modules.ui_custom_prompt_mode import SeargeCustomPromptMode
 from .modules.ui_prompt_styles import SeargePromptStyles
 from .modules.ui_high_resolution import SeargeHighResolution
 from .modules.ui_condition_mixing import SeargeConditionMixing
+from .modules.ui_freeu import SeargeFreeU
 
 from .modules.magic_box import SeargeMagicBox
 from .modules.mb_pipeline_start import SeargePipelineStart
@@ -83,6 +84,7 @@ SEARGE_CLASS_MAPPINGS = {
     f"SeargeConditionMixing": SeargeConditionMixing,
     f"SeargeControlnetModels": SeargeControlnetModels,
     f"SeargeCustomPromptMode": SeargeCustomPromptMode,
+    f"SeargeFreeU": SeargeFreeU,
     f"SeargeGenerationParameters": SeargeGenerationParameters,
     f"SeargeHighResolution": SeargeHighResolution,
     f"SeargeImage2ImageAndInpainting": SeargeImage2ImageAndInpainting,
@@ -129,6 +131,7 @@ SEARGE_DISPLAY_NAME_MAPPINGS = {
     f"SeargeConditionMixing": "Condition Mixing v2",
     f"SeargeControlnetModels": "Controlnet Models Selector v2",
     f"SeargeCustomPromptMode": "Custom Prompt Mode v2",
+    f"SeargeFreeU": "FreeU v2",
     f"SeargeGenerationParameters": "Generation Parameters v2",
     f"SeargeHighResolution": "High Resolution v2",
     f"SeargeImage2ImageAndInpainting": "Image to Image and Inpainting v2",

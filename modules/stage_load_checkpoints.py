@@ -59,6 +59,41 @@ class SeargeStageLoadCheckpoints:
         if not access.is_pipeline_enabled():
             pass
 
+        freeu_mode = access.get_active_setting(UI.S_FREEU, UI.F_FREEU_MODE, UI.NONE)
+        freeu_changed = access.setting_changed(UI.S_FREEU, UI.F_FREEU_MODE)
+
+        if freeu_mode == UI.CUSTOM:
+            freeu_changed = freeu_changed or access.setting_changed(UI.S_FREEU, UI.F_FREEU_B1)
+            freeu_changed = freeu_changed or access.setting_changed(UI.S_FREEU, UI.F_FREEU_B2)
+            freeu_changed = freeu_changed or access.setting_changed(UI.S_FREEU, UI.F_FREEU_S1)
+            freeu_changed = freeu_changed or access.setting_changed(UI.S_FREEU, UI.F_FREEU_S2)
+
+        if freeu_mode == UI.FREEU_DEFAULT:
+            b1 = 1.0
+            b2 = 1.2
+            s1 = 0.9
+            s2 = 0.8
+        elif freeu_mode == UI.FREEU_SD_XL:
+            b1 = 1.1
+            b2 = 1.2
+            s1 = 0.6
+            s2 = 0.4
+        elif freeu_mode == UI.FREEU_SD_1_5:
+            b1 = 1.2
+            b2 = 1.4
+            s1 = 0.9
+            s2 = 0.2
+        elif freeu_mode == UI.FREEU_SD_2_1:
+            b1 = 1.1
+            b2 = 1.2
+            s1 = 0.9
+            s2 = 0.2
+        else:  # covers NONE and CUSTOM
+            b1 = access.get_active_setting(UI.S_FREEU, UI.F_FREEU_B1, 1.1)
+            b2 = access.get_active_setting(UI.S_FREEU, UI.F_FREEU_B2, 1.2)
+            s1 = access.get_active_setting(UI.S_FREEU, UI.F_FREEU_S1, 0.6)
+            s2 = access.get_active_setting(UI.S_FREEU, UI.F_FREEU_S2, 0.4)
+
         base_changed = access.setting_changed(UI.S_CHECKPOINTS, UI.F_BASE_CHECKPOINT)
         if base_changed:
             base_name = access.get_active_setting(UI.S_CHECKPOINTS, UI.F_BASE_CHECKPOINT)
@@ -73,10 +108,12 @@ class SeargeStageLoadCheckpoints:
             base_checkpoint = access.get_from_cache(Names.C_BASE_CHECKPOINT)
 
         base_model = base_checkpoint[0]
+        if freeu_mode is not None and freeu_mode != UI.NONE:
+            base_model = NodeWrapper.freeu.patch(base_model, b1, b2, s1, s2)[0]
         base_clip = base_checkpoint[1]
         base_vae = base_checkpoint[2]
 
-        if base_changed:
+        if base_changed or freeu_changed:
             access.update_in_pipeline(Names.P_BASE_MODEL, base_model, True)
             access.update_in_pipeline(Names.P_BASE_CLIP, base_clip, True)
             access.update_in_pipeline(Names.P_BASE_VAE, base_vae, True)
@@ -99,10 +136,12 @@ class SeargeStageLoadCheckpoints:
             refiner_checkpoint = access.get_from_cache(Names.C_REFINER_CHECKPOINT)
 
         refiner_model = refiner_checkpoint[0]
+        if freeu_mode is not None and freeu_mode != UI.NONE:
+            refiner_model = NodeWrapper.freeu.patch(refiner_model, b1, b2, s1, s2)[0]
         refiner_clip = refiner_checkpoint[1]
         refiner_vae = refiner_checkpoint[2]
 
-        if refiner_changed:
+        if refiner_changed or freeu_changed:
             access.update_in_pipeline(Names.P_REFINER_MODEL, refiner_model, True)
             access.update_in_pipeline(Names.P_REFINER_CLIP, refiner_clip, True)
             access.update_in_pipeline(Names.P_REFINER_VAE, refiner_vae, True)
