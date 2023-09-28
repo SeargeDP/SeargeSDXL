@@ -48,7 +48,7 @@ def get_mask_size(mask):
     if mask is None:
         return (None, None,)
 
-    (height, width) = mask.shape
+    (_, height, width) = mask.shape
 
     return (width, height,)
 
