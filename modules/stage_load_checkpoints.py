@@ -136,7 +136,7 @@ class SeargeStageLoadCheckpoints:
             refiner_checkpoint = access.get_from_cache(Names.C_REFINER_CHECKPOINT)
 
         refiner_model = refiner_checkpoint[0]
-        if freeu_mode is not None and freeu_mode != UI.NONE:
+        if freeu_mode is not None and freeu_mode != UI.NONE and refiner_model is not None:
             refiner_model = NodeWrapper.freeu.patch(refiner_model, b1, b2, s1, s2)[0]
         refiner_clip = refiner_checkpoint[1]
         refiner_vae = refiner_checkpoint[2]
