@@ -1,7 +1,7 @@
 {
     "version_info": {
-        "extension_version": "4.1",
-        "workflow_version": "4.1"
+        "extension_version": "4.3",
+        "workflow_version": "4.3"
     },
     "prompts": {
         "main_prompt": "a close up of a person wearing a suit and tie, peaky blinders (2018), attractive androgynous humanoid, wearing teal beanie, william dafoe, beige fedora, in roger deakins style, fire behind him, jaguar, red ascot and a field cap, robe, perfect face, ripley scott, mummy",
@@ -17,7 +17,7 @@
         "batch_size": 1
     },
     "generation_parameters": {
-        "seed": 56421668291,
+        "seed": 56421668299,
         "image_size_preset": "832x1216 (2:3)",
         "image_width": 832,
         "image_height": 1216,
@@ -60,7 +60,7 @@
         "hires_detail_boost": 0.5,
         "hires_contrast_factor": 0.05,
         "hires_saturation_factor": 0.1,
-        "hires_latent_detailer": "none",
+        "hires_latent_detailer": "normal",
         "final_upscale_size": "none"
     },
     "checkpoints": {
@@ -78,7 +78,7 @@
         "lora_stack": [
             {
                 "lora_name": "sd_xl_offset_example-lora_1.0.safetensors",
-                "lora_strength": 0.5
+                "lora_strength": 0.2
             },
             {
                 "lora_name": "none",
