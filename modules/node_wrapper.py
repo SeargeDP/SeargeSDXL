@@ -49,6 +49,7 @@ class NodeWrapper:
     controlnet_loader = nodes.ControlNetLoader()
     empty_latent = nodes.EmptyLatentImage()
     freeu = comfy_extras.nodes_freelunch.FreeU()
+    freeu_v2 = comfy_extras.nodes_freelunch.FreeU_V2()
     image_blend = comfy_extras.nodes_post_processing.Blend()
     image_blur = comfy_extras.nodes_post_processing.Blur()
     image_composite = comfy_extras.nodes_mask.ImageCompositeMasked()

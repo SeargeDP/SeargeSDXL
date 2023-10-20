@@ -44,7 +44,7 @@ from .custom_sdxl_ksampler import CfgMethods
 class Defs:
     DEV_MODE = False
 
-    VERSION = "3.999" if DEV_MODE else "4.2"
+    VERSION = "3.999" if DEV_MODE else "4.3"
 
     WORKFLOW_VERSIONS = [
         "3.991-dev",
@@ -53,6 +53,7 @@ class Defs:
         "4.0",
         "4.1",
         "4.2",
+        "4.3",
     ]
 
     # --- don't touch these ---
@@ -273,7 +274,10 @@ class UI:
     ]
 
     FREEU_DEFAULT = "default"
+    FREEU_SUBTLE = "subtle"
     FREEU_SD_XL = "sdxl"
+    FREEU_SD_XL_V2 = "freeu_v2-sdxl"
+    FREEU_DETAILED = "detailed"
     FREEU_SD_1_5 = "sd-1.5"
     FREEU_SD_2_1 = "sd-2.1"
 
@@ -281,9 +285,20 @@ class UI:
         NONE,
         CUSTOM,
         FREEU_DEFAULT,
+        FREEU_SUBTLE,
         FREEU_SD_XL,
+        FREEU_SD_XL_V2,
+        FREEU_DETAILED,
         FREEU_SD_2_1,
         FREEU_SD_1_5,
+    ]
+
+    FREEU_V1 = "freeu_v1"
+    FREEU_V2 = "freeu_v2"
+
+    FREEU_VERSION = [
+        FREEU_V1,
+        FREEU_V2,
     ]
 
     # ================================================================================
@@ -558,3 +573,4 @@ class UI:
     F_FREEU_B2 = "freeu_b2"
     F_FREEU_S1 = "freeu_s1"
     F_FREEU_S2 = "freeu_s2"
+    F_FREEU_VERSION = "freeu_version"

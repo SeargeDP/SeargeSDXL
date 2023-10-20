@@ -43,10 +43,11 @@ class SeargeFreeU:
         return {
             "required": {
                 "freeu_mode": (UI.FREEU_MODES,),
-                "b1": ("FLOAT", {"default": 1.1, "min": 1.0, "max": 1.2, "step": 0.01},),
-                "b2": ("FLOAT", {"default": 1.2, "min": 1.2, "max": 1.6, "step": 0.01},),
-                "s1": ("FLOAT", {"default": 0.6, "min": 0.0, "max": 1.0, "step": 0.05},),
-                "s2": ("FLOAT", {"default": 0.4, "min": 0.0, "max": 1.0, "step": 0.05},),
+                "b1": ("FLOAT", {"default": 1.3, "min": 1.0, "max": 1.4, "step": 0.01},),
+                "b2": ("FLOAT", {"default": 1.4, "min": 1.2, "max": 1.6, "step": 0.01},),
+                "s1": ("FLOAT", {"default": 0.9, "min": 0.0, "max": 1.0, "step": 0.05},),
+                "s2": ("FLOAT", {"default": 0.2, "min": 0.0, "max": 1.0, "step": 0.05},),
+                "freeu_version": (UI.FREEU_VERSION,),
             },
             "optional": {
                 "data": ("SRG_DATA_STREAM",),
@@ -60,16 +61,17 @@ class SeargeFreeU:
     CATEGORY = UI.CATEGORY_UI_INPUTS
 
     @staticmethod
-    def create_dict(freeu_mode, b1, b2, s1, s2):
+    def create_dict(freeu_mode, b1, b2, s1, s2, freeu_version):
         return {
             UI.F_FREEU_MODE: freeu_mode,
             UI.F_FREEU_B1: b1,
             UI.F_FREEU_B2: b2,
             UI.F_FREEU_S1: s1,
             UI.F_FREEU_S2: s2,
+            UI.F_FREEU_VERSION: freeu_version,
         }
 
-    def get(self, freeu_mode, b1, b2, s1, s2, data=None):
+    def get(self, freeu_mode, b1, b2, s1, s2, freeu_version, data=None):
         if data is None:
             data = {}
 
@@ -79,6 +81,7 @@ class SeargeFreeU:
             b2,
             s1,
             s2,
+            freeu_version,
         )
 
         return (data,)
