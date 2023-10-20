@@ -11,7 +11,7 @@
 <!-- TOC -->
 * [Searge-SDXL: EVOLVED v4.x for ComfyUI](#searge-sdxl-evolved-v4x-for-comfyui)
 * [Table of Content](#table-of-content)
-* [Version 4.2](#version-42)
+* [Version 4.3](#version-43)
     * [Always use the latest version of the workflow json file with the latest version of the custom nodes!](#always-use-the-latest-version-of-the-workflow-json-file-with-the-latest-version-of-the-custom-nodes)
 * [Installing and Updating](#installing-and-updating)
   * [New and Recommended Installation (Windows)](#new-and-recommended-installation-windows)
@@ -22,9 +22,11 @@
     * [Description](#description)
     * [Direct Downloads](#direct-downloads)
 * [Updates](#updates)
+  * [What's new in v4.3?](#whats-new-in-v43)
+    * [New Features](#new-features)
   * [What's new in v4.2?](#whats-new-in-v42)
     * [Bug Fixes](#bug-fixes)
-    * [New Features](#new-features)
+    * [New Features](#new-features-1)
   * [What's new in v4.1?](#whats-new-in-v41)
     * [Bug Fixes](#bug-fixes-1)
     * [Other Changes](#other-changes)
@@ -44,7 +46,7 @@
 
 
 
-# Version 4.2
+# Version 4.3
 
 Instead of having separate workflows for different tasks, everything is integrated in **one workflow file**.
 
@@ -203,6 +205,15 @@ on the workflow. Do so by clicking on the filename in the workflow UI and select
 # Updates
 
 Find information about the latest changes here.
+
+
+## What's new in v4.3?
+This update added support for FreeU v2 in addition to FreeU v1.
+
+### New Features
+- Support for FreeU v2 has been added and is included in the v4.3 workflow
+- Added more presets for FreeU and a selector to switch between v1 and v2
+- Updated the example images to embed the v4.3 workflow
 
 
 ## What's new in v4.2?
