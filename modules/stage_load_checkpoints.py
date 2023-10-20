@@ -61,7 +61,9 @@ class SeargeStageLoadCheckpoints:
 
         freeu_mode = access.get_active_setting(UI.S_FREEU, UI.F_FREEU_MODE, UI.NONE)
         freeu_changed = access.setting_changed(UI.S_FREEU, UI.F_FREEU_MODE)
+
         freeu_version = access.get_active_setting(UI.S_FREEU, UI.F_FREEU_VERSION, UI.FREEU_V1)
+        freeu_changed = freeu_changed or access.setting_changed(UI.S_FREEU, UI.F_FREEU_VERSION)
 
         if freeu_mode == UI.CUSTOM:
             freeu_changed = freeu_changed or access.setting_changed(UI.S_FREEU, UI.F_FREEU_B1)
