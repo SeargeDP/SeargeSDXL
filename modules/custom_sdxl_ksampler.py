@@ -181,8 +181,8 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     noise = noise.to(device)
     latent_image = latent_image.to(device)
 
-    pos_base_copy = comfy.sample.broadcast_cond(base_positive, noise.shape[0], device)
-    neg_base_copy = comfy.sample.broadcast_cond(base_negative, noise.shape[0], device)
+    pos_base_copy = comfy.sample.convert_cond(base_positive)
+    neg_base_copy = comfy.sample.convert_cond(base_negative)
 
     base_sampler = comfy.samplers.KSampler(real_base_model, steps=steps, device=device, sampler=sampler_name,
                                            scheduler=scheduler, denoise=denoise, model_options=base_model.model_options)
@@ -287,8 +287,8 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
 
     real_refiner_model = refiner_model.model
 
-    pos_refiner_copy = comfy.sample.broadcast_cond(refiner_positive, noise.shape[0], device)
-    neg_refiner_copy = comfy.sample.broadcast_cond(refiner_negative, noise.shape[0], device)
+    pos_refiner_copy = comfy.sample.convert_cond(refiner_positive)
+    neg_refiner_copy = comfy.sample.convert_cond(refiner_negative)
 
     refiner_sampler = comfy.samplers.KSampler(real_refiner_model, steps=steps, device=device, sampler=sampler_name,
                                               scheduler=scheduler, denoise=denoise,
