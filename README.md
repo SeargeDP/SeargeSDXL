@@ -22,6 +22,7 @@
     * [Description](#description)
     * [Direct Downloads](#direct-downloads)
 * [Updates](#updates)
+  * [What's new in v4.3.1?](#whats-new-in-v431)
   * [What's new in v4.3?](#whats-new-in-v43)
     * [New Features](#new-features)
   * [What's new in v4.2?](#whats-new-in-v42)
@@ -205,6 +206,10 @@ on the workflow. Do so by clicking on the filename in the workflow UI and select
 # Updates
 
 Find information about the latest changes here.
+
+
+## What's new in v4.3.1?
+This is a minor update to make the workflow and custom node extension compatible with the latest changes in ComfyUI.
 
 
 ## What's new in v4.3?
