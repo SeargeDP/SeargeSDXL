@@ -35,7 +35,7 @@ import comfy.utils
 import latent_preview
 
 from comfy.ldm.modules.diffusionmodules.openaimodel import UNetModel
-from comfy.model_management import get_torch_device, batch_area_memory, load_models_gpu
+from comfy.model_management import get_torch_device, load_models_gpu
 
 from .utils import slerp_latents
 from .utils import bilateral_blur
@@ -171,7 +171,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     base_models, inference_memory = comfy.sample.get_additional_models(base_positive, base_negative,
                                                                        base_model.model_dtype())
 
-    memory_required = batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory
+    memory_required = base_model.memory_required(noise.shape) + inference_memory
     load_models_gpu([base_model] + base_models, memory_required)
 
     real_base_model = base_model.model
@@ -282,7 +282,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     refiner_models, inference_memory = comfy.sample.get_additional_models(refiner_positive, refiner_negative,
                                                                           refiner_model.model_dtype())
 
-    memory_required = batch_area_memory(noise.shape[0] * noise.shape[2] * noise.shape[3]) + inference_memory
+    memory_required = refiner_model.memory_required(noise.shape) + inference_memory
     load_models_gpu([refiner_model] + refiner_models, memory_required)
 
     real_refiner_model = refiner_model.model
