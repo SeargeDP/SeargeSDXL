@@ -553,4 +553,4 @@ elif running_in_comfy_portable or running_in_extension_directory:
 
 else:
     print(f"Not running in the correct directory or {EMBEDDED_PYTHON_DIR_NAME} could not be found, "
-          "we are in {os.getcwd()}\n")
+          f"we are in {os.getcwd()}\n")
