@@ -31,6 +31,8 @@ import warnings
 
 import comfy.sample
 import comfy.samplers
+import comfy.sampler_helpers
+
 import comfy.utils
 import latent_preview
 
@@ -99,7 +101,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     device = get_torch_device()
 
     if noise_mask is not None:
-        noise_mask = comfy.sample.prepare_mask(noise_mask, noise.shape, device)
+        noise_mask = comfy.sampler_helpers.prepare_mask(noise_mask, noise.shape, device)
 
     steps = base_steps + refiner_steps
 
@@ -167,8 +169,12 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
             base_model.set_model_sampler_cfg_function(base_rescale_cfg)
         elif cfg_method == CfgMethods.TONEMAP and dynamic_base_cfg > 0.0:
             base_model.set_model_sampler_cfg_function(base_tonemap_reinhard)
-
-    base_models, inference_memory = comfy.sample.get_additional_models(base_positive, base_negative,
+    
+    temp_base_conds = {"positive": base_positive, "negative": base_negative}
+    base_conds = {} 
+    for k in temp_base_conds:
+        base_conds[k] = comfy.sampler_helpers.convert_cond(temp_base_conds[k])
+    base_models, inference_memory = comfy.sampler_helpers.get_additional_models(base_conds,
                                                                        base_model.model_dtype())
 
     memory_required = base_model.memory_required(noise.shape) + inference_memory
@@ -181,8 +187,8 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     noise = noise.to(device)
     latent_image = latent_image.to(device)
 
-    pos_base_copy = comfy.sample.convert_cond(base_positive)
-    neg_base_copy = comfy.sample.convert_cond(base_negative)
+    pos_base_copy = comfy.sampler_helpers.convert_cond(base_positive)
+    neg_base_copy = comfy.sampler_helpers.convert_cond(base_negative)
 
     base_sampler = comfy.samplers.KSampler(real_base_model, steps=steps, device=device, sampler=sampler_name,
                                            scheduler=scheduler, denoise=denoise, model_options=base_model.model_options)
@@ -192,7 +198,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
                                        denoise_mask=noise_mask, sigmas=sigmas, callback=base_callback,
                                        disable_pbar=disable_pbar, seed=seed)
 
-    comfy.sample.cleanup_additional_models(base_models)
+    comfy.sampler_helpers.cleanup_additional_models(base_models)
 
     noise = torch.zeros(base_samples.size(), dtype=base_samples.dtype, layout=base_samples.layout, device=device)
 
@@ -279,7 +285,11 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         elif cfg_method == CfgMethods.TONEMAP and dynamic_refiner_cfg > 0.0:
             refiner_model.set_model_sampler_cfg_function(refiner_tonemap_reinhard)
 
-    refiner_models, inference_memory = comfy.sample.get_additional_models(refiner_positive, refiner_negative,
+    temp_refiner_conds = {"positive": refiner_positive, "negative": refiner_negative}
+    refiner_conds = {} 
+    for k in temp_refiner_conds:
+        refiner_conds[k] = comfy.sampler_helpers.convert_cond(temp_refiner_conds[k])
+    refiner_models, inference_memory = comfy.sampler_helpers.get_additional_models(refiner_conds,
                                                                           refiner_model.model_dtype())
 
     memory_required = refiner_model.memory_required(noise.shape) + inference_memory
@@ -287,8 +297,8 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
 
     real_refiner_model = refiner_model.model
 
-    pos_refiner_copy = comfy.sample.convert_cond(refiner_positive)
-    neg_refiner_copy = comfy.sample.convert_cond(refiner_negative)
+    pos_refiner_copy = comfy.sampler_helpers.convert_cond(refiner_positive)
+    neg_refiner_copy = comfy.sampler_helpers.convert_cond(refiner_negative)
 
     refiner_sampler = comfy.samplers.KSampler(real_refiner_model, steps=steps, device=device, sampler=sampler_name,
                                               scheduler=scheduler, denoise=denoise,
@@ -302,7 +312,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
 
     refiner_samples = refiner_samples.cpu()
 
-    comfy.sample.cleanup_additional_models(refiner_models)
+    comfy.sampler_helpers.cleanup_additional_models(refiner_models)
 
     return refiner_samples
 
