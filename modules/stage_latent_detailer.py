@@ -25,8 +25,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
-
-from comfy.sampler_helpers import prepare_mask
+try:
+    from comfy.sampler_helpers import prepare_mask
+except ImportError:
+    from comfy.sample import prepare_mask
 
 from .data_utils import retrieve_parameter
 from .mb_pipeline import PipelineAccess
