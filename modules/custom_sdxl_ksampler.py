@@ -192,7 +192,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
                                        denoise_mask=noise_mask, sigmas=sigmas, callback=base_callback,
                                        disable_pbar=disable_pbar, seed=seed)
 
-    comfy.sample.cleanup_additional_models(base_models)
+    comfy.sampler_helpers.cleanup_additional_models(base_models)
 
     noise = torch.zeros(base_samples.size(), dtype=base_samples.dtype, layout=base_samples.layout, device=device)
 
