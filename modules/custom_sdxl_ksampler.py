@@ -31,6 +31,7 @@ import warnings
 
 import comfy.sample
 import comfy.samplers
+import comfy.sampler_helpers
 import comfy.utils
 import latent_preview
 
@@ -99,7 +100,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     device = get_torch_device()
 
     if noise_mask is not None:
-        noise_mask = comfy.sample.prepare_mask(noise_mask, noise.shape, device)
+        noise_mask = comfy.sampler_helpers.prepare_mask(noise_mask, noise.shape, device)
 
     steps = base_steps + refiner_steps
 
@@ -168,11 +169,13 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         elif cfg_method == CfgMethods.TONEMAP and dynamic_base_cfg > 0.0:
             base_model.set_model_sampler_cfg_function(base_tonemap_reinhard)
 
-    base_models, inference_memory = comfy.sample.get_additional_models(base_positive, base_negative,
-                                                                       base_model.model_dtype())
+    temp_base_conds = {"positive": base_positive, "negative": base_negative}
+    base_conds = {}
+    for k in temp_base_conds:
+        base_conds[k] = comfy.sampler_helpers.convert_cond(temp_base_conds[k])
 
-    memory_required = base_model.memory_required(noise.shape) + inference_memory
-    load_models_gpu([base_model] + base_models, memory_required)
+    base_models, inference_memory = comfy.sampler_helpers.get_additional_models(base_conds,
+                                                                                base_model.model_dtype())
 
     real_base_model = base_model.model
 
@@ -181,13 +184,10 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
     noise = noise.to(device)
     latent_image = latent_image.to(device)
 
-    pos_base_copy = comfy.sample.convert_cond(base_positive)
-    neg_base_copy = comfy.sample.convert_cond(base_negative)
-
-    base_sampler = comfy.samplers.KSampler(real_base_model, steps=steps, device=device, sampler=sampler_name,
+    base_sampler = comfy.samplers.KSampler(base_model, steps=steps, device=device, sampler=sampler_name,
                                            scheduler=scheduler, denoise=denoise, model_options=base_model.model_options)
 
-    base_samples = base_sampler.sample(noise, pos_base_copy, neg_base_copy, cfg=cfg, latent_image=latent_image,
+    base_samples = base_sampler.sample(noise, base_positive, base_negative, cfg=cfg, latent_image=latent_image,
                                        start_step=start_step, last_step=base_steps, force_full_denoise=False,
                                        denoise_mask=noise_mask, sigmas=sigmas, callback=base_callback,
                                        disable_pbar=disable_pbar, seed=seed)
@@ -279,22 +279,19 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
         elif cfg_method == CfgMethods.TONEMAP and dynamic_refiner_cfg > 0.0:
             refiner_model.set_model_sampler_cfg_function(refiner_tonemap_reinhard)
 
-    refiner_models, inference_memory = comfy.sample.get_additional_models(refiner_positive, refiner_negative,
-                                                                          refiner_model.model_dtype())
+    temp_refiner_conds = {"positive": refiner_positive, "negative": refiner_negative}
+    refiner_conds = {}
+    for k in temp_refiner_conds:
+        refiner_conds[k] = comfy.sampler_helpers.convert_cond(temp_refiner_conds[k])
 
-    memory_required = refiner_model.memory_required(noise.shape) + inference_memory
-    load_models_gpu([refiner_model] + refiner_models, memory_required)
+    refiner_models, inference_memory = comfy.sampler_helpers.get_additional_models(refiner_conds,
+                                                                                   refiner_model.model_dtype())
 
-    real_refiner_model = refiner_model.model
-
-    pos_refiner_copy = comfy.sample.convert_cond(refiner_positive)
-    neg_refiner_copy = comfy.sample.convert_cond(refiner_negative)
-
-    refiner_sampler = comfy.samplers.KSampler(real_refiner_model, steps=steps, device=device, sampler=sampler_name,
+    refiner_sampler = comfy.samplers.KSampler(refiner_model, steps=steps, device=device, sampler=sampler_name,
                                               scheduler=scheduler, denoise=denoise,
                                               model_options=refiner_model.model_options)
 
-    refiner_samples = refiner_sampler.sample(noise, pos_refiner_copy, neg_refiner_copy, cfg=cfg,
+    refiner_samples = refiner_sampler.sample(noise, refiner_positive, refiner_negative, cfg=cfg,
                                              latent_image=latent_from_base, start_step=base_steps, last_step=last_step,
                                              force_full_denoise=force_full_denoise,
                                              denoise_mask=noise_mask, sigmas=sigmas, callback=refiner_callback,
@@ -302,7 +299,7 @@ def sdxl_sample(base_model, refiner_model, noise, base_steps, refiner_steps, cfg
 
     refiner_samples = refiner_samples.cpu()
 
-    comfy.sample.cleanup_additional_models(refiner_models)
+    comfy.sampler_helpers.cleanup_additional_models(refiner_models)
 
     return refiner_samples
 

@@ -26,7 +26,7 @@ SOFTWARE.
 
 """
 
-from comfy.sample import prepare_mask
+from comfy.sampler_helpers import prepare_mask
 
 from .data_utils import retrieve_parameter
 from .mb_pipeline import PipelineAccess
