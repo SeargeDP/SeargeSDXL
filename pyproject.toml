@@ -1,6 +1,6 @@
 [project]
 name = "seargesdxl"
-description = ""
+description = "Custom nodes for easier use of SDXL in ComfyUI including an img2img workflow that utilizes both the base and refiner checkpoints."
 version = "1.0.0"
 license = "LICENSE"
 
