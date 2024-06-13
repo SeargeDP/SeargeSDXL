@@ -1,0 +1,14 @@
+[project]
+name = "seargesdxl"
+description = "Custom nodes for easier use of SDXL in ComfyUI including an img2img workflow that utilizes both the base and refiner checkpoints."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/SeargeDP/SeargeSDXL"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "SeargeSDXL"
+Icon = ""
