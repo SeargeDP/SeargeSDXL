@@ -481,7 +481,7 @@ def do_install():
     if running_in_extension_directory:
         print(f"Switched to directory: {os.getcwd()}")
 
-    correct_directory = os.getcwd() == comfy_path
+    correct_directory = os.getcwd().lower() == comfy_path.lower()
     if not correct_directory:
         print("The script is NOT running in the correct directory")
         return False
